@@ -1,0 +1,91 @@
+@import "../../../root/vars";
+
+$input-size: 14px !default;
+$input-height: 34px !default;
+
+.n-input__wrapper {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+}
+
+.n-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0 $input-height * 0.3;
+    height: $input-height;
+    background: $--color-white;
+    font-size: $input-size;
+    border: 1px solid $color-gray-10;
+    border-radius: $radius-small;
+    transition: 0.15s border;
+}
+
+.n-input:hover,
+.n-input:focus {
+    border: 1px solid $--color-primary;
+}
+
+.n-input.n-input--small {
+    font-size: $input-size * 0.875;
+    padding: 0 $input-height * 0.3 * 0.875;
+    height: $input-height * 0.875;
+}
+
+.n-input.n-input--large {
+    font-size: $input-size * 1.125;
+    padding: 0 $input-height * 0.3 * 1.125;
+    height: $input-height * 1.125;
+}
+
+.n-input.n-input--icon {
+    padding-right: $input-height;
+}
+
+.n-input.n-input--icon.n-input--small {
+    padding-right: $input-height * 0.875;
+}
+
+.n-input.n-input--icon.n-input--large {
+    padding-right: $input-height * 1.125;
+}
+
+.n-input.n-input--disabled {
+    cursor: not-allowed;
+    background: $color-gray-05;
+}
+
+.n-input.n-input--disabled:hover,
+.n-input.n-input--disabled:focus {
+    border: 1px solid $color-gray-10;
+}
+
+.n-input__wrapper .n-button__wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link) {
+    color: $color-gray-40;
+    background: transparent;
+    border-color: transparent;
+}
+
+.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):hover,
+.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):focus {
+    color: $--color-primary-light;
+    background: transparent;
+    border-color: transparent;
+}
+
+.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):active {
+    color: $--color-primary-dark;
+    background: transparent;
+    border-color: transparent;
+}
+.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):hover,
+.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):focus,
+.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):active {
+    color: $color-gray-40;
+}

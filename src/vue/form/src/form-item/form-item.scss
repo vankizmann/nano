@@ -1,0 +1,24 @@
+@import "../../../root/vars";
+
+$form-label-size: 14px !default;
+$form-item-spacing: 18px !default;
+
+.n-form-item {
+    position: relative;
+    margin-bottom: $form-item-spacing;
+}
+
+.n-form-item__label {
+    display: flex;
+    margin-bottom: $form-item-spacing * 0.25;
+    font-size: $form-label-size;
+}
+
+.n-form-item__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 1px;
+    font-size: $form-label-size * 0.875;
+    color: $--color-danger;
+}

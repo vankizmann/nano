@@ -1,0 +1,132 @@
+@import "../../../../vue/root/vars";
+
+.n-dataform {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.n-dataform__header {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 17px 50px 17px 20px;
+    border-bottom: 1px solid $color-gray-10;
+}
+
+.n-dataform__title {
+    flex: 1 1 auto;
+    font-size: 19px;
+    color: $--color-primary;
+}
+
+.n-dataform__locale {
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+.n-dataform__body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: 100%;
+}
+
+.n-dataform__body .n-tabs {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: 100%;
+}
+
+.n-dataform__body .n-tabs > .n-tabs__header {
+    margin-bottom: 0;
+}
+
+.n-dataform__body .n-tabs > .n-tabs__header-inner {
+    padding: 0 20px;
+}
+
+.n-dataform__body .n-tabs > .n-tabs__body {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.n-dataform__body .n-tabs > .n-tabs__body > .n-form {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: 100%;
+}
+
+.n-dataform__body .n-tabs > .n-tabs__body > .n-form > .n-tabs-item {
+    flex: 1 1 auto;
+    padding: 20px;
+}
+
+.n-dataform__body .n-tabs > .n-tabs__body > .n-form > .n-tabs-item.n-tabs-item--raw {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.n-dataform__body .n-tabs > .n-tabs__body > .n-form > .n-tabs-item.n-tabs-item--raw > div {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: 100%;
+}
+
+.n-dataform__footer {
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    border-top: 1px solid $color-gray-10;
+}
+
+.n-dataform__close {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+}
+
+.n-dataform__close span {
+    font-size: 18px;
+    color: $color-gray-30;
+    transition: color 0.15s;
+}
+
+.n-dataform__close:hover span {
+    color: $color-gray-40;
+}
+
+.n-dataform__toolbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.n-dataform__toolbar > div {
+    flex: 0 0 auto;
+    padding: 0 7px;
+}
+
+.n-dataform__toolbar > div:first-child {
+    padding-left: 0;
+}
+
+.n-dataform__toolbar > div:last-child {
+    padding-right: 0;
+}
+
+.n-dataform__toolbar-spacer {
+    flex: 1 1 auto !important;
+}

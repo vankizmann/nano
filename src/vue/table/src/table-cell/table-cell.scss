@@ -1,0 +1,16 @@
+@import "../../../root/vars";
+
+.n-table__cell {
+    position: relative;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.n-table__cell > span {
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

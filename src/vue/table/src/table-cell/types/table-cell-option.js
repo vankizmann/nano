@@ -1,0 +1,40 @@
+import { Arr, Obj, Any } from "../../../../../index";
+import TableCell from "../table-cell";
+
+export default {
+
+    name: 'NTableCellOption',
+
+    extends: TableCell,
+
+    render()
+    {
+        let options = typeof this.column.options === 'function' ?
+            this.column.options(this.row) : this.column.options;
+
+        options = Arr.map(Any.keys(options), (index) => {
+            return { $value: options[index], $index: index };
+        });
+
+        let className = [
+            'n-table__cell', 'n-table__cell--' + this.column.type
+        ];
+
+        return <div class={className}>
+            <span>
+                {
+                    Arr.each(! Any.isArray(this.value) ? [this.value] : this.value, (value) => {
+
+                        let option = Arr.find(options, (option) => {
+                            return Obj.get(option, this.column.optionsValue) === value;
+                        });
+
+                        return Obj.get(option, this.column.optionsLabel, value);
+
+                    }).join(', ') || this.column.emptyText
+                }
+            </span>
+        </div>;
+    }
+
+}

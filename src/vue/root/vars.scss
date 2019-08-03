@@ -1,0 +1,181 @@
+$color-white:           #ffffff;
+$color-black:           #1b2229;
+
+$color-gray-05:         mix($color-black, $color-white, 0.05 * 100%);
+$color-gray-10:         mix($color-black, $color-white, 0.10 * 100%);
+$color-gray-15:         mix($color-black, $color-white, 0.15 * 100%);
+$color-gray-20:         mix($color-black, $color-white, 0.20 * 100%);
+$color-gray-25:         mix($color-black, $color-white, 0.25 * 100%);
+$color-gray-30:         mix($color-black, $color-white, 0.30 * 100%);
+$color-gray-35:         mix($color-black, $color-white, 0.35 * 100%);
+$color-gray-40:         mix($color-black, $color-white, 0.40 * 100%);
+$color-gray-45:         mix($color-black, $color-white, 0.45 * 100%);
+$color-gray-50:         mix($color-black, $color-white, 0.50 * 100%);
+$color-gray-55:         mix($color-black, $color-white, 0.55 * 100%);
+$color-gray-60:         mix($color-black, $color-white, 0.60 * 100%);
+$color-gray-65:         mix($color-black, $color-white, 0.65 * 100%);
+$color-gray-70:         mix($color-black, $color-white, 0.70 * 100%);
+$color-gray-75:         mix($color-black, $color-white, 0.75 * 100%);
+$color-gray-80:         mix($color-black, $color-white, 0.80 * 100%);
+$color-gray-85:         mix($color-black, $color-white, 0.85 * 100%);
+$color-gray-90:         mix($color-black, $color-white, 0.90 * 100%);
+$color-gray-95:         mix($color-black, $color-white, 0.95 * 100%);
+
+$color-primary:         #0aa3eb;
+$color-secondary:       #0aa3eb;
+
+$color-success:         #3ed786;
+$color-warning:         #ffac2f;
+$color-danger:          #fd2f51;
+$color-info:            #62686d;
+
+$color-background:      #f7fafc;
+$color-border:          #ebeef5;
+
+$color-primary-light:       lighten($color-primary, 5%);
+$color-primary-lighter:     lighten($color-primary, 10%);
+
+$color-primary-dark:        darken($color-primary, 5%);
+$color-primary-darker:      darken($color-primary, 10%);
+
+$color-secondary-light:     lighten($color-secondary, 5%);
+$color-secondary-lighter:   lighten($color-secondary, 10%);
+
+$color-secondary-dark:      darken($color-secondary, 5%);
+$color-secondary-darker:    darken($color-secondary, 10%);
+
+$color-success-light:       lighten($color-success, 5%);
+$color-success-lighter:     lighten($color-success, 10%);
+
+$color-success-dark:        darken($color-success, 5%);
+$color-success-darker:      darken($color-success, 10%);
+
+$color-warning-light:       lighten($color-warning, 5%);
+$color-warning-lighter:     lighten($color-warning, 10%);
+
+$color-warning-dark:        darken($color-warning, 5%);
+$color-warning-darker:      darken($color-warning, 10%);
+
+$color-danger-light:        lighten($color-danger, 5%);
+$color-danger-lighter:      lighten($color-danger, 10%);
+
+$color-danger-dark:         darken($color-danger, 5%);
+$color-danger-darker:       darken($color-danger, 10%);
+
+$color-info-light:          lighten($color-info, 5%);
+$color-info-lighter:        lighten($color-info, 10%);
+
+$color-info-dark:           darken($color-info, 5%);
+$color-info-darker:         darken($color-info, 10%);
+
+$transition-short: 0.12s;
+$transition-medium: 0.24s;
+$transition-long: 0.48s;
+$transition-extended: 0.96s;
+
+$radius-small: 1.5px;
+$radius-medium: 3px;
+$radius-large: 4.5px;
+$radius-extended: 9px;
+
+:root {
+    --color-black:              #{$color-black};
+    --color-white:              #{$color-white};
+
+    --color-primary:            #{$color-primary};
+    --color-secondary:          #{$color-secondary};
+
+    --color-success:            #{$color-success};
+    --color-warning:            #{$color-warning};
+    --color-danger:             #{$color-danger};
+    --color-info:               #{$color-info};
+
+    --color-background:         #{$color-background};
+    --color-border:             #{$color-border};
+
+    --color-primary-light:      #{$color-primary-light};
+    --color-primary-lighter:    #{$color-primary-lighter};
+
+    --color-primary-dark:       #{$color-primary-dark};
+    --color-primary-darker:     #{$color-primary-darker};
+
+    --color-secondary-light:    #{$color-secondary-light};
+    --color-secondary-lighter:  #{$color-secondary-lighter};
+
+    --color-secondary-dark:     #{$color-secondary-dark};
+    --color-secondary-darker:   #{$color-secondary-darker};
+
+    --color-success-light:      #{$color-success-light};
+    --color-success-lighter:    #{$color-success-lighter};
+
+    --color-success-dark:       #{$color-success-dark};
+    --color-success-darker:     #{$color-success-darker};
+
+    --color-warning-light:      #{$color-warning-light};
+    --color-warning-lighter:    #{$color-warning-lighter};
+
+    --color-warning-dark:       #{$color-warning-dark};
+    --color-warning-darker:     #{$color-warning-darker};
+
+    --color-danger-light:       #{$color-danger-light};
+    --color-danger-lighter:     #{$color-danger-lighter};
+
+    --color-danger-dark:        #{$color-danger-dark};
+    --color-danger-darker:      #{$color-danger-darker};
+
+    --color-info-light:         #{$color-info-light};
+    --color-info-lighter:       #{$color-info-lighter};
+
+    --color-info-dark:          #{$color-info-dark};
+    --color-info-darker:        #{$color-info-darker};
+}
+
+$--color-black:             var(--color-black);
+$--color-white:             var(--color-white);
+
+$--color-primary:           var(--color-primary);
+$--color-secondary:         var(--color-secondary);
+
+$--color-success:           var(--color-success);
+$--color-warning:           var(--color-warning);
+$--color-danger:            var(--color-danger);
+$--color-info:              var(--color-info);
+
+$--color-background:        var(--color-background);
+$--color-border:            var(--color-border);
+
+$--color-primary-light:     var(--color-primary-light);
+$--color-primary-lighter:   var(--color-primary-lighter);
+
+$--color-primary-dark:      var(--color-primary-dark);
+$--color-primary-darker:    var(--color-primary-darker);
+
+$--color-secondary-light:   var(--color-secondary-light);
+$--color-secondary-lighter: var(--color-secondary-lighter);
+
+$--color-secondary-dark:    var(--color-secondary-dark);
+$--color-secondary-darker:  var(--color-secondary-darker);
+
+$--color-success-light:     var(--color-success-light);
+$--color-success-lighter:   var(--color-success-lighter);
+
+$--color-success-dark:      var(--color-success-dark);
+$--color-success-darker:    var(--color-success-darker);
+
+$--color-warning-light:     var(--color-warning-light);
+$--color-warning-lighter:   var(--color-warning-lighter);
+
+$--color-warning-dark:      var(--color-warning-dark);
+$--color-warning-darker:    var(--color-warning-darker);
+
+$--color-danger-light:      var(--color-danger-light);
+$--color-danger-lighter:    var(--color-danger-lighter);
+
+$--color-danger-dark:       var(--color-danger-dark);
+$--color-danger-darker:     var(--color-danger-darker);
+
+$--color-info-light:        var(--color-info-light);
+$--color-info-lighter:      var(--color-info-lighter);
+
+$--color-info-dark:         var(--color-info-dark);
+$--color-info-darker:       var(--color-info-darker);
