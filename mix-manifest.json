@@ -1,1 +1,5 @@
-{}
+{
+    "/dist/js/index.js": "/dist/js/index.js",
+    "/dist/css/index.vue.css": "/dist/css/index.vue.css",
+    "/dist/js/index.vue.js": "/dist/js/index.vue.js"
+}
