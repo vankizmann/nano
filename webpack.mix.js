@@ -27,14 +27,10 @@ mix.setResourceRoot(
 );
 
 
-mix.js('src/index.js', 'dist/js/index.js', {
+mix.js('src/bootstrap.js', 'dist/js/index.js', {
     // JS options
 });
 
-mix.js('src/index.vue.js', 'dist/js/index.vue.js', {
-    // JS options
-});
-
-mix.sass('src/vue/bootstrap.scss', 'dist/css/index.vue.css', {
+mix.sass('src/bootstrap.scss', 'dist/css/index.css', {
     precision: 3
 });
