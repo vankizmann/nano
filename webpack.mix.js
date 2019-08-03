@@ -26,33 +26,15 @@ mix.setResourceRoot(
     path.resolve(__dirname)
 );
 
-/**
- * Destination folder
- */
 
-let dest = process.env.NODE_ENV === 'production' ?
-    'prod/' : 'dist/';
-
-/**
- * Compile files
- */
-
-if ( process.env.NODE_ENV !== 'production' ) {
-    mix.sourceMaps();
-}
-
-mix.copyDirectory('src/fonts', dest + 'fonts', {
-    // Copy options
-});
-
-mix.copyDirectory('src/img', dest + 'img', {
-    // Copy options
-});
-
-mix.js('src/js/bootstrap.js', dest + 'js/index.js', {
+mix.js('src/index.js', 'dist/js/index.js', {
     // JS options
 });
 
-mix.sass('src/sass/bootstrap.scss', dest + 'css/index.css', {
+mix.js('src/index.vue.js', 'dist/js/index.vue.js', {
+    // JS options
+});
+
+mix.sass('src/vue/bootstrap.scss', 'dist/css/index.vue.css', {
     precision: 3
 });
