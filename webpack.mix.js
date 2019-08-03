@@ -14,6 +14,12 @@ mix.options({
     processCssUrls: false
 });
 
+mix.webpackConfig({
+    externals: {
+        "vue": "Vue"
+    }
+});
+
 /**
  * Set public and resource path to root
  */
