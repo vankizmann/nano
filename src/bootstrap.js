@@ -1,9 +1,9 @@
-import { install, VueNano } from "./index";
+import { Nano, VueNano } from "./index";
 
-if ( window !== undefined ) {
-    install(window);
+if ( window !== undefined && window.Nano === undefined ) {
+    window.Nano = Nano;
 }
 
-if ( window !== undefined && window.Vue !== undefined ) {
-    window.Vue.use(VueNano);
+if ( window !== undefined && window.VueNano === undefined ) {
+    window.VueNano = VueNano;
 }
