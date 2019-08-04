@@ -1,3 +1,5 @@
+require('index.scss');
+
 if ( window === undefined ) {
     window = this;
 }
