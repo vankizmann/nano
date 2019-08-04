@@ -12,7 +12,8 @@ let path = require('path');
 
 mix.options({
     clearConsole: true,
-    processCssUrls: false
+    processCssUrls: false,
+    terser: { terserOptions: {module: true} }
 });
 
 /**
@@ -28,12 +29,8 @@ mix.webpackConfig({
     },
 
     output: {
-        library: "commonjs"
-    },
-
-    plugins: [
-        new EsmWebpackPlugin()
-    ]
+        libraryTarget: "commonjs-module"
+    }
 
 });
 
