@@ -38,13 +38,13 @@ export function VueNano (Vue) {
     return Vue;
 }
 
-import ReadyElement from './element/ready';
-Nano.Element.alias('ready', ReadyElement);
-
-import MenuElement from './element/menu';
-Nano.Element.alias('menu', MenuElement);
-
-import ResizerElement from './element/resizer';
-Nano.Element.alias('resizer', ResizerElement);
+// import ReadyElement from './element/ready';
+// Nano.Element.alias('ready', ReadyElement);
+//
+// import MenuElement from './element/menu';
+// Nano.Element.alias('menu', MenuElement);
+//
+// import ResizerElement from './element/resizer';
+// Nano.Element.alias('resizer', ResizerElement);
 
 export default Nano;
