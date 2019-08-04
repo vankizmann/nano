@@ -59,6 +59,7 @@ export const Nano = {
 
 if ( window !== undefined ) {
     window.Nano = Nano;
+    VueGlobal(VueNano);
 }
 
 export default Nano;

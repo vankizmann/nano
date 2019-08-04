@@ -102,8 +102,8 @@ export default {
                 value = [value];
             }
 
-            if ( Any.isEqual(this.value, value) ) {
-                return;
+            if ( Any.isEqual(this.nativeSelected, value) ) {
+                return null;
             }
 
             value = Arr.filter(value, (selected) => {
@@ -116,10 +116,6 @@ export default {
         getValue()
         {
             let value = this.nativeSelected;
-
-            if ( Any.isEqual(this.value, value) ) {
-                return;
-            }
 
             if ( this.multiple === false ){
                 value = Arr.first(value);
@@ -257,9 +253,15 @@ export default {
 
     watch: {
 
-        value(value)
+        value()
         {
-            this.nativeSelected = this.getSelected(value);
+            let selected = this.getSelected(this.value);
+
+            if ( selected === null ) {
+                return;
+            }
+
+            this.nativeSelected = selected;
         },
 
         nativeSelected()
@@ -285,7 +287,7 @@ export default {
             search: '',
             current: null,
             options: [],
-            nativeSelected: this.getSelected(this.value)
+            nativeSelected: []
         };
     },
 
@@ -298,6 +300,7 @@ export default {
 
     beforeMount()
     {
+        this.nativeSelected = this.getSelected(this.value);
         // if ( this.value === null || this.value === undefined ) {
         //     this.$emit('input', this.multiple === true ? [] : '');
         // }

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nano UI Table</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/backpack.css@2.0.0/lib/backpack.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="../../dist/index.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="../../dist/index.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <n-form :form="form">
+
+            <n-form-item label="Name">
+                <n-input v-model="form.name" placeholder="Enter a name!"></n-input>
+            </n-form-item>
+
+            <n-form-item label="Info">
+                <n-input v-model="form.info" icon="fa fa-times" @icon-click="form.info = ''"></n-input>
+            </n-form-item>
+
+            <n-form-item label="Password">
+                <n-input v-model="form.password" :native-type="nativeType" :icon="nativeType === 'text' ? 'fa fa-eye-slash' : 'fa fa-eye'" @icon-click="nativeType = (nativeType === 'text' ? 'password' : 'text')"></n-input>
+            </n-form-item>
+
+        </n-form>
+    </div>
+
+    <script>
+        Nano.Dom.ready(() => {
+
+            var config = {
+                data: function() {
+
+                    var form = {
+                        name: '', info: 'Lorem ipsum dolore.', password: ''
+                    };
+
+                    return { form: form, nativeType: 'password' };
+                }
+            };
+
+            window.App = new Vue(config).$mount('#app');
+        })
+    </script>
+</body>
+</html>
