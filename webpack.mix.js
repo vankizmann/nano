@@ -29,7 +29,7 @@ mix.webpackConfig({
     },
 
     output: {
-        libraryTarget: "commonjs-module"
+        libraryTarget: "umd"
     }
 
 });
