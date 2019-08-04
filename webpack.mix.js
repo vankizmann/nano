@@ -25,9 +25,11 @@ mix.webpackConfig({
         "vue": "Vue"
     },
 
-    output: {
-        libraryTarget: "umd"
-    }
+    // output: {
+    //     libraryExport: 'default',
+    //     library: 'NANO',
+    //     libraryTarget: 'commonjs2'
+    // }
 
 });
 
@@ -44,12 +46,8 @@ mix.setResourceRoot(
 );
 
 
-mix.js('src/nano-js.js', 'dist/js/nano-js.js', {
-    // JS options
-});
-
-mix.js('src/nano-ui.js', 'dist/js/nano-ui.js', {
-    // JS options
+mix.js('src/nano-test.js', 'dist/js/index.js', {
+    //
 });
 
 mix.sass('src/nano-ui.scss', 'dist/css/nano-ui.css', {

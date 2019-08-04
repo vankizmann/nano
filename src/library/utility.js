@@ -16,11 +16,8 @@ export Any from "./extend/utility/any";
 import Dom from "./extend/utility/dom";
 export Dom from "./extend/utility/dom";
 
-import Cookie from 'js-cookie';
-export { Cookie }
-
 export const Utility = {
-    Arr, Obj, Num, Str, Any, Dom, Cookie
+    Arr, Obj, Num, Str, Any, Dom
 };
 
 export default Utility;

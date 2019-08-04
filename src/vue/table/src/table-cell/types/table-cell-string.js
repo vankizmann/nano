@@ -1,4 +1,4 @@
-import { Any } from "../../../../../nano-js";
+import { Any } from "../../../../../index";
 import TableCell from "../table-cell";
 
 export default {

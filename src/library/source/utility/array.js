@@ -1,4 +1,4 @@
-import { Obj, Num, Any } from "../../../nano-js"
+import { Obj, Num, Any } from "../../../index"
 
 export class Arr
 {

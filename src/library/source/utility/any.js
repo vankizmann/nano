@@ -58,6 +58,11 @@ export class Any
         return typeof val === 'boolean';
     }
 
+    static isFunction(val)
+    {
+        return typeof val === 'function';
+    }
+
     static isObject(val)
     {
         return val !== null && typeof val === 'object';

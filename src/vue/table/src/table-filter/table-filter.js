@@ -1,4 +1,4 @@
-import { Arr, Obj, Any, Locale } from "../../../../nano-js";
+import { Arr, Obj, Any, Locale } from "../../../../index";
 import CtorMixin from "../../../mixins/src/ctor";
 
 export default {

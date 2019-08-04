@@ -1,4 +1,4 @@
-import { UUID, Num, Arr, Obj, Dom, Any, Locale, Event } from "../../../../nano-js";
+import { UUID, Num, Arr, Obj, Dom, Any, Locale, Event } from "../../../../index";
 
 export default {
 

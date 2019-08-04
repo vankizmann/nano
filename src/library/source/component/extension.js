@@ -1,4 +1,4 @@
-import { assign, has, each, pull, keys, intersection, findKey } from 'lodash';
+// import { assign, has, each, pull, keys, intersection, findKey } from 'lodash';
 import Utility from "../../utility";
 import Queue from './queue';
 import Asset from './asset';
@@ -20,7 +20,7 @@ export class Extension
 
     static bind (name, config)
     {
-        this.imports[name] = assign({
+        this.imports[name] = Obj.assign({
             scripts: [], styles: [], modules: []
         }, config);
     }
@@ -47,7 +47,7 @@ export class Extension
             return setTimeout(reload, 100);
         }
 
-        let queue = new Queue(), asset = new Asset();
+        let queue = new Queue();
 
         queue.add((next) => {
             this.pending.push(name);
@@ -55,15 +55,15 @@ export class Extension
         });
 
         Arr.each(this.imports[name].styles, (style) => {
-            queue.add((next) => asset.style(style, next, error));
+            queue.add((next) => Asset.style(style, next, error));
         });
 
         Arr.each(this.imports[name].scripts, (script) => {
-            queue.add((next) => asset.script(script, next, error));
+            queue.add((next) => Asset.script(script, next, error));
         });
 
         queue.add((next) => {
-            pull(this.pending, name);
+            this.pending = Arr.diff(this.pending, name);
             next();
         });
 

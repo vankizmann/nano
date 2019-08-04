@@ -1,16 +1,11 @@
 {
     "name": "nanojs",
     "version": "0.0.1",
-    "main": "dist/js/nano-js.js",
+    "main": "dist/js/index.js",
     "browserslist": "> 0.25%, not dead",
     "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=develwopment node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "build": "webpack --config webpack.js",
+        "watch": "webpack --config webpack.js --watch"
     },
     "devDependencies": {
         "@babel/core": "^7.4.5",
@@ -18,19 +13,25 @@
         "@babel/plugin-proposal-export-default-from": "^7.2.0",
         "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
         "@babel/plugin-syntax-jsx": "^7.2.0",
+        "@babel/plugin-transform-modules-commonjs": "^7.5.0",
         "@babel/preset-env": "^7.4.4",
         "@purtuga/esm-webpack-plugin": "^1.1.1",
         "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
         "@vue/babel-plugin-transform-vue-jsx": "^1.0.0",
         "@vue/babel-preset-jsx": "^1.0.0",
+        "babel-loader": "^8.0.6",
         "cross-env": "^5.1",
+        "extract-text-webpack-plugin": "^3.0.2",
         "js-cookie": "^2.2.0",
         "laravel-mix": "^4.0.7",
+        "mini-css-extract-plugin": "^0.8.0",
+        "node-sass": "^4.12.0",
         "resize-observer-polyfill": "^1.5.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "uuid": "^3.3.2",
         "vue": "^2.6.10",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "webpack": "^4.39.1"
     }
 }

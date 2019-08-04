@@ -1,4 +1,4 @@
-import Vue from "vue";
+import { VueGlobal } from "../../index";
 
 import Input from './src/input/input';
-Vue.component(Input.name, Input);
+VueGlobal(Vue => Vue.component(Input.name, Input));

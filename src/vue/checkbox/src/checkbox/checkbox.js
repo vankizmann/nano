@@ -1,4 +1,4 @@
-import { Arr } from "../../../../nano-js";
+import { Arr } from "../../../../index";
 
 export default {
 

@@ -1,4 +1,4 @@
-import { Any, Locale } from "../../../../../nano-js";
+import { Any, Locale } from "../../../../../index";
 import TableFilter from "../table-filter";
 
 export default {
