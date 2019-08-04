@@ -19,6 +19,7 @@
         "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
         "@babel/plugin-syntax-jsx": "^7.2.0",
         "@babel/preset-env": "^7.4.4",
+        "@purtuga/esm-webpack-plugin": "^1.1.1",
         "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
         "@vue/babel-plugin-transform-vue-jsx": "^1.0.0",
         "@vue/babel-preset-jsx": "^1.0.0",

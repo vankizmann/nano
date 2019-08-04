@@ -5,6 +5,7 @@
 let mix = require('laravel-mix');
 let path = require('path');
 
+
 /**
  * Do default configuration
  */
@@ -14,10 +15,26 @@ mix.options({
     processCssUrls: false
 });
 
+/**
+ * Webpack configuration
+ */
+
+const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
+
 mix.webpackConfig({
+
     externals: {
         "vue": "Vue"
-    }
+    },
+
+    output: {
+        library: "LIB"
+    },
+
+    plugins: [
+        new EsmWebpackPlugin()
+    ]
+
 });
 
 /**
