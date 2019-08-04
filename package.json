@@ -1,5 +1,6 @@
 {
-    "private": true,
+    "name": "nanojs",
+    "version": "0.0.1",
     "browserslist": "> 0.25%, not dead",
     "scripts": {
         "dev": "npm run development",
