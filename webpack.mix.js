@@ -28,7 +28,7 @@ mix.webpackConfig({
     },
 
     output: {
-        library: "LIB"
+        library: "commonjs"
     },
 
     plugins: [
