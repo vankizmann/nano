@@ -1,7 +1,7 @@
 {
     "name": "nanojs",
     "version": "0.0.1",
-    "main": "src/index.js",
+    "main": "dist/js/index.js",
     "browserslist": "> 0.25%, not dead",
     "scripts": {
         "dev": "npm run development",

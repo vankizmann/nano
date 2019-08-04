@@ -7,3 +7,6 @@ if ( window !== undefined && window.Nano === undefined ) {
 if ( window !== undefined && window.VueNano === undefined ) {
     window.VueNano = VueNano;
 }
+
+export { VueNano, Nano };
+export default Nano;
