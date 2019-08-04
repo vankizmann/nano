@@ -1,4 +1,4 @@
-import { UUID, Str, Arr, Obj, Any, Dom, Locale } from "../../../../index";
+import { UUID, Str, Arr, Obj, Any, Dom, Locale } from "../../../../nano-js";
 
 class Notification {
 

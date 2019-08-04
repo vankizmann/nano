@@ -1,4 +1,4 @@
-import { Any } from "../../../../../index";
+import { Any } from "../../../../../nano-js";
 import InfoField from "../info-field";
 
 export default {

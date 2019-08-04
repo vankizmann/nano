@@ -1,4 +1,4 @@
-import { UUID, Num, Str, Arr, Obj, Any, Dom, Ajax, Data, Event, Locale } from "../../../../index";
+import { UUID, Num, Str, Arr, Obj, Any, Dom, Ajax, Data, Event, Locale } from "../../../../../nano-js";
 import CtorMixin from "../../../../vue/mixins/src/ctor";
 
 export default {

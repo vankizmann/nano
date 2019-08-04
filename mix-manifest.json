@@ -1,4 +1,5 @@
 {
-    "/dist/js/index.js": "/dist/js/index.js",
-    "/dist/css/index.css": "/dist/css/index.css"
+    "/dist/js/nano-js.js": "/dist/js/nano-js.js",
+    "/dist/css/nano-ui.css": "/dist/css/nano-ui.css",
+    "/dist/js/nano-ui.js": "/dist/js/nano-ui.js"
 }

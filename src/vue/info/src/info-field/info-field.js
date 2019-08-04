@@ -1,4 +1,4 @@
-import { Obj } from "../../../../index";
+import { Obj } from "../../../../nano-js";
 import CtorMixin from "../../../mixins/src/ctor";
 
 export default {

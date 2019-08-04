@@ -1,4 +1,4 @@
-import { Arr, Obj, Any, Locale } from "../../../../../index";
+import { Arr, Obj, Any, Locale } from "../../../../../nano-js";
 import TableFilter from "../table-filter";
 
 export default {
