@@ -12,15 +12,12 @@ let path = require('path');
 
 mix.options({
     clearConsole: true,
-    processCssUrls: false,
-    terser: { terserOptions: {module: true} }
+    processCssUrls: false
 });
 
 /**
  * Webpack configuration
  */
-
-const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
 
 mix.webpackConfig({
 

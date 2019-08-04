@@ -16,7 +16,7 @@ if ( window === undefined ) {
 }
 
 export const Nano = {
-    ...Utility, ...Component
+    foobar: '', ...Utility, ...Component
 };
 
 // import ReadyElement from './element/ready';
