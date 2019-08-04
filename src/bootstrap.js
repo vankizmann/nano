@@ -1,4 +1,4 @@
-import { VueNano } from "./index";
+import { Nano, VueNano } from "./index";
 export * from "./index";
 
 if ( window !== undefined && window.Nano === undefined ) {
