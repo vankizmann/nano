@@ -32,4 +32,6 @@ if ( window !== undefined ) {
     window.Nano = Nano;
 }
 
-export default Nano;
+export default {
+    foobar: '', ...Utility, ...Component
+};
