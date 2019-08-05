@@ -1,9 +1,4 @@
-// import { assign, has, each, pull, keys, intersection, findKey } from 'lodash';
-import Utility from "../../utility";
-import Queue from './queue';
-import Asset from './asset';
-
-const { Arr, Obj } = Utility;
+import { Arr, Obj, Asset, Queue } from "../../../index";
 
 export class Extension
 {

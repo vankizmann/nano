@@ -1,6 +1,4 @@
-import Utility from "../../utility";
-
-const { Dom } = Utility;
+import { Dom } from "../../../index";
 
 export default class Asset
 {

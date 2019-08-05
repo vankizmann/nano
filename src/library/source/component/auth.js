@@ -1,7 +1,4 @@
-import Utility from "../../utility";
-import Data from "./data";
-
-const { Arr, Obj, Str } = Utility;
+import { Arr, Obj, Str, Data } from "../../../index";
 
 export class Auth
 {

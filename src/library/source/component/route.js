@@ -1,6 +1,4 @@
-import Utility from "../../utility";
-
-const { Obj, Any } = Utility;
+import { Obj, Any } from "../../../index";
 
 export default class Route
 {

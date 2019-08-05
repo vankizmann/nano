@@ -1,18 +1,32 @@
 let scope = window || this;
 
 let UUID = require('uuid/v1');
-export { UUID };
 
-import Utility from "./library/utility";
-export * from "./library/utility";
+import Arr from "./library/extend/utility/array";
+import Obj from "./library/extend/utility/object";
+import Num from "./library/extend/utility/number";
+import Str from "./library/extend/utility/string";
+import Any from "./library/extend/utility/any";
+import Dom from "./library/extend/utility/dom";
+import Ajax from "./library/extend/component/ajax";
+import Asset from "./library/extend/component/asset";
+import Auth from "./library/extend/component/auth";
+import Data from "./library/extend/component/data";
+import Element from "./library/extend/component/element";
+import Event from "./library/extend/component/event";
+import Extension from "./library/extend/component/extension";
+import Locale from "./library/extend/component/locale";
+import Queue from "./library/extend/component/queue";
+import Route from "./library/extend/component/route";
 
-import Component from "./library/component";
-export * from "./library/component";
+export { Arr, Obj, Num, Str, Any, Dom, Ajax, Asset, Auth, Data, Element, Event, Extension, Locale, Queue, Route, UUID };
+
+let extend = (extend) => {
+    Nano.Any.keys(extend).forEach((key) => scope.Nano[key] = extend[key]);
+};
 
 export const Nano = scope.Nano = {
-    ...Utility, ...Component, extend: (extend) => {
-        Nano.Any.keys(extend).forEach((key) => scope.Nano[key] = extend[key]);
-    }
+    Arr, Obj, Num, Str, Any, Dom, Ajax, Asset, Auth, Data, Element, Event, Extension, Locale, Queue, Route, extend
 };
 
 export function NanoInstall(obj) {
@@ -46,11 +60,6 @@ export function VueNano (Vue) {
     require("./pro/bootstrap");
 
     return Vue;
-}
-
-export function extend (extend) {
-    console.log(scope.Nano, extend);
-    Nano.Obj.assign(scope.Nano, extend);
 }
 
 VueGlobal(VueNano);

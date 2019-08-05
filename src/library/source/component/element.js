@@ -1,6 +1,4 @@
-import Utility from "../../utility";
-
-const { Str, Dom } = Utility;
+import { Str, Dom } from "../../../index";
 
 export class Element
 {

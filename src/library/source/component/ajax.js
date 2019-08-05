@@ -1,8 +1,4 @@
-import Utility from "../../utility";
-import Data from "./data";
-import Event from "./event";
-
-const { Arr, Obj, Any } = Utility;
+import { Arr, Obj, Any, Data, Event } from "../../../index";
 
 export class Ajax
 {

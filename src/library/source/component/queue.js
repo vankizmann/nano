@@ -1,6 +1,4 @@
-import Utility from "../../utility";
-
-const { Arr } = Utility;
+import { Arr } from "../../../index";
 
 export default class Queue
 {

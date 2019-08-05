@@ -1,6 +1,4 @@
-import Utility from "../../utility";
-
-const { Obj } = Utility;
+import { Obj } from "../../../index";
 
 export function pickByCount(splits, count)
 {

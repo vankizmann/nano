@@ -1,7 +1,4 @@
-import Utility from "../../utility";
-import Event from "./event";
-
-const { Arr, Obj, Num, Any } = Utility;
+import { Arr, Obj, Num, Any, Event } from "../../../index";
 
 export class Data
 {
