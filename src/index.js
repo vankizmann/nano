@@ -19,7 +19,9 @@ import Locale from "./library/extend/component/locale";
 import Queue from "./library/extend/component/queue";
 import Route from "./library/extend/component/route";
 
-export { Arr, Obj, Num, Str, Any, Dom, Ajax, Asset, Auth, Data, Element, Event, Extension, Locale, Queue, Route, UUID };
+export {
+    Arr, Obj, Num, Str, Any, Dom, Ajax, Asset, Auth, Data, Element, Event, Extension, Locale, Queue, Route, UUID
+};
 
 let extend = (extend) => {
     Nano.Any.keys(extend).forEach((key) => scope.Nano[key] = extend[key]);
