@@ -4,7 +4,7 @@
     "main": "dist/index.js",
     "browserslist": "> 0.25%, not dead",
     "scripts": {
-        "build": "webpack --config webpack.js",
+        "build": "webpack --config webpack.js --hide-modules",
         "watch": "webpack --config webpack.js --watch"
     },
     "devDependencies": {

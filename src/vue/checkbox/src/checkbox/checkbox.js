@@ -1,4 +1,4 @@
-import { Arr } from "../../../../index";
+import { Arr, Any } from "../../../../index";
 
 export default {
 
@@ -98,6 +98,17 @@ export default {
             }
 
             this.$emit('input', !this.nativeChecked);
+        }
+
+    },
+
+    watch: {
+
+        checked()
+        {
+            if ( ! Any.isEqual(this.checked, this.nativeChecked) ) {
+                this.nativeChecked = this.checked;
+            }
         }
 
     },

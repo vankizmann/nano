@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nano UI Table</title>
+    <title>Nano UI Select</title>
 
     <link rel="stylesheet" href="https://unpkg.com/backpack.css@2.0.0/lib/backpack.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
@@ -20,13 +20,42 @@
 <div id="app">
     <n-form :form="form">
 
-        <n-form-item label="Name">
-            <n-select v-model="form.name">
+        <n-form-item label="Name small">
+            <n-select v-model="form.name" size="small">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
+            <div>"{{ form.name }}"</div>
         </n-form-item>
+
+        <n-form-item label="Name default">
+            <n-select v-model="form.name" size="default">
+                <n-select-option value="mike">Mike</n-select-option>
+                <n-select-option value="alex">Alex</n-select-option>
+                <n-select-option value="hans">Hans</n-select-option>
+            </n-select>
+            <div>"{{ form.name }}"</div>
+        </n-form-item>
+
+        <n-form-item label="Name large">
+            <n-select v-model="form.name" size="large">
+                <n-select-option value="mike">Mike</n-select-option>
+                <n-select-option value="alex">Alex</n-select-option>
+                <n-select-option value="hans">Hans</n-select-option>
+            </n-select>
+            <div>"{{ form.name }}"</div>
+        </n-form-item>
+
+        <n-form-item label="Name disabled">
+            <n-select v-model="form.name" :disabled="true">
+                <n-select-option value="mike">Mike</n-select-option>
+                <n-select-option value="alex">Alex</n-select-option>
+                <n-select-option value="hans">Hans</n-select-option>
+            </n-select>
+            <div>"{{ form.name }}"</div>
+        </n-form-item>
+
 
         <n-form-item label="Names">
             <n-select v-model="form.names" :multiple="true">
@@ -34,6 +63,14 @@
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
+            <div>{{ form.names }}</div>
+        </n-form-item>
+
+        <n-form-item label="Names">
+            <n-select v-model="form.custom" :multiple="true" :allow-create="true">
+                <n-select-option value="foobar">Foobar</n-select-option>
+            </n-select>
+            <div>{{ form.custom }}</div>
         </n-form-item>
 
     </n-form>
@@ -46,7 +83,7 @@
             data: function() {
 
                 var form = {
-                    name: '', names: []
+                    name: '', names: [], custom: []
                 };
 
                 return { form: form };

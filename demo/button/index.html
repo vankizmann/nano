@@ -30,13 +30,33 @@
             <n-button type="link">Link</n-button>
         </n-form-item>
 
-        <n-form-item label="Outline">
+        <n-form-item label="Disabled">
+            <n-button type="primary" :disabled="true">Primary</n-button>
+            <n-button type="secondary" :disabled="true">Secondary</n-button>
+            <n-button type="success" :disabled="true">Success</n-button>
+            <n-button type="warning" :disabled="true">Warning</n-button>
+            <n-button type="danger" :disabled="true">Danger</n-button>
+            <n-button type="info" :disabled="true">Info</n-button>
+            <n-button type="link" :disabled="true">Link</n-button>
+        </n-form-item>
+
+        <n-form-item label="Outline default">
             <n-button type="primary" :outline="true">Primary</n-button>
             <n-button type="secondary" :outline="true">Secondary</n-button>
             <n-button type="success" :outline="true">Success</n-button>
             <n-button type="warning" :outline="true">Warning</n-button>
             <n-button type="danger" :outline="true">Danger</n-button>
             <n-button type="info" :outline="true">Info</n-button>
+        </n-form-item>
+
+        <n-form-item label="Outline disabled">
+            <n-button type="primary" :outline="true" :disabled="true">Primary</n-button>
+            <n-button type="secondary" :outline="true" :disabled="true">Secondary</n-button>
+            <n-button type="success" :outline="true" :disabled="true">Success</n-button>
+            <n-button type="warning" :outline="true" :disabled="true">Warning</n-button>
+            <n-button type="danger" :outline="true" :disabled="true">Danger</n-button>
+            <n-button type="info" :outline="true" :disabled="true">Info</n-button>
+            <n-button type="link" :outline="true" :disabled="true">Link</n-button>
         </n-form-item>
 
         <n-form-item label="Icon">

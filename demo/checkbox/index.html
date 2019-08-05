@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nano UI Checkbox</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/backpack.css@2.0.0/lib/backpack.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="../../dist/index.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="../../dist/index.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+    <n-form :form="form">
+
+        <n-form-item label="Option small">
+            <n-checkbox v-model="form.option" size="small">Option</n-checkbox>
+            <div>{{ form.option ? 'true' : 'false' }}</div>
+        </n-form-item>
+
+        <n-form-item label="Option default">
+            <n-checkbox v-model="form.option" size="default">Option</n-checkbox>
+            <div>{{ form.option ? 'true' : 'false' }}</div>
+        </n-form-item>
+
+        <n-form-item label="Option large">
+            <n-checkbox v-model="form.option" size="large">Option</n-checkbox>
+            <div>{{ form.option ? 'true' : 'false' }}</div>
+        </n-form-item>
+
+        <n-form-item label="Option disabled">
+            <n-checkbox v-model="form.option" :disabled="true">Option</n-checkbox>
+            <div>{{ form.option ? 'true' : 'false' }}</div>
+        </n-form-item>
+
+        <n-form-item label="Option group horizontal">
+            <n-checkbox-group alignment="horizontal" v-model="form.options">
+                <n-checkbox :global="true">Check all</n-checkbox>
+                <n-checkbox value="foo">Foo</n-checkbox>
+                <n-checkbox value="bar">Bar</n-checkbox>
+                <n-checkbox value="james">James</n-checkbox>
+                <n-checkbox value="bond">Bond</n-checkbox>
+                <n-checkbox value="chuck">Chuck</n-checkbox>
+                <n-checkbox value="norris">Norris</n-checkbox>
+            </n-checkbox-group>
+            <div>{{ form.options }}</div>
+        </n-form-item>
+
+        <n-form-item label="Option group vertical">
+            <n-checkbox-group alignment="vertical" v-model="form.options">
+                <n-checkbox :global="true">Check all</n-checkbox>
+                <n-checkbox value="foo">Foo</n-checkbox>
+                <n-checkbox value="bar">Bar</n-checkbox>
+                <n-checkbox value="james">James</n-checkbox>
+                <n-checkbox value="bond">Bond</n-checkbox>
+                <n-checkbox value="chuck">Chuck</n-checkbox>
+                <n-checkbox value="norris">Norris</n-checkbox>
+            </n-checkbox-group>
+            <div>{{ form.options }}</div>
+        </n-form-item>
+
+    </n-form>
+</div>
+
+<script>
+    Nano.Dom.ready(() => {
+
+        var config = {
+            data: function() {
+
+                var form = {
+                    option: false, options: []
+                };
+
+                return { form: form };
+            }
+        };
+
+        window.App = new Vue(config).$mount('#app');
+    })
+</script>
+</body>
+</html>
