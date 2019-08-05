@@ -193,7 +193,9 @@ export default {
 
         visible()
         {
-            this.nativeVisible = this.visible;
+            if ( ! Any.isEqual(this.nativeVisible, this.visible) ) {
+                this.nativeVisible = this.visible;
+            }
         },
 
         nativeVisible()

@@ -1,7 +1,3 @@
-if ( window === undefined ) {
-    window = this;
-}
-
 let UUID = require('uuid/v1');
 export { UUID };
 
@@ -11,7 +7,7 @@ export * from "./library/utility";
 import Component from "./library/component";
 export * from "./library/component";
 
-export function install(obj) {
+export function NanoInstall(obj) {
     Nano.Any.keys(Nano).forEach((key) => obj[key] = Nano[key]);
 }
 
@@ -23,8 +19,8 @@ export function VueGlobal (callback) {
 
 export function VueNano (Vue) {
 
-    install(Vue);
-    install(Vue.prototype);
+    NanoInstall(Vue);
+    NanoInstall(Vue.prototype);
 
     Vue.UUID = UUID;
     Vue.prototype.UUID = UUID;
@@ -39,27 +35,19 @@ export function VueNano (Vue) {
     Vue.prototype.choice = Nano.Locale.choice;
 
     require("./vue/bootstrap");
-    // require("./pro/bootstrap");
+    require("./pro/bootstrap");
 
     return Vue;
 }
 
 export const Nano = {
-    ...Utility, ...Component
+    ...Utility, ...Component, extend: (extend) => Nano.Obj.assign(Nano, extend)
 };
 
-// import ReadyElement from './element/ready';
-// Nano.Element.alias('ready', ReadyElement);
-//
-// import MenuElement from './element/menu';
-// Nano.Element.alias('menu', MenuElement);
-//
-// import ResizerElement from './element/resizer';
-// Nano.Element.alias('resizer', ResizerElement);
-
 if ( window !== undefined ) {
-    window.Nano = Nano;
-    VueGlobal(VueNano);
+    NanoInstall(window.Nano = {});
 }
+
+VueGlobal(VueNano);
 
 export default Nano;

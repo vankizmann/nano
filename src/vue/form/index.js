@@ -1,7 +1,7 @@
-import { VueGlobal } from "../../index";
+import Vue from "vue";
 
 import Form from './src/form/form';
-VueGlobal(Vue => Vue.component(Form.name, Form));
+Vue.component(Form.name, Form);
 
 import FormItem from './src/form-item/form-item';
-VueGlobal(Vue => Vue.component(FormItem.name, FormItem));
+Vue.component(FormItem.name, FormItem);

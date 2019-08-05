@@ -7,6 +7,7 @@ require('./loader/index');
 require('./form/index');
 require('./input/index');
 require('./select/index');
+require('./cascader/index');
 require('./button/index');
 require('./file/index');
 require('./matrix/index');
