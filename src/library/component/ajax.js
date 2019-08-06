@@ -11,7 +11,7 @@ export class Ajax
 
     static bind (input, api)
     {
-        this.apis[Arr.first(input)] = api;
+        Ajax.apis[Arr.first(input)] = api;
 
         return this;
     }
@@ -20,9 +20,7 @@ export class Ajax
     {
         let handler = window.axios || window.Vue.http;
 
-        console.log(this.apis);
-
-        return this.apis[Arr.first(input)](handler, vars, options);
+        return Ajax.apis[Arr.first(input)](handler, vars, options);
     }
 
     static call (input, store = false, vars = {}, options = {})

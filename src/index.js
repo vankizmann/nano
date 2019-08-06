@@ -75,7 +75,7 @@ export function NanoInstance() {
 }
 
 export function VueGlobal (callback) {
-    if ( scope !== undefined && scope.Vue ) {
+    if ( typeof scope.Vue !== 'undefined' ) {
         callback.call(scope, scope.Vue);
     }
 }
@@ -119,7 +119,7 @@ if ( typeof scope.Nano === 'undefined' ) {
 }
 
 if ( typeof scope.Vue !== 'undefined' ) {
-    scope.Vue.use(VueNano);
+    VueGlobal(VueNano);
 }
 
 export default scope.Nano;
