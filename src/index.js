@@ -94,14 +94,14 @@ if (typeof window !== 'undefined') {
     scope = window;
 }
 
-export const Nano = new NanoInstance(scope.Nano);
+export const Nano = new NanoInstance;
 
 if ( typeof scope.Nano === 'undefined' ) {
     scope.Nano = Nano;
 }
 
 if ( typeof scope.Vue !== 'undefined' ) {
-    VueGlobal(VueNano);
+    VueNano(scope.Vue);
 }
 
 export const Arr = scope.Nano.Arr;
