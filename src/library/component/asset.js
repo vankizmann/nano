@@ -1,4 +1,6 @@
-import { Dom } from "../../index";
+import Nano from "../../index";
+
+let { Dom } = Nano;
 
 export default class Asset
 {

@@ -1,4 +1,6 @@
-import { Str, Dom } from "../../index";
+import Nano from "../../index";
+
+let { Str, Dom } = Nano;
 
 export class Element
 {

@@ -1,4 +1,6 @@
-import { Arr, Obj, Any, Data, Event } from "../../index";
+import Nano from "../../index";
+
+let { Arr, Obj, Any, Data, Event } = Nano;
 
 export class Ajax
 {

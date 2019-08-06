@@ -1,4 +1,6 @@
-import { Arr, Obj, Asset, Queue } from "../../index";
+import Nano from "../../index";
+
+let { Arr, Obj, Asset, Queue } = Nano;
 
 export class Extension
 {
