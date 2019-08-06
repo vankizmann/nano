@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let jsExport = {
-    mode: "production",
+    mode: "development",
     entry: "./src/index.js",
     output: {
         filename: "index.js",
@@ -28,7 +28,7 @@ let jsExport = {
 };
 
 let cssExport = {
-    mode: "production",
+    mode: "development",
     entry: "./src/index.scss",
     output: {
         filename: ".ignore.js",

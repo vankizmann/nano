@@ -24,16 +24,25 @@ export {
 };
 
 let extend = (extend) => {
-    Nano.Any.keys(extend).forEach((key) => scope.Nano[key] = extend[key]);
+
+    scope.Nano.Any.keys(extend).forEach((key) => key !== 'extend' ?
+        Nano[key] = scope.Nano[key] = extend[key] : null);
+
+    VueGlobal(VueNano);
 };
 
-export const Nano = scope.Nano = {
+let Nano = {
     Arr, Obj, Num, Str, Any, Dom, Ajax, Asset, Auth, Data, Element, Event, Extension, Locale, Queue, Route, extend
 };
 
+export { Nano };
+
 export function NanoInstall(obj) {
-    Nano.Any.keys(scope.Nano).forEach((key) => obj[key] = scope.Nano[key]);
+    Nano.Any.keys(Nano).forEach((key) => key !== 'extend' ?
+        obj[key] = Nano[key] : null);
 }
+
+NanoInstall(scope.Nano = {});
 
 export function VueGlobal (callback) {
     if ( window !== undefined && window.Vue ) {
@@ -57,6 +66,9 @@ export function VueNano (Vue) {
 
     Vue.choice = scope.Nano.Locale.choice;
     Vue.prototype.choice = scope.Nano.Locale.choice;
+
+    console.log(Nano.Ajax.rest);
+    console.log(scope.Nano.Ajax.rest);
 
     require("./vue/bootstrap");
     require("./pro/bootstrap");
