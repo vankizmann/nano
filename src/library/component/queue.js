@@ -1,6 +1,4 @@
-import Nano from "../../index";
-
-let { Arr } = Nano;
+import { Arr } from "../../index";
 
 export default class Queue
 {

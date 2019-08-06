@@ -1,6 +1,4 @@
-import Nano from "../../index";
-
-let { Arr, Any } = Nano;
+import { Arr, Any } from "../../index";
 
 export class Event
 {

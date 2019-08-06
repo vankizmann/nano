@@ -1,6 +1,4 @@
-import Nano from "../../index";
-
-let { Obj, Any } = Nano;
+import { Obj, Any } from "../../index";
 
 export default class Route
 {

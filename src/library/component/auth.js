@@ -1,6 +1,4 @@
-import Nano from "../../index";
-
-let { Arr, Obj, Str, Data } = Nano;
+import { Arr, Obj, Str, Data } from "../../index";
 
 
 export class Auth

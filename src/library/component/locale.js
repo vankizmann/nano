@@ -1,6 +1,4 @@
-import Nano from "../../index";
-
-let { Obj } = Nano;
+import { Obj } from "../../index";
 
 export function pickByCount(splits, count)
 {
