@@ -233,6 +233,7 @@ export default {
 
         queryIndex(override = {})
         {
+            console.log('QUERY!');
             let query = Obj.assign({}, this.query || {});
 
             if ( Any.isEmpty(this.$root.locale) === false ) {
