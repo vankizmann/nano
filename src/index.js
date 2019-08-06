@@ -17,6 +17,7 @@ import Queue from "./library/source/component/queue";
 import Route from "./library/source/component/route";
 
 let UUID = require('uuid/v1');
+let Cookie = require('js-cookie');
 
 export {
     Arr,
@@ -35,6 +36,7 @@ export {
     Locale,
     Queue,
     Route,
+    Cookie,
     UUID
 };
 
@@ -59,6 +61,7 @@ export function NanoInstance() {
     this.Locale =  Locale;
     this.Queue =  Queue;
     this.Route =  Route;
+    this.Cookie =  Cookie;
 
     this.extends = (extend) => {
         Any.keys(extend).forEach((key) => this[key] = extend[key]);
