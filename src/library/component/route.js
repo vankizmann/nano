@@ -1,4 +1,4 @@
-import { Obj, Any } from "../../../index";
+import { Obj, Any } from "../../index";
 
 export default class Route
 {

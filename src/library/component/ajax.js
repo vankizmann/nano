@@ -1,4 +1,4 @@
-import { Arr, Obj, Any, Data, Event } from "../../../index";
+import { Arr, Obj, Any, Data, Event } from "../../index";
 
 export class Ajax
 {
@@ -11,7 +11,7 @@ export class Ajax
 
     static bind (input, api)
     {
-        Ajax.apis[Arr.first(input)] = api;
+        this.apis[Arr.first(input)] = api;
 
         return this;
     }
@@ -20,7 +20,9 @@ export class Ajax
     {
         let handler = window.axios || window.Vue.http;
 
-        return Ajax.apis[Arr.first(input)](handler, vars, options);
+        console.log(this.apis);
+
+        return this.apis[Arr.first(input)](handler, vars, options);
     }
 
     static call (input, store = false, vars = {}, options = {})

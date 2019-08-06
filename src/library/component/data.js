@@ -1,4 +1,4 @@
-import { Arr, Obj, Num, Any, Event } from "../../../index";
+import { Arr, Obj, Num, Any, Event } from "../../index";
 
 export class Data
 {

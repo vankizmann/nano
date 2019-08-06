@@ -1,4 +1,4 @@
-import { Str, Dom } from "../../../index";
+import { Str, Dom } from "../../index";
 
 export class Element
 {

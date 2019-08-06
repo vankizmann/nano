@@ -1,4 +1,4 @@
-import { Arr } from "../../../index";
+import { Arr } from "../../index";
 
 export default class Queue
 {

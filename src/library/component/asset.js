@@ -1,4 +1,4 @@
-import { Dom } from "../../../index";
+import { Dom } from "../../index";
 
 export default class Asset
 {
