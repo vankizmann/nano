@@ -323,7 +323,7 @@ export default {
 
     mounted()
     {
-        console.log(Ajax.apis);
+        console.log(Ajax.apis, this.Ajax.apis);
 
         if ( Any.isEmpty(this.$root.locale) === false ) {
             this.locale = this.$root.locale;
