@@ -1,4 +1,4 @@
-import { UUID, Num, Str, Arr, Obj, Any, Dom, Ajax, Data, Event, Locale } from "../../../../index";
+import { Nano, UUID, Num, Str, Arr, Obj, Any, Dom, Ajax, Data, Event, Locale } from "../../../../index";
 import CtorMixin from "../../../../vue/mixins/src/ctor";
 
 export default {
@@ -323,7 +323,7 @@ export default {
 
     mounted()
     {
-        console.log(Ajax.apis, this.Ajax.apis);
+        console.log(Ajax.apis, this.Ajax.apis, Nano.Ajax.apis);
 
         if ( Any.isEmpty(this.$root.locale) === false ) {
             this.locale = this.$root.locale;
