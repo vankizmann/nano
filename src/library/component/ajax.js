@@ -26,7 +26,7 @@ export class Ajax
     static call (input, store = false, vars = {}, options = {})
     {
         let call = (resolve, reject) => {
-            return this.solve(input, vars, options).then((res) => {
+            return Ajax.solve(input, vars, options).then((res) => {
 
                 if ( store === true ) {
                     Data.set(Arr.second(input), res.data);
