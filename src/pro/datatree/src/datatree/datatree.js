@@ -1,7 +1,7 @@
 import CtorMixin from "../../../../vue/mixins/src/ctor";
-import Nano from "../../../../index";
+import { Nano } from "../../../../index";
 
-let { Str, Arr, Obj, Any, Ajax, Locale, Dom, Data, Event } = Nano;
+let { Str, Arr, Obj, Any, Dom, Ajax, Locale, Data, Event } = Nano;
 
 export default {
 

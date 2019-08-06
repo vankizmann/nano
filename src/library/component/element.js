@@ -12,7 +12,9 @@ export class Element
      */
     static alias(key, instance)
     {
-        this.bind(key, (el, options) => new instance(el, options).bind());
+        Dom.ready(() => {
+            this.bind(key, (el, options) => new instance(el, options).bind());
+        });
     }
 
     /**

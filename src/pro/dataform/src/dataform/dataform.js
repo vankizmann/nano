@@ -1,5 +1,5 @@
-import Nano from "../../../../index";
 import CtorMixin from "../../../../vue/mixins/src/ctor";
+import { Nano } from "../../../../index";
 
 let { Str, Arr, Obj, Any, Ajax, Locale, Data } = Nano;
 
