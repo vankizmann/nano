@@ -46,7 +46,7 @@ NanoInstall(scope.Nano = {});
 
 export function VueGlobal (callback) {
     if ( window !== undefined && window.Vue ) {
-        callback.call({}, window.Vue);
+        window.Vue.use(callback);
     }
 }
 
@@ -66,9 +66,6 @@ export function VueNano (Vue) {
 
     Vue.choice = scope.Nano.Locale.choice;
     Vue.prototype.choice = scope.Nano.Locale.choice;
-
-    console.log(Nano.Ajax.rest);
-    console.log(scope.Nano.Ajax.rest);
 
     require("./vue/bootstrap");
     require("./pro/bootstrap");
