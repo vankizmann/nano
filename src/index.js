@@ -109,6 +109,15 @@ if ( typeof scope.Nano === 'undefined' ) {
     scope.Nano = Nano;
 }
 
+import ReadyElement from './element/ready';
+scope.Nano.Element.alias('ready', ReadyElement);
+
+import MenuElement from './element/menu';
+scope.Nano.Element.alias('menu', MenuElement);
+
+import ResizerElement from './element/resizer';
+scope.Nano.Element.alias('resizer', ResizerElement);
+
 if ( typeof scope.Vue !== 'undefined' ) {
     VueNano(scope.Vue);
 }
