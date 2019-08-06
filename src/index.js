@@ -104,22 +104,22 @@ if ( typeof scope.Vue !== 'undefined' ) {
     VueNano(scope.Vue);
 }
 
-export const Arr = scope.Nano.Arr;
-export const Obj = scope.Nano.Obj;
-export const Num = scope.Nano.Num;
-export const Str = scope.Nano.Str;
-export const Any = scope.Nano.Any;
-export const Dom = scope.Nano.Dom;
+export const Arr = () => scope.Nano.Arr;
+export const Obj =  () => scope.Nano.Obj;
+export const Num =  () => scope.Nano.Num;
+export const Str =  () => scope.Nano.Str;
+export const Any =  () => scope.Nano.Any;
+export const Dom =  () => scope.Nano.Dom;
 
-export const Ajax = scope.Nano.Ajax;
-export const Asset = scope.Nano.Asset;
-export const Auth = scope.Nano.Auth;
-export const Data = scope.Nano.Data;
-export const Element = scope.Nano.Element;
-export const Event = scope.Nano.Event;
-export const Extension = scope.Nano.Extension;
-export const Locale = scope.Nano.Locale;
-export const Queue = scope.Nano.Queue;
-export const Route = scope.Nano.Route;
+export const Ajax =  () => scope.Nano.Ajax;
+export const Asset =  () => scope.Nano.Asset;
+export const Auth =  () => scope.Nano.Auth;
+export const Data =  () => scope.Nano.Data;
+export const Element =  () => scope.Nano.Element;
+export const Event =  () => scope.Nano.Event;
+export const Extension =  () => scope.Nano.Extension;
+export const Locale =  () => scope.Nano.Locale;
+export const Queue =  () => scope.Nano.Queue;
+export const Route =  () => scope.Nano.Route;
 
 export default scope.Nano;
