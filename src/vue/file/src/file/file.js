@@ -1,6 +1,4 @@
-import Nano from "../../../../index";
-
-let { Arr, Obj, Any, Locale } = Nano;
+import { Arr, Obj, Any, Locale } from "../../../../index";
 
 export default {
 
@@ -74,7 +72,7 @@ export default {
         buttonText: {
             default()
             {
-                return Locale.trans('Select File');
+                return Locale.trans('Select file');
             },
             type: [String]
         }
