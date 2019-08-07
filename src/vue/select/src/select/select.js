@@ -268,7 +268,7 @@ export default {
         {
             let value = this.getValue();
 
-            if ( value === undefined ) {
+            if ( value === undefined || Any.isEqual(value, this.value) ) {
                 return;
             }
 
