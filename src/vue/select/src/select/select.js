@@ -268,6 +268,10 @@ export default {
         {
             let value = this.getValue();
 
+            if ( value === undefined ) {
+                return;
+            }
+
             this.$emit('input', value);
             this.$emit('change', value);
         },

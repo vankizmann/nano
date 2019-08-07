@@ -233,7 +233,6 @@ export default {
 
         queryIndex(override = {})
         {
-            console.log('QUERY!');
             let query = Obj.assign({}, this.query || {});
 
             if ( Any.isEmpty(this.$root.locale) === false ) {
@@ -326,8 +325,6 @@ export default {
 
     mounted()
     {
-        console.log(Ajax.apis, this.Ajax.apis, Nano.Ajax.apis);
-
         if ( Any.isEmpty(this.$root.locale) === false ) {
             this.locale = this.$root.locale;
         }
