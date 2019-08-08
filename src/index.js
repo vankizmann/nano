@@ -112,9 +112,9 @@ if ( typeof scope.Nano === 'undefined' ) {
 import ReadyElement from './element/ready';
 scope.Nano.Element.alias('ready', ReadyElement);
 
-// import MenuElement from './element/menu';
-// scope.Nano.Element.alias('menu', MenuElement);
-//
+import MenuElement from './element/menu';
+scope.Nano.Element.alias('menu', MenuElement);
+
 // import ResizerElement from './element/resizer';
 // scope.Nano.Element.alias('resizer', ResizerElement);
 
