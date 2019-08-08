@@ -67,8 +67,8 @@ $checkbox-radius: $radius-small !default;
 
 .n-checkbox.n-checkbox--disabled .n-checkbox__checkbox {
     cursor: not-allowed;
-    background: $color-gray-10;
-    border-color: $color-gray-20;
+    background: $color-gray-05;
+    border-color: $color-gray-15;
 }
 
 .n-inverse .n-checkbox.n-checkbox--disabled .n-checkbox__checkbox {

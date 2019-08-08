@@ -533,7 +533,7 @@
   height: 34px;
   background: var(--color-white);
   font-size: 14px;
-  border: 1px solid #e8e9ea;
+  border: 1px solid #dddedf;
   border-radius: 1.5px;
   transition: 0.15s border; }
 
@@ -566,7 +566,7 @@
 
 .n-input.n-input--disabled:hover,
 .n-input.n-input--disabled:focus {
-  border: 1px solid #e8e9ea; }
+  border: 1px solid #dddedf; }
 
 .n-input__wrapper .n-button__wrapper {
   position: absolute;
@@ -642,7 +642,7 @@
   min-height: 34px;
   background: var(--color-white);
   font-size: 14px;
-  border: 1px solid #e8e9ea;
+  border: 1px solid #dddedf;
   border-radius: 1.5px;
   transition: 0.15s border; }
 
@@ -666,7 +666,7 @@
 
 .n-textarea.n-textarea--disabled:hover,
 .n-textarea.n-textarea--disabled:focus {
-  border: 1px solid #e8e9ea; }
+  border: 1px solid #dddedf; }
 
 :root {
   --color-black:              #1b2229;
@@ -733,7 +733,7 @@
   align-items: center;
   background: var(--color-white);
   color: var(--color-black);
-  border: 1px solid #e8e9ea;
+  border: 1px solid #dddedf;
   border-radius: 1.5px;
   transition: 0.15s border; }
 
@@ -761,12 +761,16 @@
   padding: 0 11.475px;
   min-height: 38.25px; }
 
-.n-select.n-select--disabled {
+.n-select.n-select--disabled,
+.n-select.n-select--disabled:hover {
   cursor: not-allowed;
-  background: #f4f4f4; }
+  background: #f4f4f4;
+  border-color: #dddedf; }
 
-.n-inverse .n-select.n-select--disabled {
-  background: #32383e; }
+.n-inverse .n-select.n-select--disabled,
+.n-inverse .n-select.n-select--disabled:hover {
+  background: #32383e;
+  border-color: #494e54; }
 
 .n-select__label {
   flex: 1 1 auto;
@@ -788,6 +792,9 @@
 
 .n-inverse .n-select__input {
   color: #ffffff; }
+
+.n-select.n-select--disabled .n-select__input {
+  cursor: not-allowed; }
 
 .n-select.n-select--default .n-select__input {
   height: 28px;
@@ -1209,7 +1216,7 @@
 .n-button.n-button--secondary {
   color: var(--color-black);
   background: var(--color-white);
-  border-color: #e8e9ea; }
+  border-color: #dddedf; }
 
 .n-button.n-button--secondary:hover,
 .n-button.n-button--secondary:focus {
@@ -1224,27 +1231,16 @@
 .n-button.n-button--disabled.n-button--secondary,
 .n-button.n-button--disabled.n-button--secondary:hover,
 .n-button.n-button--disabled.n-button--secondary:focus {
-  background: rgba(40, 119, 250, 0.1);
-  border-color: var(--color-secondary-lighter); }
+  color: var(--color-black);
+  background: var(--color-white);
+  border-color: #dddedf; }
 
 /**
  * Button secondary outline
  */
-.n-button.n-button--outline.n-button--secondary {
-  color: var(--color-secondary);
-  background: rgba(40, 119, 250, 0.1);
-  border-color: rgba(40, 119, 250, 0.25); }
-
 .n-button.n-button--outline.n-button--secondary:hover,
 .n-button.n-button--outline.n-button--secondary:focus,
 .n-button.n-button--outline.n-button--secondary:active {
-  background: rgba(40, 119, 250, 0.2);
-  border-color: rgba(40, 119, 250, 0.25); }
-
-.n-button.n-button--outline.n-button--disabled.n-button--secondary,
-.n-button.n-button--outline.n-button--disabled.n-button--secondary:hover,
-.n-button.n-button--outline.n-button--disabled.n-button--secondary:focus {
-  background: rgba(40, 119, 250, 0.1);
   border-color: rgba(40, 119, 250, 0.25); }
 
 /**
@@ -2619,8 +2615,8 @@
 
 .n-checkbox.n-checkbox--disabled .n-checkbox__checkbox {
   cursor: not-allowed;
-  background: #e8e9ea;
-  border-color: #d1d3d4; }
+  background: #f4f4f4;
+  border-color: #dddedf; }
 
 .n-inverse .n-checkbox.n-checkbox--disabled .n-checkbox__checkbox {
   border-color: #494e54;

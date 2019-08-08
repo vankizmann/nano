@@ -16,7 +16,7 @@ $input-height: 34px !default;
     height: $input-height;
     background: $--color-white;
     font-size: $input-size;
-    border: 1px solid $color-gray-10;
+    border: 1px solid $color-gray-15;
     border-radius: $radius-small;
     transition: 0.15s border;
 }
@@ -57,7 +57,7 @@ $input-height: 34px !default;
 
 .n-input.n-input--disabled:hover,
 .n-input.n-input--disabled:focus {
-    border: 1px solid $color-gray-10;
+    border: 1px solid $color-gray-15;
 }
 
 .n-input__wrapper .n-button__wrapper {

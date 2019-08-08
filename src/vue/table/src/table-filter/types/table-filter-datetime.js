@@ -1,5 +1,7 @@
-import { Any, Locale } from "../../../../../index";
 import TableFilter from "../table-filter";
+import { Nano } from "../../../../../index";
+
+let { Any, Locale } = Nano;
 
 export default {
 

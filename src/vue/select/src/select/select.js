@@ -210,6 +210,7 @@ export default {
         focusInput()
         {
             this.focus = true;
+            this.visible = true;
         },
 
         focusoutInput()
@@ -360,7 +361,7 @@ export default {
             (this.search !== '' && this.multiple === false);
 
         return (
-            <div class="n-select__wrapper">
+            <div class={['n-select__wrapper', this.disabled && 'n-disabled']}>
                 <div class={className} onClick={() => this.$refs.input.focus()}>
                     <div class="n-select__label">
                         { ( Any.isEmpty(labels) === false && hideItems === false ) &&
@@ -384,14 +385,14 @@ export default {
                             })
                         }
 
-                        <input ref="input" class="n-select__input" type="text" value={this.search} placeholder={placeholder} onInput={this.searchOptions} onFocus={this.focusInput} onFocusout={this.focusoutInput} onKeydown={this.keydownInput} />
+                        <input ref="input" class="n-select__input" type="text" value={this.search} placeholder={placeholder} disabled={this.disabled} onInput={this.searchOptions} onFocus={this.focusInput} onFocusout={this.focusoutInput} onKeydown={this.keydownInput} />
 
                     </div>
                     <div class="n-select__arrow">
                         <span class="fa fa-angle-down"></span>
                     </div>
                 </div>
-                <NPopover vModel={this.visible} trigger="click" type="select" selector=".n-select" position={this.position} closeInside={false}>
+                <NPopover vModel={this.visible} trigger="click" type="select" selector=".n-select" position={this.position} disabled={this.disabled} closeInside={false}>
                     { Any.isEmpty(options) === false ? options : <div class="n-select__empty">{ this.emptyText }</div> }
                 </NPopover>
                 { this.$slots.default }

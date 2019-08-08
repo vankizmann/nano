@@ -1,5 +1,7 @@
-import { Arr, Obj, Any, Locale } from "../../../../../index";
 import TableFilter from "../table-filter";
+import { Nano } from "../../../../../index";
+
+let { Arr, Obj, Any, Locale } = Nano;
 
 export default {
 

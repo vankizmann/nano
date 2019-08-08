@@ -39,7 +39,7 @@ $select-empty-padding: 6px 12px !default;
     align-items: center;
     background: $--color-white;
     color: $--color-black;
-    border: 1px solid $color-gray-10;
+    border: 1px solid $color-gray-15;
     border-radius: $radius-small;
     transition: 0.15s border;
 }
@@ -73,13 +73,17 @@ $select-empty-padding: 6px 12px !default;
     min-height: $select-height * 1.125;
 }
 
-.n-select.n-select--disabled {
+.n-select.n-select--disabled,
+.n-select.n-select--disabled:hover {
     cursor: not-allowed;
     background: $color-gray-05;
+    border-color: $color-gray-15;
 }
 
-.n-inverse .n-select.n-select--disabled {
+.n-inverse .n-select.n-select--disabled,
+.n-inverse .n-select.n-select--disabled:hover {
     background: $color-gray-90;
+    border-color: $color-gray-80;
 }
 
 .n-select__label {
@@ -104,6 +108,10 @@ $select-empty-padding: 6px 12px !default;
 
 .n-inverse .n-select__input {
     color: $color-white;
+}
+
+.n-select.n-select--disabled .n-select__input {
+    cursor: not-allowed;
 }
 
 

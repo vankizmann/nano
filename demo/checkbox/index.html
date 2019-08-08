@@ -20,27 +20,23 @@
 <div id="app">
     <n-form :form="form">
 
-        <n-form-item label="Option small">
+        <n-form-item label="Small">
             <n-checkbox v-model="form.option" size="small">Option</n-checkbox>
-            <div>{{ form.option ? 'true' : 'false' }}</div>
         </n-form-item>
 
-        <n-form-item label="Option default">
+        <n-form-item label="Default">
             <n-checkbox v-model="form.option" size="default">Option</n-checkbox>
-            <div>{{ form.option ? 'true' : 'false' }}</div>
         </n-form-item>
 
-        <n-form-item label="Option large">
+        <n-form-item label="Large">
             <n-checkbox v-model="form.option" size="large">Option</n-checkbox>
-            <div>{{ form.option ? 'true' : 'false' }}</div>
         </n-form-item>
 
-        <n-form-item label="Option disabled">
+        <n-form-item label="Disabled">
             <n-checkbox v-model="form.option" :disabled="true">Option</n-checkbox>
-            <div>{{ form.option ? 'true' : 'false' }}</div>
         </n-form-item>
 
-        <n-form-item label="Option group horizontal">
+        <n-form-item label="Group Horizontal">
             <n-checkbox-group alignment="horizontal" v-model="form.options">
                 <n-checkbox :global="true">Check all</n-checkbox>
                 <n-checkbox value="foo">Foo</n-checkbox>
@@ -50,10 +46,9 @@
                 <n-checkbox value="chuck">Chuck</n-checkbox>
                 <n-checkbox value="norris">Norris</n-checkbox>
             </n-checkbox-group>
-            <div>{{ form.options }}</div>
         </n-form-item>
 
-        <n-form-item label="Option group vertical">
+        <n-form-item label="Group Vertical">
             <n-checkbox-group alignment="vertical" v-model="form.options">
                 <n-checkbox :global="true">Check all</n-checkbox>
                 <n-checkbox value="foo">Foo</n-checkbox>
@@ -63,7 +58,10 @@
                 <n-checkbox value="chuck">Chuck</n-checkbox>
                 <n-checkbox value="norris">Norris</n-checkbox>
             </n-checkbox-group>
-            <div>{{ form.options }}</div>
+        </n-form-item>
+
+        <n-form-item label="Object">
+            <pre>{{ form }}</pre>
         </n-form-item>
 
     </n-form>
@@ -72,6 +70,8 @@
 <script>
     Nano.Dom.ready(() => {
 
+        Vue.config.devtools = true;
+
         var config = {
             data: function() {
 
@@ -79,7 +79,9 @@
                     option: false, options: []
                 };
 
-                return { form: form };
+                return {
+                    form: form
+                };
             }
         };
 

@@ -20,57 +20,54 @@
 <div id="app">
     <n-form :form="form">
 
-        <n-form-item label="Name small">
+        <n-form-item label="Small">
             <n-select v-model="form.name" size="small">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
-            <div>"{{ form.name }}"</div>
         </n-form-item>
 
-        <n-form-item label="Name default">
+        <n-form-item label="Default">
             <n-select v-model="form.name" size="default">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
-            <div>"{{ form.name }}"</div>
         </n-form-item>
 
-        <n-form-item label="Name large">
+        <n-form-item label="Large">
             <n-select v-model="form.name" size="large">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
-            <div>"{{ form.name }}"</div>
         </n-form-item>
 
-        <n-form-item label="Name disabled">
+        <n-form-item label="Disabled">
             <n-select v-model="form.name" :disabled="true">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
-            <div>"{{ form.name }}"</div>
         </n-form-item>
 
-
-        <n-form-item label="Names">
+        <n-form-item label="Multiple">
             <n-select v-model="form.names" :multiple="true">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
-            <div>{{ form.names }}</div>
         </n-form-item>
 
-        <n-form-item label="Names">
+        <n-form-item label="Multiple with custom">
             <n-select v-model="form.custom" :multiple="true" :allow-create="true">
                 <n-select-option value="foobar">Foobar</n-select-option>
             </n-select>
-            <div>{{ form.custom }}</div>
+        </n-form-item>
+
+        <n-form-item label="Object">
+            <pre>{{ form }}</pre>
         </n-form-item>
 
     </n-form>
@@ -88,7 +85,9 @@
                     name: '', names: [], custom: []
                 };
 
-                return { form: form };
+                return {
+                    form: form
+                };
             }
         };
 

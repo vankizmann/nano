@@ -152,7 +152,7 @@ $button-height: 34px !default;
 .n-button.n-button--secondary {
     color:  $--color-black;
     background:  $--color-white;
-    border-color: $color-gray-10;
+    border-color: $color-gray-15;
 }
 
 .n-button.n-button--secondary:hover,
@@ -170,8 +170,9 @@ $button-height: 34px !default;
 .n-button.n-button--disabled.n-button--secondary,
 .n-button.n-button--disabled.n-button--secondary:hover,
 .n-button.n-button--disabled.n-button--secondary:focus {
-    background: rgba($color-secondary, 0.1);
-    border-color: $--color-secondary-lighter;
+    color:  $--color-black;
+    background:  $--color-white;
+    border-color: $color-gray-15;
 }
 
 /**
@@ -179,23 +180,19 @@ $button-height: 34px !default;
  */
 
 .n-button.n-button--outline.n-button--secondary {
-    color:  $--color-secondary;
-    background: rgba($color-secondary, 0.10);
-    border-color: rgba($color-secondary, 0.25);
+    //
 }
 
 .n-button.n-button--outline.n-button--secondary:hover,
 .n-button.n-button--outline.n-button--secondary:focus,
 .n-button.n-button--outline.n-button--secondary:active {
-    background: rgba($color-secondary, 0.20);
-    border-color: rgba($color-secondary, 0.25);
+    border-color: rgba($color-primary, 0.25);
 }
 
 .n-button.n-button--outline.n-button--disabled.n-button--secondary,
 .n-button.n-button--outline.n-button--disabled.n-button--secondary:hover,
 .n-button.n-button--outline.n-button--disabled.n-button--secondary:focus {
-    background: rgba($color-secondary, 0.10);
-    border-color: rgba($color-secondary, 0.25);
+    //
 }
 
 /**

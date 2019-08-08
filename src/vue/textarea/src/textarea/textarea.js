@@ -69,6 +69,14 @@ export default {
             type: [Number]
         },
 
+        maxLength: {
+            default()
+            {
+                return 0;
+            },
+            type: [Number]
+        },
+
     },
 
     watch: {
@@ -119,6 +127,10 @@ export default {
             disabled: this.disabled,
             placeholder: this.placeholder
         };
+
+        if ( this.maxLength !== 0 ) {
+            domProps.maxLength = this.maxLength;
+        }
 
         let currentRows = (this.nativeValue.match(/\n/g) ||
             []).length + 1;

@@ -18,6 +18,14 @@ export default {
             type: [Boolean]
         },
 
+        disabled: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
+        },
+
         selector: {
             default()
             {
@@ -225,7 +233,7 @@ export default {
                 return;
             }
 
-            if ( this.trigger !== 'click' ) {
+            if ( this.trigger !== 'click' || this.disabled === true ) {
                 return;
             }
 
@@ -260,7 +268,7 @@ export default {
                 return;
             }
 
-            if ( this.trigger !== 'hover' ) {
+            if ( this.trigger !== 'hover' || this.disabled === true ) {
                 return;
             }
 
@@ -287,7 +295,7 @@ export default {
                 return;
             }
 
-            if ( this.trigger !== 'context' ) {
+            if ( this.trigger !== 'context' || this.disabled === true ) {
                 return;
             }
 
