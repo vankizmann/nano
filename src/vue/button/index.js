@@ -1,7 +1,7 @@
-import { VueGlobal } from "../../index";
+import Vue from "vue";
 
 import Button from './src/button/button';
-VueGlobal(Vue => Vue.component(Button.name, Button));
+Vue.component(Button.name, Button);
 
 import ButtonGroup from './src/button-group/button-group';
-VueGlobal(Vue => Vue.component(ButtonGroup.name, ButtonGroup));
+Vue.component(ButtonGroup.name, ButtonGroup);

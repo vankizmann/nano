@@ -6,6 +6,7 @@ require('./draggable/index');
 require('./loader/index');
 require('./form/index');
 require('./input/index');
+require('./textarea/index');
 require('./select/index');
 require('./cascader/index');
 require('./button/index');
