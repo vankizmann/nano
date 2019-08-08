@@ -96,7 +96,7 @@ export default {
     data()
     {
         return {
-            visible: false, nativeCascade: [], nativeSelected: []
+            visible: false, hoverCascade: [null], nativeCascade: [], nativeSelected: []
         };
     },
 
@@ -130,7 +130,7 @@ export default {
         let value = Obj.get(item, this.valueProp);
 
         return [
-            <NPopover visible={Arr.has(this.nativeSelected, value)} type="select" trigger={this.trigger} position="right-start">
+            <div>
                 {
                     Arr.each(childs, (child) => {
 
@@ -142,7 +142,7 @@ export default {
                         ];
                     })
                 }
-            </NPopover>
+            </div>
         ];
     },
 
@@ -151,6 +151,8 @@ export default {
         let className = [
             'n-cascader', 'n-cascader--' + this.size
         ];
+
+        let sub = Arr.find(this.items, {[this.valueProp]: Arr.first(this.hoverCascade)}, {});
 
         return (
             <div class="n-cascader__wrapper">
@@ -162,13 +164,44 @@ export default {
                         <span class="fa fa-angle-down"></span>
                     </div>
                 </div>
-                <NPopover vModel={this.visible} type="select" trigger="click" position="bottom-start">
+                <NPopover vModel={this.visible} type="cascader" trigger="click" position="bottom-start">
                     {
-                        Arr.each(this.items, (item) => {
-                            return [
-                                this.ctor('renderLabel')(item, [item]),
-                                this.ctor('renderChilds')(item, [item])
-                            ];
+                        Arr.each(this.hoverCascade, (hover, index) => {
+
+                            let items = Obj.get(hover, this.childProp);
+
+                            if ( index === 0 ) {
+                                items = this.items;
+                            }
+
+                            if ( Any.isEmpty(items) === true ) {
+                                return;
+                            }
+
+                            return (
+                                <div class="n-cascader__options">
+                                    {
+                                        Arr.each(items, (item) => {
+
+                                            let events = {
+                                                mouseenter: () => {
+
+                                                    let clone = Arr.slice(this.hoverCascade,
+                                                        0, index + 1);
+
+                                                    this.hoverCascade = Arr.merge(clone, [item]);
+                                                }
+                                            };
+
+                                            return (
+                                                <div class="n-cascader-option" on={events}>
+                                                    { Obj.get(item, this.labelProp) }
+                                                </div>
+                                            );
+                                        })
+                                    }
+                                </div>
+                            )
                         })
                     }
                 </NPopover>

@@ -12,6 +12,11 @@ export class Arr
         return arr[index] || fallback;
     }
 
+    static set(arr, index, value)
+    {
+        return arr[index] = value;
+    }
+
     static first(arr)
     {
         return Array.isArray(arr) ? arr[0] : arr;
@@ -137,6 +142,11 @@ export class Arr
         }
 
         return arr;
+    }
+
+    static slice(arr, val, count = 1)
+    {
+        return arr.slice(Num.int(val), count);
     }
 
     static splice(arr, val, count = 1)

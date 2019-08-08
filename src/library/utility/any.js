@@ -50,12 +50,14 @@ export class Any
 
     static isNumber(val)
     {
-        return typeof val === 'number';
+        return typeof val === 'number' ||
+            (typeof val === 'string' && val.match(/^[0-9]$/));
     }
 
     static isBool(val)
     {
-        return typeof val === 'boolean';
+        return typeof val === 'boolean' ||
+            (typeof val === 'string' && val.match(/^(true|false)$/));
     }
 
     static isFunction(val)

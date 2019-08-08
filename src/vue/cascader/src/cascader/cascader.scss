@@ -32,7 +32,8 @@ $cascader-option-padding: 6px 12px !default;
 }
 
 .n-cascader__wrapper .n-popover__body {
-    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
 }
 
 .n-cascader {
@@ -120,6 +121,17 @@ $cascader-option-padding: 6px 12px !default;
     padding: $cascader-empty-padding;
     text-align: center;
     color: $color-gray-60;
+}
+
+.n-cascader__options {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    border-right: 1px solid $color-gray-10;
+}
+
+.n-cascader__options:last-child {
+    border-right: none;
 }
 
 .n-cascader-option {
