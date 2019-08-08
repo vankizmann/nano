@@ -1,5 +1,7 @@
-import { Any } from "../../../../../index";
 import TableCell from "../table-cell";
+import { Nano } from "../../../../../index";
+
+let { Any } = Nano;
 
 export default {
 

@@ -1,4 +1,3 @@
-import { Any } from "../../../../../index";
 import TableCell from "../table-cell";
 
 export default {

@@ -1,4 +1,6 @@
-import { Obj, Any } from "../../../../index";
+import { Nano } from "../../../../index";
+
+let { Obj, Any } = Nano;
 
 export default {
 

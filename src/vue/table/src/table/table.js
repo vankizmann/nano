@@ -1,5 +1,7 @@
-import { Arr, Num, Dom, Any, Obj } from "../../../../index";
 import CtorMixin from "../../../mixins/src/ctor";
+import { Nano } from "../../../../index";
+
+let { Arr, Num, Dom, Any, Obj } = Nano;
 
 export default {
 
