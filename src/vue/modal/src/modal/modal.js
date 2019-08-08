@@ -156,6 +156,10 @@ export default {
                 visible = false;
             }
 
+            if ( close === null && this.closable === false ) {
+                return;
+            }
+
             if ( visible === true && this.nativeVisible === true ) {
                 return;
             }
@@ -163,8 +167,6 @@ export default {
             if ( visible === false && this.nativeVisible === false ) {
                 return;
             }
-
-            console.log(this.nativeVisible, visible);
 
             this.$emit('input', this.nativeVisible = visible);
         },
