@@ -164,6 +164,8 @@ export default {
                 return;
             }
 
+            console.log(this.nativeVisible, visible);
+
             this.$emit('input', this.nativeVisible = visible);
         },
 
