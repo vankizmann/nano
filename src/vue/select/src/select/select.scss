@@ -137,10 +137,13 @@ $select-empty-padding: 6px 12px !default;
 }
 
 .n-select__item.n-select__item--multiple {
-    background: $--color-background;
+    background: $color-gray-10;
     padding: $select-item-padding;
-    border-radius: $radius-medium;
-    border: 1px solid $color-gray-10;
+    border-radius: $radius-small;
+}
+
+.n-inverse .n-select__item.n-select__item--multiple {
+    background: $color-gray-80;
 }
 
 .n-select.n-select--default .n-select__item.n-select__item--multiple {

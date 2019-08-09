@@ -18,7 +18,11 @@
 <body>
 
 <div id="app">
-    <n-form :form="form">
+    <n-form :form="form" :class="{ 'n-inverse': inverse }">
+
+        <n-form-item label="Inverse">
+            <n-checkbox v-model="inverse">Inverse</n-checkbox>
+        </n-form-item>
 
         <n-form-item label="Small">
             <n-checkbox v-model="form.option" size="small">Option</n-checkbox>
@@ -36,8 +40,8 @@
             <n-checkbox v-model="form.option" :disabled="true">Option</n-checkbox>
         </n-form-item>
 
-        <n-form-item label="Group Horizontal">
-            <n-checkbox-group alignment="horizontal" v-model="form.options">
+        <n-form-item label="Group Vertical">
+            <n-checkbox-group alignment="vertical" v-model="form.options">
                 <n-checkbox :global="true">Check all</n-checkbox>
                 <n-checkbox value="foo">Foo</n-checkbox>
                 <n-checkbox value="bar">Bar</n-checkbox>
@@ -48,8 +52,8 @@
             </n-checkbox-group>
         </n-form-item>
 
-        <n-form-item label="Group Vertical">
-            <n-checkbox-group alignment="vertical" v-model="form.options">
+        <n-form-item label="Group Horizontal">
+            <n-checkbox-group alignment="horizontal" v-model="form.options">
                 <n-checkbox :global="true">Check all</n-checkbox>
                 <n-checkbox value="foo">Foo</n-checkbox>
                 <n-checkbox value="bar">Bar</n-checkbox>
@@ -80,7 +84,7 @@
                 };
 
                 return {
-                    form: form
+                    form: form, inverse: false
                 };
             }
         };

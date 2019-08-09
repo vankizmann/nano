@@ -18,3 +18,16 @@ body {
 pre {
     font-family: 'Fira Code', monospace;
 }
+
+.n-inverse pre {
+    color: #fff;
+}
+
+.n-form {
+    border-radius: 4px;
+    padding: 30px;
+}
+
+.n-inverse {
+    background: #32383e;
+}

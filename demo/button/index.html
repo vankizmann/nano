@@ -18,7 +18,11 @@
 <body>
 
 <div id="app">
-    <n-form :form="form">
+    <n-form :form="form" :class="{ 'n-inverse': inverse }">
+
+        <n-form-item label="Inverse">
+            <n-checkbox v-model="inverse">Inverse</n-checkbox>
+        </n-form-item>
 
         <n-form-item label="Regular">
             <n-button type="primary">Primary</n-button>
@@ -102,6 +106,8 @@
 <script>
     Nano.Dom.ready(() => {
 
+        Vue.config.devtools = true;
+
         var config = {
             data: function() {
 
@@ -109,7 +115,9 @@
                     //
                 };
 
-                return { form: form };
+                return {
+                    form: form, inverse: false
+                };
             }
         };
 

@@ -199,7 +199,7 @@ export class Arr
 
     static push(arr, ...args)
     {
-        arr.push(...args)
+        arr.push(...args);
 
         return arr;
     }

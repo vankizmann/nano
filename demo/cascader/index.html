@@ -18,14 +18,23 @@
 <body>
 
 <div id="app">
-    <n-form :form="form">
+    <n-form :form="form" :class="{ 'n-inverse': inverse }">
+
+        <n-form-item label="Inverse">
+            <n-checkbox v-model="inverse">Inverse</n-checkbox>
+        </n-form-item>
 
         <n-form-item label="Click">
-            <n-cascader v-model="form.value" :items="form.items" trigger="click"></n-cascader>
+            <n-cascader v-model="form.value" :items="items" trigger="click"></n-cascader>
         </n-form-item>
 
         <n-form-item label="Hover">
-            <n-cascader v-model="form.value" :items="form.items" trigger="hover"></n-cascader>
+            <n-cascader v-model="form.value" :items="items" trigger="hover"></n-cascader>
+        </n-form-item>
+
+
+        <n-form-item label="Object">
+            <pre>{{ form }}</pre>
         </n-form-item>
 
     </n-form>
@@ -41,7 +50,7 @@
 
                 let total = 0;
 
-                let childGenerator = function(count = 8, depth = 5, current = 1) {
+                let childGenerator = function(count = 20, depth = 3, current = 1) {
 
                     let childs = Array(
                         Math.floor(Math.random() * (count + 1))
@@ -66,10 +75,10 @@
                 };
 
                 var form = {
-                    value: null, items: childGenerator()
+                    value: []
                 };
 
-                return { form: form };
+                return { form: form, inverse: false, items: childGenerator() };
             }
         };
 

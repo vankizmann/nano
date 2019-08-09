@@ -11,7 +11,15 @@ $form-item-spacing: 18px !default;
 .n-form-item__label {
     display: flex;
     margin-bottom: $form-item-spacing * 0.25;
+}
+
+.n-form-item__label label {
+    color: $color-gray-60;
     font-size: $form-label-size;
+}
+
+.n-inverse .n-form-item__label label {
+    color: $color-gray-40;
 }
 
 .n-form-item__error {

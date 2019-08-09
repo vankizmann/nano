@@ -18,7 +18,11 @@
 <body>
 
 <div id="app">
-    <n-form :form="form">
+    <n-form :form="form" :class="{ 'n-inverse': inverse }">
+
+        <n-form-item label="Inverse">
+            <n-checkbox v-model="inverse">Inverse</n-checkbox>
+        </n-form-item>
 
         <n-form-item label="Small">
             <n-select v-model="form.name" size="small">
@@ -86,7 +90,7 @@
                 };
 
                 return {
-                    form: form
+                    form: form, inverse: false
                 };
             }
         };

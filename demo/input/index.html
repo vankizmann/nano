@@ -18,7 +18,11 @@
 <body>
 
 <div id="app">
-    <n-form :form="form">
+    <n-form :form="form" :class="{ 'n-inverse': inverse }">
+
+        <n-form-item label="Inverse">
+            <n-checkbox v-model="inverse">Inverse</n-checkbox>
+        </n-form-item>
 
         <n-form-item label="Small">
             <n-input v-model="form.name" size="small" />
@@ -83,7 +87,7 @@
                 };
 
                 return {
-                    form: form, nativeType: 'password'
+                    form: form, inverse: false, nativeType: 'password'
                 };
             }
         };
