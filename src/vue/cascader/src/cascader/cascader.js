@@ -221,7 +221,7 @@ export default {
         return (
             <div class={className} on={events}>
                 <div class="n-cascader-option__label">
-                    { Obj.get(item, this.labelProp) }
+                    <span>{ Obj.get(item, this.labelProp) }</span>
                 </div>
                 { Any.isEmpty(childs) === false &&
                     <div class="n-cascader-option__arrow">

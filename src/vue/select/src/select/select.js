@@ -53,6 +53,14 @@ export default {
             type: [Boolean]
         },
 
+        clearable: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
+        },
+
         placeholder: {
             default()
             {
@@ -95,6 +103,11 @@ export default {
     },
 
     methods: {
+
+        clearNativeSelected()
+        {
+            this.$emit('input', this.nativeSelected = this.multiple ? [] : null);
+        },
 
         getSelected(value)
         {
@@ -363,6 +376,11 @@ export default {
         return (
             <div class={['n-select__wrapper', this.disabled && 'n-disabled']}>
                 <div class={className} onClick={() => this.$refs.input.focus()}>
+                    { ( this.clearable === true && this.disabled === false && this.nativeSelected.length !== 0 ) &&
+                        <div class="n-cascader__clear" vOn:mousedown_stop={this.clearNativeSelected}>
+                            <span class="fa fa-times"></span>
+                        </div>
+                    }
                     <div class="n-select__label">
                         { ( Any.isEmpty(labels) === false && hideItems === false ) &&
                             Arr.each(labels, (option) => {

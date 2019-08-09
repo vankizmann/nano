@@ -68,7 +68,9 @@
                         total++;
 
                         item = {
-                            label: 'Item ' + total, value: 'value-' + total, children: []
+                            label: 'Item ' + (Math.floor(Math.random() * 2) === 1 ? 'long text is here given' : '') + total,
+                            value: 'value-' + total,
+                            children: []
                         };
 
                         if ( current < depth ) {
