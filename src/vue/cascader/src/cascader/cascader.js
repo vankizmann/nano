@@ -29,7 +29,23 @@ export default {
             type: [Array]
         },
 
+        placeholder: {
+            default()
+            {
+                return Locale.trans('Please select');
+            },
+            type: [String]
+        },
+
         disabled: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
+        },
+
+        clearable: {
             default()
             {
                 return false;
@@ -105,7 +121,7 @@ export default {
 
         solveNativeCascade()
         {
-            if ( Any.isEmpty(this.cascade) ) {
+            if ( ! Any.isArray(this.cascade) ) {
                 return;
             }
 
@@ -114,6 +130,11 @@ export default {
             }
 
             this.nativeCascade = this.cascade;
+        },
+
+        clearNativeCascade()
+        {
+            this.$emit('input', this.nativeCascade = []);
         },
 
         solveSelectedCascade()
@@ -247,6 +268,11 @@ export default {
         return (
             <div class={['n-cascader__wrapper', this.disabled && 'n-disabled']}>
                 <div class={className}>
+                    { (this.clearable === true && this.disabled === false && this.nativeCascade.length !== 0 ) &&
+                        <div class="n-cascader__clear" vOn:mousedown_stop={this.clearNativeCascade}>
+                            <span class="fa fa-times"></span>
+                        </div>
+                    }
                     <div class="n-cascader__label">
                         { this.selectedCascade.length !== 0 &&
                             Arr.each(this.selectedCascade, (item) => {
@@ -259,7 +285,7 @@ export default {
                         }
                         { this.selectedCascade.length === 0 &&
                             <span class="n-cascader__placeholder">
-                                { Locale.trans('Please select') }
+                                { this.placeholder }
                             </span>
                         }
                     </div>
