@@ -44,7 +44,7 @@ $cascader-option-padding: 6px 12px !default;
     align-items: center;
     background: $--color-white;
     color: $--color-black;
-    border: 1px solid $color-gray-10;
+    border: 1px solid $color-gray-15;
     border-radius: $radius-small;
     transition: 0.15s border;
 }
@@ -81,10 +81,13 @@ $cascader-option-padding: 6px 12px !default;
 .n-cascader.n-cascader--disabled {
     cursor: not-allowed;
     background: $color-gray-05;
+    border-color: $color-gray-15;
+    color: $color-gray-50;
 }
 
 .n-inverse .n-cascader.n-cascader--disabled {
     background: $color-gray-90;
+    border-color: $color-gray-80;
 }
 
 .n-cascader__label {
@@ -93,6 +96,12 @@ $cascader-option-padding: 6px 12px !default;
     flex-direction: row;
     align-items: center;
     position: relative;
+}
+
+.n-cascader__placeholder {
+    flex: 0 1 auto;
+    display: inline-block;
+    color: $color-gray-50;
 }
 
 .n-cascader__item {

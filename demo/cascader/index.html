@@ -32,6 +32,9 @@
             <n-cascader v-model="form.value" :items="items" trigger="hover"></n-cascader>
         </n-form-item>
 
+        <n-form-item label="Disabled">
+            <n-cascader v-model="form.value" :items="items" :disabled="true"></n-cascader>
+        </n-form-item>
 
         <n-form-item label="Object">
             <pre>{{ form }}</pre>
@@ -52,26 +55,26 @@
 
                 let childGenerator = function(count = 20, depth = 3, current = 1) {
 
-                    let childs = Array(
+                    let children = Array(
                         Math.floor(Math.random() * (count + 1))
                     ).fill(null);
 
-                    Nano.Arr.map(childs, function(item) {
+                    Nano.Arr.map(children, function(item) {
 
                         total++;
 
                         item = {
-                            label: 'Item ' + total, value: 'value-' + total, childs: []
+                            label: 'Item ' + total, value: 'value-' + total, children: []
                         };
 
                         if ( current < depth ) {
-                            item.childs = childGenerator(count, depth, current + 1);
+                            item.children = childGenerator(count, depth, current + 1);
                         }
 
                         return item;
                     });
 
-                    return childs;
+                    return children;
                 };
 
                 var form = {

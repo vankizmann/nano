@@ -1,5 +1,7 @@
-import { Arr, Obj, Any } from "../../../../index";
+import { Nano } from "../../../../index";
 import CtorMixin from "../../../mixins/src/ctor";
+
+let { Arr, Obj, Any, Locale } = Nano;
 
 export default {
 
@@ -25,6 +27,14 @@ export default {
                 return [];
             },
             type: [Array]
+        },
+
+        disabled: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
         },
 
         size: {
@@ -62,7 +72,7 @@ export default {
         childProp: {
             default()
             {
-                return 'childs';
+                return 'children';
             },
             type: [String]
         }
@@ -197,7 +207,6 @@ export default {
                         <span class="fa fa-angle-right"></span>
                     </div>
                 }
-
             </div>
         );
     },
@@ -231,11 +240,15 @@ export default {
             'n-cascader', 'n-cascader--' + this.size
         ];
 
+        if ( this.disabled === true ) {
+            className.push('n-cascader--disabled');
+        }
+
         return (
-            <div class="n-cascader__wrapper">
+            <div class={['n-cascader__wrapper', this.disabled && 'n-disabled']}>
                 <div class={className}>
                     <div class="n-cascader__label">
-                        {
+                        { this.selectedCascade.length !== 0 &&
                             Arr.each(this.selectedCascade, (item) => {
                                 return (
                                     <span class="n-cascader__item">
@@ -244,12 +257,17 @@ export default {
                                 );
                             })
                         }
+                        { this.selectedCascade.length === 0 &&
+                            <span class="n-cascader__placeholder">
+                                { Locale.trans('Please select') }
+                            </span>
+                        }
                     </div>
                     <div class="n-cascader__arrow">
                         <span class="fa fa-angle-down"></span>
                     </div>
                 </div>
-                <NPopover vModel={this.visible} type="cascader" trigger="click" position="bottom-start">
+                <NPopover vModel={this.visible} disabled={this.disabled} type="cascader" trigger="click" position="bottom-start">
                     {
                         Arr.each(this.hoverCascade, (cascade, index) => {
                             return this.ctor('renderCascade')(cascade, index);
