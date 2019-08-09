@@ -77,9 +77,18 @@ export default {
 
         ...CtorMixin,
 
+        toggleHover(cascade)
+        {
+            Any.debounce((value) => this.hoverCascade = value, 50, this)(cascade);
+        },
+
         toggleOption(cascade)
         {
-            let selected = Arr.each(cascade, (item) => {
+            cascade = Arr.filter(cascade, (item) => {
+                return Any.isEmpty(item) === false;
+            });
+
+            cascade = Arr.each(cascade, (item) => {
                 return Obj.get(item, this.valueProp);
             });
 
@@ -87,8 +96,32 @@ export default {
                 this.visible = false;
             }
 
-            this.$emit('update:cascade', this.nativeCascade = cascade);
-            this.$emit('input', this.nativeSelected = selected);
+            this.$emit('input', this.nativeCascade = cascade);
+        },
+
+        solveSelectedCascade()
+        {
+            let selected = [], items = this.items;
+
+            Arr.each(this.nativeCascade, (value) => {
+
+                let item = Arr.find(items, { [this.valueProp]: value });
+
+                selected.push(item);
+
+                items = Obj.get(item, this.childProp, []);
+            });
+
+            this.selectedCascade = selected;
+        }
+
+    },
+
+    watch: {
+
+        nativeCascade: {
+            handler: 'solveSelectedCascade',
+            intermediate: true
         }
 
     },
@@ -96,7 +129,7 @@ export default {
     data()
     {
         return {
-            visible: false, hoverCascade: [null], nativeCascade: [], nativeSelected: []
+            visible: false, timeout: null, hoverCascade: [null], nativeCascade: [], selectedCascade: []
         };
     },
 
@@ -152,13 +185,15 @@ export default {
             'n-cascader', 'n-cascader--' + this.size
         ];
 
-        let sub = Arr.find(this.items, {[this.valueProp]: Arr.first(this.hoverCascade)}, {});
+        let displayItems = Arr.each(this.selectedCascade, (item) => {
+            return Obj.get(item, this.labelProp);
+        });
 
         return (
             <div class="n-cascader__wrapper">
                 <div class={className}>
                     <div class="n-cascader__label">
-                        { 'Foobar' }
+                        { displayItems.join(' / ') }
                     </div>
                     <div class="n-cascader__arrow">
                         <span class="fa fa-angle-down"></span>
@@ -183,18 +218,44 @@ export default {
                                     {
                                         Arr.each(items, (item) => {
 
+                                            let selectEvent = () => {
+
+                                                let clone = Arr.slice(this.hoverCascade,
+                                                    0, index + 1);
+
+                                                this.toggleHover(Arr.merge(clone, [item]));
+                                            };
+
                                             let events = {
-                                                mouseenter: () => {
+                                                mouseup: () => {
 
                                                     let clone = Arr.slice(this.hoverCascade,
                                                         0, index + 1);
 
-                                                    this.hoverCascade = Arr.merge(clone, [item]);
+                                                    this.toggleOption(Arr.merge(clone, [item]));
                                                 }
                                             };
 
+                                            if ( this.trigger === 'hover' ) {
+                                                events.mousemove = selectEvent;
+                                            }
+
+                                            if ( this.trigger === 'click' ) {
+                                                events.mousedown = selectEvent;
+                                            }
+
+                                            let value = Obj.get(item, this.valueProp);
+
+                                            let className = [
+                                                'n-cascader-option'
+                                            ];
+
+                                            if ( Arr.has(this.nativeCascade, value) ) {
+                                                className.push('n-cascader-option--active');
+                                            }
+
                                             return (
-                                                <div class="n-cascader-option" on={events}>
+                                                <div class={className} on={events}>
                                                     { Obj.get(item, this.labelProp) }
                                                 </div>
                                             );

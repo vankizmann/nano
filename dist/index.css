@@ -1042,7 +1042,7 @@
 .n-cascader__options {
   display: flex;
   flex-direction: column;
-  width: 180px;
+  min-width: 180px;
   border-right: 1px solid #e8e9ea; }
 
 .n-cascader__options:last-child {

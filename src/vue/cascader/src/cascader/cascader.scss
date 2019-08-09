@@ -126,7 +126,7 @@ $cascader-option-padding: 6px 12px !default;
 .n-cascader__options {
     display: flex;
     flex-direction: column;
-    width: 180px;
+    min-width: 180px;
     border-right: 1px solid $color-gray-10;
 }
 

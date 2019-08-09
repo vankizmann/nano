@@ -1,3 +1,5 @@
+import { Obj } from "../../index";
+
 export class Any
 {
     static isEmpty(val)
@@ -214,9 +216,13 @@ export class Any
         return this;
     }
 
-    static debounce(callback, delay = 100)
+    static debounce(callback, delay = 100, ref = null)
     {
         let debounce = null;
+
+        if ( ref !== null && ref.__debouce !== undefined ) {
+            debounce = ref.__debouce;
+        }
 
         return (...args) => {
 
@@ -225,12 +231,16 @@ export class Any
             debounce = setTimeout(() => {
                 callback(...args);
             }, delay);
+
+            if ( ref !== null ) {
+                ref.__debouce = debounce;
+            }
         };
     }
 
-    static throttle(callback, delay = 100)
+    static throttle(callback, delay = 100, reference = null)
     {
-        let throttle = null;
+        let throttle = reference;
 
         return (...args) => {
 
