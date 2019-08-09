@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nano UI Cascader</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/backpack.css@2.0.0/lib/backpack.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="../../dist/index.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script src="../../dist/index.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+    <n-form :form="form" :class="{ 'n-inverse': inverse }">
+
+        <n-form-item label="Inverse">
+            <n-checkbox v-model="inverse">Inverse</n-checkbox>
+        </n-form-item>
+
+        <n-form-item label="Click">
+            <n-transfer v-model="form.value" :items="items" trigger="click"></n-transfer>
+        </n-form-item>
+
+        <n-form-item label="Object">
+            <pre>{{ form }}</pre>
+        </n-form-item>
+
+    </n-form>
+</div>
+
+<script>
+    Nano.Dom.ready(() => {
+
+        Vue.config.devtools = true;
+
+        var config = {
+            data: function() {
+
+                let total = 0;
+
+                let childGenerator = function(count = 10) {
+
+                    let children = Array(
+                        Math.floor(Math.random() * (count + 1))
+                    ).fill(null);
+
+                    Nano.Arr.map(children, function(item) {
+
+                        total++;
+
+                        item = {
+                            label: 'Item ' + (Math.floor(Math.random() * 2) === 1 ? 'long text is here given' : '') + total,
+                            value: 'value-' + total,
+                            children: []
+                        };
+
+                        return item;
+                    });
+
+                    return children;
+                };
+
+                var form = {
+                    value: []
+                };
+
+                return { form: form, inverse: false, items: childGenerator() };
+            }
+        };
+
+        window.App = new Vue(config).$mount('#app');
+
+    });
+</script>
+</body>
+</html>

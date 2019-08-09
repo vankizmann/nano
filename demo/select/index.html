@@ -65,14 +65,14 @@
         </n-form-item>
 
         <n-form-item label="Multiple">
-            <n-select v-model="form.names" :multiple="true">
+            <n-select v-model="form.names" :multiple="true" :clearble="true">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
                 <n-select-option value="hans">Hans</n-select-option>
             </n-select>
         </n-form-item>
 
-        <n-form-item label="Multiple celarable">
+        <n-form-item label="Multiple clearable">
             <n-select v-model="form.names" :multiple="true" :clearable="true">
                 <n-select-option value="mike">Mike</n-select-option>
                 <n-select-option value="alex">Alex</n-select-option>
@@ -80,7 +80,7 @@
             </n-select>
         </n-form-item>
 
-        <n-form-item label="Multiple with custom">
+        <n-form-item label="Multiple custom options">
             <n-select v-model="form.custom" :multiple="true" :allow-create="true">
                 <n-select-option value="foobar">Foobar</n-select-option>
             </n-select>

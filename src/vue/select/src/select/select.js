@@ -1,4 +1,6 @@
-import { Str, Arr, Any, Locale } from "../../../../index";
+import { Nano } from "../../../../index";
+
+let { Str, Arr, Any, Locale } = Nano;
 
 export default {
 
@@ -98,6 +100,12 @@ export default {
             });
 
             return options;
+        },
+
+        nativeValue()
+        {
+            return this.multiple ? this.nativeSelected :
+                Arr.first(this.nativeSelected);
         }
 
     },
@@ -106,7 +114,20 @@ export default {
 
         clearNativeSelected()
         {
-            this.$emit('input', this.nativeSelected = this.multiple ? [] : null);
+            this.nativeSelected = [];
+
+            this.$emit('input', this.nativeValue);
+        },
+
+        solveNativeSelected()
+        {
+            let selected = this.getSelected(this.value);
+
+            if ( selected === null ) {
+                return;
+            }
+
+            this.nativeSelected = selected;
         },
 
         getSelected(value)
@@ -122,17 +143,6 @@ export default {
             value = Arr.filter(value, (selected) => {
                 return Any.isEmpty(selected) === false;
             });
-
-            return value;
-        },
-
-        getValue()
-        {
-            let value = this.nativeSelected;
-
-            if ( this.multiple === false ){
-                value = Arr.first(value);
-            }
 
             return value;
         },
@@ -156,7 +166,7 @@ export default {
             }
 
             if ( this.multiple === false ) {
-                return this.nativeSelected = [value];
+                this.nativeSelected = [];
             }
 
             if ( this.multiple === true ) {
@@ -164,6 +174,8 @@ export default {
             }
 
             Arr.toggle(this.nativeSelected, value);
+
+            this.$emit('input', this.nativeValue);
         },
 
         selectCurrent()
@@ -267,27 +279,9 @@ export default {
 
     watch: {
 
-        value()
-        {
-            let selected = this.getSelected(this.value);
-
-            if ( selected === null ) {
-                return;
-            }
-
-            this.nativeSelected = selected;
-        },
-
-        nativeSelected()
-        {
-            let value = this.getValue();
-
-            if ( value === undefined || Any.isEqual(value, this.value) ) {
-                return;
-            }
-
-            this.$emit('input', value);
-            this.$emit('change', value);
+        value: {
+            handler: 'solveNativeSelected',
+            intermediate: true
         },
 
         search()
@@ -314,14 +308,6 @@ export default {
         return {
             NSelect: this
         };
-    },
-
-    beforeMount()
-    {
-        this.nativeSelected = this.getSelected(this.value);
-        // if ( this.value === null || this.value === undefined ) {
-        //     this.$emit('input', this.multiple === true ? [] : '');
-        // }
     },
 
     updated()
@@ -397,9 +383,11 @@ export default {
                                     this.toggleOption(option.realValue);
                                 };
 
-                                return <span class={className}>
-                                    {option.label} { this.multiple && <i onClick={clickEvent} class="fa fa-times"></i>}
-                                </span>;
+                                return (
+                                    <span class={className}>
+                                        {option.label} { this.multiple && <i onClick={clickEvent} class="fa fa-times"></i>}
+                                    </span>
+                                );
                             })
                         }
 
