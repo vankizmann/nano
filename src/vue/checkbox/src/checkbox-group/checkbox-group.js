@@ -97,6 +97,8 @@ export default {
                 value: checkbox.value
             });
 
+            console.log('add', index);
+
             if ( index !== -1 ) {
                 Arr.removeIndex(this.checkboxes, index);
             }
@@ -110,9 +112,15 @@ export default {
 
         removeCheckbox(checkbox)
         {
-            Arr.remove(this.checkboxes, {
+            let index = Arr.findIndex(this.checkboxes, {
                 value: checkbox.value
             });
+
+            if ( index !== -1 ) {
+                Arr.removeIndex(this.checkboxes, index);
+            }
+
+            console.log('remove', index);
         },
 
         toggleCheckbox()

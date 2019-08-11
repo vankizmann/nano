@@ -133,7 +133,7 @@ export default {
         this.$on('input', (value) => this.nativeChecked = value);
     },
 
-    destroyed()
+    destroy()
     {
         if ( this.NCheckboxGroup && this.global === false ) {
             this.NCheckboxGroup.removeCheckbox(this);

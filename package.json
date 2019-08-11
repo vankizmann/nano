@@ -4,8 +4,8 @@
     "main": "dist/index.js",
     "browserslist": "> 0.25%, not dead",
     "scripts": {
-        "build": "webpack --config webpack.js --hide-modules",
-        "watch": "webpack --config webpack.js --watch --hide-modules"
+        "build": "webpack --hide-modules",
+        "watch": "webpack --watch --hide-modules"
     },
     "devDependencies": {
         "@babel/core": "^7.4.5",

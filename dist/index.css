@@ -1673,6 +1673,70 @@
   --color-info-dark:          #565b60;
   --color-info-darker:        #4a4e52; }
 
+.n-transfer {
+  display: flex;
+  flex-direction: row; }
+
+.n-transfer .n-draggable {
+  width: 100%; }
+
+.n-transfer__pane {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 400px;
+  border: 1px solid #e8e9ea;
+  border-radius: 3px; }
+
+.n-transfer__pane-header {
+  flex: 0 0 auto;
+  width: 100%;
+  border-bottom: 1px solid #e8e9ea;
+  padding: 10px 14px; }
+
+.n-transfer__pane-body {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto; }
+
+:root {
+  --color-black:              #1b2229;
+  --color-white:              #ffffff;
+  --color-primary:            #2877FA;
+  --color-secondary:          #2877FA;
+  --color-success:            #3ed786;
+  --color-warning:            #ffac2f;
+  --color-danger:             #fd2f51;
+  --color-info:               #62686d;
+  --color-background:         #f7fafc;
+  --color-border:             #ebeef5;
+  --color-primary-light:      #4187fb;
+  --color-primary-lighter:    #5a97fb;
+  --color-primary-dark:       #0f67f9;
+  --color-primary-darker:     #055bea;
+  --color-secondary-light:    #4187fb;
+  --color-secondary-lighter:  #5a97fb;
+  --color-secondary-dark:     #0f67f9;
+  --color-secondary-darker:   #055bea;
+  --color-success-light:      #53db93;
+  --color-success-lighter:    #68e0a0;
+  --color-success-dark:       #2bd079;
+  --color-success-darker:     #27bb6d;
+  --color-warning-light:      #ffb649;
+  --color-warning-lighter:    #ffc062;
+  --color-warning-dark:       #ffa216;
+  --color-warning-darker:     #fb9700;
+  --color-danger-light:       #fd4866;
+  --color-danger-lighter:     #fd627b;
+  --color-danger-dark:        #fd163c;
+  --color-danger-darker:      #f7022b;
+  --color-info-light:         #6e757a;
+  --color-info-lighter:       #7a8288;
+  --color-info-dark:          #565b60;
+  --color-info-darker:        #4a4e52; }
+
 .n-file__wrapper {
   position: relative;
   display: inline-flex;

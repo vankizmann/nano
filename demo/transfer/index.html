@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nano UI Cascader</title>
+    <title>Nano UI Transfer</title>
 
     <link rel="stylesheet" href="https://unpkg.com/backpack.css@2.0.0/lib/backpack.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
@@ -29,6 +29,7 @@
         </n-form-item>
 
         <n-form-item label="Object">
+            <pre>{{ items }}</pre>
             <pre>{{ form }}</pre>
         </n-form-item>
 
@@ -47,18 +48,14 @@
 
                 let childGenerator = function(count = 10) {
 
-                    let children = Array(
-                        Math.floor(Math.random() * (count + 1))
-                    ).fill(null);
+                    let children = Array(count).fill(null);
 
                     Nano.Arr.map(children, function(item) {
 
                         total++;
 
                         item = {
-                            label: 'Item ' + (Math.floor(Math.random() * 2) === 1 ? 'long text is here given' : '') + total,
-                            value: 'value-' + total,
-                            children: []
+                            label: 'Item ' + total, id: 'id-' + total
                         };
 
                         return item;
