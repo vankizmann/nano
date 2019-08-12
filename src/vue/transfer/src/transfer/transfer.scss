@@ -9,6 +9,27 @@
     width: 100%;
 }
 
+.n-transfer__controls {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+}
+
+.n-transfer__controls > div {
+    margin: 5px 0;
+}
+
+.n-transfer__controls > div:first-child {
+    margin-top: 0;
+}
+
+.n-transfer__controls > div:last-child {
+    margin-bottom: 0;
+}
+
 .n-transfer__pane {
     display: flex;
     flex-direction: column;
@@ -18,17 +39,58 @@
     border-radius: $radius-medium;
 }
 
-.n-transfer__pane-header {
-    flex: 0 0 auto;
+.n-transfer__pane > .n-checkbox-group {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    border-bottom: 1px solid $color-gray-10;
-    padding: 10px 14px;
+    min-height: 0;
+    max-height: 100%;
 }
 
-.n-transfer__pane-body {
+.n-inverse .n-transfer__pane {
+    border-color: $color-gray-70;
+}
+
+.n-transfer__header {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    border-bottom: 1px solid $color-gray-10;
+}
+
+.n-inverse .n-transfer__header {
+    border-bottom-color: $color-gray-70;
+}
+
+.n-transfer__header .n-transfer__item {
+    font-size: 17px;
+}
+
+.n-transfer__body {
     flex: 1 1 auto;
     width: 100%;
     min-height: 0;
     max-height: 100%;
     overflow-y: auto;
+}
+
+.n-transfer__item {
+    padding: 0 14px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.n-transfer__item-title {
+    color: $color-black;
+    margin-left: 15px;
+}
+
+.n-inverse .n-transfer__item-title {
+    color: $color-white;
 }

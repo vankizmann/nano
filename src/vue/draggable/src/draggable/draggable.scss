@@ -17,7 +17,11 @@ $draggable-placeholder-size: 13px !default;
 }
 
 .n-draggable__item:hover {
-    background: $--color-background;
+    background: $color-gray-05;
+}
+
+.n-inverse .n-draggable__item:hover {
+    background: $color-gray-85;
 }
 
 .n-draggable__item.n-draggable--nodrop {

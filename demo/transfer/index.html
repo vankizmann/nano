@@ -29,7 +29,6 @@
         </n-form-item>
 
         <n-form-item label="Object">
-            <pre>{{ items }}</pre>
             <pre>{{ form }}</pre>
         </n-form-item>
 
@@ -46,7 +45,7 @@
 
                 let total = 0;
 
-                let childGenerator = function(count = 10) {
+                let childGenerator = function(count = 20) {
 
                     let children = Array(count).fill(null);
 
@@ -64,11 +63,13 @@
                     return children;
                 };
 
+                var items = childGenerator();
+
                 var form = {
-                    value: []
+                    value: items.slice(0, 5)
                 };
 
-                return { form: form, inverse: false, items: childGenerator() };
+                return { form: form, inverse: false, items: items };
             }
         };
 

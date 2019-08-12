@@ -97,8 +97,6 @@ export default {
                 value: checkbox.value
             });
 
-            console.log('add', index);
-
             if ( index !== -1 ) {
                 Arr.removeIndex(this.checkboxes, index);
             }
@@ -119,8 +117,6 @@ export default {
             if ( index !== -1 ) {
                 Arr.removeIndex(this.checkboxes, index);
             }
-
-            console.log('remove', index);
         },
 
         toggleCheckbox()
@@ -205,9 +201,11 @@ export default {
             className.push('n-checkbox-group--intermediate');
         }
 
-        return (<div class={className}>
-            {this.$slots.default}
-        </div>);
+        return (
+            <div class={className}>
+                {this.$slots.default}
+            </div>
+        );
     }
 
 }

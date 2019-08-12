@@ -9,9 +9,11 @@ export default {
     },
 
     inject: {
+
         NCheckboxGroup: {
             default: undefined
         }
+
     },
 
     props: {
@@ -133,7 +135,7 @@ export default {
         this.$on('input', (value) => this.nativeChecked = value);
     },
 
-    destroy()
+    destroyed()
     {
         if ( this.NCheckboxGroup && this.global === false ) {
             this.NCheckboxGroup.removeCheckbox(this);
