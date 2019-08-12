@@ -166,7 +166,7 @@
   background: #f4f4f4; }
 
 .n-inverse .n-draggable__item:hover {
-  background: #3d4349; }
+  background: var(--color-background); }
 
 .n-draggable__item.n-draggable--dragover {
   background: rgba(40, 119, 250, 0.15); }

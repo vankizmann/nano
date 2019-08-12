@@ -280,8 +280,7 @@ export default {
     watch: {
 
         value: {
-            handler: 'solveNativeSelected',
-            intermediate: true
+            handler: 'solveNativeSelected'
         },
 
         search()
@@ -308,6 +307,11 @@ export default {
         return {
             NSelect: this
         };
+    },
+
+    beforeMount()
+    {
+        this.solveNativeSelected();
     },
 
     updated()

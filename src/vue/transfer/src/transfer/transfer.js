@@ -131,8 +131,6 @@ export default {
                 [this.uniqueProp]: Obj.get(item, this.uniqueProp)
             });
 
-            console.log(Obj.get(item, this.uniqueProp), index);
-
             return index === -1;
         });
     },
@@ -140,10 +138,10 @@ export default {
     render()
     {
 
-        let renderLabel = ({ value }) => {
+        let renderLabel = ({ key, value }) => {
             return (
                 <div class="n-transfer__item">
-                    <NCheckbox key={Obj.get(value, '_dragid')} value={Obj.get(value, this.uniqueProp)} /> <span class="n-transfer__item-title">{Obj.get(value, this.labelProp)}</span>
+                    <NCheckbox sort={key} key={Obj.get(value, '_dragid')} value={Obj.get(value, this.uniqueProp)} /> <span class="n-transfer__item-title">{Obj.get(value, this.labelProp)}</span>
                 </div>
             );
         };
