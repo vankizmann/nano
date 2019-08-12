@@ -123,15 +123,17 @@ export default {
         };
     },
 
-    created()
+    beforeMount()
     {
         this.valueSource = Arr.filter(this.items, (item) => {
 
-            let target = Arr.find(this.value, {
+            let index = Arr.findIndex(this.value, {
                 [this.uniqueProp]: Obj.get(item, this.uniqueProp)
             });
 
-            return target === null;
+            console.log(Obj.get(item, this.uniqueProp), index);
+
+            return index === -1;
         });
     },
 
