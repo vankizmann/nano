@@ -22,6 +22,14 @@ export default {
             type: [String]
         },
 
+        align: {
+            default()
+            {
+                return 'vertical';
+            },
+            type: [String]
+        },
+
         tooltip: {
             default()
             {
@@ -42,7 +50,7 @@ export default {
 
     render(h)
     {
-        return <fieldset class="n-form-group">
+        return <fieldset class={['n-form-group', 'n-form--' + this.align]}>
             { this.legend &&
                 [
                     <legend class="n-form-group__legend">{ this.legend }</legend>,

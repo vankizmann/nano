@@ -24,6 +24,14 @@ export default {
                 return {};
             },
             type: [Object]
+        },
+
+        align: {
+            default()
+            {
+                return 'vertical';
+            },
+            type: [String]
         }
 
     },
@@ -70,7 +78,7 @@ export default {
     render(h)
     {
         return (
-            <form class="n-form">
+            <form class={['n-form', 'n-form--' + this.align]}>
                 {this.$slots.default}
             </form>
         );
