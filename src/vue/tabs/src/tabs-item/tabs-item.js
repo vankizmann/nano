@@ -69,7 +69,7 @@ export default {
 
         checkInitialized()
         {
-            if ( this.NTabs.current === this.name ) {
+            if ( this.NTabs.nativeCurrent === this.name ) {
                 this.initialized = true;
             }
         }
@@ -98,7 +98,7 @@ export default {
 
     mounted()
     {
-        this.NTabs.$watch('current', this.checkInitialized);
+        this.NTabs.$watch('nativeCurrent', this.checkInitialized);
     },
 
     destroyed()
