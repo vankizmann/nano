@@ -1,0 +1,19 @@
+@import "../../../root/vars";
+
+$form-legend-size: 17px !default;
+$form-group-spacing: 18px !default;
+
+.n-form-group {
+    position: relative;
+    margin-bottom: $form-group-spacing;
+}
+
+.n-form-group__legend {
+    font-size: $form-legend-size;
+    color: $--color-black;
+    margin-bottom: $form-group-spacing * 0.5;
+}
+
+.n-inverse .n-form-group__legend {
+    color: $--color-white;
+}

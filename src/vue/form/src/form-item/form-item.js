@@ -33,7 +33,23 @@ export default {
         label: {
             default()
             {
-                return '';
+                return this.$slots.label;
+            },
+            type: [String]
+        },
+
+        tooltip: {
+            default()
+            {
+                return this.$slots.tooltip
+            },
+            type: [String]
+        },
+
+        tooltipPosition: {
+            default()
+            {
+                return 'right-center';
             },
             type: [String]
         }
@@ -92,6 +108,7 @@ export default {
             { (this.label || this.$slots.label) &&
                 <div class="n-form-item__label">
                     <label vOn:click={this.focusInput}>{this.label}</label>
+                    { this.tooltip && <NPopover type="tooltip" position={this.tooltipPosition}>{ this.tooltip }</NPopover> }
                 </div>
             }
             <div class="n-form-item__input">

@@ -70,9 +70,9 @@ export default {
     render(h)
     {
         return (
-            <div class="n-form">
+            <form class="n-form">
                 {this.$slots.default}
-            </div>
+            </form>
         );
     }
 }
