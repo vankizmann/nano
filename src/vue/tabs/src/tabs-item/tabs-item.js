@@ -108,7 +108,7 @@ export default {
 
     render()
     {
-        if ( this.NTabs.current !== this.name && this.keepAlive === false ) {
+        if ( this.NTabs.nativeCurrent !== this.name && this.keepAlive === false ) {
             return null;
         }
 
@@ -126,7 +126,7 @@ export default {
 
         let style = {};
 
-        if ( this.NTabs.current !== this.name ) {
+        if ( this.NTabs.nativeCurrent !== this.name ) {
             style.display = 'none';
         }
 
