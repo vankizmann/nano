@@ -2,7 +2,6 @@
     "name": "nanojs",
     "version": "0.0.1",
     "main": "dist/index.js",
-    "browserslist": "> 0.25%, not dead",
     "scripts": {
         "build": "webpack --hide-modules --mode=production",
         "watch": "webpack --watch --hide-modules --mode=development"

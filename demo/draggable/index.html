@@ -25,6 +25,7 @@
         </n-form-item>
 
         <n-form-item label="Click">
+            {{ form.value.length }}
             <n-draggable :items="form.value" unique-prop="id">
                 <div slot-scope="{ value }">
                     {{ value.label }}
@@ -53,7 +54,7 @@
 
                     let total = 0;
 
-                    let childGenerator = function(count = 20) {
+                    let childGenerator = function(count = 600) {
 
                         let children = Array(count).fill(null);
 
