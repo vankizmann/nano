@@ -36,46 +36,52 @@
 </div>
 
 <script>
-    Nano.Dom.ready(() => {
+    (function (Nano) {
 
-        Vue.config.devtools = true;
+        'use strict';
 
-        var config = {
-            data: function() {
+        Nano.Dom.ready(() => {
 
-                let total = 0;
+            Vue.config.devtools = true;
 
-                let childGenerator = function(count = 20) {
+            var config = {
+                data: function() {
 
-                    let children = Array(count).fill(null);
+                    let total = 0;
 
-                    Nano.Arr.map(children, function(item) {
+                    let childGenerator = function(count = 20) {
 
-                        total++;
+                        let children = Array(count).fill(null);
 
-                        item = {
-                            label: 'Item ' + total, id: 'id-' + total
-                        };
+                        Nano.Arr.map(children, function(item) {
 
-                        return item;
-                    });
+                            total++;
 
-                    return children;
-                };
+                            item = {
+                                label: 'Item ' + total, id: 'id-' + total
+                            };
 
-                var items = childGenerator();
+                            return item;
+                        });
 
-                var form = {
-                    value: items.slice(0, 5)
-                };
+                        return children;
+                    };
 
-                return { form: form, inverse: false, items: items };
-            }
-        };
+                    var items = childGenerator();
 
-        window.App = new Vue(config).$mount('#app');
+                    var form = {
+                        value: items.slice(0, 5)
+                    };
 
-    });
+                    return { form: form, inverse: false, items: items };
+                }
+            };
+
+            window.App = new Vue(config).$mount('#app');
+
+        });
+
+    })(window.Nano);
 </script>
 </body>
 </html>
