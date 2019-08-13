@@ -92,9 +92,11 @@ export default {
 
                                     return (
                                         <div class={className} vOn:click={() => this.changeTab(tab.name)}>
-                                            <div class="n-tabs__tab-icon">
-                                                <span class={tab.icon}></span>
-                                            </div>
+                                            { tab.icon &&
+                                                <div class="n-tabs__tab-icon">
+                                                    <span class={tab.icon}></span>
+                                                </div>
+                                            }
                                             <div class="n-tabs__tab-label">
                                                <span>{ tab.$slots.label || tab.label }</span>
                                             </div>

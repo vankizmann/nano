@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nano UI Transfer</title>
+    <title>Nano UI Draggable</title>
 
     <link rel="stylesheet" href="https://unpkg.com/backpack.css@2.0.0/lib/backpack.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
@@ -24,13 +24,20 @@
             <n-checkbox v-model="inverse">Inverse</n-checkbox>
         </n-form-item>
 
-        <n-form-item label="Click">
-            {{ form.value.length }}
+        <n-form-item label="List">
             <n-draggable :items="form.value" unique-prop="id">
                 <div slot-scope="{ value }">
                     {{ value.label }}
                 </div>
             </n-draggable>
+        </n-form-item>
+
+        <n-form-item label="Tree">
+            <n-draggable-tree :items="form.value" unique-prop="id">
+                <div slot-scope="{ value }">
+                    {{ value.label }}
+                </div>
+            </n-draggable-tree>
         </n-form-item>
 
         <n-form-item label="Object">
@@ -54,17 +61,25 @@
 
                     let total = 0;
 
-                    let childGenerator = function(count = 600) {
+                    let childGenerator = function(count = 3, depth = 3, current = 1) {
 
-                        let children = Array(count).fill(null);
+                        let children = Array(
+                            Math.floor((Math.random() * count)  + 2)
+                        ).fill(null);
 
                         Nano.Arr.map(children, function(item) {
 
                             total++;
 
                             item = {
-                                label: 'Item ' + total, id: 'id-' + total
+                                label: 'Item ' + total,
+                                id: 'value-' + total,
+                                children: []
                             };
+
+                            if ( current < depth ) {
+                                item.children = childGenerator(count, depth, current + 1);
+                            }
 
                             return item;
                         });

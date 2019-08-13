@@ -659,13 +659,13 @@ export default {
             this.draggableAbort, { _uid: this._uid });
 
         Dom.find(document).on('dragend',
-            Any.debounce(this.docDragEnd, 5), { _uid: this._uid });
+            Any.debounce(this.docDragEnd, 25), { _uid: this._uid });
 
         Dom.find(document).on('dragover',
-            Any.debounce(this.docDragOver, 5), { _uid: this._uid });
+            Any.debounce(this.docDragOver, 25), { _uid: this._uid });
 
         Dom.find(document).on('dragleave',
-            Any.debounce(this.docDragLeave, 5), { _uid: this._uid });
+            Any.debounce(this.docDragLeave, 25), { _uid: this._uid });
 
         Dom.find(document).live('mousedown',
             '[data-drag-id][selectable="true"]', this.itemMouseDown, { _uid: this._uid });
