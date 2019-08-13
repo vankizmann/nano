@@ -367,7 +367,7 @@ export default {
         });
 
         return (
-            <NTabs vModel={this.tab}>
+            <NTabs vModel={this.tab} class="n-dataform__tabs">
                 { this.use === null ? this.$scopedSlots.default(props) : component }
             </NTabs>
         );
