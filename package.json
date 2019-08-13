@@ -19,7 +19,7 @@
         "@vue/babel-plugin-transform-vue-jsx": "^1.0.0",
         "@vue/babel-preset-jsx": "^1.0.0",
         "babel-loader": "^8.0.6",
-        "core-js": "3",
+        "core-js": "2",
         "cross-env": "^5.1",
         "extract-text-webpack-plugin": "^3.0.2",
         "js-cookie": "^2.2.1",
