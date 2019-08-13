@@ -14,8 +14,13 @@ let jsExport = {
         rules: [
             {
                 test: /.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader']
+                include: [
+                    path.resolve(__dirname, './src')
+                ],
+                loader: 'babel-loader',
+                options: {
+                    configFile: path.resolve('./babel.config.js')
+                },
             }
         ]
     },
@@ -38,8 +43,12 @@ let cssExport = {
         rules: [
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+                include: [
+                    path.resolve(__dirname, './src')
+                ],
+                use: [
+                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+                ]
             }
         ]
     },
