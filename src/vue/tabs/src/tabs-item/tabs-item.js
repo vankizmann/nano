@@ -38,6 +38,14 @@ export default {
             type: [String]
         },
 
+        sort: {
+            default()
+            {
+                return this._uid;
+            },
+            type: [Number]
+        },
+
         preload: {
             default()
             {

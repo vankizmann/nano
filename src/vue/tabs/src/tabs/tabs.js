@@ -80,7 +80,7 @@ export default {
                     <div class="n-tabs__header">
                         <div class="n-tabs__header-inner">
                             {
-                                Arr.each(this.tabs, (tab) => {
+                                Arr.each(Arr.sort(this.tabs, 'sort'), (tab) => {
 
                                     let className = [
                                         'n-tabs__tab'
