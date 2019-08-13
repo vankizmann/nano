@@ -163,10 +163,10 @@
   min-height: 34px; }
 
 .n-draggable__item:hover {
-  background: #f4f4f4; }
+  background: var(--color-background); }
 
 .n-inverse .n-draggable__item:hover {
-  background: var(--color-background); }
+  background: #3d4349; }
 
 .n-draggable__item.n-draggable--dragover {
   background: rgba(40, 119, 250, 0.15); }

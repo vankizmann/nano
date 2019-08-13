@@ -110,7 +110,7 @@ export default {
         defaultLimit: {
             default()
             {
-                return 100;
+                return 50;
             },
             type: [Number]
         },
