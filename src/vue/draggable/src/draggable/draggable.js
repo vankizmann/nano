@@ -661,9 +661,11 @@ export default {
         Dom.find(document).on('dragend',
             this.docDragEnd, { _uid: this._uid });
 
-        Dom.find(document).on('dragover', this.docDragOver, { _uid: this._uid });
+        Dom.find(document).on('dragover',
+            Any.throttle(this.docDragOver, 250), { _uid: this._uid });
 
-        Dom.find(document).on('dragleave', this.docDragLeave, { _uid: this._uid });
+        Dom.find(document).on('dragleave',
+            Any.throttle(this.docDragLeave, 250), { _uid: this._uid });
 
         Dom.find(document).live('mousedown',
             '[data-drag-id][selectable="true"]', this.itemMouseDown, { _uid: this._uid });
