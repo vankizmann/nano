@@ -78,7 +78,7 @@ export default {
     render(h)
     {
         return (
-            <form class={['n-form', 'n-form--' + this.align]}>
+            <form class={['n-form', 'n-form--' + this.align]} on={this.$listeners}>
                 {this.$slots.default}
             </form>
         );
