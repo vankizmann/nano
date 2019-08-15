@@ -328,6 +328,13 @@ export default {
             this.$emit('update:current', current);
         },
 
+        defaultSelectedKeys()
+        {
+            if ( ! Any.isEqual(this.selectedKeys, this.defaultSelectedKeys) ) {
+                this.selectedKeys = this.defaultSelectedKeys;
+            }
+        },
+
         selectedKeys()
         {
             this.$emit('update:defaultSelectedKeys', this.selectedKeys);
