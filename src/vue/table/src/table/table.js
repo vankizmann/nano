@@ -241,8 +241,7 @@ export default {
             }
 
             Dom.find(element).observerDimentions(() => {
-                this.width = Dom.find(element).realWidth();
-                this.height = Dom.find(element).realHeight();
+                this.height = Dom.find(element).height();
             })(element);
         },
 
@@ -551,20 +550,14 @@ export default {
 
         };
 
-        let styleElement = {};
-
-        if ( ! Any.isEmpty(this.width) ) {
-            styleElement.width = this.width + 'px';
-        }
-
-        let styleWrapper = {
+        let style = {
             height: this.height + 'px'
         };
 
         return (
-            <div class="n-table" style={styleElement}>
+            <div class="n-table">
                 <NCheckboxGroup vModel={this.selectedKeys}>
-                    <div ref="wrapper" class="n-table-wrapper" style={styleWrapper}>
+                    <div ref="wrapper" class="n-table-wrapper" style={style}>
                         <div ref="head" class="n-table__head">
                             { this.ctor('renderHeadRow')() }
                         </div>
