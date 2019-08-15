@@ -41,7 +41,7 @@ export class Obj
 
         let key = keys.shift();
 
-        if ( typeof obj[key] === 'undefined' ) {
+        if ( obj[key] === undefined || obj[key] === null ) {
             obj[key] = {};
         }
 
@@ -60,7 +60,7 @@ export class Obj
         let key = keys.shift();
 
         if ( typeof obj[key] === 'undefined' ) {
-            obj[key] = {};
+            return obj;
         }
 
         if ( keys.length === 0 ) {
