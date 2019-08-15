@@ -86,7 +86,7 @@ function VueNano (Vue) {
     Vue.prototype.choice = scope.Nano.Locale.choice;
 
     require("./vue/bootstrap");
-    require("./pro/bootstrap");
+    // require("./pro/bootstrap");
 
     return Vue;
 }
