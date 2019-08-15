@@ -241,6 +241,7 @@ export default {
             }
 
             Dom.find(element).observerDimentions(() => {
+                this.width = Dom.find(element).width();
                 this.height = Dom.find(element).height();
             })(element);
         },
@@ -380,9 +381,9 @@ export default {
             }
         });
 
-        this.width = Arr.reduce(this.columns, (count, column) => {
-            return count + column.width;
-        }, 0);
+        // this.width = Arr.reduce(this.columns, (count, column) => {
+        //     return count + column.width;
+        // }, 0);
 
         if ( this.adaptHeight === null ) {
             this.calculateHeight();
@@ -550,14 +551,20 @@ export default {
 
         };
 
-        let style = {
-            height: this.height + 'px', width: this.width + 'px'
+        let styleElement = {};
+
+        if ( ! Any.isEmpty(this.width) ) {
+            styleElement.width = this.width + 'px';
+        }
+
+        let styleWrapper = {
+            height: this.height + 'px'
         };
 
         return (
-            <div class="n-table">
+            <div class="n-table" style={styleElement}>
                 <NCheckboxGroup vModel={this.selectedKeys}>
-                    <div ref="wrapper" class="n-table-wrapper" style={style}>
+                    <div ref="wrapper" class="n-table-wrapper" style={styleWrapper}>
                         <div ref="head" class="n-table__head">
                             { this.ctor('renderHeadRow')() }
                         </div>
