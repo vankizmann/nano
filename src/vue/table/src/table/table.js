@@ -551,7 +551,7 @@ export default {
         };
 
         let style = {
-            height: this.height + 'px'
+            height: this.height + 'px', width: this.width + 'px'
         };
 
         return (
