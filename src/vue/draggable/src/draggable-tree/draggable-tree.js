@@ -1,5 +1,7 @@
-import { Arr, Obj, Any } from "../../../../index";
+import { Nano } from "../../../../index";
 import NDraggable from "../draggable/draggable";
+
+let { Arr, Obj, Any } = Nano;
 
 export default {
 

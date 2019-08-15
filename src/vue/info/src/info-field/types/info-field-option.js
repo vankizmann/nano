@@ -1,5 +1,7 @@
-import { Arr, Obj, Any } from "../../../../../index";
+import { Nano } from "../../../../../index";
 import InfoField from "../info-field";
+
+let { Arr, Obj, Any } = Nano;
 
 export default {
 

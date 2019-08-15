@@ -1,4 +1,6 @@
-import { UUID, Num, Arr, Obj, Dom, Any, Locale, Event } from "../../../../index";
+import { Nano } from "../../../../index";
+
+let { UUID, Num, Arr, Obj, Dom, Any, Locale, Event } = Nano;
 
 export default {
 

@@ -1,5 +1,7 @@
-import { Any } from "../../../../../index";
+import { Nano } from "../../../../../index";
 import InfoField from "../info-field";
+
+let { Any } = Nano;
 
 export default {
 

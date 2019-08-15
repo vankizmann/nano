@@ -1,5 +1,7 @@
-import { Obj } from "../../../../index";
-import CtorMixin from "../../../mixins/src/ctor";
+import { Nano } from "../../../../index";
+import CtorMixin from "../../../../vue/mixins/src/ctor";
+
+let { Obj } = Nano;
 
 export default {
 
