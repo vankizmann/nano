@@ -241,8 +241,8 @@ export default {
             }
 
             Dom.find(element).observerDimentions(() => {
-                this.width = Dom.find(element).width();
-                this.height = Dom.find(element).height();
+                this.width = Dom.find(element).realWidth();
+                this.height = Dom.find(element).realHeight();
             })(element);
         },
 
@@ -381,9 +381,9 @@ export default {
             }
         });
 
-        // this.width = Arr.reduce(this.columns, (count, column) => {
-        //     return count + column.width;
-        // }, 0);
+        this.width = Arr.reduce(this.columns, (count, column) => {
+            return count + column.width;
+        }, 0);
 
         if ( this.adaptHeight === null ) {
             this.calculateHeight();
