@@ -1,4 +1,7 @@
-import { UUID, Num, Arr, Obj, Any, Locale } from "../../../../index";
+import CtorMixin from "../../../mixins/src/ctor";
+import { Nano } from "../../../../index";
+
+let { Num, Arr, Locale } = Nano;
 
 export default {
 
@@ -64,6 +67,8 @@ export default {
     },
 
     methods: {
+
+        ...CtorMixin,
 
         changePage(page)
         {
