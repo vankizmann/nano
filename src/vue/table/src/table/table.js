@@ -230,6 +230,8 @@ export default {
         {
             this.height = Dom.find(this.$refs.head).height() +
                 Dom.find(this.$refs.body).child().height();
+
+            this.scroll = this.$el.scrollHeight > this.height;
         },
 
         bindObserver()
@@ -241,17 +243,8 @@ export default {
             }
 
             Dom.find(element).observerDimentions(() => {
-
-                let height = Dom.find(element).height();
-
-                if ( element.scrollHeight > height ) {
-                    Dom.find(this.node).addClass('n-table--scroll');
-                } else {
-                    Dom.find(this.node).removeClass('n-table--scroll');
-                }
-
-                this.height = height;
-
+                this.height = Dom.find(element).height();
+                this.scroll = this.$el.scrollHeight > this.height;
             })(element);
         },
 
@@ -362,6 +355,7 @@ export default {
         return {
             width: 0,
             height: 0,
+            scroll: false,
             columns: [],
             visibleColumns: [],
             currentKey: null,
@@ -563,11 +557,11 @@ export default {
         };
 
         let style = {
-            height: this.height + 'px'
+            height: (this.height + 1) + 'px'
         };
 
         return (
-            <div class="n-table">
+            <div class={['n-table', this.scroll && 'n-table--scroll']}>
                 <NCheckboxGroup vModel={this.selectedKeys}>
                     <div ref="wrapper" class="n-table-wrapper" style={style}>
                         <div ref="head" class="n-table__head">

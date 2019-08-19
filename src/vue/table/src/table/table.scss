@@ -6,7 +6,7 @@ $table-row-height: 40px !default;
     position: relative;
     width: 100%;
     overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
     border-radius: $radius-medium;
     border-left: 1px solid $color-gray-10;
     border-right: 1px solid $color-gray-10;

@@ -17,22 +17,12 @@
 </head>
 <body>
 
-    <div id="app">
-        <n-form :form="form">
-
-            <n-form-item label="Name">
-                <n-input v-model="form.name" placeholder="Enter a name!"></n-input>
-            </n-form-item>
-
-            <n-form-item label="Info">
-                <n-input v-model="form.info" icon="fa fa-times" @icon-click="form.info = ''"></n-input>
-            </n-form-item>
-
-            <n-form-item label="Password">
-                <n-input v-model="form.password" :native-type="nativeType" :icon="nativeType === 'text' ? 'fa fa-eye-slash' : 'fa fa-eye'" @icon-click="nativeType = (nativeType === 'text' ? 'password' : 'text')"></n-input>
-            </n-form-item>
-
-        </n-form>
+    <div id="app" style="height: 500px;">
+        <n-table :items="items" :adapt-height="true">
+            <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
+            <n-table-column prop="label" type="string" label="Label"></n-table-column>
+            <n-table-column prop="id" align="center" type="string" label="ID"></n-table-column>
+        </n-table>
     </div>
 
     <script>
@@ -41,11 +31,29 @@
             var config = {
                 data: function() {
 
-                    var form = {
-                        name: '', info: 'Lorem ipsum dolore.', password: ''
+                    let total = 0;
+
+                    let childGenerator = function(count = 20) {
+
+                        let children = Array(count).fill(null);
+
+                        Nano.Arr.map(children, function(item) {
+
+                            total++;
+
+                            item = {
+                                label: 'Item ' + total, id: 'id-' + total
+                            };
+
+                            return item;
+                        });
+
+                        return children;
                     };
 
-                    return { form: form, nativeType: 'password' };
+                    var items = childGenerator();
+
+                    return { items: items };
                 }
             };
 
