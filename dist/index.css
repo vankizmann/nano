@@ -1255,7 +1255,7 @@
   display: inline-flex;
   width: 100%; }
 
-.n-select__wrapper .n-popover {
+.n-popover.n-popover--select {
   min-width: 100%;
   max-height: 280px;
   display: inline-flex;
@@ -1263,11 +1263,11 @@
   text-align: left;
   overflow-y: hidden; }
 
-.n-select__wrapper .n-popover__frame {
+.n-popover.n-popover--select .n-popover__frame {
   flex: 0 0 auto;
   width: 100%; }
 
-.n-select__wrapper .n-popover__body {
+.n-popover.n-popover--select .n-popover__body {
   overflow-y: auto; }
 
 .n-select {
