@@ -63,7 +63,10 @@ $table-row-height: 40px !default;
 .n-table__head .n-table__row {
     height: $table-row-height * 1.2;
     border-bottom: 1px solid $color-gray-10;
-    padding-right: 20px;
+}
+
+.n-table.n-table--scroll .n-table__head .n-table__row {
+    padding-right: 17px;
 }
 
 .n-table__head .n-table__row > .n-table__column {
@@ -72,9 +75,13 @@ $table-row-height: 40px !default;
     border-right: 1px solid $color-gray-10;
 }
 
-//.n-table__head .n-table__row > .n-table__column:last-child {
-//    border-right: none;
-//}
+.n-table__head .n-table__row > .n-table__column:last-child {
+    border-right: none;
+}
+
+.n-table.n-table--scroll .n-table__head .n-table__row > .n-table__column:last-child {
+    border-right: 1px solid $color-gray-10;
+}
 
 .n-table__body {
     z-index: 100;

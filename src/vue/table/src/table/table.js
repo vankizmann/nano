@@ -557,7 +557,7 @@ export default {
         };
 
         return (
-            <div class="n-table">
+            <div class="n-table n-table--scroll">
                 <NCheckboxGroup vModel={this.selectedKeys}>
                     <div ref="wrapper" class="n-table-wrapper" style={style}>
                         <div ref="head" class="n-table__head">
