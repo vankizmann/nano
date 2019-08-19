@@ -445,7 +445,7 @@ export default {
                             events.mousedown = (e) => this.resizeColumn(e, column);
                         }
 
-                        let resizer = h('div', {
+                        let resizer = this.h('div', {
                             class: 'n-table__resizer', on: events
                         }, [<span></span>]);
 
@@ -512,8 +512,10 @@ export default {
         );
     },
 
-    render()
+    render(h)
     {
+        this.h = h;
+
         let scopedSlots = {
             default: (props) => {
                 return this.ctor('renderBodyRow')(props);

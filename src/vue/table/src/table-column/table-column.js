@@ -231,7 +231,7 @@ export default {
                 return;
             }
 
-            this.setWidth(width - 2);
+            this.setWidth(width - 10);
         },
 
         setWidth(width)
