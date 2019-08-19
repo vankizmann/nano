@@ -241,7 +241,17 @@ export default {
             }
 
             Dom.find(element).observerDimentions(() => {
-                this.height = Dom.find(element).height();
+
+                let height = Dom.find(element).height();
+
+                if ( element.scrollHeight > height ) {
+                    Dom.find(this.node).addClass('n-table--scroll');
+                } else {
+                    Dom.find(this.node).removeClass('n-table--scroll');
+                }
+
+                this.height = height;
+
             })(element);
         },
 
@@ -557,7 +567,7 @@ export default {
         };
 
         return (
-            <div class="n-table n-table--scroll">
+            <div class="n-table">
                 <NCheckboxGroup vModel={this.selectedKeys}>
                     <div ref="wrapper" class="n-table-wrapper" style={style}>
                         <div ref="head" class="n-table__head">
