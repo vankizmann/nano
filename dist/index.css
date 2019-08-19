@@ -2488,15 +2488,13 @@
 
 .n-table__head .n-table__row {
   height: 48px;
-  border-bottom: 1px solid #e8e9ea; }
+  border-bottom: 1px solid #e8e9ea;
+  padding-right: 20px; }
 
 .n-table__head .n-table__row > .n-table__column {
   padding: 0 10px;
   color: #767a7f;
   border-right: 1px solid #e8e9ea; }
-
-.n-table__head .n-table__row > .n-table__column:last-child {
-  border-right: none; }
 
 .n-table__body {
   z-index: 100;
