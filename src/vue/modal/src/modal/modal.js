@@ -111,9 +111,17 @@ export default {
         {
             if ( this.nativeVisible === true ) {
 
-                Any.delay(() => {
+                let interval = setInterval(() => {
+
+                    if ( ! this.$el ) {
+                        return;
+                    }
+
+                    // Clear interval
+                    clearInterval(interval);
+
                     Dom.find(this.$el).addClass('n-modal--open');
-                });
+                }, 100);
 
                 Dom.find(this.element).addClass('n-modal--open');
             }
