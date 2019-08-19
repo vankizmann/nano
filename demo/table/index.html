@@ -17,12 +17,24 @@
 </head>
 <body>
 
-    <div id="app" style="height: 500px;">
-        <n-table :items="items" :adapt-height="true">
-            <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
-            <n-table-column prop="label" type="string" label="Label"></n-table-column>
-            <n-table-column prop="id" align="center" type="string" label="ID"></n-table-column>
-        </n-table>
+    <div id="app">
+
+        <div class="auto-height">
+            <n-table :items="items" :allow-drop="true">
+                <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
+                <n-table-column prop="label" type="string" label="Label"></n-table-column>
+                <n-table-column prop="id" align="center" type="string" label="ID"></n-table-column>
+            </n-table>
+        </div>
+
+        <div class="adapt-height" style="height: 350px; overflow: hidden;">
+            <n-table :items="target" :adapt-height="true" :allow-drop="true">
+                <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
+                <n-table-column prop="label" type="string" label="Label"></n-table-column>
+                <n-table-column prop="id" align="center" type="string" label="ID"></n-table-column>
+            </n-table>
+        </div>
+
     </div>
 
     <script>
@@ -33,7 +45,7 @@
 
                     let total = 0;
 
-                    let childGenerator = function(count = 20) {
+                    let childGenerator = function(count = 10) {
 
                         let children = Array(count).fill(null);
 
@@ -51,9 +63,7 @@
                         return children;
                     };
 
-                    var items = childGenerator();
-
-                    return { items: items };
+                    return { items: childGenerator(), target: childGenerator() };
                 }
             };
 

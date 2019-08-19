@@ -193,12 +193,32 @@ export default {
 
     computed: {
 
-        style()
+        styleBody()
         {
+            let width = this.width;
+
+            if ( this.NTable.visible !== 0 ) {
+                width -= (this.NTable.visible / this.NTable.visibleColumns.length) + 1;
+            }
+
             return {
-                width: Num.fixed(this.width) + 'px'
+                width: Num.fixed(width) + 'px'
             };
         },
+
+        styleHead()
+        {
+            let width = this.width;
+
+            if ( this.NTable.visible !== 0 ) {
+                width -= (this.NTable.visible / this.NTable.visibleColumns.length) + 1;
+            }
+
+            return {
+                width: Num.fixed(width) + 'px'
+            };
+        },
+
 
         fixed()
         {
@@ -231,7 +251,7 @@ export default {
                 return;
             }
 
-            this.setWidth(width - 10);
+            this.setWidth(width);
         },
 
         setWidth(width)

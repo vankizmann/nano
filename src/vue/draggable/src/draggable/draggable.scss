@@ -7,6 +7,8 @@ $draggable-placeholder-size: 13px !default;
 
 .n-draggable {
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .n-draggable__item {
@@ -33,10 +35,11 @@ $draggable-placeholder-size: 13px !default;
 }
 
 .n-draggable__empty {
+    flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: $draggable-empty-height;
+    min-height: $draggable-empty-height;
 }
 
 .n-draggable__empty span {

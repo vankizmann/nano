@@ -154,7 +154,9 @@
   --color-info-darker:        #4a4e52; }
 
 .n-draggable {
-  position: relative; }
+  position: relative;
+  display: flex;
+  flex-direction: column; }
 
 .n-draggable__item {
   display: flex;
@@ -172,10 +174,11 @@
   background: rgba(40, 119, 250, 0.15); }
 
 .n-draggable__empty {
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px; }
+  min-height: 100px; }
 
 .n-draggable__empty span {
   color: var(--color-info); }
@@ -1747,7 +1750,8 @@
   flex-direction: row; }
 
 .n-transfer .n-draggable {
-  width: 100%; }
+  width: 100%;
+  min-height: 100%; }
 
 .n-transfer__controls {
   flex: 0 0 auto;
@@ -2444,6 +2448,9 @@
   border-left: 1px solid #e8e9ea;
   border-right: 1px solid #e8e9ea; }
 
+.n-table .n-draggable {
+  min-height: 100%; }
+
 .n-table .n-checkbox-group {
   min-width: 100%;
   flex: 1 1 auto; }
@@ -2490,7 +2497,7 @@
   height: 48px;
   border-bottom: 1px solid #e8e9ea; }
 
-.n-table.n-table--scroll .n-table__head .n-table__row {
+.n-table.n-table--scroll.n-table--visible .n-table__head .n-table__row {
   padding-right: 15px; }
 
 .n-table__head .n-table__row > .n-table__column {
@@ -2501,7 +2508,7 @@
 .n-table__head .n-table__row > .n-table__column:last-child {
   border-right: none; }
 
-.n-table.n-table--scroll .n-table__head .n-table__row > .n-table__column:last-child {
+.n-table.n-table--scroll.n-table--visible .n-table__head .n-table__column:last-child {
   border-right: 1px solid #e8e9ea; }
 
 .n-table__body {
@@ -2509,8 +2516,11 @@
   position: relative;
   flex: 1 1 auto;
   min-width: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
   margin-bottom: -1px; }
+
+.n-table.n-table--scroll .n-table__body {
+  overflow-y: scroll; }
 
 .n-table__body .n-table__row {
   height: 40px;

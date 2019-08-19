@@ -228,10 +228,14 @@ export default {
 
         calculateHeight()
         {
-            this.height = Dom.find(this.$refs.head).height() +
-                Dom.find(this.$refs.body).child().height();
+            this.scroll = this.$refs.body.scrollHeight - 1 >
+                this.$refs.body.clientHeight;
 
-            this.scroll = this.$el.scrollHeight > this.height;
+            this.visible = this.$refs.body.offsetWidth -
+                this.$refs.body.clientWidth;
+
+            this.height = Dom.find(this.$refs.head).height() +
+                Dom.find(this.$refs.body).child().height() + 1;
         },
 
         bindObserver()
@@ -242,10 +246,24 @@ export default {
                 element = this.adaptHeight;
             }
 
-            Dom.find(element).observerDimentions(() => {
-                this.height = Dom.find(element).height();
-                this.scroll = this.$el.scrollHeight > this.height;
-            })(element);
+            Dom.find(element).observerDimentions(this.updateObserver)(element);
+        },
+
+        updateObserver()
+        {
+            let element = this.$el.parentNode;
+
+            if ( this.adaptHeight !== true ) {
+                element = this.adaptHeight;
+            }
+
+            this.scroll = this.$refs.body.scrollHeight >
+                this.$refs.body.clientHeight;
+
+            this.visible = this.$refs.body.offsetWidth -
+                this.$refs.body.clientWidth;
+
+            this.height = Dom.find(element).innerHeight();
         },
 
         selectPrevious()
@@ -322,6 +340,11 @@ export default {
 
     watch: {
 
+        items()
+        {
+            this.$nextTick(this.updateObserver);
+        },
+
         currentKey()
         {
             let current = Arr.find(this.items, {
@@ -356,6 +379,7 @@ export default {
             width: 0,
             height: 0,
             scroll: false,
+            visible: 0,
             columns: [],
             visibleColumns: [],
             currentKey: null,
@@ -454,7 +478,7 @@ export default {
                         }, [<span></span>]);
 
                         return (
-                            <div class={className} style={column.style} data-column-id={column._uid}>
+                            <div class={className} style={column.styleHead} data-column-id={column._uid}>
                                 { [column.$scopedSlots.label({ column: column }), resizer] }
                             </div>
                         );
@@ -506,7 +530,7 @@ export default {
                         }
 
                         return (
-                            <div class={className} style={column.style}>
+                            <div class={className} style={column.styleBody}>
                                 { column.$scopedSlots.default({ column: column, row: props.value, key: props.key }) }
                             </div>
                         );
@@ -557,11 +581,23 @@ export default {
         };
 
         let style = {
-            height: (this.height + 1) + 'px'
+            height: this.height + 'px'
         };
 
+        let classList = [
+            'n-table'
+        ];
+
+        if ( this.scroll === true ) {
+            classList.push('n-table--scroll');
+        }
+
+        if ( this.visible !== 0 ) {
+            classList.push('n-table--visible');
+        }
+
         return (
-            <div class={['n-table', this.scroll && 'n-table--scroll']}>
+            <div class={classList}>
                 <NCheckboxGroup vModel={this.selectedKeys}>
                     <div ref="wrapper" class="n-table-wrapper" style={style}>
                         <div ref="head" class="n-table__head">
