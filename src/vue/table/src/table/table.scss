@@ -17,6 +17,7 @@ $table-row-height: 40px !default;
 }
 
 .n-table .n-checkbox-group {
+    display: inline-flex;
     min-width: 100%;
     flex: 1 1 auto;
     overflow: hidden;
