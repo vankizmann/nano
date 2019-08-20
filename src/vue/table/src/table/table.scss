@@ -6,10 +6,14 @@ $table-row-height: 40px !default;
     position: relative;
     width: 100%;
     overflow-y: hidden;
-    overflow-x: auto;
+    overflow-x: hidden;
     border-radius: $radius-medium;
     border-left: 1px solid $color-gray-10;
     border-right: 1px solid $color-gray-10;
+}
+
+.n-table.n-table--scroll-x {
+    overflow-x: auto;
 }
 
 .n-table .n-draggable {
@@ -69,7 +73,7 @@ $table-row-height: 40px !default;
     border-bottom: 1px solid $color-gray-10;
 }
 
-.n-table.n-table--scroll.n-table--visible .n-table__head .n-table__row {
+.n-table.n-table--scroll-y.n-table--visible .n-table__head .n-table__row {
     padding-right: 15px;
 }
 
@@ -96,8 +100,8 @@ $table-row-height: 40px !default;
     margin-bottom: -1px;
 }
 
-.n-table.n-table--scroll .n-table__body {
-    overflow-y: scroll;
+.n-table.n-table--scroll-y .n-table__body {
+    overflow-y: auto;
 }
 
 .n-table__body .n-table__row {

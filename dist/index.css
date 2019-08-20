@@ -2444,10 +2444,13 @@
   position: relative;
   width: 100%;
   overflow-y: hidden;
-  overflow-x: auto;
+  overflow-x: hidden;
   border-radius: 3px;
   border-left: 1px solid #e8e9ea;
   border-right: 1px solid #e8e9ea; }
+
+.n-table.n-table--scroll-x {
+  overflow-x: auto; }
 
 .n-table .n-draggable {
   min-height: 100%; }
@@ -2498,7 +2501,7 @@
   height: 48px;
   border-bottom: 1px solid #e8e9ea; }
 
-.n-table.n-table--scroll.n-table--visible .n-table__head .n-table__row {
+.n-table.n-table--scroll-y.n-table--visible .n-table__head .n-table__row {
   padding-right: 15px; }
 
 .n-table__head .n-table__row > .n-table__column {
@@ -2520,8 +2523,8 @@
   overflow-y: hidden;
   margin-bottom: -1px; }
 
-.n-table.n-table--scroll .n-table__body {
-  overflow-y: scroll; }
+.n-table.n-table--scroll-y .n-table__body {
+  overflow-y: auto; }
 
 .n-table__body .n-table__row {
   height: 40px;
