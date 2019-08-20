@@ -340,11 +340,6 @@ export default {
 
     watch: {
 
-        items()
-        {
-            this.$nextTick(this.updateObserver);
-        },
-
         currentKey()
         {
             let current = Arr.find(this.items, {
@@ -426,6 +421,8 @@ export default {
         if ( this.adaptHeight === null ) {
             this.calculateHeight();
         }
+
+        this.$nextTick(this.updateObserver);
     },
 
     destroyed()
