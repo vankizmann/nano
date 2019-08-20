@@ -87,7 +87,7 @@ $table-row-height: 40px !default;
     border-right: none;
 }
 
-.n-table.n-table--scroll.n-table--visible .n-table__head .n-table__column:last-child {
+.n-table.n-table--scroll-y.n-table--visible .n-table__head .n-table__column:last-child {
     border-right: 1px solid $color-gray-10;
 }
 
@@ -96,6 +96,7 @@ $table-row-height: 40px !default;
     position: relative;
     flex: 1 1 auto;
     min-width: 100%;
+    overflow-x: hidden;
     overflow-y: hidden;
     margin-bottom: -1px;
 }
