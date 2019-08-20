@@ -23,6 +23,7 @@ $table-row-height: 40px !default;
 .n-table .n-checkbox-group {
     min-width: 100%;
     flex: 1 1 auto;
+    overflow: hidden;
 }
 
 .n-table-wrapper {
