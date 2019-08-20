@@ -39,6 +39,7 @@ $draggable-placeholder-size: 13px !default;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     min-height: $draggable-empty-height;
 }
 
