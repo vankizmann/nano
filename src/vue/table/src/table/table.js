@@ -569,9 +569,11 @@ export default {
 
         };
 
-        let style = {
-            height: this.height + 'px'
-        };
+        let style = {};
+
+        if ( this.height > 0 ) {
+            style.height = this.height + 'px';
+        }
 
         let classList = [
             'n-table'
