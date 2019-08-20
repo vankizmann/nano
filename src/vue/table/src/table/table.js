@@ -362,7 +362,7 @@ export default {
             width: 0,
             height: 0,
             scrollx: false,
-            scrolly: false,
+            scroll: false,
             visible: 0,
             columns: [],
             visibleColumns: [],
@@ -411,10 +411,7 @@ export default {
             this.calculateHeight();
         }
 
-        this.scrollx = this.$el.scrollWidth >
-            this.$el.clientWidth;
-
-        this.scrolly = this.$refs.body.scrollHeight >
+        this.scroll = this.$refs.body.scrollHeight >
             this.$refs.body.clientHeight;
 
         this.visible = this.$refs.body.offsetWidth -
@@ -583,12 +580,8 @@ export default {
             'n-table'
         ];
 
-        if ( this.scrollx === true ) {
-            classList.push('n-table--scroll-x');
-        }
-
-        if ( this.scrolly === true ) {
-            classList.push('n-table--scroll-y');
+        if ( this.scroll === true ) {
+            classList.push('n-table--scroll');
         }
 
         if ( this.visible !== 0 ) {
