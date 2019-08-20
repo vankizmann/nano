@@ -228,12 +228,6 @@ export default {
 
         calculateHeight()
         {
-            this.scroll = this.$refs.body.scrollHeight - 1 >
-                this.$refs.body.clientHeight;
-
-            this.visible = this.$refs.body.offsetWidth -
-                this.$refs.body.clientWidth;
-
             this.height = Dom.find(this.$refs.head).height() +
                 Dom.find(this.$refs.body).child().height() + 1;
         },
@@ -256,12 +250,6 @@ export default {
             if ( this.adaptHeight !== true ) {
                 element = this.adaptHeight;
             }
-
-            this.scroll = this.$refs.body.scrollHeight >
-                this.$refs.body.clientHeight;
-
-            this.visible = this.$refs.body.offsetWidth -
-                this.$refs.body.clientWidth;
 
             this.height = Dom.find(element).innerHeight();
         },
@@ -422,7 +410,11 @@ export default {
             this.calculateHeight();
         }
 
-        this.$nextTick(this.updateObserver);
+        this.scroll = this.$refs.body.scrollHeight >
+            this.$refs.body.clientHeight;
+
+        this.visible = this.$refs.body.offsetWidth -
+            this.$refs.body.clientWidth;
     },
 
     destroyed()
