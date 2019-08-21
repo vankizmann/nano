@@ -179,20 +179,6 @@ export default {
                     pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
                 }
 
-                // if ( offsetTop + nodeHeight > parentHeight ) {
-                //     pseudo.top = (parentHeight - nodeHeight) + 'px';
-                // }
-
-                // let offsetBottom = Dom.find(el).offsetBottom(this.boundry);
-                //
-                // if ( offsetBottom < 0 ) {
-                //     pseudo.to = (style.bottom + offsetBottom) + 'px';
-                // }
-
-                // if ( offsetBottom + nodeHeight > parentHeight ) {
-                //     pseudo.bottom = (parentHeight - nodeHeight) + 'px';
-                // }
-
                 let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body);
 
                 if ( offsetLeft > style.left ) {
@@ -205,21 +191,12 @@ export default {
                     pseudo.left = (boundryWidth + offsetLeft - nodeWidth) + 'px';
                 }
 
-                // if ( offsetLeft + nodeWidth > parentWidth ) {
-                //     pseudo.left = (parentWidth - nodeWidth) + 'px';
-                // }
-
-                // let offsetRight = Dom.find(el).offsetRight(this.boundry);
-                //
-                // if ( offsetRight < 0 ) {
-                //     pseudo.left = (style.left + offsetRight) + 'px';
-                // }
-
-                // if ( offsetRight + nodeWidth > parentWidth ) {
-                //     pseudo.right = (parentWidth - nodeWidth) + 'px';
-                // }
-
             }, pseudo);
+
+            if ( this.trigger !== 'context' ) {
+                pseudo.width = Dom.find(this.element).width() + 'px';
+                pseudo.height = Dom.find(this.element).height() + 'px';
+            }
 
             if ( this.nativeVisible === false && this.visible === false ) {
                 pseudo.display = 'none';
