@@ -925,8 +925,8 @@ export class Dom
         });
 
         let scroll = {
-            top: source.top - target.top,
-            bottom: source.bottom - target.bottom
+            top: source.top - target.top + window.scrollY,
+            left: source.left - target.left + window.scrollX
         };
 
         return key !== null ? Obj.get(scroll, key, 0) : scroll;
@@ -1005,13 +1005,11 @@ export class Dom
             Num.float(computedStyle.paddingBottom);
     }
 
-    realHeight()
+    realHeight(styles = {})
     {
         let height = 'auto';
 
-        this.actual(() => height = this.height(), {
-            display: 'block'
-        });
+        this.actual(() => height = this.height(), styles);
 
         return height;
     }
@@ -1080,11 +1078,11 @@ export class Dom
             Num.float(computedStyle.paddingRight);
     }
 
-    realWidth()
+    realWidth(styles = {})
     {
         let width = 0;
 
-        this.actual(() => width = this.width());
+        this.actual(() => width = this.width(), styles);
 
         return width;
     }

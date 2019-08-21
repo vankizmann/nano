@@ -101,14 +101,14 @@ export default {
             }
 
             let clientX = Dom.find(this.element).offsetLeft(document.body) -
-                Dom.find(this.parent).scrollLeft(null, document.body);
+                Dom.find(this.parent).scrollLeft(null, window);
 
             if ( this.trigger === 'context' ) {
                 clientX = this.clientX;
             }
 
             let clientY = Dom.find(this.element).offsetTop(document.body) -
-                Dom.find(this.parent).scrollTop(null, document.body);
+                Dom.find(this.parent).scrollTop(null, window);
 
             if ( this.trigger === 'context' ) {
                 clientY = this.clientY;
@@ -120,7 +120,10 @@ export default {
             let width = this.trigger === 'context' ?
                 0 : Dom.find(this.element).width();
 
-            let nodeWidth = Dom.find(this.node).realWidth();
+            let nodeWidth = Dom.find(this.node).realWidth({
+                width: width + 'px'
+            });
+
             let nodeHeight = Dom.find(this.node).realHeight();
 
             if ( this.position.match(/^top-(start|center|end)$/) ) {
@@ -194,7 +197,7 @@ export default {
             }, pseudo);
 
             if ( this.trigger !== 'context' ) {
-                pseudo.width = Dom.find(this.element).width() + 'px';
+                pseudo.width = width + 'px';
             }
 
             if ( this.nativeVisible === false && this.visible === false ) {

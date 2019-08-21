@@ -1922,6 +1922,7 @@
   display: inline-block; }
 
 .n-popover__frame {
+  width: 100%;
   position: relative;
   display: inline-flex;
   flex-direction: column; }
