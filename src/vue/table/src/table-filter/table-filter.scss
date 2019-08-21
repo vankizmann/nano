@@ -10,6 +10,11 @@ $table-filter-height: 18px !default;
     width: 100%;
 }
 
+.n-table-filter .n-popover__frame {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
 .n-table-filter__sort {
     cursor: pointer;
     position: relative;
