@@ -109,7 +109,7 @@ export class Menu
 
             $text.css({ display: 'block', width: 0 });
 
-            let width = Dom.find($text.get(0)).realWidth();
+            let width = Dom.find($text.get(0)).realWidth({ display: 'inline-block' });
 
             $text.velocity('stop')
                 .velocity({ width: width }, options);
@@ -120,7 +120,7 @@ export class Menu
         };
 
         let height = $nav.get(0) ? Dom.find($nav.get(0))
-            .realHeight() : 0;
+            .realHeight({ display: 'inline-block' }) : 0;
 
         if ( ! $(el).hasClass(this.getOpenClass()) ) {
             $nav.css({ display: 'block', height: 0 });
