@@ -195,7 +195,6 @@ export default {
 
             if ( this.trigger !== 'context' ) {
                 pseudo.width = Dom.find(this.element).width() + 'px';
-                pseudo.height = Dom.find(this.element).height() + 'px';
             }
 
             if ( this.nativeVisible === false && this.visible === false ) {
