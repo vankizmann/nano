@@ -1,4 +1,6 @@
-import { UUID, Num, Obj, Any, Dom, Locale } from "../../../../index";
+import { Nano } from "../../../../index";
+
+let { Obj, Any, Dom } = Nano;
 
 export default {
 
@@ -78,7 +80,7 @@ export default {
 
         parent()
         {
-            return Dom.find(this.node).parent().get(0);
+            return this.node.parentNode;
         },
 
         element()
@@ -87,7 +89,7 @@ export default {
                 return (this.node).previousElementSibling;
             }
 
-            return Dom.find(this.parent).find(this.selector).get(0);
+            return Dom.find(this.node).parent().find(this.selector).get(0);
         },
 
         style()
@@ -98,21 +100,17 @@ export default {
                 return { display: 'none' };
             }
 
-            let clientX = Dom.find(this.element).offsetLeft(this.parent) +
-                Dom.find(this.parent).scrollLeftGlobal();
+            let clientX = Dom.find(this.element).offsetLeft(this.parent);
 
-            // if ( this.trigger === 'context' ) {
-            //     clientX = this.clientX - Dom.find(this.parent).offsetLeft() +
-            //         Dom.find(this.parent).scrollLeftGlobal();
-            // }
+            if ( this.trigger === 'context' ) {
+                clientX = this.clientX + Dom.find(this.parent).scrollLeft();
+            }
 
-            let clientY = Dom.find(this.element).offsetTop(this.parent) +
-                Dom.find(this.parent).scrollTopGlobal();
+            let clientY = Dom.find(this.element).offsetTop(this.parent);
 
-            // if ( this.trigger === 'context' ) {
-            //     clientY = this.clientY - Dom.find(this.parent).offsetTop() +
-            //         Dom.find(this.parent).scrollTopGlobal();
-            // }
+            if ( this.trigger === 'context' ) {
+                clientY = this.clientY + Dom.find(this.parent).scrollTop();
+            }
 
             let height = this.trigger === 'context' ? 0 :
                 Dom.find(this.element).height();
@@ -120,8 +118,14 @@ export default {
             let width = this.trigger === 'context' ? 0 :
                 Dom.find(this.element).width();
 
+            let nodeWidth = Dom.find(this.node).realWidth();
+            let nodeHeight = Dom.find(this.node).realHeight();
+
+            let parentWidth = Dom.find(this.parent).scrollWidth();
+            let parentHeight = Dom.find(this.parent).scrollHeight();
+
             if ( this.position.match(/^top-(start|center|end)$/) ) {
-                style.bottom = clientY + height;
+                style.bottom = clientY;
             }
 
             if ( this.position.match(/^bottom-(start|center|end)$/) ) {
@@ -133,11 +137,11 @@ export default {
             }
 
             if ( this.position.match(/^(top|bottom)-end$/) ) {
-                style.left = clientX + width - Dom.find(this.node).realWidth();
+                style.left = clientX + width - nodeWidth;
             }
 
             if ( this.position.match(/^(top|bottom)-center$/) ) {
-                style.left = clientX + (width / 2) - (Dom.find(this.node).realWidth() / 2);
+                style.left = clientX + (width / 2) - (nodeWidth / 2);
             }
 
             if ( this.position.match(/^left-(start|center|end)$/) ) {
@@ -153,11 +157,11 @@ export default {
             }
 
             if ( this.position.match(/^(left|right)-end$/) ) {
-                style.top = clientY + height - Dom.find(this.node).realHeight();
+                style.top = clientY + height - nodeHeight;
             }
 
             if ( this.position.match(/^(left|right)-center$/) ) {
-                style.top = clientY + (height / 2) - (Dom.find(this.node).realHeight() / 2);
+                style.top = clientY + (height / 2) - (nodeHeight / 2);
             }
 
             let pseudo = Obj.map(Obj.clone(style), (prop) => prop + 'px');
@@ -170,10 +174,18 @@ export default {
                     pseudo.top = (style.top - offsetTop) + 'px';
                 }
 
+                if ( offsetTop + nodeHeight > parentHeight ) {
+                    pseudo.top = (parentHeight - nodeHeight) + 'px';
+                }
+
                 let offsetBottom = Dom.find(el).offsetBottom(this.boundry);
 
                 if ( offsetBottom < 0 ) {
-                    pseudo.top = (style.top + offsetBottom) + 'px';
+                    pseudo.bottom = (style.bottom + offsetBottom) + 'px';
+                }
+
+                if ( offsetBottom + nodeHeight > parentHeight ) {
+                    pseudo.bottom = (parentHeight - nodeHeight) + 'px';
                 }
 
                 let offsetLeft = Dom.find(el).offsetLeft(this.boundry);
@@ -182,10 +194,18 @@ export default {
                     pseudo.left = (style.left - offsetLeft) + 'px';
                 }
 
+                if ( offsetLeft + nodeWidth > parentWidth ) {
+                    pseudo.left = (parentWidth - nodeWidth) + 'px';
+                }
+
                 let offsetRight = Dom.find(el).offsetRight(this.boundry);
 
                 if ( offsetRight < 0 ) {
                     pseudo.left = (style.left + offsetRight) + 'px';
+                }
+
+                if ( offsetRight + nodeWidth > parentWidth ) {
+                    pseudo.right = (parentWidth - nodeWidth) + 'px';
                 }
 
             }, pseudo);

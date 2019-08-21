@@ -786,196 +786,182 @@ export class Dom
         return this;
     }
 
-    offsetLeft(target = null)
+    loopParent(callback, target = document.body)
     {
-        if ( target === null ) {
-            target = window;
+        for (let el = this.get(0); ! Any.isEmpty(el); el = el.parentNode) {
+
+            if ( Dom.find(el).is(target) === true ) {
+                return true;
+            }
+
+            callback.call({}, el);
         }
 
-        target = Dom.find(target);
+        return false;
+    }
 
-        let offset = 0, targetOffset = 0;
-
+    loopOffsetParent(callback, target = document.body)
+    {
         for (let el = this.get(0); ! Any.isEmpty(el); el = el.offsetParent) {
-            if ( el.offsetLeft !== undefined ) {
-                offset += Num.float(el.offsetLeft);
+
+            if ( Dom.find(el).is(target) === true ) {
+                return true;
             }
+
+            callback.call({}, el);
         }
 
-        for (let el = target.get(0); ! Any.isEmpty(el); el = el.offsetParent) {
-            if ( el.offsetLeft !== undefined ) {
-                targetOffset += Num.float(el.offsetLeft);
-            }
-        }
-
-        return offset - targetOffset;
+        return false;
     }
 
-    offsetRight(target = null)
+    offset(key = null, boundry = null)
     {
-        if ( target === null ) {
-            target = window;
-        }
+        let source = {
+            top: 0, left: 0, bottom: 0, right: 0
+        };
 
-        target = Dom.find(target);
+        this.loopOffsetParent((el) => {
 
-        let offset = Dom.find(window).width() - this.width(),
-            targetOffset = Dom.find(window).width() - target.width();
-
-        for (let el = this.get(0); ! Any.isEmpty(el); el = el.offsetParent) {
-            if ( el.offsetLeft !== undefined ) {
-                offset -= Num.float(el.offsetLeft);
+            if ( el.offsetTop ) {
+                source.top += Num.float(el.offsetTop);
             }
-        }
 
-        for (let el = target.get(0); ! Any.isEmpty(el); el = el.offsetParent) {
-            if ( el.offsetLeft !== undefined ) {
-                targetOffset -= Num.float(el.offsetLeft);
+            if ( el.offsetLeft ) {
+                source.left += Num.float(el.offsetLeft);
             }
-        }
 
-        return offset - targetOffset;
-    }
-
-    offsetTop(target = null)
-    {
-        if ( target === null ) {
-            target = window;
-        }
-
-        target = Dom.find(target);
-
-        let offset = 0, targetOffset = 0;
-
-        for (let el = this.get(0); ! Any.isEmpty(el); el = el.offsetParent) {
-            if ( el.offsetTop !== undefined ) {
-                offset += Num.float(el.offsetTop);
-            }
-        }
-
-        for (let el = target.get(0); ! Any.isEmpty(el); el = el.offsetParent) {
-            if ( el.offsetTop !== undefined ) {
-                targetOffset += Num.float(el.offsetTop);
-            }
-        }
-
-        return offset - targetOffset;
-    }
-
-    offsetBottom(target = null)
-    {
-        if ( target === null ) {
-            target = window;
-        }
-
-        target = Dom.find(target);
-
-        let offset = Dom.find(window).height() - this.height(),
-            targetOffset = Dom.find(window).height() - target.height();
-
-        for (let el = this.get(0); Any.isEmpty(el) === false; el = el.offsetParent) {
-            if ( el.offsetTop !== undefined ) {
-                offset -= Num.float(el.offsetTop);
-            }
-        }
-
-        for (let el = target.get(0); Any.isEmpty(el) === false; el = el.offsetParent) {
-            if ( el.offsetTop !== undefined ) {
-                targetOffset -= Num.float(el.offsetTop);
-            }
-        }
-
-        return offset - targetOffset;
-    }
-
-    scrollTop(val = undefined)
-    {
-        if ( val === undefined ) {
-            return this.get(0).scrollTop;
-        }
-
-        this.each((el) => {
-            el.scrollTop = val;
         });
+
+        source.bottom = document.body.scrollHeight -
+            source.top - this.height();
+
+        source.right = document.body.scrollWidth -
+            source.left - this.width();
+
+        let target = {
+            top: 0, left: 0, bottom: 0, right: 0
+        };
+
+        Dom.find(boundry).loopOffsetParent((el) => {
+
+            if ( el.offsetTop ) {
+                target.top += Num.float(el.offsetTop);
+            }
+
+            if ( el.offsetLeft ) {
+                target.left += Num.float(el.offsetLeft);
+            }
+
+        });
+
+        target.bottom = document.body.scrollHeight -
+            target.top - Dom.find(boundry).scrollHeight();
+
+        target.right = document.body.scrollWidth -
+            target.left - Dom.find(boundry).scrollHeight();
+
+        let offset = {
+            top: source.top - target.top,
+            bottom: source.bottom - target.bottom,
+            left: source.left - target.left,
+            right: source.right - target.right
+        };
+
+        return key !== null ? Obj.get(offset, key, 0) : offset;
+    }
+
+    offsetTop(boundry = null)
+    {
+        return this.offset('top', boundry);
+    }
+
+    offsetBottom(boundry = null)
+    {
+        return this.offset('bottom', boundry);
+    }
+
+    offsetLeft(boundry = null)
+    {
+        return this.offset('left', boundry);
+    }
+
+    offsetRight(boundry = null)
+    {
+        return this.offset('right', boundry);
+    }
+
+    scroll(key = null, boundry = null)
+    {
+        let source = {
+            top: 0, left: 0
+        };
+
+        this.loopParent((el) => {
+
+            if ( el.scrollTop ) {
+                source.top += Num.float(el.scrollTop);
+            }
+
+            if ( el.scrollLeft ) {
+                source.left += Num.float(el.scrollLeft);
+            }
+
+        });
+
+        let target = {
+            top: 0, left: 0
+        };
+
+        Dom.find(boundry).loopParent((el) => {
+
+            if ( el.scrollTop ) {
+                target.top += Num.float(el.scrollTop);
+            }
+
+            if ( el.scrollLeft ) {
+                target.left += Num.float(el.scrollLeft);
+            }
+
+        });
+
+        let scroll = {
+            top: source.top - target.top,
+            bottom: source.bottom - target.bottom
+        };
+
+        return key !== null ? Obj.get(scroll, key, 0) : scroll;
+    }
+
+    scrollTop(val = null, boundry = null)
+    {
+        if ( val === null ) {
+            return this.scroll('top', boundry);
+        }
+
+        this.each((el) => el.scrollTop = val);
 
         return this;
     }
 
     scrollTopGlobal()
     {
-        let scrollTop = 0;
-
-        for (let el = this.get(0); el !== null; el = el.parentNode) {
-            if ( el.scrollTop !== undefined ) {
-                scrollTop += el.scrollTop;
-            }
-        }
-
-        return scrollTop;
+        return this.scroll('top', document.body);
     }
 
-    scrollTopBoundry(target)
+    scrollLeft(val = null, boundry = null)
     {
-        let scrollTop = 0;
-
-        for (let el = this.get(0); el !== null; el = el.parentNode) {
-
-            if ( Dom.find(el).is(target) ) {
-                return scrollTop;
-            }
-
-            if ( el.scrollTop !== undefined ) {
-                scrollTop += el.scrollTop;
-            }
-
+        if ( val === null ) {
+            return this.scroll('top', boundry);
         }
 
-        return scrollTop;
-    }
-
-    scrollLeft(val = undefined)
-    {
-        if ( val === undefined ) {
-            return this.get(0).scrollLeft;
-        }
-
-        this.each((el) => {
-            el.scrollLeft = val;
-        });
+        this.each((el) => el.scrollLeft = val);
 
         return this;
     }
 
     scrollLeftGlobal()
     {
-        let scrollLeft = 0;
-
-        for (let el = this.get(0); el !== null; el = el.parentNode) {
-            if ( el.scrollLeft !== undefined ) {
-                scrollLeft += el.scrollLeft;
-            }
-        }
-
-        return scrollLeft;
-    }
-
-    scrollLeftBoundry(target)
-    {
-        let scrollLeft = 0;
-
-        for (let el = this.get(0); el !== null; el = el.parentNode) {
-
-            if ( Dom.find(el).is(target) ) {
-                return scrollLeft;
-            }
-
-            if ( el.scrollLeft !== undefined ) {
-                scrollLeft += el.scrollLeft;
-            }
-
-        }
-
-        return scrollLeft;
+        return this.scroll('left', document.body);
     }
 
     height()
@@ -991,6 +977,17 @@ export class Dom
         }
 
         return el.offsetHeight;
+    }
+
+    scrollHeight()
+    {
+        let el = this.get(0);
+
+        if ( Any.isEmpty(el) ) {
+            return 0;
+        }
+
+        return el.scrollHeight;
     }
 
     innerHeight()
@@ -1055,6 +1052,17 @@ export class Dom
         }
 
         return el.offsetWidth;
+    }
+
+    scrollWidth()
+    {
+        let el = this.get(0);
+
+        if ( Any.isEmpty(el) ) {
+            return 0;
+        }
+
+        return el.scrollWidth;
     }
 
     innerWidth()
