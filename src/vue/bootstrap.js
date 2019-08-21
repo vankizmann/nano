@@ -12,7 +12,7 @@ require('./select/index');
 require('./cascader/index');
 require('./transfer/index');
 require('./file/index');
-require('./matrix/index');
+// require('./matrix/index');
 require('./popover/index');
 require('./modal/index');
 require('./confirm/index');
