@@ -98,19 +98,21 @@ export default {
                 return { display: 'none' };
             }
 
-            let clientX = Dom.find(this.element).offsetLeft(this.parent);
+            let clientX = Dom.find(this.element).offsetLeft(this.parent) +
+                Dom.find(this.parent).scrollLeftGlobal();
 
-            if ( this.trigger === 'context' ) {
-                clientX = this.clientX - Dom.find(this.parent).offsetLeft() +
-                    Dom.find(this.parent).scrollLeftGlobal();
-            }
+            // if ( this.trigger === 'context' ) {
+            //     clientX = this.clientX - Dom.find(this.parent).offsetLeft() +
+            //         Dom.find(this.parent).scrollLeftGlobal();
+            // }
 
-            let clientY = Dom.find(this.element).offsetTop(this.parent);
+            let clientY = Dom.find(this.element).offsetTop(this.parent) +
+                Dom.find(this.parent).scrollTopGlobal();
 
-            if ( this.trigger === 'context' ) {
-                clientY = this.clientY - Dom.find(this.parent).offsetTop() +
-                    Dom.find(this.parent).scrollTopGlobal();
-            }
+            // if ( this.trigger === 'context' ) {
+            //     clientY = this.clientY - Dom.find(this.parent).offsetTop() +
+            //         Dom.find(this.parent).scrollTopGlobal();
+            // }
 
             let height = this.trigger === 'context' ? 0 :
                 Dom.find(this.element).height();
