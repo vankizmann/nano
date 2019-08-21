@@ -11,12 +11,12 @@ $table-filter-height: 18px !default;
 }
 
 .n-table-filter .n-popover {
-    width: auto !important;
-    min-width: 180px;
-    max-width: 260px;
+    width: 100%;
+    min-width: 200px !important;
+    max-width: 260px !important;
 }
 
-.n-table-filter .n-popover__frame {
+.n-table-filter .n-popover__body {
     max-height: 280px;
     overflow-y: auto;
 }

@@ -121,10 +121,12 @@ export default {
                 0 : Dom.find(this.element).width();
 
             let nodeWidth = Dom.find(this.node).realWidth({
-                width: width + 'px'
+                'max-width': width + 'px'
             });
 
-            let nodeHeight = Dom.find(this.node).realHeight();
+            let nodeHeight = Dom.find(this.node).realHeight({
+                'max-width': width + 'px'
+            });
 
             if ( this.position.match(/^top-(start|center|end)$/) ) {
                 style.top = clientY - nodeHeight;
@@ -143,6 +145,7 @@ export default {
             }
 
             if ( this.position.match(/^(top|bottom)-center$/) ) {
+                console.log(clientX, (width / 2), nodeWidth, (nodeWidth / 2));
                 style.left = clientX + (width / 2) - (nodeWidth / 2);
             }
 
@@ -197,7 +200,7 @@ export default {
             }, pseudo);
 
             if ( this.trigger !== 'context' ) {
-                pseudo.width = width + 'px';
+                pseudo['max-width'] = width + 'px';
             }
 
             if ( this.nativeVisible === false && this.visible === false ) {

@@ -19,7 +19,7 @@ $cascader-option-padding: 6px 12px !default;
     display: inline-flex;
     flex-direction: row;
     text-align: left;
-    max-width: 100%;
+    max-width: 100% !important;
 }
 
 .n-cascader__wrapper .n-popover .n-popover {
@@ -28,9 +28,6 @@ $cascader-option-padding: 6px 12px !default;
 
 .n-cascader__wrapper .n-popover__frame {
     flex: 0 0 auto;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
 }
 
 .n-cascader__wrapper .n-popover__body {
@@ -181,7 +178,7 @@ $cascader-option-padding: 6px 12px !default;
     display: flex;
     flex-direction: column;
     max-height: 280px;
-    min-width: 180px;
+    width: 200px;
     border-left: 1px solid $color-gray-10;
 }
 
