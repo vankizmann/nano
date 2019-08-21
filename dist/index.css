@@ -2716,7 +2716,7 @@
   width: 100%; }
 
 .n-table-filter .n-popover__frame {
-  max-height: 320px;
+  max-height: 280px;
   overflow-y: auto; }
 
 .n-table-filter__sort {
