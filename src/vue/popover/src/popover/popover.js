@@ -100,32 +100,31 @@ export default {
                 return { display: 'none' };
             }
 
-            let clientX = Dom.find(this.element).offsetLeft(this.parent);
+            let clientX = Dom.find(this.element).offsetLeft(document.body) -
+                Dom.find(this.parent).scrollLeft(null, document.body);
 
             if ( this.trigger === 'context' ) {
-                clientX = this.clientX + Dom.find(this.parent).scrollLeft();
+                clientX = this.clientX;
             }
 
-            let clientY = Dom.find(this.element).offsetTop(this.parent);
+            let clientY = Dom.find(this.element).offsetTop(document.body) -
+                Dom.find(this.parent).scrollTop(null, document.body);
 
             if ( this.trigger === 'context' ) {
-                clientY = this.clientY + Dom.find(this.parent).scrollTop();
+                clientY = this.clientY;
             }
 
-            let height = this.trigger === 'context' ? 0 :
-                Dom.find(this.element).height();
+            let height = this.trigger === 'context' ?
+                0 : Dom.find(this.element).height();
 
-            let width = this.trigger === 'context' ? 0 :
-                Dom.find(this.element).width();
+            let width = this.trigger === 'context' ?
+                0 : Dom.find(this.element).width();
 
             let nodeWidth = Dom.find(this.node).realWidth();
             let nodeHeight = Dom.find(this.node).realHeight();
 
-            let parentWidth = Dom.find(this.parent).scrollWidth();
-            let parentHeight = Dom.find(this.parent).scrollHeight();
-
             if ( this.position.match(/^top-(start|center|end)$/) ) {
-                style.bottom = clientY;
+                style.top = clientY - nodeHeight;
             }
 
             if ( this.position.match(/^bottom-(start|center|end)$/) ) {
@@ -145,7 +144,7 @@ export default {
             }
 
             if ( this.position.match(/^left-(start|center|end)$/) ) {
-                style.left = clientX;
+                style.left = clientX - nodeWidth;
             }
 
             if ( this.position.match(/^right-(start|center|end)$/) ) {
@@ -168,45 +167,57 @@ export default {
 
             Dom.find(this.node).actual((el) => {
 
-                let offsetTop = Dom.find(el).offsetTop(this.boundry);
+                let offsetTop = Dom.find(this.boundry).offsetTop(document.body);
 
-                if ( offsetTop < 0 ) {
-                    pseudo.top = (style.top - offsetTop) + 'px';
+                if ( offsetTop > style.top ) {
+                    pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
                 }
 
-                if ( offsetTop + nodeHeight > parentHeight ) {
-                    pseudo.top = (parentHeight - nodeHeight) + 'px';
+                let boundryHeight = Dom.find(this.boundry).height();
+
+                if ( style.top + nodeHeight > boundryHeight + offsetTop ) {
+                    pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
                 }
 
-                let offsetBottom = Dom.find(el).offsetBottom(this.boundry);
+                // if ( offsetTop + nodeHeight > parentHeight ) {
+                //     pseudo.top = (parentHeight - nodeHeight) + 'px';
+                // }
 
-                if ( offsetBottom < 0 ) {
-                    pseudo.bottom = (style.bottom + offsetBottom) + 'px';
+                // let offsetBottom = Dom.find(el).offsetBottom(this.boundry);
+                //
+                // if ( offsetBottom < 0 ) {
+                //     pseudo.to = (style.bottom + offsetBottom) + 'px';
+                // }
+
+                // if ( offsetBottom + nodeHeight > parentHeight ) {
+                //     pseudo.bottom = (parentHeight - nodeHeight) + 'px';
+                // }
+
+                let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body);
+
+                if ( offsetLeft > style.left ) {
+                    pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
                 }
 
-                if ( offsetBottom + nodeHeight > parentHeight ) {
-                    pseudo.bottom = (parentHeight - nodeHeight) + 'px';
+                let boundryWidth = Dom.find(this.boundry).width();
+
+                if ( style.left + nodeWidth > boundryWidth + offsetLeft ) {
+                    pseudo.left = (boundryWidth + offsetLeft - nodeWidth) + 'px';
                 }
 
-                let offsetLeft = Dom.find(el).offsetLeft(this.boundry);
+                // if ( offsetLeft + nodeWidth > parentWidth ) {
+                //     pseudo.left = (parentWidth - nodeWidth) + 'px';
+                // }
 
-                if ( offsetLeft < 0 ) {
-                    pseudo.left = (style.left - offsetLeft) + 'px';
-                }
+                // let offsetRight = Dom.find(el).offsetRight(this.boundry);
+                //
+                // if ( offsetRight < 0 ) {
+                //     pseudo.left = (style.left + offsetRight) + 'px';
+                // }
 
-                if ( offsetLeft + nodeWidth > parentWidth ) {
-                    pseudo.left = (parentWidth - nodeWidth) + 'px';
-                }
-
-                let offsetRight = Dom.find(el).offsetRight(this.boundry);
-
-                if ( offsetRight < 0 ) {
-                    pseudo.left = (style.left + offsetRight) + 'px';
-                }
-
-                if ( offsetRight + nodeWidth > parentWidth ) {
-                    pseudo.right = (parentWidth - nodeWidth) + 'px';
-                }
+                // if ( offsetRight + nodeWidth > parentWidth ) {
+                //     pseudo.right = (parentWidth - nodeWidth) + 'px';
+                // }
 
             }, pseudo);
 

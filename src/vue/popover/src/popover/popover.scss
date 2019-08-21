@@ -11,13 +11,14 @@ $popover-tooltip-padding: 3px 9px !default;
 
 .n-popover {
     z-index: 1000;
-    position: absolute;
+    position: fixed;
     padding: 3px;
+    display: inline-block;
 }
 
 .n-popover__frame {
     position: relative;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
 }
 

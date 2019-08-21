@@ -1918,12 +1918,13 @@
 
 .n-popover {
   z-index: 1000;
-  position: absolute;
-  padding: 3px; }
+  position: fixed;
+  padding: 3px;
+  display: inline-block; }
 
 .n-popover__frame {
   position: relative;
-  display: flex;
+  display: inline-flex;
   flex-direction: column; }
 
 .n-popover.n-popover--default .n-popover__frame {

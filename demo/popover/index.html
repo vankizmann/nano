@@ -22,7 +22,7 @@
 
         <div id="test" style="position: relative; background: yellow; height: 300px; overflow-y: auto;">
 
-            <a href="javascript:void(0)" style="margin-left: 40px;">Popover 1</a>
+            <a href="javascript:void(0)">Popover 1</a>
             <n-popover trigger="click" boundry="#test">
                 Hello 1!
             </n-popover>
@@ -65,6 +65,10 @@
                 Hello 2!
             </n-popover>
         </div>
+
+        <n-popover trigger="context" boundry="#test">
+            Context!
+        </n-popover>
 
     </div>
 </div>

@@ -951,7 +951,7 @@ export class Dom
     scrollLeft(val = null, boundry = null)
     {
         if ( val === null ) {
-            return this.scroll('top', boundry);
+            return this.scroll('left', boundry);
         }
 
         this.each((el) => el.scrollLeft = val);
