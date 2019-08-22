@@ -1924,30 +1924,33 @@
   max-width: 280px !important; }
 
 .n-popover__frame {
-  width: 100%;
   position: relative;
   display: inline-flex;
   flex-direction: column; }
 
 .n-popover.n-popover--default .n-popover__frame {
+  width: 100%;
   font-size: 14px;
   background: var(--color-white);
   border-radius: 1.5px;
   box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
 
 .n-popover.n-popover--select .n-popover__frame {
+  width: 100%;
   font-size: 14px;
   background: var(--color-white);
   border-radius: 1.5px;
   box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
 
 .n-popover.n-popover--cascader .n-popover__frame {
+  width: auto;
   font-size: 14px;
   background: var(--color-white);
   border-radius: 1.5px;
   box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
 
 .n-popover.n-popover--tooltip .n-popover__frame {
+  width: auto;
   color: var(--color-white);
   font-size: 12px;
   background: rgba(27, 34, 41, 0.85);
