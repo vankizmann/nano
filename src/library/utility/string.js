@@ -24,11 +24,33 @@ export class Str
         return this.lower(val).indexOf(this.lower(search)) !== -1;
     }
 
+    static filesize(val, decimals = 1)
+    {
+        let size = null;
+
+        let units = [
+            'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'
+        ];
+
+        Arr.each(units, (unit, count) => {
+
+            let limit = Math.pow(1000, Any.integer(count));
+
+            if ( val <= limit) {
+                return;
+            }
+
+            size = Num.fixed(val / limit, decimals) + ' ' + unit;
+        });
+
+        return size;
+    }
+
 
     /**
      * Parse param string to object (e.g. foo: bar; test: lorem).
      */
-    static objectify(params, seperator = ';')
+    static objectify(params)
     {
         let parsed = {};
 
