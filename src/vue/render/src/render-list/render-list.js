@@ -41,7 +41,7 @@ export default {
         itemHeight: {
             default()
             {
-                return 30;
+                return 0;
             }
         },
 

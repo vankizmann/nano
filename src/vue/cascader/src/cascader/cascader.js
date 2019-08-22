@@ -158,13 +158,11 @@ export default {
     watch: {
 
         cascade: {
-            handler: 'solveNativeCascade',
-            intermediate: true
+            handler: 'solveNativeCascade'
         },
 
         nativeCascade: {
-            handler: 'solveSelectedCascade',
-            intermediate: true
+            handler: 'solveSelectedCascade'
         },
 
     },
@@ -174,6 +172,11 @@ export default {
         return {
             visible: false, timeout: null, hoverCascade: [null], nativeCascade: [], selectedCascade: []
         };
+    },
+
+    beforeMount()
+    {
+        this.solveNativeCascade();
     },
 
     renderItem(item, index)
