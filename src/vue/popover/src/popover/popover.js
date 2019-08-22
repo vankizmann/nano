@@ -172,7 +172,8 @@ export default {
 
             Dom.find(this.node).actual((el) => {
 
-                let offsetTop = Dom.find(this.boundry).offsetTop(document.body);
+                let offsetTop = Dom.find(this.boundry).offsetTop(document.body) -
+                    window.scrollY;
 
                 if ( offsetTop > style.top ) {
                     pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
@@ -184,7 +185,8 @@ export default {
                     pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
                 }
 
-                let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body);
+                let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body) -
+                    window.scrollX;
 
                 if ( offsetLeft > style.left ) {
                     pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
@@ -225,13 +227,14 @@ export default {
             if ( this.nativeVisible === true ) {
 
                 Any.delay(() => {
-                    Dom.find(this.node).addClass('n-modal--open');
+                    Dom.find(this.node).addClass('n-popover--open');
                 });
 
                 Dom.find(this.element).addClass('n-popover--open');
             }
 
             if ( this.nativeVisible === false ) {
+                Dom.find(this.node).removeClass('n-popover--open');
                 Dom.find(this.element).removeClass('n-popover--open');
             }
         }
