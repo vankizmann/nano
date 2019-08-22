@@ -20,6 +20,14 @@ export default {
             type: [Boolean]
         },
 
+        width: {
+            default()
+            {
+                return 0;
+            },
+            type: [Number]
+        },
+
         disabled: {
             default()
             {
@@ -120,13 +128,16 @@ export default {
             let width = this.trigger === 'context' ?
                 0 : Dom.find(this.element).width();
 
-            let nodeWidth = Dom.find(this.node).realWidth({
-                'max-width': width + 'px'
-            });
+            let reset = {
+                'max-width': (this.width || width) + 'px'
+            };
 
-            let nodeHeight = Dom.find(this.node).realHeight({
-                'max-width': width + 'px'
-            });
+            if ( this.width ) {
+                reset.width = this.width + 'px';
+            }
+
+            let nodeWidth = Dom.find(this.node).realWidth(reset);
+            let nodeHeight = Dom.find(this.node).realHeight(reset);
 
             if ( this.position.match(/^top-(start|center|end)$/) ) {
                 style.top = clientY - nodeHeight;
@@ -201,7 +212,7 @@ export default {
             }, pseudo);
 
             if ( this.trigger !== 'context' ) {
-                pseudo['max-width'] = width + 'px';
+                pseudo['max-width'] = (this.width || width) + 'px';
             }
 
             if ( this.nativeVisible === false && this.visible === false ) {
@@ -404,6 +415,12 @@ export default {
             'n-popover--' + this.type,
             'n-popover--' + this.position
         ];
+
+        let style = this.style;
+
+        if ( this.width ) {
+            style.width = this.width + 'px';
+        }
 
         return (
             <div class={className} style={this.style}>
