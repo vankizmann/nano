@@ -145,7 +145,6 @@ export default {
             }
 
             if ( this.position.match(/^(top|bottom)-center$/) ) {
-                console.log(clientX, (width / 2), nodeWidth, (nodeWidth / 2));
                 style.left = clientX + (width / 2) - (nodeWidth / 2);
             }
 
