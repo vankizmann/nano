@@ -74,10 +74,16 @@ export default {
         };
     },
 
+    watch: {
+
+        tabs: {
+            handler: 'getTab'
+        }
+
+    },
+
     updated()
     {
-        this.getTab();
-
         let width = Dom.find(this.$el)
             .find('.n-tabs__tab--current').width();
 
