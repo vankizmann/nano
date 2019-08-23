@@ -6,13 +6,15 @@ module.exports = function (api) {
         [
             '@babel/preset-env',
             {
-                modules: false
+                modules: false,
+                useBuiltIns: 'entry'
             }
         ],
         [
             "@vue/babel-preset-jsx",
             {
-                modules: false
+                modules: false,
+                useBuiltIns: 'entry'
             }
         ]
     ];
