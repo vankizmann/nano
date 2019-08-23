@@ -22,7 +22,7 @@ export default {
 
     methods: {
 
-        getMountedCurrent()
+        getTab()
         {
             if ( this.tabs.length === 0) {
                 return;
@@ -32,15 +32,13 @@ export default {
                 name: this.nativeCurrent
             });
 
-            console.log(isset);
-
             if ( isset !== null ) {
                 return;
             }
 
             let tab = Arr.first(this.tabs);
 
-            this.$emit('input', this.nativeCurrent = tab.name);
+            this.nativeCurrent = tab.name
         },
 
         addTab(tab)
@@ -76,13 +74,10 @@ export default {
         };
     },
 
-    mounted()
-    {
-        this.$nextTick(this.getMountedCurrent)
-    },
-
     updated()
     {
+        this.getTab();
+
         let width = Dom.find(this.$el)
             .find('.n-tabs__tab--current').width();
 
