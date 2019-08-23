@@ -24,6 +24,10 @@ export default {
 
         getMountedCurrent()
         {
+            if ( this.tabs.length === 0) {
+                return;
+            }
+
             let isset = Arr.find(this.tabs, {
                 name: this.nativeCurrent
             });
@@ -36,7 +40,7 @@ export default {
 
             let tab = Arr.first(this.tabs);
 
-            this.$emit(this.nativeCurrent = tab.name);
+            this.$emit('input', this.nativeCurrent = tab.name);
         },
 
         addTab(tab)
