@@ -30,7 +30,6 @@ $color-danger:          #fd2f51 !default;
 $color-info:            #62686d !default;
 
 $color-background:      #f7fafc !default;
-$color-border:          #ebeef5 !default;
 
 $color-primary-light:       lighten($color-primary, 5%) !default;
 $color-primary-lighter:     lighten($color-primary, 10%) !default;
@@ -68,6 +67,12 @@ $color-info-lighter:        lighten($color-info, 10%) !default;
 $color-info-dark:           darken($color-info, 5%) !default;
 $color-info-darker:         darken($color-info, 10%) !default;
 
+$color-background-light:    lighten($color-background, 5%) !default;
+$color-background-lighter:  lighten($color-background, 10%) !default;
+
+$color-background-dark:     darken($color-background, 5%) !default;
+$color-background-darker:   darken($color-background, 10%) !default;
+
 $transition-short: 0.12s !default;
 $transition-medium: 0.24s !default;
 $transition-long: 0.48s !default;
@@ -82,6 +87,26 @@ $radius-extended: 9px !default;
     --color-black:              #{$color-black};
     --color-white:              #{$color-white};
 
+    --color-gray-05:            #{$color-gray-05};
+    --color-gray-10:            #{$color-gray-10};
+    --color-gray-15:            #{$color-gray-15};
+    --color-gray-20:            #{$color-gray-20};
+    --color-gray-25:            #{$color-gray-25};
+    --color-gray-30:            #{$color-gray-30};
+    --color-gray-35:            #{$color-gray-35};
+    --color-gray-40:            #{$color-gray-40};
+    --color-gray-45:            #{$color-gray-45};
+    --color-gray-50:            #{$color-gray-50};
+    --color-gray-55:            #{$color-gray-55};
+    --color-gray-60:            #{$color-gray-60};
+    --color-gray-65:            #{$color-gray-65};
+    --color-gray-70:            #{$color-gray-70};
+    --color-gray-75:            #{$color-gray-75};
+    --color-gray-80:            #{$color-gray-80};
+    --color-gray-85:            #{$color-gray-85};
+    --color-gray-90:            #{$color-gray-90};
+    --color-gray-95:            #{$color-gray-95};
+
     --color-primary:            #{$color-primary};
     --color-secondary:          #{$color-secondary};
 
@@ -91,7 +116,6 @@ $radius-extended: 9px !default;
     --color-info:               #{$color-info};
 
     --color-background:         #{$color-background};
-    --color-border:             #{$color-border};
 
     --color-primary-light:      #{$color-primary-light};
     --color-primary-lighter:    #{$color-primary-lighter};
@@ -128,54 +152,86 @@ $radius-extended: 9px !default;
 
     --color-info-dark:          #{$color-info-dark};
     --color-info-darker:        #{$color-info-darker};
+
+    --color-background-light:   #{$color-background-light};
+    --color-background-lighter: #{$color-background-lighter};
+
+    --color-background-dark:    #{$color-background-dark};
+    --color-background-darker:  #{$color-background-darker};
 }
 
-$--color-black:             var(--color-black);
-$--color-white:             var(--color-white);
+$--color-black:                 var(--color-black);
+$--color-white:                 var(--color-white);
 
-$--color-primary:           var(--color-primary);
-$--color-secondary:         var(--color-secondary);
+$--color-gray-05:               var(--color-gray-05);
+$--color-gray-10:               var(--color-gray-10);
+$--color-gray-15:               var(--color-gray-15);
+$--color-gray-20:               var(--color-gray-20);
+$--color-gray-25:               var(--color-gray-25);
+$--color-gray-30:               var(--color-gray-30);
+$--color-gray-35:               var(--color-gray-35);
+$--color-gray-40:               var(--color-gray-40);
+$--color-gray-45:               var(--color-gray-45);
+$--color-gray-50:               var(--color-gray-50);
+$--color-gray-55:               var(--color-gray-55);
+$--color-gray-60:               var(--color-gray-60);
+$--color-gray-65:               var(--color-gray-65);
+$--color-gray-70:               var(--color-gray-70);
+$--color-gray-75:               var(--color-gray-75);
+$--color-gray-80:               var(--color-gray-80);
+$--color-gray-85:               var(--color-gray-85);
+$--color-gray-90:               var(--color-gray-90);
+$--color-gray-95:               var(--color-gray-95);
 
-$--color-success:           var(--color-success);
-$--color-warning:           var(--color-warning);
-$--color-danger:            var(--color-danger);
-$--color-info:              var(--color-info);
+$--color-primary:               var(--color-primary);
+$--color-secondary:             var(--color-secondary);
 
-$--color-background:        var(--color-background);
-$--color-border:            var(--color-border);
+$--color-success:               var(--color-success);
+$--color-warning:               var(--color-warning);
+$--color-danger:                var(--color-danger);
+$--color-info:                  var(--color-info);
 
-$--color-primary-light:     var(--color-primary-light);
-$--color-primary-lighter:   var(--color-primary-lighter);
+$--color-background:            var(--color-background);
+$--color-border:                var(--color-border);
 
-$--color-primary-dark:      var(--color-primary-dark);
-$--color-primary-darker:    var(--color-primary-darker);
+$--color-primary-light:         var(--color-primary-light);
+$--color-primary-lighter:       var(--color-primary-lighter);
 
-$--color-secondary-light:   var(--color-secondary-light);
-$--color-secondary-lighter: var(--color-secondary-lighter);
+$--color-primary-dark:          var(--color-primary-dark);
+$--color-primary-darker:        var(--color-primary-darker);
 
-$--color-secondary-dark:    var(--color-secondary-dark);
-$--color-secondary-darker:  var(--color-secondary-darker);
+$--color-secondary-light:       var(--color-secondary-light);
+$--color-secondary-lighter:     var(--color-secondary-lighter);
 
-$--color-success-light:     var(--color-success-light);
-$--color-success-lighter:   var(--color-success-lighter);
+$--color-secondary-dark:        var(--color-secondary-dark);
+$--color-secondary-darker:      var(--color-secondary-darker);
 
-$--color-success-dark:      var(--color-success-dark);
-$--color-success-darker:    var(--color-success-darker);
+$--color-success-light:         var(--color-success-light);
+$--color-success-lighter:       var(--color-success-lighter);
 
-$--color-warning-light:     var(--color-warning-light);
-$--color-warning-lighter:   var(--color-warning-lighter);
+$--color-success-dark:          var(--color-success-dark);
+$--color-success-darker:        var(--color-success-darker);
 
-$--color-warning-dark:      var(--color-warning-dark);
-$--color-warning-darker:    var(--color-warning-darker);
+$--color-warning-light:         var(--color-warning-light);
+$--color-warning-lighter:       var(--color-warning-lighter);
 
-$--color-danger-light:      var(--color-danger-light);
-$--color-danger-lighter:    var(--color-danger-lighter);
+$--color-warning-dark:          var(--color-warning-dark);
+$--color-warning-darker:        var(--color-warning-darker);
 
-$--color-danger-dark:       var(--color-danger-dark);
-$--color-danger-darker:     var(--color-danger-darker);
+$--color-danger-light:          var(--color-danger-light);
+$--color-danger-lighter:        var(--color-danger-lighter);
 
-$--color-info-light:        var(--color-info-light);
-$--color-info-lighter:      var(--color-info-lighter);
+$--color-danger-dark:           var(--color-danger-dark);
+$--color-danger-darker:         var(--color-danger-darker);
 
-$--color-info-dark:         var(--color-info-dark);
-$--color-info-darker:       var(--color-info-darker);
+$--color-info-light:            var(--color-info-light);
+$--color-info-lighter:          var(--color-info-lighter);
+
+$--color-info-dark:             var(--color-info-dark);
+$--color-info-darker:           var(--color-info-darker);
+
+$--color-background-light:      var(--color-background-light);
+$--color-background-lighter:    var(--color-background-lighter);
+
+$--color-background-dark:       var(--color-background-dark);
+$--color-background-darker:     var(--color-background-darker);
