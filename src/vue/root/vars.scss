@@ -160,77 +160,77 @@ $radius-extended: 9px !default;
     --color-background-darker:  #{$color-background-darker};
 }
 
-$--color-black:                 var(--color-black);
-$--color-white:                 var(--color-white);
+$--color-black:                 var(--color-black) !default;
+$--color-white:                 var(--color-white) !default;
 
-$--color-gray-05:               var(--color-gray-05);
-$--color-gray-10:               var(--color-gray-10);
-$--color-gray-15:               var(--color-gray-15);
-$--color-gray-20:               var(--color-gray-20);
-$--color-gray-25:               var(--color-gray-25);
-$--color-gray-30:               var(--color-gray-30);
-$--color-gray-35:               var(--color-gray-35);
-$--color-gray-40:               var(--color-gray-40);
-$--color-gray-45:               var(--color-gray-45);
-$--color-gray-50:               var(--color-gray-50);
-$--color-gray-55:               var(--color-gray-55);
-$--color-gray-60:               var(--color-gray-60);
-$--color-gray-65:               var(--color-gray-65);
-$--color-gray-70:               var(--color-gray-70);
-$--color-gray-75:               var(--color-gray-75);
-$--color-gray-80:               var(--color-gray-80);
-$--color-gray-85:               var(--color-gray-85);
-$--color-gray-90:               var(--color-gray-90);
-$--color-gray-95:               var(--color-gray-95);
+$--color-gray-05:               var(--color-gray-05) !default;
+$--color-gray-10:               var(--color-gray-10) !default;
+$--color-gray-15:               var(--color-gray-15) !default;
+$--color-gray-20:               var(--color-gray-20) !default;
+$--color-gray-25:               var(--color-gray-25) !default;
+$--color-gray-30:               var(--color-gray-30) !default;
+$--color-gray-35:               var(--color-gray-35) !default;
+$--color-gray-40:               var(--color-gray-40) !default;
+$--color-gray-45:               var(--color-gray-45) !default;
+$--color-gray-50:               var(--color-gray-50) !default;
+$--color-gray-55:               var(--color-gray-55) !default;
+$--color-gray-60:               var(--color-gray-60) !default;
+$--color-gray-65:               var(--color-gray-65) !default;
+$--color-gray-70:               var(--color-gray-70) !default;
+$--color-gray-75:               var(--color-gray-75) !default;
+$--color-gray-80:               var(--color-gray-80) !default;
+$--color-gray-85:               var(--color-gray-85) !default;
+$--color-gray-90:               var(--color-gray-90) !default;
+$--color-gray-95:               var(--color-gray-95) !default;
 
-$--color-primary:               var(--color-primary);
-$--color-secondary:             var(--color-secondary);
+$--color-primary:               var(--color-primary) !default;
+$--color-secondary:             var(--color-secondary) !default;
 
-$--color-success:               var(--color-success);
-$--color-warning:               var(--color-warning);
-$--color-danger:                var(--color-danger);
-$--color-info:                  var(--color-info);
+$--color-success:               var(--color-success) !default;
+$--color-warning:               var(--color-warning) !default;
+$--color-danger:                var(--color-danger) !default;
+$--color-info:                  var(--color-info) !default;
 
-$--color-background:            var(--color-background);
+$--color-background:            var(--color-background) !default;
 
-$--color-primary-light:         var(--color-primary-light);
-$--color-primary-lighter:       var(--color-primary-lighter);
+$--color-primary-light:         var(--color-primary-light) !default;
+$--color-primary-lighter:       var(--color-primary-lighter) !default;
 
-$--color-primary-dark:          var(--color-primary-dark);
-$--color-primary-darker:        var(--color-primary-darker);
+$--color-primary-dark:          var(--color-primary-dark) !default;
+$--color-primary-darker:        var(--color-primary-darker) !default;
 
-$--color-secondary-light:       var(--color-secondary-light);
-$--color-secondary-lighter:     var(--color-secondary-lighter);
+$--color-secondary-light:       var(--color-secondary-light) !default;
+$--color-secondary-lighter:     var(--color-secondary-lighter) !default;
 
-$--color-secondary-dark:        var(--color-secondary-dark);
-$--color-secondary-darker:      var(--color-secondary-darker);
+$--color-secondary-dark:        var(--color-secondary-dark) !default;
+$--color-secondary-darker:      var(--color-secondary-darker) !default;
 
-$--color-success-light:         var(--color-success-light);
-$--color-success-lighter:       var(--color-success-lighter);
+$--color-success-light:         var(--color-success-light) !default;
+$--color-success-lighter:       var(--color-success-lighter) !default;
 
-$--color-success-dark:          var(--color-success-dark);
-$--color-success-darker:        var(--color-success-darker);
+$--color-success-dark:          var(--color-success-dark) !default;
+$--color-success-darker:        var(--color-success-darker) !default;
 
-$--color-warning-light:         var(--color-warning-light);
-$--color-warning-lighter:       var(--color-warning-lighter);
+$--color-warning-light:         var(--color-warning-light) !default;
+$--color-warning-lighter:       var(--color-warning-lighter) !default;
 
-$--color-warning-dark:          var(--color-warning-dark);
-$--color-warning-darker:        var(--color-warning-darker);
+$--color-warning-dark:          var(--color-warning-dark) !default;
+$--color-warning-darker:        var(--color-warning-darker) !default;
 
-$--color-danger-light:          var(--color-danger-light);
-$--color-danger-lighter:        var(--color-danger-lighter);
+$--color-danger-light:          var(--color-danger-light) !default;
+$--color-danger-lighter:        var(--color-danger-lighter) !default;
 
-$--color-danger-dark:           var(--color-danger-dark);
-$--color-danger-darker:         var(--color-danger-darker);
+$--color-danger-dark:           var(--color-danger-dark) !default;
+$--color-danger-darker:         var(--color-danger-darker) !default;
 
-$--color-info-light:            var(--color-info-light);
-$--color-info-lighter:          var(--color-info-lighter);
+$--color-info-light:            var(--color-info-light) !default;
+$--color-info-lighter:          var(--color-info-lighter) !default;
 
-$--color-info-dark:             var(--color-info-dark);
-$--color-info-darker:           var(--color-info-darker);
+$--color-info-dark:             var(--color-info-dark) !default;
+$--color-info-darker:           var(--color-info-darker) !default;
 
-$--color-background-light:      var(--color-background-light);
-$--color-background-lighter:    var(--color-background-lighter);
+$--color-background-light:      var(--color-background-light) !default;
+$--color-background-lighter:    var(--color-background-lighter) !default;
 
-$--color-background-dark:       var(--color-background-dark);
-$--color-background-darker:     var(--color-background-darker);
+$--color-background-dark:       var(--color-background-dark) !default;
+$--color-background-darker:     var(--color-background-darker) !default;
