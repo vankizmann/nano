@@ -245,7 +245,7 @@ export default {
         {
             let el = this.NTable.getColumnEl(this);
 
-            let width = Dom.find(el).width();
+            let width = Dom.find(el).width() - 5;
 
             if ( width !== 0 && width === this.width ) {
                 return;
