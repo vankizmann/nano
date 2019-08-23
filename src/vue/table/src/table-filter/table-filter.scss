@@ -50,7 +50,7 @@ $table-filter-height: 18px !default;
 
 .n-table-filter__sort span:before {
     margin-bottom: 1px;
-    border-bottom-color: $color-gray-20;
+    border-bottom-color: $--color-gray-20;
 }
 
 .n-table-filter.n-table-filter--asc .n-table-filter__sort span:before {
@@ -59,7 +59,7 @@ $table-filter-height: 18px !default;
 
 .n-table-filter__sort span:after {
     margin-top: 1px;
-    border-top-color: $color-gray-20;
+    border-top-color: $--color-gray-20;
 }
 
 .n-table-filter.n-table-filter--desc .n-table-filter__sort span:after {
@@ -94,11 +94,11 @@ $table-filter-height: 18px !default;
     align-items: center;
     width: $table-filter-height;
     height: $table-filter-height;
-    background-color: $color-gray-05;
+    background-color: $--color-gray-05;
 }
 
 .n-table-filter__filter span {
-    color: $color-gray-40;
+    color: $--color-gray-40;
 }
 
 .n-popover-filter {

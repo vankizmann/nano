@@ -46,7 +46,7 @@ $checkbox-radius: $radius-small !default;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $color-gray-15;
+    border: 1px solid $--color-gray-15;
     border-radius: $checkbox-radius;
     width: $checkbox-width;
     height: $checkbox-height;
@@ -57,7 +57,7 @@ $checkbox-radius: $radius-small !default;
 }
 
 .n-inverse .n-checkbox .n-checkbox__checkbox {
-    border-color: $color-gray-80;
+    border-color: $--color-gray-80;
     background: $--color-black;
 }
 
@@ -67,13 +67,13 @@ $checkbox-radius: $radius-small !default;
 
 .n-checkbox.n-checkbox--disabled .n-checkbox__checkbox {
     cursor: not-allowed;
-    background: $color-gray-05;
-    border-color: $color-gray-15;
+    background: $--color-gray-05;
+    border-color: $--color-gray-15;
 }
 
 .n-inverse .n-checkbox.n-checkbox--disabled .n-checkbox__checkbox {
-    border-color: $color-gray-80;
-    background: $color-gray-90;
+    border-color: $--color-gray-80;
+    background: $--color-gray-90;
 }
 
 
@@ -127,6 +127,6 @@ $checkbox-radius: $radius-small !default;
 }
 .n-checkbox.n-checkbox--disabled .n-checkbox__label {
     cursor: not-allowed;
-    color: $color-gray-50;
+    color: $--color-gray-50;
 }
 

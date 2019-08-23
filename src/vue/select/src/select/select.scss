@@ -37,13 +37,13 @@ $select-empty-padding: 6px 12px !default;
     align-items: center;
     background: $--color-white;
     color: $--color-black;
-    border: 1px solid $color-gray-15;
+    border: 1px solid $--color-gray-15;
     border-radius: $radius-small;
     transition: 0.15s border;
 }
 
 .n-inverse .n-select {
-    border-color: $color-gray-80;
+    border-color: $--color-gray-80;
     background: $--color-black;
     color: $--color-white;
 }
@@ -74,14 +74,14 @@ $select-empty-padding: 6px 12px !default;
 .n-select.n-select--disabled,
 .n-select.n-select--disabled:hover {
     cursor: not-allowed;
-    background: $color-gray-05;
-    border-color: $color-gray-15;
+    background: $--color-gray-05;
+    border-color: $--color-gray-15;
 }
 
 .n-inverse .n-select.n-select--disabled,
 .n-inverse .n-select.n-select--disabled:hover {
-    background: $color-gray-90;
-    border-color: $color-gray-80;
+    background: $--color-gray-90;
+    border-color: $--color-gray-80;
 }
 
 .n-select__label {
@@ -134,13 +134,13 @@ $select-empty-padding: 6px 12px !default;
 }
 
 .n-select__item.n-select__item--multiple {
-    background: $color-gray-10;
+    background: $--color-gray-10;
     padding: $select-item-padding;
     border-radius: $radius-small;
 }
 
 .n-inverse .n-select__item.n-select__item--multiple {
-    background: $color-gray-80;
+    background: $--color-gray-80;
 }
 
 .n-select.n-select--default .n-select__item.n-select__item--multiple {
@@ -159,7 +159,7 @@ $select-empty-padding: 6px 12px !default;
 }
 
 .n-select__item i {
-    color: $color-gray-50;
+    color: $--color-gray-50;
     margin-left: 4px;
 }
 
@@ -170,32 +170,32 @@ $select-empty-padding: 6px 12px !default;
     justify-content: center;
     width: $select-height * 0.5;
     height: $select-height * 0.5;
-    color: $color-gray-50;
+    color: $--color-gray-50;
     font-size: $select-size * 0.665;
-    background: $color-gray-10;
+    background: $--color-gray-10;
     border-radius: 500px;
     transition: color 0.3s, background 0.3s;
     margin: 0 8px 0 -4px;
 }
 
 .n-inverse .n-select__clear {
-    color: $color-gray-50;
-    background: $color-gray-80;
+    color: $--color-gray-50;
+    background: $--color-gray-80;
 }
 
 .n-select__clear:hover {
-    color: $color-gray-80;
-    background: $color-gray-15;
+    color: $--color-gray-80;
+    background: $--color-gray-15;
 }
 
 .n-inverse .n-select__clear:hover {
-    color: $color-gray-20;
-    background: $color-gray-75;
+    color: $--color-gray-20;
+    background: $--color-gray-75;
 }
 
 .n-select__arrow {
     margin-left: auto;
-    color: $color-gray-40;
+    color: $--color-gray-40;
     transform-style: preserve-3d;
     transition: transform 0.6s;
 }
@@ -210,5 +210,5 @@ $select-empty-padding: 6px 12px !default;
     text-overflow: ellipsis;
     padding: $select-empty-padding;
     text-align: center;
-    color: $color-gray-60;
+    color: $--color-gray-60;
 }

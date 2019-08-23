@@ -16,7 +16,7 @@ $textarea-height: 34px !default;
     min-height: $textarea-height;
     background: $--color-white;
     font-size: $textarea-size;
-    border: 1px solid $color-gray-15;
+    border: 1px solid $--color-gray-15;
     border-radius: $radius-small;
     transition: 0.15s border;
 }
@@ -40,10 +40,10 @@ $textarea-height: 34px !default;
 
 .n-textarea.n-textarea--disabled {
     cursor: not-allowed;
-    background: $color-gray-05;
+    background: $--color-gray-05;
 }
 
 .n-textarea.n-textarea--disabled:hover,
 .n-textarea.n-textarea--disabled:focus {
-    border: 1px solid $color-gray-15;
+    border: 1px solid $--color-gray-15;
 }

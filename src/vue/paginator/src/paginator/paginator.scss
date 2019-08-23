@@ -6,7 +6,7 @@ $paginator-size: 14px !default;
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: $color-gray-60;
+    color: $--color-gray-60;
     font-size: $paginator-size;
 }
 
@@ -91,7 +91,7 @@ $paginator-size: 14px !default;
 }
 
 //.n-paginator__pages .n-button {
-//    border-color: $color-gray-10;
+//    border-color: $--color-gray-10;
 //    background: $--color-background;
 //}
 //
@@ -104,6 +104,6 @@ $paginator-size: 14px !default;
 //.n-paginator__pages .n-button.n-button--disabled,
 //.n-paginator__pages .n-button.n-button--disabled:hover,
 //.n-paginator__pages .n-button.n-button--disabled:focus {
-//    border-color: $color-gray-10;
-//    background: $color-gray-10;
+//    border-color: $--color-gray-10;
+//    background: $--color-gray-10;
 //}

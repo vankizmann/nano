@@ -44,13 +44,13 @@ $cascader-option-padding: 6px 12px !default;
     align-items: center;
     background: $--color-white;
     color: $--color-black;
-    border: 1px solid $color-gray-15;
+    border: 1px solid $--color-gray-15;
     border-radius: $radius-small;
     transition: 0.15s border;
 }
 
 .n-inverse .n-cascader {
-    border-color: $color-gray-80;
+    border-color: $--color-gray-80;
     background: $--color-black;
     color: $--color-white;
 }
@@ -80,14 +80,14 @@ $cascader-option-padding: 6px 12px !default;
 
 .n-cascader.n-cascader--disabled {
     cursor: not-allowed;
-    background: $color-gray-05;
-    border-color: $color-gray-15;
-    color: $color-gray-50;
+    background: $--color-gray-05;
+    border-color: $--color-gray-15;
+    color: $--color-gray-50;
 }
 
 .n-inverse .n-cascader.n-cascader--disabled {
-    background: $color-gray-90;
-    border-color: $color-gray-80;
+    background: $--color-gray-90;
+    border-color: $--color-gray-80;
 }
 
 .n-cascader__label {
@@ -101,7 +101,7 @@ $cascader-option-padding: 6px 12px !default;
 .n-cascader__placeholder {
     flex: 0 1 auto;
     display: inline-block;
-    color: $color-gray-50;
+    color: $--color-gray-50;
 }
 
 .n-cascader__item {
@@ -111,11 +111,11 @@ $cascader-option-padding: 6px 12px !default;
 .n-cascader__item:after {
     content: '/';
     margin: 0 8px;
-    color: $color-gray-20;
+    color: $--color-gray-20;
 }
 
 .n-inverse .n-cascader__item:after {
-    color: $color-gray-80;
+    color: $--color-gray-80;
 }
 
 .n-cascader__item:last-child:after {
@@ -129,32 +129,32 @@ $cascader-option-padding: 6px 12px !default;
     justify-content: center;
     width: $cascader-height * 0.5;
     height: $cascader-height * 0.5;
-    color: $color-gray-50;
+    color: $--color-gray-50;
     font-size: $cascader-size * 0.665;
-    background: $color-gray-10;
+    background: $--color-gray-10;
     border-radius: 500px;
     transition: color 0.3s, background 0.3s;
     margin: 0 8px 0 -4px;
 }
 
 .n-inverse .n-cascader__clear {
-    color: $color-gray-50;
-    background: $color-gray-80;
+    color: $--color-gray-50;
+    background: $--color-gray-80;
 }
 
 .n-cascader__clear:hover {
-    color: $color-gray-80;
-    background: $color-gray-15;
+    color: $--color-gray-80;
+    background: $--color-gray-15;
 }
 
 .n-inverse .n-cascader__clear:hover {
-    color: $color-gray-20;
-    background: $color-gray-75;
+    color: $--color-gray-20;
+    background: $--color-gray-75;
 }
 
 .n-cascader__arrow {
     flex: 0 0 auto;
-    color: $color-gray-50;
+    color: $--color-gray-50;
     transform-style: preserve-3d;
     transition: transform 0.6s;
     margin-left: 8px;
@@ -170,7 +170,7 @@ $cascader-option-padding: 6px 12px !default;
     text-overflow: ellipsis;
     padding: $cascader-empty-padding;
     text-align: center;
-    color: $color-gray-60;
+    color: $--color-gray-60;
 }
 
 .n-cascader__options {
@@ -179,7 +179,7 @@ $cascader-option-padding: 6px 12px !default;
     flex-direction: column;
     max-height: 280px;
     width: 200px;
-    border-left: 1px solid $color-gray-10;
+    border-left: 1px solid $--color-gray-10;
 }
 
 .n-cascader__options:first-child {
@@ -197,7 +197,7 @@ $cascader-option-padding: 6px 12px !default;
 
 .n-cascader-option.n-cascader-option--disabled {
     cursor: not-allowed;
-    color: $color-gray-30;
+    color: $--color-gray-30;
 }
 
 .n-cascader-option:hover {
@@ -228,5 +228,5 @@ $cascader-option-padding: 6px 12px !default;
 
 .n-cascader-option__arrow span {
     font-size: $cascader-option-size * 0.875;
-    color: $color-gray-40;
+    color: $--color-gray-40;
 }

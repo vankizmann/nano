@@ -27,7 +27,7 @@ $draggable-tree-item-expand-size: 12px !default;
 .n-draggable-tree-item > .n-draggable-tree-item__expand span {
     display: inline-block;
     font-size: $draggable-tree-item-expand-size;
-    color: $color-gray-40;
+    color: $--color-gray-40;
 }
 
 .n-draggable-tree-item.n-draggable-tree-item--expanded > .n-draggable-tree-item__expand span {

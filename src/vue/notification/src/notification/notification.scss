@@ -58,7 +58,7 @@ $notification-icon-size: 15px !default;
     background: $--color-white;
     border-radius: $radius-medium;
     transition: transform 0.6s;
-    border: 1px solid $color-gray-10;
+    border: 1px solid $--color-gray-10;
     box-shadow: 0 1px 3px 1px rgba($color-black, 0.05);
 }
 .n-notification__wrapper.n-notification__wrapper--top-start .n-notification:not(.n-notification--active),

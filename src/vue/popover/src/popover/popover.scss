@@ -64,7 +64,7 @@ $popover-tooltip-padding: 3px 9px !default;
 
 .n-popover.n-popover--default .n-popover__header {
     padding: $popover-default-padding;
-    border-bottom: 1px solid $color-gray-10;
+    border-bottom: 1px solid $--color-gray-10;
 }
 
 .n-popover.n-popover--select .n-popover__header {
@@ -97,12 +97,12 @@ $popover-tooltip-padding: 3px 9px !default;
 
 .n-popover.n-popover--default .n-popover__footer {
     padding: $popover-default-padding;
-    border-top: 1px solid $color-gray-10;
+    border-top: 1px solid $--color-gray-10;
 }
 
 .n-popover.n-popover--select .n-popover__footer {
     padding: $popover-select-padding;
-    border-top: 1px solid $color-gray-10;
+    border-top: 1px solid $--color-gray-10;
 }
 
 .n-popover.n-popover--tooltip .n-popover__footer {

@@ -97,7 +97,7 @@ $modal-default-padding: 14px 22px !default;
 
 .n-modal.n-modal--default .n-modal__header {
     padding: $modal-default-padding;
-    border-bottom: 1px solid $color-gray-10;
+    border-bottom: 1px solid $--color-gray-10;
 }
 
 .n-modal.n-modal--closable .n-modal__header {
@@ -119,7 +119,7 @@ $modal-default-padding: 14px 22px !default;
 
 .n-modal.n-modal--default .n-modal__footer {
     padding: $modal-default-padding;
-    border-top: 1px solid $color-gray-10;
+    border-top: 1px solid $--color-gray-10;
 }
 
 .n-modal__close {
@@ -137,10 +137,10 @@ $modal-default-padding: 14px 22px !default;
 
 .n-modal__close span {
     font-size: 18px;
-    color: $color-gray-30;
+    color: $--color-gray-30;
     transition: color 0.15s;
 }
 
 .n-modal__close:hover span {
-    color: $color-gray-40;
+    color: $--color-gray-40;
 }

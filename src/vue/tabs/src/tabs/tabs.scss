@@ -19,7 +19,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid $color-gray-10;
+    border-bottom: 1px solid $--color-gray-10;
 }
 
 //.n-tabs__header-inner:before {
@@ -30,7 +30,7 @@
 //    display: block;
 //    width: 100%;
 //    height: 1px;
-//    background: $color-gray-10;
+//    background: $--color-gray-10;
 //}
 
 .n-tabs__indicator {
@@ -59,7 +59,7 @@
 }
 
 .n-tabs__tab-icon span {
-    color: $color-gray-30;
+    color: $--color-gray-30;
 }
 
 .n-tabs__tab.n-tabs__tab--current .n-tabs__tab-icon span {
