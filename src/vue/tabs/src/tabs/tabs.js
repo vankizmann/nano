@@ -48,6 +48,28 @@ export default {
         };
     },
 
+    data()
+    {
+        return {
+            width: 0, offset: 0, tabs: [], nativeCurrent: this.current
+        };
+    },
+
+    mounted()
+    {
+        let isset = Arr.find(this.tabs, {
+            name: this.nativeCurrent
+        });
+
+        if ( isset !== null ) {
+            return;
+        }
+
+        let tab = Arr.first(this.tabs);
+
+        this.$emit(this.nativeCurrent = tab.name);
+    },
+
     updated()
     {
         let width = Dom.find(this.$el)
@@ -59,13 +81,6 @@ export default {
             .find('.n-tabs__tab--current').offsetLeft(this.$el);
 
         this.offset = offset < 0 ? 0 : offset;
-    },
-
-    data()
-    {
-        return {
-            width: 0, offset: 0, tabs: [], nativeCurrent: this.current
-        };
     },
 
     render()
