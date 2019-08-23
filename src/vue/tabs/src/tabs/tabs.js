@@ -24,16 +24,12 @@ export default {
 
         getTab()
         {
-            if ( this.tabs.length === 0) {
-                return;
-            }
-
             let isset = Arr.find(this.tabs, {
-                name: this.nativeCurrent
+                name: this.current
             });
 
             if ( isset !== null ) {
-                return;
+                return this.nativeCurrent = this.current;
             }
 
             let tab = Arr.first(this.tabs);
