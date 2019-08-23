@@ -79,7 +79,15 @@ export class Dom
 
     static location(posx, posy)
     {
-        let el = document.elementsFromPoint(posx, posy);
+        let el = null;
+
+        if ( document.elementsFromPoint !== undefined ) {
+            el = document.elementsFromPoint(posx, posy);
+        }
+
+        if ( document.msElementsFromPoint !== undefined ) {
+            el = document.msElementsFromPoint(posx, posy);
+        }
 
         return new Dom(el);
     }
