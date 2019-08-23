@@ -22,6 +22,21 @@ export default {
 
     methods: {
 
+        getMountedCurrent()
+        {
+            let isset = Arr.find(this.tabs, {
+                name: this.nativeCurrent
+            });
+
+            if ( isset !== null ) {
+                return;
+            }
+
+            let tab = Arr.first(this.tabs);
+
+            this.$emit(this.nativeCurrent = tab.name);
+        },
+
         addTab(tab)
         {
             this.tabs.push(tab);
@@ -57,17 +72,7 @@ export default {
 
     mounted()
     {
-        let isset = Arr.find(this.tabs, {
-            name: this.nativeCurrent
-        });
-
-        if ( isset !== null ) {
-            return;
-        }
-
-        let tab = Arr.first(this.tabs);
-
-        this.$emit(this.nativeCurrent = tab.name);
+        this.$nextTick(this.getMountedCurrent)
     },
 
     updated()
