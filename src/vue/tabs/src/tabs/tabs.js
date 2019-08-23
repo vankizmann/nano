@@ -28,6 +28,8 @@ export default {
                 name: this.nativeCurrent
             });
 
+            console.log(isset);
+
             if ( isset !== null ) {
                 return;
             }
