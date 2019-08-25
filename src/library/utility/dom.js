@@ -369,16 +369,14 @@ export class Dom
 
     append(val)
     {
-        this.each((el) => {
-            el.appendChild(val)
-        });
+        this.each((el) => el.append(val));
 
         return this;
     }
 
     appendTo(el)
     {
-        Dom.find(el).each((val) => val.appendChild(this.el));
+        Dom.find(el).each((val) => val.append(this.el));
 
         return this;
     }
