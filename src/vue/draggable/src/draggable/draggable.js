@@ -387,7 +387,7 @@ export default {
 
             this.$emit('update:selected', selected);
 
-            event.dataTransfer.setData('text/plain', '');
+            event.dataTransfer.setData('text', '');
 
             let dragImage = Dom.find(this.$refs.placeholder);
 
