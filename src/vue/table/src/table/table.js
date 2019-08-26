@@ -158,8 +158,7 @@ export default {
 
         resizeColumn(event, column)
         {
-            let target = Dom.find(event.target)
-                .closest('.n-table__column');
+            let target = event.target.parentNode;
 
             Dom.find(document).on('mousemove', Any.throttle((event) => {
 
@@ -167,13 +166,13 @@ export default {
                 event.stopPropagation();
 
                 let width = event.clientX - Dom.find(target).offsetLeft() +
-                    Dom.find(target).scrollLeftGlobal();
+                    Dom.find(target).scrollLeft(null, window);
 
                 if ( column.width !== width ) {
                     column.setWidth(width);
                 }
 
-            }, 7), { _uid: this._uid });
+            }, 10), { _uid: this._uid });
 
             Dom.find(document).on('mouseup', () => {
 

@@ -218,7 +218,6 @@ export class Dom
         }
 
         if ( Any.isString(selector) === true ) {
-            console.log(this.get(0));
             return this.get(0).closest(selector) || null;
         }
 
