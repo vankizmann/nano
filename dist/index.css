@@ -2542,7 +2542,6 @@
   padding-right: 50px; }
 
 .n-modal__body {
-  position: relative;
   overflow-y: auto;
   flex: 1 1 auto; }
 
