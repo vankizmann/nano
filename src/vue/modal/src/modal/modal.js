@@ -190,7 +190,7 @@ export default {
 
     mounted()
     {
-        Dom.find(document).on('mousedown',
+        Dom.find(document.body).on('mousedown',
             Any.throttle(this.clickTrigger, 150), { _uid: this._uid });
 
         this.node = this.$el;
@@ -198,7 +198,7 @@ export default {
 
     destroyed()
     {
-        Dom.find(document).off('mousedown',
+        Dom.find(document.body).off('mousedown',
             null, { _uid: this._uid });
     },
 

@@ -129,7 +129,7 @@ export class Dom
     length()
     {
         return Any.isArray(this.el) ?
-            this.el.length : 0;
+            this.el.length : (Any.isEmpty(this.el) ? 0 : 1);
     }
 
     empty()
@@ -219,6 +219,10 @@ export class Dom
 
         if ( Any.isString(selector) === true ) {
             return this.get(0).closest(selector) || null;
+        }
+
+        if ( this.get(0) === selector ) {
+            return selector;
         }
 
         for (let el = this.get(0); el !== null; el = el.parentNode) {
