@@ -402,12 +402,32 @@ export class Dom
 
     previous()
     {
-        return Dom.find(this.get(0).previousElementSibling);
+        if ( this.empty() === true ) {
+            return null;
+        }
+
+        for (let el = this.get(0); el !== null; el = el.previousSibling) {
+            if ( el.nodeType === 1 ) {
+                return Dom.find(el);
+            }
+        }
+
+        return null;
     }
 
     next()
     {
-        return Dom.find(this.get(0).nextElementSibling);
+        if ( this.empty() === true ) {
+            return null;
+        }
+
+        for (let el = this.get(0); el !== null; el = el.nextSibling) {
+            if ( el.nodeType === 1 ) {
+                return Dom.find(el);
+            }
+        }
+
+        return null;
     }
 
     loaded(callback)

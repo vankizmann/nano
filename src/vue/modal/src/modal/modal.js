@@ -92,7 +92,7 @@ export default {
         element()
         {
             if ( this.selector === null ) {
-                console.log('chatch node by',this.node.parentNode, this.node.previousElementSibling);
+                console.log('chatch node by', Dom.find(this.node), Dom.find(this.node).previous());
                 return Dom.find(this.node).previous().get(0);
             }
 
@@ -138,8 +138,6 @@ export default {
 
         clickTrigger(event, target)
         {
-            console.log(target, this.element, Dom.find(this.node).previous());
-
             if ( ! Dom.find(target).inside(this.parent) && this.nativeVisible === false ) {
                 return;
             }
