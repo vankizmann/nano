@@ -1,5 +1,9 @@
 const path = require('path');
+const webpack = require("webpack");
+const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+
 
 let jsExtExport = {
     mode: "development",
@@ -78,7 +82,7 @@ let cssModernExport = {
                     path.resolve(__dirname, './src')
                 ],
                 use: [
-                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+                    MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'
                 ]
             }
         ]
@@ -86,6 +90,11 @@ let cssModernExport = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "index.css"
+        }),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: [ autoprefixer() ]
+            }
         })
     ]
 };
@@ -105,7 +114,7 @@ let cssLegacyExport = {
                     path.resolve(__dirname, './src')
                 ],
                 use: [
-                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+                    MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'
                 ]
             }
         ]
@@ -113,6 +122,11 @@ let cssLegacyExport = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "index.legacy.css"
+        }),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: [ autoprefixer() ]
+            }
         })
     ]
 };
