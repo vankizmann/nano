@@ -92,6 +92,7 @@ export default {
         element()
         {
             if ( this.selector === null ) {
+                console.log('chatch node by',this.node.parentNode, this.node.previousElementSibling);
                 return Dom.find(this.node).previous().get(0);
             }
 
