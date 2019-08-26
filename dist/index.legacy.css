@@ -2471,11 +2471,13 @@
   padding: 3%; }
 
 .n-modal__frame {
+  flex: 0 1 auto;
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 320px;
   max-width: 100%;
+  min-height: 0;
   max-height: 100%;
   margin: 0 auto;
   background: #ffffff;
