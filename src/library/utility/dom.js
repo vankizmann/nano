@@ -987,6 +987,18 @@ export class Dom
         return el.offsetHeight;
     }
 
+    clientHeight()
+    {
+        let el = this.get(0);
+
+        if ( Any.isEmpty(el) ) {
+            return 0;
+        }
+
+        return Any.integer(getComputedStyle(el, null)
+            .height.replace("px", ""));
+    }
+
     scrollHeight()
     {
         let el = this.get(0);
@@ -1008,7 +1020,7 @@ export class Dom
 
         let computedStyle = getComputedStyle(el);
 
-        return this.get(0).clientHeight -
+        return this.clientHeight() -
             Num.float(computedStyle.paddingTop) -
             Num.float(computedStyle.paddingBottom);
     }
@@ -1060,6 +1072,18 @@ export class Dom
         return el.offsetWidth;
     }
 
+    clientWidth()
+    {
+        let el = this.get(0);
+
+        if ( Any.isEmpty(el) ) {
+            return 0;
+        }
+
+        return Any.integer(getComputedStyle(el, null)
+            .width.replace("px", ""));
+    }
+
     scrollWidth()
     {
         let el = this.get(0);
@@ -1081,7 +1105,7 @@ export class Dom
 
         let computedStyle = getComputedStyle(el);
 
-        return this.get(0).clientWidth -
+        return this.clientWidth() -
             Num.float(computedStyle.paddingLeft) -
             Num.float(computedStyle.paddingRight);
     }
