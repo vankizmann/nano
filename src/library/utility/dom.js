@@ -937,8 +937,8 @@ export class Dom
         });
 
         let scroll = {
-            top: source.top - target.top + window.scrollY,
-            left: source.left - target.left + window.scrollX
+            top: source.top - target.top + (window.pageYOffset || window.scrollY),
+            left: source.left - target.left + (window.pageXOffset || window.scrollX)
         };
 
         return key !== null ? Obj.get(scroll, key, 0) : scroll;
