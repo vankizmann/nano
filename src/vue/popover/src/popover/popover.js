@@ -192,6 +192,9 @@ export default {
 
                 let boundryHeight = Dom.find(this.boundry).height();
 
+
+                console.log(clientX, width, nodeWidth, offsetTop, boundryHeight);
+
                 if ( style.top + nodeHeight > boundryHeight + offsetTop ) {
                     pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
                 }
@@ -210,8 +213,6 @@ export default {
                 }
 
             }, pseudo);
-
-            console.log(pseudo);
 
             if ( this.trigger !== 'context' ) {
                 pseudo['max-width'] = (this.width || width) + 'px';
