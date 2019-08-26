@@ -926,6 +926,10 @@ export class Dom
 
         Dom.find(boundry).loopParent((el) => {
 
+            // if ( el === document.body ) {
+            //     el = document.documentElement;
+            // }
+
             if ( el.scrollTop ) {
                 target.top += Num.float(el.scrollTop);
             }
@@ -935,6 +939,8 @@ export class Dom
             }
 
         });
+
+        console.log(source.top, target.top, (window.pageYOffset || window.scrollY));
 
         let scroll = {
             top: source.top - target.top + (window.pageYOffset || window.scrollY),
