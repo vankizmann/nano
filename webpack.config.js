@@ -92,7 +92,7 @@ let cssModernExport = {
 
 let cssLegacyExport = {
     mode: "development",
-    entry: ["./src/vue/root/vars@ie.scss", "./src/index.scss"],
+    entry: ["./src/index.legacy.scss"],
     output: {
         filename: ".ignore.js",
         path: path.resolve(__dirname, "dist")
