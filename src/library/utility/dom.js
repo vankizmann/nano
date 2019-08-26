@@ -830,12 +830,18 @@ export class Dom
 
         this.loopOffsetParent((el) => {
 
+            let rect = el.getBoundingClientRect();
+
             if ( el.offsetTop ) {
                 source.top += Num.float(el.offsetTop);
+            } else {
+                source.top += Num.float(rect.top);
             }
 
             if ( el.offsetLeft ) {
                 source.left += Num.float(el.offsetLeft);
+            } else {
+                source.left += Num.float(rect.left);
             }
 
         });
@@ -852,20 +858,26 @@ export class Dom
 
         Dom.find(boundry).loopOffsetParent((el) => {
 
+            let rect = el.getBoundingClientRect();
+
             if ( el.offsetTop ) {
                 target.top += Num.float(el.offsetTop);
+            } else {
+                target.top += Num.float(rect.top);
             }
 
             if ( el.offsetLeft ) {
                 target.left += Num.float(el.offsetLeft);
+            } else {
+                target.left += Num.float(rect.left);
             }
 
         });
 
-        target.bottom = document.body.scrollHeight -
+        target.bottom = Dom.find(document.body).scrollHeight() -
             target.top - Dom.find(boundry).scrollHeight();
 
-        target.right = document.body.scrollWidth -
+        target.right = Dom.find(document.body).scrollWidth() -
             target.left - Dom.find(boundry).scrollHeight();
 
         let offset = {
