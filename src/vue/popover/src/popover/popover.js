@@ -146,7 +146,7 @@ export default {
             if ( this.position.match(/^bottom-(start|center|end)$/) ) {
                 style.top = clientY + height;
 
-                console.log(this.element, Dom.find(this.element).offsetTop(), clientY, height);
+                console.log(Dom.find(this.parent).scrollTop(null, window));
             }
 
             if ( this.position.match(/^(top|bottom)-start$/) ) {

@@ -906,7 +906,7 @@ export class Dom
 
         this.loopParent((el) => {
 
-            if ( el.scrollTop ) {
+            if (el !== window ) {
                 source.top += Num.float(el.scrollTop);
             }
 
@@ -914,7 +914,7 @@ export class Dom
                 source.top += Num.float(el.pageYOffset);
             }
 
-            if ( el.scrollLeft ) {
+            if ( el !== window ) {
                 source.left += Num.float(el.scrollLeft);
             }
 
@@ -930,7 +930,7 @@ export class Dom
 
         Dom.find(boundry).loopParent((el) => {
 
-            if ( el.scrollTop ) {
+            if ( el !== window ) {
                 target.top += Num.float(el.scrollTop);
             }
 
@@ -938,7 +938,7 @@ export class Dom
                 target.top += Num.float(el.pageYOffset);
             }
 
-            if ( el.scrollLeft ) {
+            if ( el !== window ) {
                 target.left += Num.float(el.scrollLeft);
             }
 
@@ -949,8 +949,8 @@ export class Dom
         });
 
         let scroll = {
-            top: source.top - target.top + (window.pageYOffset || window.scrollY || 0),
-            left: source.left - target.left + (window.pageXOffset || window.scrollX || 0)
+            top: (source.top - target.top) * -1,
+            left: (source.left - target.left) * -1
         };
 
         return key !== null ? Obj.get(scroll, key, 0) : scroll;
