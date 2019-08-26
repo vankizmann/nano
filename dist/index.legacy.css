@@ -2471,7 +2471,7 @@
   padding: 3%; }
 
 .n-modal__frame {
-  flex: 0 1 auto;
+  flex: 1;
   position: relative;
   display: flex;
   flex-direction: column;
