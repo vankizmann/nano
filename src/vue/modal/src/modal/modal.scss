@@ -108,6 +108,7 @@ $modal-default-padding: 14px 22px !default;
 }
 
 .n-modal__body {
+    position: relative;
     overflow-y: auto;
     flex: 1 1 auto;
 }
