@@ -186,33 +186,31 @@ export default {
 
             Dom.find(this.node).actual((el) => {
 
-                let offsetTop = Dom.find(this.boundry).offsetTop(document.body) -
-                    (window.pageYOffset || window.scrollY || 0);
-
-                if ( offsetTop > style.top ) {
-                    pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
-                }
-
-                let boundryHeight = Dom.find(this.boundry).height();
-
-                console.log(clientX, width, nodeWidth, offsetTop, boundryHeight);
-
-                if ( style.top + nodeHeight > boundryHeight + offsetTop ) {
-                    pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
-                }
-
-                let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body) -
-                    (window.pageXOffset || window.scrollX || 0);
-
-                if ( offsetLeft > style.left ) {
-                    pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
-                }
-
-                let boundryWidth = Dom.find(this.boundry).width();
-
-                if ( style.left + nodeWidth > boundryWidth + offsetLeft ) {
-                    pseudo.left = (boundryWidth + offsetLeft - nodeWidth) + 'px';
-                }
+                // let offsetTop = Dom.find(this.boundry).offsetTop(document.body) -
+                //     (window.pageYOffset || window.scrollY || 0);
+                //
+                // if ( offsetTop > style.top ) {
+                //     pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
+                // }
+                //
+                // let boundryHeight = Dom.find(this.boundry).height();
+                //
+                // if ( style.top + nodeHeight > boundryHeight + offsetTop ) {
+                //     pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
+                // }
+                //
+                // let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body) -
+                //     (window.pageXOffset || window.scrollX || 0);
+                //
+                // if ( offsetLeft > style.left ) {
+                //     pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
+                // }
+                //
+                // let boundryWidth = Dom.find(this.boundry).width();
+                //
+                // if ( style.left + nodeWidth > boundryWidth + offsetLeft ) {
+                //     pseudo.left = (boundryWidth + offsetLeft - nodeWidth) + 'px';
+                // }
 
             }, pseudo);
 

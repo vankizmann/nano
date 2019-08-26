@@ -914,8 +914,16 @@ export class Dom
                 source.top += Num.float(el.scrollTop);
             }
 
+            if ( el === window ) {
+                source.top += Num.float(el.pageYOffset);
+            }
+
             if ( el.scrollLeft ) {
                 source.left += Num.float(el.scrollLeft);
+            }
+
+            if ( el === window ) {
+                source.left += Num.float(el.pageXOffset);
             }
 
         });
@@ -930,8 +938,16 @@ export class Dom
                 target.top += Num.float(el.scrollTop);
             }
 
+            if ( el === window ) {
+                target.top += Num.float(el.pageYOffset);
+            }
+
             if ( el.scrollLeft ) {
                 target.left += Num.float(el.scrollLeft);
+            }
+
+            if ( el === window ) {
+                target.left += Num.float(el.pageXOffset);
             }
 
         });
