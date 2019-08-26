@@ -213,6 +213,10 @@ export class Dom
 
     closest(selector)
     {
+        if ( Any.isEmpty(selector) === true ) {
+            return null;
+        }
+
         if ( Any.isString(selector) === true ) {
             return this.get(0).closest(selector) || null;
         }

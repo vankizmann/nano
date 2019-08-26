@@ -3,6 +3,14 @@
     outline: none;
 }
 
+html, body {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+    font-variant-numeric: normal;
+    font-feature-settings: normal;
+}
+
 body {
     font-size: 14px;
     min-height: 100vh;
