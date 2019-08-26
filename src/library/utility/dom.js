@@ -832,24 +832,20 @@ export class Dom
 
             let rect = el.getBoundingClientRect();
 
-            if ( el.offsetTop ) {
-                source.top += Num.float(el.offsetTop);
-            } else {
+            if ( rect.top ) {
                 source.top += Num.float(rect.top);
             }
 
-            if ( el.offsetLeft ) {
-                source.left += Num.float(el.offsetLeft);
-            } else {
+            if ( rect.left ) {
                 source.left += Num.float(rect.left);
             }
 
         });
 
-        source.bottom = document.body.scrollHeight -
+        source.bottom = Dom.find(document.body).scrollHeight() -
             source.top - this.height();
 
-        source.right = document.body.scrollWidth -
+        source.right = Dom.find(document.body).scrollWidth() -
             source.left - this.width();
 
         let target = {
@@ -860,15 +856,11 @@ export class Dom
 
             let rect = el.getBoundingClientRect();
 
-            if ( el.offsetTop ) {
-                target.top += Num.float(el.offsetTop);
-            } else {
+            if ( rect.top ) {
                 target.top += Num.float(rect.top);
             }
 
-            if ( el.offsetLeft ) {
-                target.left += Num.float(el.offsetLeft);
-            } else {
+            if ( rect.left ) {
                 target.left += Num.float(rect.left);
             }
 

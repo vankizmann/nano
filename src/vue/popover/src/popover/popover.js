@@ -184,7 +184,7 @@ export default {
             Dom.find(this.node).actual((el) => {
 
                 let offsetTop = Dom.find(this.boundry).offsetTop(document.body) -
-                    window.scrollY;
+                    (window.pageYOffset || window.scrollY);
 
                 if ( offsetTop > style.top ) {
                     pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
@@ -197,7 +197,7 @@ export default {
                 }
 
                 let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body) -
-                    window.scrollX;
+                    (window.pageXOffset || window.scrollX);
 
                 if ( offsetLeft > style.left ) {
                     pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
