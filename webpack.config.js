@@ -63,7 +63,7 @@ let jsWinExport = {
 
 };
 
-let cssExport = {
+let cssModernExport = {
     mode: "development",
     entry: "./src/index.scss",
     output: {
@@ -90,4 +90,31 @@ let cssExport = {
     ]
 };
 
-module.exports = [jsWinExport, jsExtExport, cssExport];
+let cssLegacyExport = {
+    mode: "development",
+    entry: ["./src/vue/root/vars@ie.scss", "./src/index.scss"],
+    output: {
+        filename: ".ignore.js",
+        path: path.resolve(__dirname, "dist")
+    },
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                include: [
+                    path.resolve(__dirname, './src')
+                ],
+                use: [
+                    MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+                ]
+            }
+        ]
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "index.legacy.css"
+        })
+    ]
+};
+
+module.exports = [jsWinExport, jsExtExport, cssModernExport, cssLegacyExport];
