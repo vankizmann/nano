@@ -26,10 +26,10 @@
 
         <div id="test" style="position: relative !important; background: #eee; height: 300px; overflow: auto;">
             <div style="position: relative !important; padding: 20px;">
-                <n-button type="primary" @click="show01 = !show01">
+                <n-button type="primary">
                     Modal 01
                 </n-button>
-                <n-modal v-model="show01" :selector="false">
+                <n-modal>
                     Hello 01!
                 </n-modal>
                 <br>
@@ -114,7 +114,7 @@
 
         var config = {
             data: function() {
-                return { show01: false, show02: false };
+                return { };
             }
         };
 
