@@ -49,7 +49,11 @@
 
                     let total = 0;
 
-                    let childGenerator = function(count = 10) {
+                    let childGenerator = function(count) {
+
+                        if ( count === undefined ) {
+                            count = 10;
+                        }
 
                         let children = Array(count).fill(null);
 

@@ -61,7 +61,19 @@
 
                 let total = 0;
 
-                let childGenerator = function(count = 10, depth = 5, current = 1) {
+                let childGenerator = function(count, depth, current) {
+
+                    if ( count === undefined ) {
+                        count = 10;
+                    }
+
+                    if ( depth === undefined ) {
+                        depth = 5;
+                    }
+
+                    if ( current === undefined ) {
+                        current = 1;
+                    }
 
                     let children = Array(
                         Math.floor(Math.random() * (count + 1))
