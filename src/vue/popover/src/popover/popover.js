@@ -111,9 +111,6 @@ export default {
             let clientX = Dom.find(this.element).offsetLeft(document.body) -
                 Dom.find(this.parent).scrollLeft(null, window);
 
-            console.log(Dom.find(this.element).offsetLeft(document.body),
-                Dom.find(this.parent).scrollLeft(null, window));
-
             if ( this.trigger === 'context' ) {
                 clientX = this.clientX;
             }
@@ -148,6 +145,8 @@ export default {
 
             if ( this.position.match(/^bottom-(start|center|end)$/) ) {
                 style.top = clientY + height;
+
+                console.log(this.element, Dom.find(this.element).offsetTop(), clientY, height);
             }
 
             if ( this.position.match(/^(top|bottom)-start$/) ) {
@@ -182,35 +181,37 @@ export default {
                 style.top = clientY + (height / 2) - (nodeHeight / 2);
             }
 
+            console.log(style);
+
             let pseudo = Obj.map(Obj.clone(style), (prop) => prop + 'px');
 
             Dom.find(this.node).actual((el) => {
 
-                // let offsetTop = Dom.find(this.boundry).offsetTop(document.body) -
-                //     (window.pageYOffset || window.scrollY || 0);
-                //
-                // if ( offsetTop > style.top ) {
-                //     pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
-                // }
-                //
-                // let boundryHeight = Dom.find(this.boundry).height();
-                //
-                // if ( style.top + nodeHeight > boundryHeight + offsetTop ) {
-                //     pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
-                // }
-                //
-                // let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body) -
-                //     (window.pageXOffset || window.scrollX || 0);
-                //
-                // if ( offsetLeft > style.left ) {
-                //     pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
-                // }
-                //
-                // let boundryWidth = Dom.find(this.boundry).width();
-                //
-                // if ( style.left + nodeWidth > boundryWidth + offsetLeft ) {
-                //     pseudo.left = (boundryWidth + offsetLeft - nodeWidth) + 'px';
-                // }
+                let offsetTop = Dom.find(this.boundry).offsetTop(document.body) -
+                    (window.pageYOffset || window.scrollY || 0);
+
+                if ( offsetTop > style.top ) {
+                    pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
+                }
+
+                let boundryHeight = Dom.find(this.boundry).height();
+
+                if ( style.top + nodeHeight > boundryHeight + offsetTop ) {
+                    pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
+                }
+
+                let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body) -
+                    (window.pageXOffset || window.scrollX || 0);
+
+                if ( offsetLeft > style.left ) {
+                    pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
+                }
+
+                let boundryWidth = Dom.find(this.boundry).width();
+
+                if ( style.left + nodeWidth > boundryWidth + offsetLeft ) {
+                    pseudo.left = (boundryWidth + offsetLeft - nodeWidth) + 'px';
+                }
 
             }, pseudo);
 

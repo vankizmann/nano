@@ -830,14 +830,12 @@ export class Dom
 
         this.loopOffsetParent((el) => {
 
-            let rect = el.getBoundingClientRect();
-
-            if ( rect.top ) {
-                source.top += Num.float(rect.top);
+            if ( el.offsetTop ) {
+                source.top += Num.float(el.offsetTop);
             }
 
-            if ( rect.left ) {
-                source.left += Num.float(rect.left);
+            if ( el.offsetLeft ) {
+                source.left += Num.float(el.offsetLeft);
             }
 
         });
@@ -854,14 +852,12 @@ export class Dom
 
         Dom.find(boundry).loopOffsetParent((el) => {
 
-            let rect = el.getBoundingClientRect();
-
-            if ( rect.top ) {
-                target.top += Num.float(rect.top);
+            if ( el.offsetTop ) {
+                target.top += Num.float(el.offsetTop);
             }
 
-            if ( rect.left ) {
-                target.left += Num.float(rect.left);
+            if ( el.offsetLeft ) {
+                target.left += Num.float(el.offsetLeft);
             }
 
         });
