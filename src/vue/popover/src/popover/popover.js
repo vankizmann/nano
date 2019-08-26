@@ -111,6 +111,9 @@ export default {
             let clientX = Dom.find(this.element).offsetLeft(document.body) -
                 Dom.find(this.parent).scrollLeft(null, window);
 
+            console.log(Dom.find(this.element).offsetLeft(document.body),
+                Dom.find(this.parent).scrollLeft(null, window));
+
             if ( this.trigger === 'context' ) {
                 clientX = this.clientX;
             }
@@ -191,7 +194,6 @@ export default {
                 }
 
                 let boundryHeight = Dom.find(this.boundry).height();
-
 
                 console.log(clientX, width, nodeWidth, offsetTop, boundryHeight);
 
