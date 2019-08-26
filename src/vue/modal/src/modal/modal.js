@@ -92,7 +92,6 @@ export default {
         element()
         {
             if ( this.selector === null ) {
-                console.log('chatch node by', Dom.find(this.node), Dom.find(this.node).previous());
                 return Dom.find(this.node).previous().get(0);
             }
 
