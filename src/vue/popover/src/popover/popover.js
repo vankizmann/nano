@@ -145,8 +145,6 @@ export default {
 
             if ( this.position.match(/^bottom-(start|center|end)$/) ) {
                 style.top = clientY + height;
-
-                console.log(Dom.find(this.parent).scrollTop(null, window));
             }
 
             if ( this.position.match(/^(top|bottom)-start$/) ) {
@@ -180,8 +178,6 @@ export default {
             if ( this.position.match(/^(left|right)-center$/) ) {
                 style.top = clientY + (height / 2) - (nodeHeight / 2);
             }
-
-            console.log(style);
 
             let pseudo = Obj.map(Obj.clone(style), (prop) => prop + 'px');
 
