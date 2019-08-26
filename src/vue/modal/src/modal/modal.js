@@ -137,7 +137,7 @@ export default {
 
         clickTrigger(event, target)
         {
-            console.log(target, this.element);
+            console.log(target, this.element, Dom.find(this.node).previous());
 
             if ( ! Dom.find(target).inside(this.parent) && this.nativeVisible === false ) {
                 return;
