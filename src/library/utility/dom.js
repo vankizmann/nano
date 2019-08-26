@@ -213,11 +213,12 @@ export class Dom
 
     closest(selector)
     {
-        if ( Any.isEmpty(selector) === true ) {
+        if ( this.empty() === true ) {
             return null;
         }
 
         if ( Any.isString(selector) === true ) {
+            console.log(this.get(0));
             return this.get(0).closest(selector) || null;
         }
 
@@ -394,6 +395,16 @@ export class Dom
         this.parent().get(0).removeChild(this.get(0));
 
         return this;
+    }
+
+    previous()
+    {
+        return Dom.find(this.get(0).previousElementSibling);
+    }
+
+    next()
+    {
+        return Dom.find(this.get(0).nextElementSibling);
     }
 
     loaded(callback)

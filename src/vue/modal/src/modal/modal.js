@@ -92,7 +92,7 @@ export default {
         element()
         {
             if ( this.selector === null ) {
-                return (this.node).previousElementSibling;
+                return Dom.find(this.node).previous().get(0);
             }
 
             return Dom.find(this.parent).find(this.selector).get(0);
