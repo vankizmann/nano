@@ -2461,7 +2461,7 @@
   top: 0;
   left: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -2471,7 +2471,7 @@
   padding: 3%; }
 
 .n-modal__frame {
-  flex: 1;
+  flex: 1 1 auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2479,7 +2479,7 @@
   max-width: 100%;
   min-height: 0;
   max-height: 100%;
-  margin: 0 auto;
+  margin: auto;
   background: var(--color-white);
   border-radius: 3px;
   opacity: 0;

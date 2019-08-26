@@ -8,7 +8,7 @@ $modal-default-padding: 14px 22px !default;
     top: 0;
     left: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -19,7 +19,7 @@ $modal-default-padding: 14px 22px !default;
 }
 
 .n-modal__frame {
-    flex: 1;
+    flex: 1 1 auto;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ $modal-default-padding: 14px 22px !default;
     max-width: 100%;
     min-height: 0;
     max-height: 100%;
-    margin: 0 auto;
+    margin: auto;
     background: $--color-white;
     border-radius: $radius-medium;
     opacity: 0;
