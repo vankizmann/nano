@@ -211,6 +211,8 @@ export default {
 
             }, pseudo);
 
+            console.log(pseudo);
+
             if ( this.trigger !== 'context' ) {
                 pseudo['max-width'] = (this.width || width) + 'px';
             }
