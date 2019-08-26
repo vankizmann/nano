@@ -26,11 +26,11 @@
 
         <div id="test" style="position: relative; background: #eee; height: 300px; padding: 20px; overflow-y: auto;">
 
-            <n-button type="primary">
+            <n-button type="primary" @click="show01 = !show01">
                 Modal 01
             </n-button>
-            <n-modal>
-                Hello 1!
+            <n-modal v-model="show01" :selector="false">
+                Hello 01!
             </n-modal>
             <br>
             <br>
@@ -66,11 +66,11 @@
             <br>
             <br>
             <br>
-            <n-button type="warning">
+            <n-button type="warning" @click="show02 = !show02">
                 Modal 02
             </n-button>
-            <n-modal>
-                Hello 2!
+            <n-modal v-model="show02" :selector="false">
+                Hello 02!
             </n-modal>
         </div>
     </div>
@@ -83,7 +83,7 @@
 
         var config = {
             data: function() {
-                return { };
+                return { show01: false, show02: false };
             }
         };
 
