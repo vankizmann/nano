@@ -667,7 +667,7 @@ export class Dom
         }
 
         let observer = new ResizeObserver(() => {
-            this.each((el) => Any.debounce(callback(el), 50));
+            this.each((el) => Any.throttle(callback(el), 50));
         });
 
         return (el) => {
