@@ -51,7 +51,7 @@ export default {
                 element = this.adaptHeight;
             }
 
-            Dom.find(element).observerDimentions(() => {
+            Dom.find(element).observerResize(() => {
                 this.height = Dom.find(element).height();
             })(element);
         },

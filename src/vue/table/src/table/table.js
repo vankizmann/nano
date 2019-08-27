@@ -239,7 +239,7 @@ export default {
                 element = this.adaptHeight;
             }
 
-            Dom.find(element).observerDimentions(this.updateObserver)(element);
+            Dom.find(element).observerResize(this.updateObserver)(element);
         },
 
         updateObserver()

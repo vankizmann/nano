@@ -660,7 +660,7 @@ export class Dom
         };
     }
 
-    observerDimentions(callback, initial = true)
+    observerResize(callback, initial = true)
     {
         if ( initial === true ) {
             this.each((el) => callback(el));

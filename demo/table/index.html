@@ -23,7 +23,7 @@
 
     <div id="app">
 
-        <div class="auto-height">
+        <div class="auto-height" style="padding: 20px;">
             <n-table :items="items" :allow-drop="true">
                 <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
                 <n-table-column prop="label" type="string" label="Label"></n-table-column>
@@ -31,7 +31,7 @@
             </n-table>
         </div>
 
-        <div class="adapt-height" style="height: 350px; overflow: hidden;">
+        <div class="adapt-height" style="height: 350px; overflow: hidden; padding: 20px;">
             <n-table :items="target" :adapt-height="true" :allow-drop="true">
                 <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
                 <n-table-column prop="label" type="string" label="Label"></n-table-column>

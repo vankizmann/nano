@@ -122,7 +122,7 @@ export default {
                 element = Dom.find(this.$el).closest(element);
             }
 
-            Dom.find(element).observerDimentions(() => {
+            Dom.find(element).observerResize(() => {
                 Dom.find(element).actual(() => {
                     this.height = Dom.find(element).innerHeight();
                 });

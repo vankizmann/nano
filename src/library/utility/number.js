@@ -1,15 +1,17 @@
-import { Arr } from "../../index"
+import { Any, Arr } from "../../index"
 
 export class Num
 {
     static int(num)
     {
-        return parseInt(num);
+        return ! Any.isString(num) ? parseInt(num) :
+            parseInt(num.replace('px', ''));
     }
 
     static float(num)
     {
-        return parseFloat(num);
+        return ! Any.isString(num) ? parseFloat(num) :
+            parseFloat(num.replace('px', ''));
     }
 
     static ceil(num)
