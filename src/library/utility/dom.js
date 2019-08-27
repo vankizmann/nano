@@ -1033,6 +1033,34 @@ export class Dom
         return this.scroll('left', document.body);
     }
 
+    margin(key = null)
+    {
+        let computedStyle = getComputedStyle(this.get(0));
+
+        let margin = {
+            top: Num.float(computedStyle.marginTop),
+            left: Num.float(computedStyle.marginLeft),
+            bottom: Num.float(computedStyle.marginBottom),
+            right: Num.float(computedStyle.marginRight),
+        } ;
+
+        return key !== null ? Obj.get(margin, key, 0) : margin;
+    }
+
+    padding(key = null)
+    {
+        let computedStyle = getComputedStyle(this.get(0));
+
+        let padding = {
+            top: Num.float(computedStyle.paddingTop),
+            left: Num.float(computedStyle.paddingLeft),
+            bottom: Num.float(computedStyle.paddingBottom),
+            right: Num.float(computedStyle.paddingRight),
+        };
+
+        return key !== null ? Obj.get(padding, key, 0) : padding;
+    }
+
     height()
     {
         let el = this.get(0);
@@ -1079,11 +1107,8 @@ export class Dom
             return 0;
         }
 
-        let computedStyle = getComputedStyle(el);
-
-        return this.height() -
-            Num.float(computedStyle.paddingTop) -
-            Num.float(computedStyle.paddingBottom);
+        return this.height() - this.padding('top') -
+            this.padding('bottom');
     }
 
     realHeight(styles = {})
@@ -1164,11 +1189,8 @@ export class Dom
             return 0;
         }
 
-        let computedStyle = getComputedStyle(el);
-
-        return this.width() -
-            Num.float(computedStyle.paddingLeft) -
-            Num.float(computedStyle.paddingRight);
+        return this.width() - this.padding('left') -
+            this.padding('right');
     }
 
     realWidth(styles = {})
