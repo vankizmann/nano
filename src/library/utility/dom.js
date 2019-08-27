@@ -1081,7 +1081,7 @@ export class Dom
 
         let computedStyle = getComputedStyle(el);
 
-        return this.clientHeight() -
+        return this.height() -
             Num.float(computedStyle.paddingTop) -
             Num.float(computedStyle.paddingBottom);
     }
@@ -1166,7 +1166,7 @@ export class Dom
 
         let computedStyle = getComputedStyle(el);
 
-        return this.clientWidth() -
+        return this.width() -
             Num.float(computedStyle.paddingLeft) -
             Num.float(computedStyle.paddingRight);
     }
