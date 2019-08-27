@@ -108,6 +108,10 @@ if ( typeof scope.Nano === 'undefined' ) {
     scope.Nano = Nano;
 }
 
+if ( typeof scope.IE === 'undefined' ) {
+    scope.IE = scope.navigator.userAgent.match(/Edge\/|Trident\/|MSIE /);
+}
+
 import ReadyElement from './element/ready';
 scope.Nano.Element.alias('ready', ReadyElement);
 

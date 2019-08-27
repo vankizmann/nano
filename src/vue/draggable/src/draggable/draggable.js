@@ -387,7 +387,11 @@ export default {
 
             this.$emit('update:selected', selected);
 
-            event.dataTransfer.setData('text', '');
+            if ( window.IE === true ) {
+                event.dataTransfer.setData('Text', '');
+            } else {
+                event.dataTransfer.setData('text/plain', '');
+            }
 
             let dragImage = Dom.find(this.$refs.placeholder);
 
