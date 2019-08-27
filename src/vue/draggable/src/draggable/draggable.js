@@ -366,9 +366,6 @@ export default {
 
         itemDragStart(event, target)
         {
-            console.log('start');
-            console.log(target);
-
             if ( ! Dom.find(target).inside(this.$el) ) {
                 return;
             }
