@@ -366,6 +366,9 @@ export default {
 
         itemDragStart(event, target)
         {
+            console.log('start');
+            console.log(target);
+
             if ( ! Dom.find(target).inside(this.$el) ) {
                 return;
             }
@@ -393,11 +396,13 @@ export default {
                 event.dataTransfer.setData('text/plain', '');
             }
 
-            let dragImage = Dom.find(this.$refs.placeholder);
+            if (typeof event.dataTransfer.setDragImage === "function") {
 
-            dragImage.appendTo(document.body);
+                let dragImage = Dom.find(this.$refs.placeholder)
+                    .appendTo(document.body);
 
-            event.dataTransfer.setDragImage(dragImage.get(0), 0, 0);
+                event.dataTransfer.setDragImage(dragImage.get(0), 0, 0);
+            }
 
             Event.fire('draggable:start', this.self = selected, this.group);
         },

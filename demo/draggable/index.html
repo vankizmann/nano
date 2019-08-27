@@ -8,8 +8,12 @@
 
     <link rel="stylesheet" href="https://unpkg.com/backpack.css@2.0.0/lib/backpack.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
-    <link rel="stylesheet" href="../../dist/index.css">
+    <link rel="stylesheet" href="../../dist/index.legacy.css">
     <link rel="stylesheet" href="../style.css">
+
+    <!--[if IE ]>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.append%2CElement.prototype.before%2CElement.prototype.classList%2CElement.prototype.closest%2CElement.prototype.matches%2CElement.prototype.prepend%2CElement.prototype.remove%2CNodeList.prototype.%40%40iterator%2CNodeList.prototype.forEach%2CNode.prototype.contains%2CMutationObserver%2CURL%2CElement%2CDocumentFragment%2CDocumentFragment.prototype.append%2CDocumentFragment.prototype.prepend%2CHTMLDocument%2Cdocument.querySelector%2Cdocument.getElementsByClassName%2Cdocument%2CgetComputedStyle%2CrequestAnimationFrame"></script>
+    <![endif]-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
     <script src="../../dist/index.js"></script>
@@ -26,22 +30,14 @@
 
         <n-form-item label="List">
             <n-draggable :items="form.value" unique-prop="id">
-                <div slot-scope="{ value }">
-                    {{ value.label }}
-                </div>
+                <div slot-scope="props">{{ props.value.label }}</div>
             </n-draggable>
         </n-form-item>
 
         <n-form-item label="Tree">
             <n-draggable-tree :items="form.value" unique-prop="id">
-                <div slot-scope="{ value }">
-                    {{ value.label }}
-                </div>
+                <div slot-scope="props">{{ props.value.label }}</div>
             </n-draggable-tree>
-        </n-form-item>
-
-        <n-form-item label="Object">
-            <pre>{{ form }}</pre>
         </n-form-item>
 
     </n-form>
@@ -52,7 +48,7 @@
 
         'use strict';
 
-        Nano.Dom.ready(() => {
+        Nano.Dom.ready(function () {
 
             Vue.config.devtools = true;
 
@@ -61,13 +57,25 @@
 
                     let total = 0;
 
-                    let childGenerator = function(count = 3, depth = 3, current = 1) {
+                    let childGenerator = function(count, depth, current) {
+
+                        if ( count === undefined ) {
+                            count = 3;
+                        }
+
+                        if ( depth === undefined ) {
+                            depth = 3;
+                        }
+
+                        if ( current === undefined ) {
+                            current = 1;
+                        }
 
                         let children = Array(
                             Math.floor((Math.random() * count)  + 2)
                         ).fill(null);
 
-                        Nano.Arr.map(children, function(item) {
+                        Nano.Arr.map(children, function (item) {
 
                             total++;
 

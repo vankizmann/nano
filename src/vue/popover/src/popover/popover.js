@@ -254,7 +254,6 @@ export default {
 
     methods: {
 
-
         clickTrigger(event, target)
         {
             if ( ! Dom.find(target).inside(this.parent) && this.nativeVisible === false ) {

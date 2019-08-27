@@ -109,7 +109,7 @@ if ( typeof scope.Nano === 'undefined' ) {
 }
 
 if ( typeof scope.IE === 'undefined' ) {
-    scope.IE = scope.navigator.userAgent.match(/Edge\/|Trident\/|MSIE /);
+    scope.IE = scope.navigator.userAgent.match(/Edge\/|Trident\/|MSIE /) !== null;
 }
 
 import ReadyElement from './element/ready';

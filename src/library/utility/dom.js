@@ -144,18 +144,7 @@ export class Dom
 
     is(selector)
     {
-        let el = this.get(0);
-
-        if ( Any.isEmpty(el) === true ) {
-            return false;
-        }
-
-        if ( el instanceof Element === false ) {
-            return false;
-        }
-
-        return Any.isString(selector) ?
-            el.matches(selector) : el === selector;
+        return this.matches(selector);
     }
 
     isParent(selector)
@@ -167,7 +156,7 @@ export class Dom
         }
 
         return Any.isString(selector) ?
-            this.get(0).matches(selector) : this.get(0) === selector;
+            Dom.find(el).matches(selector) : this.get(0) === selector;
     }
 
     first(offset = 0)
@@ -211,22 +200,27 @@ export class Dom
             callback(this.el, 0);
     }
 
+    matches(selector)
+    {
+        let source = this.get(0), target = null;
+
+        Dom.find(selector).each((el) => {
+            if ( el === source) {
+                target = el;
+            }
+        });
+
+        return target !== null;
+    }
+
     closest(selector)
     {
-        if ( this.empty() === true ) {
-            return null;
-        }
-
-        if ( Any.isString(selector) === true ) {
-            return this.get(0).closest(selector) || null;
-        }
-
         if ( this.get(0) === selector ) {
             return selector;
         }
 
-        for (let el = this.get(0); el !== null; el = el.parentNode) {
-            if ( el === selector ) {
+        for (let el = this.get(0); el !== null && el.parentNode !== undefined; el = el.parentNode) {
+            if ( Dom.find(el).is(selector) ) {
                 return el;
             }
         }
@@ -257,7 +251,7 @@ export class Dom
     {
         let el = this.get(0);
 
-        if ( Any.isEmpty(el) === true ) {
+        if ( el === null || el.parentNode === undefined  ) {
             return Dom.find(null);
         }
 
@@ -377,14 +371,22 @@ export class Dom
 
     append(val)
     {
-        this.each((el) => el.append(val));
+        this.each((el) => {
+            if ( el.append !== undefined ) {
+                el.append(val);
+            }
+        });
 
         return this;
     }
 
     appendTo(el)
     {
-        Dom.find(el).each((val) => val.append(this.el));
+        Dom.find(el).each((val) => {
+            if ( val.append !== undefined ) {
+                val.append(this.el);
+            }
+        });
 
         return this;
     }
@@ -406,7 +408,7 @@ export class Dom
             return null;
         }
 
-        for (let el = this.get(0); el !== null; el = el.previousSibling) {
+        for (let el = this.get(0).previousSibling; el !== null; el = el.previousSibling) {
             if ( el.nodeType === 1 ) {
                 return Dom.find(el);
             }
@@ -421,7 +423,7 @@ export class Dom
             return null;
         }
 
-        for (let el = this.get(0); el !== null; el = el.nextSibling) {
+        for (let el = this.get(0).nextSibling; el !== null; el = el.nextSibling) {
             if ( el.nodeType === 1 ) {
                 return Dom.find(el);
             }
@@ -504,8 +506,8 @@ export class Dom
 
             let target = e.srcElement || e.target;
 
-            if ( event.match(/^(drag|drop$)/) ) {
-                target = Dom.location(e.clientX, e.clientY);
+            if ( event.match(/^(drag[a-z]*|drop$)/) ) {
+                target = Dom.location(e.clientX, e.clientY).get(0);
             }
 
             if ( ! Dom.find(target).inside(selector) ) {
@@ -834,7 +836,7 @@ export class Dom
 
     loopParent(callback, target = document.body)
     {
-        for (let el = this.get(0); ! Any.isEmpty(el); el = el.parentNode) {
+        for (let el = this.get(0); el !== null && el.parentNode !== undefined; el = el.parentNode) {
 
             if ( Dom.find(el).is(target) === true ) {
                 return true;
@@ -848,7 +850,7 @@ export class Dom
 
     loopOffsetParent(callback, target = document.body)
     {
-        for (let el = this.get(0); ! Any.isEmpty(el); el = el.offsetParent) {
+        for (let el = this.get(0); el !== null && el.offsetParent !== undefined; el = el.offsetParent) {
 
             if ( Dom.find(el).is(target) === true ) {
                 return true;
