@@ -12,7 +12,6 @@ export {
 
 import Ajax from "./library/component/ajax";
 import Asset from "./library/component/asset";
-import Auth from "./library/component/auth";
 import Data from "./library/component/data";
 import Element from "./library/component/element";
 import Event from "./library/component/event";
@@ -22,7 +21,7 @@ import Queue from "./library/component/queue";
 import Route from "./library/component/route";
 
 export {
-    Ajax, Asset, Auth, Data, Element, Event, Extension, Locale, Queue, Route
+    Ajax, Asset, Data, Element, Event, Extension, Locale, Queue, Route
 }
 
 let UUID = require('uuid/v1');
@@ -45,7 +44,6 @@ export function NanoInstance() {
 
     this.Ajax =  Ajax;
     this.Asset =  Asset;
-    this.Auth =  Auth;
     this.Data =  Data;
     this.Element =  Element;
     this.Event =  Event;

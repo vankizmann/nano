@@ -71,9 +71,11 @@ export default {
 
     renderReset()
     {
-        return <NButton type="link" size="small" disabled={Any.isEmpty(this.value)} vOn:click={this.resetFilter}>
-            {this.trans('Reset')}
-        </NButton>;
+        return (
+            <NButton type="link" size="small" disabled={Any.isEmpty(this.value)} vOn:click={this.resetFilter}>
+                {this.trans('Reset')}
+            </NButton>
+        );
     },
 
     render()
