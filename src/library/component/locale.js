@@ -1,57 +1,59 @@
 import { Obj } from "../../index";
 
-export function pickByCount(splits, count)
-{
-
-    let splitLength = splits.length;
-
-    if ( splitLength == 3 && count == 0 ) {
-        return splits[0];
-    }
-
-    if ( splitLength == 3 && count == 1 ) {
-        return splits[1];
-    }
-
-    if ( splitLength == 3 && count >= 2 ) {
-        return splits[2];
-    }
-
-    if ( splitLength == 2 && count == 1 ) {
-        return splits[0];
-    }
-
-    if ( splitLength == 2 && count != 1 ) {
-        return splits[1];
-    }
-
-    return splits[0];
-}
-
 export class Locale
 {
-    static locales = {};
+    /**
+     * Get locales from window if present.
+     */
+    static locales = Obj.get(window, '_locales', {});
+
+    static pickByCount(splits, count)
+    {
+        let splitLength = splits.length;
+
+        if ( splitLength === 3 && count === 0 ) {
+            return splits[0];
+        }
+
+        if ( splitLength === 3 && count === 1 ) {
+            return splits[1];
+        }
+
+        if ( splitLength === 3 && count >= 2 ) {
+            return splits[2];
+        }
+
+        if ( splitLength === 2 && count === 1 ) {
+            return splits[0];
+        }
+
+        if ( splitLength === 2 && count !== 1 ) {
+            return splits[1];
+        }
+
+        return splits[0];
+    }
 
     static has(key)
     {
-        return Obj.has(Locale.locales, key);
+        return Obj.has(this.locales, key);
     }
 
     static get(key, fallback = null)
     {
-        return Obj.get(Locale.locales, key, fallback || key);
+        return Obj.get(this.locales, key, fallback || key);
     }
 
     static set(key, value)
     {
-        Obj.set(Locale.locales, key, value);
+        Obj.set(this.locales, key, value);
 
         return this;
     }
 
     static trans(key, values = {})
     {
-        let message = Obj.get(Locale.locales, key, key);
+        let message = Obj.get(this.locales, key, key);
 
         Obj.each(values, (value, key) => {
             message = message.replace(new RegExp(':' + key, 'g'), value);
@@ -62,13 +64,13 @@ export class Locale
 
     static choice(key, count = 0, values = {})
     {
-        let splits = Obj.get(Locale.locales, key, key).split('|');
+        let splits = Obj.get(this.locales, key, key).split('|');
 
         if ( typeof values.count === 'undefined' ) {
             values = Obj.assign({ count: count }, values);
         }
 
-        let message = pickByCount(splits, count);
+        let message = this.pickByCount(splits, count);
 
         Obj.each(values, (value, key) => {
             message = message.replace(new RegExp(':' + key, 'g'), value);

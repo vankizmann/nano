@@ -72,7 +72,7 @@ export default {
     renderReset()
     {
         return <NButton type="link" size="small" disabled={Any.isEmpty(this.value)} vOn:click={this.resetFilter}>
-            {Locale.trans('Reset')}
+            {this.trans('Reset')}
         </NButton>;
     },
 

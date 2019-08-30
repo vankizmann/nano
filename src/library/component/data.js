@@ -2,7 +2,7 @@ import { Arr, Obj, Num, Any, Event } from "../../index";
 
 export class Data
 {
-    static data = {};
+    static data = Obj.get(window, '_data', {});
 
     static has (input)
     {

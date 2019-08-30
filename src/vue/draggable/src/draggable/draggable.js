@@ -749,7 +749,7 @@ export default {
                 { Any.isEmpty(this.items) === true && (this.$slots.empty ||
                     <div class="n-draggable__empty">
                          <span>
-                             { Locale.trans('No Entries') }
+                             { this.trans('No Entries') }
                          </span>
                     </div>)
                 }
@@ -758,7 +758,7 @@ export default {
                 </div>
                 <div ref="placeholder" class="n-draggable__placeholder">
                     <span>
-                        { Locale.choice(':count entry|:count entries', this.self.length) }
+                        { this.choice(':count entry|:count entries', this.self.length) }
                     </span>
                 </div>
             </div>

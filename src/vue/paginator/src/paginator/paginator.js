@@ -115,7 +115,7 @@ export default {
         let limitOptions = Arr.each(this.limitOptions, (limit) => {
             return (
                 <NSelectOption value={limit}>
-                    { Locale.choice(':count items', limit) }
+                    { this.choice(':count items', limit) }
                 </NSelectOption>
             );
         });
@@ -128,7 +128,7 @@ export default {
             </div>
             <div class="n-paginator__review">
                 <span>
-                    { Locale.choice('No items|Total :count item|Total :count items', this.total) }
+                    { this.choice('No items|Total :count item|Total :count items', this.total) }
                 </span>
             </div>
             <div class="n-paginator__spacer">
@@ -136,7 +136,7 @@ export default {
             </div>
             <div class="n-paginator__goto">
                 <span>
-                    { Locale.trans('Goto') }
+                    { this.trans('Goto') }
                 </span>
                 <NSelect vModel={this.nativePage} size={this.size} position="top-center">
                     {

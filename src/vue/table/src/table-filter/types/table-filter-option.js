@@ -51,8 +51,8 @@ export default {
             </NFormItem>
             <NFormItem>
                 <NSelect size="small" vModel={this.operator}>
-                    <NSelectOption value="in" label={Locale.trans('Includes value')} />
-                    <NSelectOption value="ni" label={Locale.trans('Excludes value')} />
+                    <NSelectOption value="in" label={this.trans('Includes value')} />
+                    <NSelectOption value="ni" label={this.trans('Excludes value')} />
                 </NSelect>
             </NFormItem>
         </NForm>;

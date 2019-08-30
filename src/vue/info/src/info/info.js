@@ -102,7 +102,7 @@ export default {
                     }
                     { Any.isEmpty(this.item) === true &&
                         <div class="n-info__empty">
-                            { Locale.trans('No entry') }
+                            { this.trans('No entry') }
                         </div>
                     }
                     { this.$slots.default }

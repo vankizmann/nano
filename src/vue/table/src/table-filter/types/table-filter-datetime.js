@@ -36,9 +36,9 @@ export default {
             </NFormItem>
             <NFormItem>
                 <NSelect size="small" vModel={this.operator}>
-                    <NSelectOption value="eq" label={Locale.trans('Exact date')} />
-                    <NSelectOption value="lt" label={Locale.trans('Before date')} />
-                    <NSelectOption value="gt" label={Locale.trans('After date')} />
+                    <NSelectOption value="eq" label={this.trans('Exact date')} />
+                    <NSelectOption value="lt" label={this.trans('Before date')} />
+                    <NSelectOption value="gt" label={this.trans('After date')} />
                 </NSelect>
             </NFormItem>
         </NForm>;

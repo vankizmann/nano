@@ -1,7 +1,5 @@
 import CtorMixin from "../../../mixins/src/ctor";
-import { Nano } from "../../../../index";
-
-let { Arr, Obj, Any, Locale } = Nano;
+import { Arr, Obj, Any } from "../../../../index";
 
 export default {
 
@@ -32,7 +30,7 @@ export default {
         placeholder: {
             default()
             {
-                return Locale.trans('Please select');
+                return this.trans('Please select');
             },
             type: [String]
         },

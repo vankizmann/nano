@@ -1,6 +1,4 @@
-import { Nano } from "../../../../index";
-
-let { UUID, Str, Arr, Obj, Any, Locale } = Nano;
+import { Arr, Obj } from "../../../../index";
 
 export default {
 
@@ -27,7 +25,7 @@ export default {
         sourceLabel: {
             default()
             {
-                return Locale.trans('Source');
+                return this.trans('Source');
             },
             type: [String]
         },
@@ -35,7 +33,7 @@ export default {
         targetLabel: {
             default()
             {
-                return Locale.trans('Target');
+                return this.trans('Target');
             },
             type: [String]
         },

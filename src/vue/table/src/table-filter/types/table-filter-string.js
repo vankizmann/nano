@@ -36,10 +36,10 @@ export default {
             </NFormItem>
             <NFormItem>
                 <NSelect size="small" vModel={this.operator}>
-                    <NSelectOption value="li" label={Locale.trans('Includes value')} />
-                    <NSelectOption value="nl" label={Locale.trans('Excludes value')} />
-                    <NSelectOption value="eq" label={Locale.trans('Equal value')} />
-                    <NSelectOption value="ne" label={Locale.trans('Except value')} />
+                    <NSelectOption value="li" label={this.trans('Includes value')} />
+                    <NSelectOption value="nl" label={this.trans('Excludes value')} />
+                    <NSelectOption value="eq" label={this.trans('Equal value')} />
+                    <NSelectOption value="ne" label={this.trans('Except value')} />
                 </NSelect>
             </NFormItem>
         </NForm>;

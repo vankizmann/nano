@@ -134,14 +134,14 @@ export default {
                             }
                         </div>
                         <div class="n-confirm__body">
-                            { this.$slots.default || Locale.trans('Are you sure?') }
+                            { this.$slots.default || this.trans('Are you sure?') }
                         </div>
                         <div class="n-confirm__actions">
                             <NButton size={this.size} type="secondary" vOn:click={this.abort}>
-                                { Locale.trans('Abort') }
+                                { this.trans('Abort') }
                             </NButton>
                             <NButton size={this.size} type={this.type} vOn:click={this.confirm}>
-                                { Locale.trans('Confirm') }
+                                { this.trans('Confirm') }
                             </NButton>
                         </div>
                     </div>

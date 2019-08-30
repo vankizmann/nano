@@ -68,7 +68,7 @@ export default {
         emptyText: {
             default()
             {
-                return Locale.trans('-');
+                return this.trans('-');
             },
             type: [String]
         },
@@ -76,7 +76,7 @@ export default {
         trueText: {
             default()
             {
-                return Locale.trans('Yes');
+                return this.trans('Yes');
             },
             type: [String]
         },
@@ -84,7 +84,7 @@ export default {
         falseText: {
             default()
             {
-                return Locale.trans('No');
+                return this.trans('No');
             },
             type: [String]
         },
@@ -92,7 +92,7 @@ export default {
         datetimeFormat: {
             default()
             {
-                return Locale.trans('YYYY-MM-DD hh:ii');
+                return this.trans('YYYY-MM-DD hh:ii');
             },
             type: [String]
         }

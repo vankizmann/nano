@@ -2,7 +2,7 @@ import { Arr, Obj, Asset, Queue } from "../../index";
 
 export class Extension
 {
-    static imports = {};
+    static imports = Obj.get(window, '_imports', {});
 
     static exports = {};
 

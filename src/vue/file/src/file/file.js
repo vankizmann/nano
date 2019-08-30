@@ -74,7 +74,7 @@ export default {
         buttonText: {
             default()
             {
-                return Locale.trans('Select file');
+                return this.trans('Select file');
             },
             type: [String]
         }

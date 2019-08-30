@@ -2,7 +2,7 @@ import { Obj, Any } from "../../index";
 
 export default class Route
 {
-    static routes = {};
+    static routes = Obj.get(window, '_routes', {});
 
     static set (key, value)
     {

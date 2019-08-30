@@ -32,7 +32,7 @@ export default {
         label: {
             default()
             {
-                return Locale.trans('Structure');
+                return this.trans('Structure');
             },
             type: [String]
         },

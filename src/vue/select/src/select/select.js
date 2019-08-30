@@ -66,7 +66,7 @@ export default {
         placeholder: {
             default()
             {
-                return Locale.trans('Please select');
+                return this.trans('Please select');
             },
             type: [String]
         },
@@ -74,7 +74,7 @@ export default {
         emptyText: {
             default()
             {
-                return Locale.trans('No Entries');
+                return this.trans('No Entries');
             },
             type: [String]
         },
