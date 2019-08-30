@@ -612,10 +612,7 @@ export default {
             };
 
             let on = {
-                input: (input) => value = input, remove: () => {
-                    console.log(key);
-                    this.items.splice(key, 1)
-                }
+                input: (input) => value = input, remove: () => this.items.splice(key, 1)
             };
 
             return ([
