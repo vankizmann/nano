@@ -612,7 +612,7 @@ export default {
             };
 
             let on = {
-                input: (input) => value = input, remove: () => Arr.remove({ _dragid: value._dragid })
+                input: (input) => value = input, remove: () => this.items.splice(1, key)
             };
 
             return ([
