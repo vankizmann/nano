@@ -611,25 +611,15 @@ export default {
                 value: value, key: key, updateItem, updateProp
             };
 
-            let domProps = {
-                'data-drag-id': value._dragid, 'selectable': selectable, 'draggable': draggable
-            };
-
             let on = {
-                input: (input) => value = input
+                input: (input) => value = input, remove: () => Arr.remove({ _dragid: value._dragid })
             };
-
-            let element = this.use === null ? (
-                    <div class={className} data-drag-id={value._dragid} selectable={selectable} draggable={draggable}>
-                        { this.$scopedSlots.default(props) }
-                    </div>
-            ) : (
-                h(this.use, { key: value._dragid, class: className, domProps, props, on })
-            );
 
             return ([
                 this.$scopedSlots.before && this.$scopedSlots.before(props),
-                element,
+                <div class={className} data-drag-id={value._dragid} selectable={selectable} draggable={draggable}>
+                    {this.use === null ? this.$scopedSlots.default(props) : h(this.use, { key: value._dragid, props, on })}
+                </div>,
                 this.$scopedSlots.after && this.$scopedSlots.after(props)
             ]);
         }
