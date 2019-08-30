@@ -70,7 +70,7 @@ export class Locale
             values = Obj.assign({ count: count }, values);
         }
 
-        let message = this.pickByCount(splits, count);
+        let message = Locale.pickByCount(splits, count);
 
         Obj.each(values, (value, key) => {
             message = message.replace(new RegExp(':' + key, 'g'), value);
