@@ -325,7 +325,7 @@ export default {
                 <span>{this.label}</span>
             </div>
 
-            <NPopover class="n-popover-label" type="tooltip" trigger="hover" boundry={this.NTable.$refs.wrapper}>
+            <NPopover class="n-popover-label" type="tooltip" trigger="hover">
                 <span>{this.label}</span>
             </NPopover>
 
@@ -348,7 +348,7 @@ export default {
             <div class="n-table-filter__filter">
                 <span class="fa fa-angle-down"></span>
             </div>,
-            <NPopover class="n-popover-filter" type="default" trigger="click" boundry={this.NTable.$refs.wrapper}>
+            <NPopover class="n-popover-filter" type="default" trigger="click">
                 {component}
             </NPopover>
         ];
