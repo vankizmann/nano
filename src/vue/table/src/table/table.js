@@ -399,7 +399,7 @@ export default {
             this.calculateHeight();
         }
 
-        if ( this.adaptHeight !== null ) {
+        if ( this.adaptHeight !== null && this.adaptHeight !== false ) {
             this.$nextTick(this.bindObserver);
         }
     },
