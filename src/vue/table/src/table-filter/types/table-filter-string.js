@@ -30,7 +30,7 @@ export default {
 
     renderForm()
     {
-        return <NForm vModel={this.$data} vOn:change={Any.debounce(this.changeFilter)}>
+        return <NForm form={this.$data} vOn:change={Any.debounce(this.changeFilter)}>
             <NFormItem>
                 <NInput size="small" vModel={this.value}/>
             </NFormItem>
