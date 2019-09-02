@@ -3026,6 +3026,7 @@
 
 .n-table__cell.n-table__cell--image > span {
   display: block;
+  width: 100%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%; }
