@@ -340,16 +340,16 @@ export default {
     {
         let name = 'NTableFilter' + Str.ucfirst(this.type);
 
-        let component = this.h(name, {
-            slot: 'raw', props: { column }
-        });
-
         return [
             <div class="n-table-filter__filter">
                 <span class="fa fa-angle-down"></span>
             </div>,
             <NPopover class="n-popover-filter" type="default" trigger="click">
-                {component}
+                {
+                    this.h(name, {
+                        slot: 'raw', props: { column }
+                    })
+                }
             </NPopover>
         ];
     },

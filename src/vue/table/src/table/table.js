@@ -366,8 +366,8 @@ export default {
             visibleColumns: [],
             currentKey: null,
             nativeSelectedKeys: this.selectedKeys,
-            nativeSortProp: this.nativeSortProp,
-            nativeSortDir: this.nativeSortDir,
+            nativeSortProp: this.sortProp,
+            nativeSortDir: this.sortDir,
             nativeFilterProps: this.filterProps
         }
     },
