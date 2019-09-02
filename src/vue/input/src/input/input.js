@@ -45,6 +45,14 @@ export default {
             type: [String]
         },
 
+        round: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
+        },
+
         disabled: {
             default()
             {
@@ -91,6 +99,10 @@ export default {
 
         if ( this.disabled === true ) {
             className.push('n-input--disabled');
+        }
+
+        if ( this.round === true ) {
+            className.push('n-input--round');
         }
 
         if ( Any.isEmpty(this.icon) === false ) {

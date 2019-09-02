@@ -47,6 +47,14 @@ export default {
             type: [Boolean]
         },
 
+        round: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
+        },
+
         outline: {
             default()
             {
@@ -85,6 +93,10 @@ export default {
 
         if ( this.square === true ) {
             className.push('n-button--square');
+        }
+
+        if ( this.round === true ) {
+            className.push('n-button--round');
         }
 
         if ( this.outline === true ) {

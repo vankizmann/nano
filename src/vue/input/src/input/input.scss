@@ -22,6 +22,10 @@ $input-height: 34px !default;
     transition: 0.15s border;
 }
 
+.n-input.n-input--round {
+    border-radius: 500px;
+}
+
 .n-inverse .n-input {
     border-color: $--color-gray-80;
     background: $--color-black;

@@ -24,6 +24,10 @@ $button-height: 34px !default;
     transition: 0.15s background, 0.15s border, 0.15s color;
 }
 
+.n-button.n-button--round:not(.n-button--link) {
+    border-radius: 500px;
+}
+
 .n-button.n-button--square:not(.n-button--link) {
     width: $button-height;
     text-align: center;

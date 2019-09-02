@@ -823,6 +823,9 @@
   border-radius: 1.5px;
   transition: 0.15s background, 0.15s border, 0.15s color; }
 
+.n-button.n-button--round:not(.n-button--link) {
+  border-radius: 500px; }
+
 .n-button.n-button--square:not(.n-button--link) {
   width: 34px;
   text-align: center; }
@@ -1323,6 +1326,9 @@
   border: 1px solid var(--color-gray-15);
   border-radius: 1.5px;
   transition: 0.15s border; }
+
+.n-input.n-input--round {
+  border-radius: 500px; }
 
 .n-inverse .n-input {
   border-color: var(--color-gray-80);
