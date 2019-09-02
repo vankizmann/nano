@@ -906,7 +906,7 @@ export class Dom
             target.top - Dom.find(boundry).scrollHeight();
 
         target.right = Dom.find(document.body).scrollWidth() -
-            target.left - Dom.find(boundry).scrollHeight();
+            target.left - Dom.find(boundry).scrollWidth();
 
         let offset = {
             top: source.top - target.top,
