@@ -14,3 +14,16 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.n-table__cell.n-table__cell--image > span {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.n-table__cell.n-table__cell--image > span:before {
+    content: '\00a0';
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
+}
