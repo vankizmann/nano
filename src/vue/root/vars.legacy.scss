@@ -67,11 +67,11 @@ $color-info-lighter:        lighten($color-info, 10%) !default;
 $color-info-dark:           darken($color-info, 5%) !default;
 $color-info-darker:         darken($color-info, 10%) !default;
 
-$color-background-light:    lighten($color-background, 5%) !default;
-$color-background-lighter:  lighten($color-background, 10%) !default;
+$color-background-light:    lighten($color-background, 2.5%) !default;
+$color-background-lighter:  lighten($color-background, 5%) !default;
 
-$color-background-dark:     darken($color-background, 5%) !default;
-$color-background-darker:   darken($color-background, 10%) !default;
+$color-background-dark:     darken($color-background, 2.5%) !default;
+$color-background-darker:   darken($color-background, 5%) !default;
 
 $transition-short: 0.12s !default;
 $transition-medium: 0.24s !default;
