@@ -66,15 +66,6 @@ export default {
 
     },
 
-    watch: {
-
-        page()
-        {
-            this.nativePage = this.page;
-        }
-
-    },
-
     methods: {
 
         ...CtorMixin,
