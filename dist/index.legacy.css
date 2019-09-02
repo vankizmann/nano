@@ -824,10 +824,12 @@
   transition: 0.15s background, 0.15s border, 0.15s color; }
 
 .n-button.n-button--round:not(.n-button--link) {
-  border-radius: 500px; }
+  border-radius: 500px;
+  padding: 0 20.4px; }
 
 .n-button.n-button--square:not(.n-button--link) {
   width: 34px;
+  padding: 0;
   text-align: center; }
 
 .n-button:not(.n-button--link):hover,
@@ -850,16 +852,24 @@
   padding: 0 8.925px;
   height: 29.75px; }
 
+.n-button.n-button--small.n-button--round:not(.n-button--link) {
+  padding: 0 17.85px; }
+
 .n-button.n-button--small.n-button--square:not(.n-button--link) {
-  min-width: 29.75px; }
+  width: 29.75px;
+  padding: 0; }
 
 .n-button.n-button--large:not(.n-button--link) {
   font-size: 15.75px;
   padding: 0 11.475px;
   height: 38.25px; }
 
+.n-button.n-button--large.n-button--round:not(.n-button--link) {
+  padding: 0 22.95px; }
+
 .n-button.n-button--large.n-button--square:not(.n-button--link) {
-  min-width: 38.25px; }
+  width: 38.25px;
+  padding: 0; }
 
 .n-button.n-button--link {
   font-size: 14px;
@@ -1328,7 +1338,8 @@
   transition: 0.15s border; }
 
 .n-input.n-input--round {
-  border-radius: 500px; }
+  border-radius: 500px;
+  padding: 0 20.4px; }
 
 .n-inverse .n-input {
   border-color: #494e54;
@@ -1344,10 +1355,16 @@
   padding: 0 8.925px;
   height: 29.75px; }
 
+.n-input.n-input--round.n-input--small {
+  padding: 0 17.85px; }
+
 .n-input.n-input--large {
   font-size: 15.75px;
   padding: 0 11.475px;
   height: 38.25px; }
+
+.n-input.n-input--round.n-input--large {
+  padding: 0 22.95px; }
 
 .n-input.n-input--icon {
   padding-right: 34px; }

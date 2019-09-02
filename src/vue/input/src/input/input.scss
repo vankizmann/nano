@@ -24,6 +24,7 @@ $input-height: 34px !default;
 
 .n-input.n-input--round {
     border-radius: 500px;
+    padding: 0 $input-height * 0.6;
 }
 
 .n-inverse .n-input {
@@ -43,10 +44,18 @@ $input-height: 34px !default;
     height: $input-height * 0.875;
 }
 
+.n-input.n-input--round.n-input--small {
+    padding: 0 $input-height * 0.6 * 0.875;
+}
+
 .n-input.n-input--large {
     font-size: $input-size * 1.125;
     padding: 0 $input-height * 0.3 * 1.125;
     height: $input-height * 1.125;
+}
+
+.n-input.n-input--round.n-input--large {
+    padding: 0 $input-height * 0.6 * 1.125;
 }
 
 .n-input.n-input--icon {

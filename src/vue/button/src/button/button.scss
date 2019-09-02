@@ -26,10 +26,12 @@ $button-height: 34px !default;
 
 .n-button.n-button--round:not(.n-button--link) {
     border-radius: 500px;
+    padding: 0 $button-height * 0.6;
 }
 
 .n-button.n-button--square:not(.n-button--link) {
     width: $button-height;
+    padding: 0;
     text-align: center;
 }
 
@@ -58,8 +60,13 @@ $button-height: 34px !default;
     height: $button-height * 0.875;
 }
 
+.n-button.n-button--small.n-button--round:not(.n-button--link) {
+    padding: 0 $button-height * 0.6 * 0.875;
+}
+
 .n-button.n-button--small.n-button--square:not(.n-button--link) {
-    min-width: $button-height * 0.875;
+    width: $button-height * 0.875;
+    padding: 0;
 }
 
 .n-button.n-button--large:not(.n-button--link) {
@@ -68,8 +75,14 @@ $button-height: 34px !default;
     height: $button-height * 1.125;
 }
 
+.n-button.n-button--large.n-button--round:not(.n-button--link) {
+    padding: 0 $button-height * 0.6 * 1.125;
+}
+
+
 .n-button.n-button--large.n-button--square:not(.n-button--link) {
-    min-width: $button-height * 1.125;
+    width: $button-height * 1.125;
+    padding: 0;
 }
 
 .n-button.n-button--link {
