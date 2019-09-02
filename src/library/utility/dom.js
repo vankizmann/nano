@@ -903,10 +903,10 @@ export class Dom
         });
 
         target.bottom = Dom.find(document.body).scrollHeight() -
-            target.top + Dom.find(boundry).scrollHeight();
+            target.top - Dom.find(boundry || document.body).scrollHeight();
 
         target.right = Dom.find(document.body).scrollWidth() -
-            target.left + Dom.find(boundry).scrollWidth();
+            target.left - Dom.find(boundry || document.body).scrollWidth();
 
         let offset = {
             top: source.top - target.top,
