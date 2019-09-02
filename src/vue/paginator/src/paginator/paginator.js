@@ -66,6 +66,15 @@ export default {
 
     },
 
+    watch: {
+
+        page()
+        {
+            this.nativePage = this.page;
+        }
+
+    },
+
     methods: {
 
         ...CtorMixin,
@@ -184,9 +193,11 @@ export default {
                             this.changePage(Num.int(index) + 1);
                         };
 
-                        return <NButton disabled={disabled} outline={true} square={true} size={this.size} vOn:click={changePage}>
-                            { Num.int(index) + 1 }
-                        </NButton>;
+                        return (
+                            <NButton disabled={disabled} outline={true} square={true} size={this.size} vOn:click={changePage}>
+                                { Num.int(index) + 1 }
+                            </NButton>
+                        );
                     })
                 }
             </div>

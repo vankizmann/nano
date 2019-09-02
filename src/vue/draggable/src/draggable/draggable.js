@@ -61,7 +61,7 @@ export default {
             type: [Array]
         },
 
-        safezone: {
+        safeZone: {
             default()
             {
                 return (height) => height * 0.51;
@@ -419,16 +419,16 @@ export default {
                 height = Dom.find(target).height(),
                 inside = Dom.find(target).offsetTop(this.$el);
 
-            let safezone = typeof this.safezone === 'function' ?
-                this.safezone(height) : this.safezone;
+            let safeZone = typeof this.safeZone === 'function' ?
+                this.safeZone(height) : this.safeZone;
 
             this.move = 'inner';
 
-            if ( event.clientY < offset + (inside - scroll) + safezone ) {
+            if ( event.clientY < offset + (inside - scroll) + safeZone ) {
                 this.move = 'before';
             }
 
-            if ( event.clientY > offset + (inside - scroll) + height - safezone ) {
+            if ( event.clientY > offset + (inside - scroll) + height - safeZone ) {
                 this.move = 'after';
             }
 
