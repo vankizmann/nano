@@ -29,14 +29,6 @@ export default {
             type: [Boolean]
         },
 
-        defaultValue: {
-            default()
-            {
-                return '';
-            },
-            type: [String]
-        },
-
         size: {
             default()
             {
@@ -75,10 +67,6 @@ export default {
 
         value(value)
         {
-            // if ( value === null || value ===  undefined ) {
-            //     return this.$emit('input', this.defaultValue);
-            // }
-
             this.nativeValue = value;
         }
 
@@ -91,7 +79,7 @@ export default {
     data()
     {
         return {
-            nativeValue: this.value || this.defaultValue
+            nativeValue: this.value || ''
         };
     },
 

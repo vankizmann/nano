@@ -1,4 +1,4 @@
-import { Any, Arr } from "../../index"
+import { Any, Arr } from "../index"
 
 export class Num
 {

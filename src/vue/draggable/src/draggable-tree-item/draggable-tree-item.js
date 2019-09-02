@@ -34,13 +34,13 @@ export default {
 
         selected()
         {
-            return Arr.last(this.NDraggableTree.defaultCascade) ===
+            return Arr.last(this.NDraggableTree.cascade) ===
                 this.value[this.NDraggableTree.uniqueProp];
         },
 
         expanded()
         {
-            return Arr.has(this.NDraggableTree.defaultExpanded,
+            return Arr.has(this.NDraggableTree.expanded,
                 this.value[this.NDraggableTree.uniqueProp]);
         }
 

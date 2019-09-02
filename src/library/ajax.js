@@ -1,4 +1,4 @@
-import { Arr, Obj, Any, Data, Event } from "../../index";
+import { Arr, Obj, Any, Data, Event } from "../index";
 
 export class Ajax
 {

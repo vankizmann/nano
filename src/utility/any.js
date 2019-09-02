@@ -1,4 +1,4 @@
-import { Obj } from "../../index";
+import { Obj } from "../index";
 
 export class Any
 {

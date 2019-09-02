@@ -1,4 +1,4 @@
-import { Arr, Obj, Asset, Queue } from "../../index";
+import { Arr, Obj, Asset, Queue } from "../index";
 
 export class Extension
 {

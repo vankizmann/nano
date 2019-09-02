@@ -27,7 +27,7 @@ export default {
 
         getFilterProps(defaults)
         {
-            let filter = Arr.find(this.NTable.defaultFilterProps, {
+            let filter = Arr.find(this.NTable.filterProps, {
                 property: this.column.filterProp
             }, {});
 

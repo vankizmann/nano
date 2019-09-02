@@ -21,12 +21,19 @@ export default {
             type: [Array]
         },
 
-        defaultCascade: {
+        cascade: {
             default()
             {
                 return [];
             },
             type: [Array]
+        },
+
+        expanded: {
+            default()
+            {
+                return [];
+            }
         },
 
         use: {
@@ -88,13 +95,6 @@ export default {
             }
         },
 
-        defaultExpanded: {
-            default()
-            {
-                return [];
-            }
-        },
-
         transformDrop: {
             default()
             {
@@ -148,9 +148,9 @@ export default {
 
     watch: {
 
-        cascade()
+        nativeCascade()
         {
-            this.$emit('update:defaultCascade', this.cascade);
+            this.$emit('update:cascade', this.nativeCascade);
         }
 
     },
@@ -164,22 +164,27 @@ export default {
             let item = this.items[key];
 
             let events = {
+
                 input: Any.throttle((input) => {
                     item[this.childProp] = input;
                 }, 7),
+
                 cascade: Any.throttle((input) => {
-                    this.$emit('cascade', this.cascade = Arr.merge([value.value[this.uniqueProp]], input));
+                    this.$emit('cascade', this.nativeCascade =
+                        Arr.merge([value.value[this.uniqueProp]], input));
                 }, 7),
+
                 move: Any.throttle((...args) => {
                     this.$emit('move', ...args);
                 }, 7)
+
             };
 
             let props = Obj.assign({}, this.$props, {
                 items: item[this.childProp], depth: this.depth + 1
             });
 
-            let visible = Arr.has(this.defaultExpanded,
+            let visible = Arr.has(this.expanded,
                 value.value[this.uniqueProp]);
 
             return Any.isEmpty(item[this.childProp]) === false && visible ? h('NDraggableTree', {
@@ -196,10 +201,10 @@ export default {
                     this.items.splice(key, 1, input);
                 }, 7),
                 cascade: Any.throttle((input) => {
-                    this.$emit('cascade', this.cascade = [input])
+                    this.$emit('cascade', this.nativeCascade = [input])
                 }, 7),
                 expand: Any.throttle((input) => {
-                    Arr.toggle(this.defaultExpanded, input);
+                    Arr.toggle(this.expanded, input);
                 }, 7),
             };
 
@@ -221,7 +226,7 @@ export default {
     data()
     {
         return {
-            cascade: this.defaultCascade
+            nativeCascade: this.cascade
         };
     },
 

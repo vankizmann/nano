@@ -15,14 +15,6 @@ export default {
             },
         },
 
-        defaultValue: {
-            default()
-            {
-                return null;
-            },
-            type: [String, Array]
-        },
-
         size: {
             default()
             {

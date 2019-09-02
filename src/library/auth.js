@@ -1,5 +1,4 @@
-import { Arr, Obj, Str, Data } from "../../index";
-
+import { Arr, Obj, Str, Data } from "../index";
 
 export class Auth
 {

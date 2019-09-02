@@ -1,24 +1,24 @@
 
-import Arr from "./library/utility/array";
-import Obj from "./library/utility/object";
-import Num from "./library/utility/number";
-import Str from "./library/utility/string";
-import Any from "./library/utility/any";
-import Dom from "./library/utility/dom";
+import Arr from "./utility/array";
+import Obj from "./utility/object";
+import Num from "./utility/number";
+import Str from "./utility/string";
+import Any from "./utility/any";
+import Dom from "./utility/dom";
 
 export {
     Arr, Obj, Num, Str, Any, Dom
 }
 
-import Ajax from "./library/component/ajax";
-import Asset from "./library/component/asset";
-import Data from "./library/component/data";
-import Element from "./library/component/element";
-import Event from "./library/component/event";
-import Extension from "./library/component/extension";
-import Locale from "./library/component/locale";
-import Queue from "./library/component/queue";
-import Route from "./library/component/route";
+import Ajax from "./library/ajax";
+import Asset from "./library/asset";
+import Data from "./library/data";
+import Element from "./library/element";
+import Event from "./library/event";
+import Extension from "./library/extension";
+import Locale from "./library/locale";
+import Queue from "./library/queue";
+import Route from "./library/route";
 
 export {
     Ajax, Asset, Data, Element, Event, Extension, Locale, Queue, Route

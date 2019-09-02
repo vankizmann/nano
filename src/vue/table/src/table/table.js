@@ -50,7 +50,7 @@ export default {
             }
         },
 
-        defaultSelectedKeys: {
+        selectedKeys: {
             default()
             {
                 return [];
@@ -58,7 +58,7 @@ export default {
             type: [Array]
         },
 
-        defaultSortProp: {
+        sortProp: {
             default()
             {
                 return 'id';
@@ -66,7 +66,7 @@ export default {
             type: [String]
         },
 
-        defaultSortDir: {
+        sortDir: {
             default()
             {
                 return 'desc';
@@ -74,7 +74,7 @@ export default {
             type: [String]
         },
 
-        defaultFilterProps: {
+        filterProps: {
             default()
             {
                 return [];
@@ -124,7 +124,7 @@ export default {
 
         selected()
         {
-            let selected = Arr.each(this.selectedKeys, (key) => {
+            let selected = Arr.each(this.nativeSelectedKeys, (key) => {
                 return Arr.find(this.items, { [this.uniqueProp]: key });
             });
 
@@ -174,7 +174,7 @@ export default {
 
             }, 10), { _uid: this._uid });
 
-            Dom.find(document).on('mouseup', () => {
+            Dom.find(document).on('mouseup', Any.throttle(() => {
 
                 Arr.each(this.columns, (column) => {
                     this.$nextTick(column.getWidth);
@@ -186,43 +186,43 @@ export default {
                 Dom.find(document).off('mouseup',
                     null, { _uid: this._uid });
 
-            }, { _uid: this._uid });
+            }, 10), { _uid: this._uid });
         },
 
         sortColumn(prop, direction = null)
         {
-            let cache = this.sortDir;
+            let cache = this.nativeSortDir;
 
-            if ( cache === 'asc' && this.sortProp === prop ) {
-                this.sortDir = 'desc';
+            if ( cache === 'asc' && this.nativeSortProp === prop ) {
+                this.nativeSortDir = 'desc';
             }
 
-            if ( cache === 'desc' && this.sortProp === prop ) {
-                this.sortDir = 'asc';
+            if ( cache === 'desc' && this.nativeSortProp === prop ) {
+                this.nativeSortDir = 'asc';
             }
 
             if ( direction !== null ) {
-                this.sortDir = direction;
+                this.nativeSortDir = direction;
             }
 
-            this.sortProp = prop;
+            this.nativeSortProp = prop;
 
-            this.$emit('update:defaultSortDir', this.sortDir);
-            this.$emit('update:defaultSortProp', this.sortProp);
+            this.$emit('update:sortDir', this.nativeSortDir);
+            this.$emit('update:sortProp', this.nativeSortProp);
 
-            this.$emit('sort', this.sortProp, this.sortDir)
+            this.$emit('sort', this.nativeSortProp, this.nativeSortDir)
         },
 
         filterColumn(prop, filter)
         {
-            Arr.remove(this.filterProps, {
+            Arr.remove(this.nativeFilterProps, {
                 property: prop
             });
 
-            Arr.push(this.filterProps, filter);
+            Arr.push(this.nativeFilterProps, filter);
 
-            this.$emit('update:defaultFilterProps', this.filterProps);
-            this.$emit('filter', this.filterProps);
+            this.$emit('update:filterProps', this.nativeFilterProps);
+            this.$emit('filter', this.nativeFilterProps);
         },
 
         calculateHeight()
@@ -320,7 +320,7 @@ export default {
 
         clearSelectedKeys()
         {
-            this.selectedKeys = [];
+            this.nativeSelectedKeys = [];
         }
 
     },
@@ -336,16 +336,16 @@ export default {
             this.$emit('update:current', current);
         },
 
-        defaultSelectedKeys()
+        selectedKeys()
         {
-            if ( ! Any.isEqual(this.selectedKeys, this.defaultSelectedKeys) ) {
-                this.selectedKeys = this.defaultSelectedKeys;
+            if ( ! Any.isEqual(this.nativeSelectedKeys, this.selectedKeys) ) {
+                this.nativeSelectedKeys = this.selectedKeys;
             }
         },
 
-        selectedKeys()
+        nativeSelectedKeys()
         {
-            this.$emit('update:defaultSelectedKeys', this.selectedKeys);
+            this.$emit('update:selectedKeys', this.nativeSelectedKeys);
         },
 
         visibleColumns()
@@ -360,16 +360,15 @@ export default {
         return {
             width: 0,
             height: 0,
-            scrollx: false,
             scroll: false,
             visible: 0,
             columns: [],
             visibleColumns: [],
             currentKey: null,
-            selectedKeys: this.defaultSelectedKeys,
-            sortProp: this.defaultSortProp,
-            sortDir: this.defaultSortDir,
-            filterProps: this.defaultFilterProps
+            nativeSelectedKeys: this.selectedKeys,
+            nativeSortProp: this.nativeSortProp,
+            nativeSortDir: this.nativeSortDir,
+            nativeFilterProps: this.filterProps
         }
     },
 
@@ -448,7 +447,7 @@ export default {
                             className.push('n-table__column--resizable');
                         }
 
-                        let filter = Arr.find(this.filterProps, {
+                        let filter = Arr.find(this.nativeFilterProps, {
                             property: column.prop
                         });
 
@@ -462,9 +461,11 @@ export default {
                             events.mousedown = (e) => this.resizeColumn(e, column);
                         }
 
-                        let resizer = this.h('div', {
-                            class: 'n-table__resizer', on: events
-                        }, [<span></span>]);
+                        let resizer = (
+                            <div class="n-table__resizer" on={events}>
+                                <span></span>
+                            </div>
+                        );
 
                         return (
                             <div class={className} style={column.styleHead} data-column-id={column._uid}>
@@ -559,11 +560,11 @@ export default {
         let events = {
 
             'input': () => {
-                this.selectedKeys = [];
+                this.nativeSelectedKeys = [];
             },
 
             'update:selected': (selected) => {
-                this.selectedKeys = Arr.each(selected,
+                this.nativeSelectedKeys = Arr.each(selected,
                     (item) => item[this.uniqueProp]);
             }
 
@@ -589,7 +590,7 @@ export default {
 
         return (
             <div class={classList}>
-                <NCheckboxGroup vModel={this.selectedKeys}>
+                <NCheckboxGroup vModel={this.nativeSelectedKeys}>
                     <div ref="wrapper" class="n-table-wrapper" style={style}>
                         <div ref="head" class="n-table__head">
                             { this.ctor('renderHeadRow')() }

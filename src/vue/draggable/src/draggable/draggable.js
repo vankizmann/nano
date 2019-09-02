@@ -615,11 +615,15 @@ export default {
                 input: (input) => value = input, remove: () => this.items.splice(key, 1)
             };
 
+            let defaultSlot = (
+                <div class={className} data-drag-id={value._dragid} selectable={selectable} draggable={draggable}>
+                    {this.use === null ? this.$scopedSlots.default(props) : h(this.use, {key: value._dragid, props, on})}
+                </div>
+            );
+
             return ([
                 this.$scopedSlots.before && this.$scopedSlots.before(props),
-                <div class={className} data-drag-id={value._dragid} selectable={selectable} draggable={draggable}>
-                    {this.use === null ? this.$scopedSlots.default(props) : h(this.use, { key: value._dragid, props, on })}
-                </div>,
+                defaultSlot,
                 this.$scopedSlots.after && this.$scopedSlots.after(props)
             ]);
         }
