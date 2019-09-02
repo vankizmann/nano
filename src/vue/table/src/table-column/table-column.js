@@ -1,7 +1,7 @@
 import CtorMixin from "../../../mixins/src/ctor";
 import { Nano } from "../../../../index";
 
-let { UUID, Num, Obj, Dom, Locale, Str } = Nano;
+let { UUID, Num, Obj, Dom, Any, Str } = Nano;
 
 export default {
 
@@ -39,6 +39,14 @@ export default {
                 return 'string';
             },
             type: [String]
+        },
+
+        basis: {
+            default()
+            {
+                return 1;
+            },
+            type: [Number]
         },
 
         align: {
@@ -202,7 +210,7 @@ export default {
             }
 
             return {
-                width: Num.fixed(width) + 'px'
+                'width': Num.fixed(width) + 'px'
             };
         },
 
@@ -215,7 +223,7 @@ export default {
             }
 
             return {
-                width: Num.fixed(width) + 'px'
+                'width': Num.fixed(width) + 'px'
             };
         },
 
@@ -296,7 +304,7 @@ export default {
 
     mounted()
     {
-        this.NTable.$once('hook:updated', this.getWidth);
+        this.NTable.$once('hook:updated', () => this.$nextTick(this.getWidth));
     },
 
     renderLabel({ column })

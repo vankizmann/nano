@@ -346,11 +346,6 @@ export default {
         nativeSelectedKeys()
         {
             this.$emit('update:selectedKeys', this.nativeSelectedKeys);
-        },
-
-        visibleColumns()
-        {
-            Arr.each(this.columns, (column) => column.getWidth());
         }
 
     },
