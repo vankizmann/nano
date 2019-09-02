@@ -209,7 +209,7 @@
   min-height: 34px; }
 
 .n-draggable__item:hover {
-  background: #f7fafc; }
+  background: white; }
 
 .n-inverse .n-draggable__item:hover {
   background: #3d4349; }
@@ -2862,7 +2862,7 @@
   border-bottom: 1px solid #e8e9ea; }
 
 .n-table__body .n-table__row.n-table__row--current {
-  background: #f7fafc; }
+  background: white; }
 
 .n-table__body .n-table__row > .n-table__column {
   padding: 0 10px; }

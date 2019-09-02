@@ -209,7 +209,7 @@
   min-height: 34px; }
 
 .n-draggable__item:hover {
-  background: var(--color-background); }
+  background: var(--color-background-light); }
 
 .n-inverse .n-draggable__item:hover {
   background: var(--color-gray-85); }
@@ -2862,7 +2862,7 @@
   border-bottom: 1px solid var(--color-gray-10); }
 
 .n-table__body .n-table__row.n-table__row--current {
-  background: var(--color-background); }
+  background: var(--color-background-light); }
 
 .n-table__body .n-table__row > .n-table__column {
   padding: 0 10px; }
