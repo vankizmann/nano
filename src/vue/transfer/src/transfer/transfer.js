@@ -80,7 +80,10 @@ export default {
 
     watch: {
 
-        items: 'getSourceValue'
+        items: {
+            handler: 'getSourceValue',
+            deep: true
+        }
 
     },
 
