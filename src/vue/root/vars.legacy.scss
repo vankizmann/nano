@@ -31,6 +31,18 @@ $color-info:            #62686d !default;
 
 $color-background:      #F0F3F7 !default;
 
+$color-white-light:         lighten($color-white, 5%) !default;
+$color-white-lighter:       lighten($color-white, 10%) !default;
+
+$color-white-dark:          darken($color-white, 5%) !default;
+$color-white-darker:        darken($color-white, 10%) !default;
+
+$color-black-light:         lighten($color-black, 5%) !default;
+$color-black-lighter:       lighten($color-black, 10%) !default;
+
+$color-black-dark:          darken($color-black, 5%) !default;
+$color-black-darker:        darken($color-black, 10%) !default;
+
 $color-primary-light:       lighten($color-primary, 5%) !default;
 $color-primary-lighter:     lighten($color-primary, 10%) !default;
 
@@ -70,8 +82,8 @@ $color-info-darker:         darken($color-info, 10%) !default;
 $color-background-light:    lighten($color-background, 2.5%) !default;
 $color-background-lighter:  lighten($color-background, 5%) !default;
 
-$color-background-dark:     darken($color-background, 2.5%) !default;
-$color-background-darker:   darken($color-background, 5%) !default;
+$color-background-dark:     darken($color-background, 5%) !default;
+$color-background-darker:   darken($color-background, 10%) !default;
 
 $transition-short: 0.12s !default;
 $transition-medium: 0.24s !default;
@@ -83,77 +95,89 @@ $radius-medium: 3px !default;
 $radius-large: 4.5px !default;
 $radius-extended: 9px !default;
 
-$--color-black:                 $color-black;
-$--color-white:                 $color-white;
+$--color-black:                 $color-black !default;
+$--color-white:                 $color-white !default;
 
-$--color-gray-05:               $color-gray-05;
-$--color-gray-10:               $color-gray-10;
-$--color-gray-15:               $color-gray-15;
-$--color-gray-20:               $color-gray-20;
-$--color-gray-25:               $color-gray-25;
-$--color-gray-30:               $color-gray-30;
-$--color-gray-35:               $color-gray-35;
-$--color-gray-40:               $color-gray-40;
-$--color-gray-45:               $color-gray-45;
-$--color-gray-50:               $color-gray-50;
-$--color-gray-55:               $color-gray-55;
-$--color-gray-60:               $color-gray-60;
-$--color-gray-65:               $color-gray-65;
-$--color-gray-70:               $color-gray-70;
-$--color-gray-75:               $color-gray-75;
-$--color-gray-80:               $color-gray-80;
-$--color-gray-85:               $color-gray-85;
-$--color-gray-90:               $color-gray-90;
-$--color-gray-95:               $color-gray-95;
+$--color-gray-05:               $color-gray-05 !default;
+$--color-gray-10:               $color-gray-10 !default;
+$--color-gray-15:               $color-gray-15 !default;
+$--color-gray-20:               $color-gray-20 !default;
+$--color-gray-25:               $color-gray-25 !default;
+$--color-gray-30:               $color-gray-30 !default;
+$--color-gray-35:               $color-gray-35 !default;
+$--color-gray-40:               $color-gray-40 !default;
+$--color-gray-45:               $color-gray-45 !default;
+$--color-gray-50:               $color-gray-50 !default;
+$--color-gray-55:               $color-gray-55 !default;
+$--color-gray-60:               $color-gray-60 !default;
+$--color-gray-65:               $color-gray-65 !default;
+$--color-gray-70:               $color-gray-70 !default;
+$--color-gray-75:               $color-gray-75 !default;
+$--color-gray-80:               $color-gray-80 !default;
+$--color-gray-85:               $color-gray-85 !default;
+$--color-gray-90:               $color-gray-90 !default;
+$--color-gray-95:               $color-gray-95 !default;
 
-$--color-primary:               $color-primary;
-$--color-secondary:             $color-secondary;
+$--color-primary:               $color-primary !default;
+$--color-secondary:             $color-secondary !default;
 
-$--color-success:               $color-success;
-$--color-warning:               $color-warning;
-$--color-danger:                $color-danger;
-$--color-info:                  $color-info;
+$--color-success:               $color-success !default;
+$--color-warning:               $color-warning !default;
+$--color-danger:                $color-danger !default;
+$--color-info:                  $color-info !default;
 
-$--color-background:            $color-background;
+$--color-background:            $color-background !default;
 
-$--color-primary-light:         $color-primary-light;
-$--color-primary-lighter:       $color-primary-lighter;
+$--color-black-light:           $color-black-light !default;
+$--color-black-lighter:         $color-black-lighter !default;
 
-$--color-primary-dark:          $color-primary-dark;
-$--color-primary-darker:        $color-primary-darker;
+$--color-black-dark:            $color-black-dark !default;
+$--color-black-darker:          $color-black-darker !default;
 
-$--color-secondary-light:       $color-secondary-light;
-$--color-secondary-lighter:     $color-secondary-lighter;
+$--color-white-light:           $color-white-light !default;
+$--color-white-lighter:         $color-white-lighter !default;
 
-$--color-secondary-dark:        $color-secondary-dark;
-$--color-secondary-darker:      $color-secondary-darker;
+$--color-white-dark:            $color-white-dark !default;
+$--color-white-darker:          $color-white-darker !default;
 
-$--color-success-light:         $color-success-light;
-$--color-success-lighter:       $color-success-lighter;
+$--color-primary-light:         $color-primary-light !default;
+$--color-primary-lighter:       $color-primary-lighter !default;
 
-$--color-success-dark:          $color-success-dark;
-$--color-success-darker:        $color-success-darker;
+$--color-primary-dark:          $color-primary-dark !default;
+$--color-primary-darker:        $color-primary-darker !default;
 
-$--color-warning-light:         $color-warning-light;
-$--color-warning-lighter:       $color-warning-lighter;
+$--color-secondary-light:       $color-secondary-light !default;
+$--color-secondary-lighter:     $color-secondary-lighter !default;
 
-$--color-warning-dark:          $color-warning-dark;
-$--color-warning-darker:        $color-warning-darker;
+$--color-secondary-dark:        $color-secondary-dark !default;
+$--color-secondary-darker:      $color-secondary-darker !default;
 
-$--color-danger-light:          $color-danger-light;
-$--color-danger-lighter:        $color-danger-lighter;
+$--color-success-light:         $color-success-light !default;
+$--color-success-lighter:       $color-success-lighter !default;
 
-$--color-danger-dark:           $color-danger-dark;
-$--color-danger-darker:         $color-danger-darker;
+$--color-success-dark:          $color-success-dark !default;
+$--color-success-darker:        $color-success-darker !default;
 
-$--color-info-light:            $color-info-light;
-$--color-info-lighter:          $color-info-lighter;
+$--color-warning-light:         $color-warning-light !default;
+$--color-warning-lighter:       $color-warning-lighter !default;
 
-$--color-info-dark:             $color-info-dark;
-$--color-info-darker:           $color-info-darker;
+$--color-warning-dark:          $color-warning-dark !default;
+$--color-warning-darker:        $color-warning-darker !default;
 
-$--color-background-light:      $color-background-light;
-$--color-background-lighter:    $color-background-lighter;
+$--color-danger-light:          $color-danger-light !default;
+$--color-danger-lighter:        $color-danger-lighter !default;
 
-$--color-background-dark:       $color-background-dark;
-$--color-background-darker:     $color-background-darker;
+$--color-danger-dark:           $color-danger-dark !default;
+$--color-danger-darker:         $color-danger-darker !default;
+
+$--color-info-light:            $color-info-light !default;
+$--color-info-lighter:          $color-info-lighter !default;
+
+$--color-info-dark:             $color-info-dark !default;
+$--color-info-darker:           $color-info-darker !default;
+
+$--color-background-light:      $color-background-light !default;
+$--color-background-lighter:    $color-background-lighter !default;
+
+$--color-background-dark:       $color-background-dark !default;
+$--color-background-darker:     $color-background-darker !default;
