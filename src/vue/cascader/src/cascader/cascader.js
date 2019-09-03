@@ -19,6 +19,13 @@ export default {
             type: [Array]
         },
 
+        current: {
+            default()
+            {
+                return null;
+            }
+        },
+
         cascade: {
             default()
             {
