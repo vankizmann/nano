@@ -8,6 +8,11 @@ export class Obj
         return this.get(obj, key, - 1) !== - 1;
     }
 
+    static empty(obj, key)
+    {
+        return Any.isEmpty(this.get(obj, key, null));
+    }
+
     static get(obj, keys, fallback = null)
     {
         if ( obj === null || obj === undefined ) {
