@@ -78,6 +78,12 @@ export default {
 
     },
 
+    watch: {
+
+        items: 'getSourceValue'
+
+    },
+
     methods: {
 
         moveToSource()
@@ -108,6 +114,18 @@ export default {
 
             this.selectedKeysSource = [];
             this.selectedKeysTarget = [];
+        },
+
+        getSourceValue()
+        {
+            this.valueSource = Arr.filter(this.items, (item) => {
+
+                let index = Arr.findIndex(this.value, {
+                    [this.uniqueProp]: Obj.get(item, this.uniqueProp)
+                });
+
+                return index === -1;
+            });
         }
 
     },
@@ -123,14 +141,7 @@ export default {
 
     beforeMount()
     {
-        this.valueSource = Arr.filter(this.items, (item) => {
-
-            let index = Arr.findIndex(this.value, {
-                [this.uniqueProp]: Obj.get(item, this.uniqueProp)
-            });
-
-            return index === -1;
-        });
+        this.getSourceValue();
     },
 
     render()
