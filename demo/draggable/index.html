@@ -35,7 +35,7 @@
         </n-form-item>
 
         <n-form-item label="Tree">
-            <n-draggable-tree :items="form.value" unique-prop="id">
+            <n-draggable-tree :items="form.value" unique-prop="id" :cascade.sync="form.cascade">
                 <div slot-scope="props">{{ props.value.label }}</div>
             </n-draggable-tree>
         </n-form-item>
@@ -96,7 +96,7 @@
                     };
 
                     var form = {
-                        value: childGenerator()
+                        value: childGenerator(), cascade: []
                     };
 
                     return { form: form, inverse: false };

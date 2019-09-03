@@ -78,15 +78,6 @@ export default {
 
     },
 
-    watch: {
-
-        items: {
-            handler: 'getSourceValue',
-            deep: true
-        }
-
-    },
-
     methods: {
 
         moveToSource()
@@ -145,6 +136,9 @@ export default {
     beforeMount()
     {
         this.getSourceValue();
+
+        this.$watch('items', this.getSourceValue);
+        this.$watch('value', this.getSourceValue);
     },
 
     render()
