@@ -279,6 +279,8 @@ export class Arr
             arr[key] = this.map(arr[key], (val) => {
                 return this.recursive(val, key, callback, cascade);
             });
+
+            return arr;
         }
 
         if ( Any.isEmpty(arr[key]) === false ) {
@@ -288,6 +290,8 @@ export class Arr
             Arr.push(cascade, arr);
 
             arr[key] = this.recursive(arr[key], key, callback, cascade);
+
+            return arr;
         }
 
         return arr;
