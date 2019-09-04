@@ -59,7 +59,7 @@ export default {
             type: [Array]
         },
 
-        safezone: {
+        safeZone: {
             default()
             {
                 return (height) => height * 0.25;
