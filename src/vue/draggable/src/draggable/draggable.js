@@ -594,10 +594,10 @@ export default {
             }
 
             let selectable = typeof this.allowSelect === 'function' ?
-                this.allowSelect(value, key) : this.allowSelect;
+                this.allowSelect(value, this.depth) : this.allowSelect;
 
             let draggable = typeof this.allowDrag === 'function' ?
-                this.allowDrag(value, key) : this.allowDrag;
+                this.allowDrag(value, this.depth) : this.allowDrag;
 
             let updateItem = (input) => {
                 value = input;
