@@ -25,7 +25,7 @@
 
         <div class="auto-height" style="padding: 20px;">
             <n-table :items="items" :allow-drop="true">
-                <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
+                <n-table-column prop="selection" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
                 <n-table-column prop="label" type="string" label="Label" :default-width="200"></n-table-column>
                 <n-table-column prop="id" align="center" type="string" label="ID" :default-width="100"></n-table-column>
             </n-table>
@@ -33,7 +33,7 @@
 
         <div class="adapt-height" style="height: 350px; overflow: hidden; padding: 20px;">
             <n-table :items="target" :adapt-height="true" :allow-drop="true">
-                <n-table-column prop="id" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
+                <n-table-column prop="selection" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
                 <n-table-column prop="label" type="string" label="Label"></n-table-column>
                 <n-table-column prop="id" align="center" type="string" label="ID"></n-table-column>
             </n-table>
@@ -42,41 +42,48 @@
     </div>
 
     <script>
-        Nano.Dom.ready(function () {
+        (function (Nano) {
 
-            var config = {
-                data: function() {
+            'use strict';
 
-                    let total = 0;
+            Nano.Dom.ready(function () {
 
-                    let childGenerator = function(count) {
+                Vue.config.devtools = true;
 
-                        if ( count === undefined ) {
-                            count = 10;
-                        }
+                var config = {
+                    data: function () {
 
-                        let children = Array(count).fill(null);
+                        let total = 0;
 
-                        Nano.Arr.map(children, function(item) {
+                        let childGenerator = function (count) {
 
-                            total++;
+                            if ( count === undefined ) {
+                                count = 10;
+                            }
 
-                            item = {
-                                label: 'Item ' + total, id: 'id-' + total
-                            };
+                            let children = Array(count).fill(null);
 
-                            return item;
-                        });
+                            Nano.Arr.map(children, function (item) {
 
-                        return children;
-                    };
+                                total ++;
 
-                    return { items: childGenerator(), target: childGenerator() };
-                }
-            };
+                                item = {
+                                    label: 'Item ' + total, id: 'id-' + total
+                                };
 
-            window.App = new Vue(config).$mount('#app');
-        })
+                                return item;
+                            });
+
+                            return children;
+                        };
+
+                        return { items: childGenerator(), target: childGenerator() };
+                    }
+                };
+
+                window.App = new Vue(config).$mount('#app');
+            });
+        })(window.Nano);
     </script>
 </body>
 </html>

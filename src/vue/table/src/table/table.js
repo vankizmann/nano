@@ -370,6 +370,7 @@ export default {
 
         nativeVisibleColumns()
         {
+            console.log('update');
             this.$emit('update:visibleColumns', this.nativeVisibleColumns);
         }
 
@@ -446,7 +447,7 @@ export default {
                 {
                     Arr.each(this.columns, (column) => {
 
-                        if ( Arr.has(this.visibleColumns, column.prop) === false ) {
+                        if ( Arr.has(this.nativeVisibleColumns, column.prop) === false ) {
                             return null;
                         }
 
@@ -522,7 +523,7 @@ export default {
                 {
                     Arr.each(this.columns, (column) => {
 
-                        if ( Arr.has(this.visibleColumns, column.prop) === false ) {
+                        if ( Arr.has(this.nativeVisibleColumns, column.prop) === false ) {
                             return null;
                         }
 
@@ -613,7 +614,7 @@ export default {
                             { this.ctor('renderHeadRow')() }
                         </div>
                         <NPopover trigger="context" boundry={this.$refs.wrapper}>
-                            <NCheckboxGroup vModel={this.visibleColumns}>
+                            <NCheckboxGroup vModel={this.nativeVisibleColumns}>
                                 {
                                     Arr.each(this.columns, (column) => {
                                         return <NCheckbox size="small" value={column.prop}>{ column.label }</NCheckbox>;
