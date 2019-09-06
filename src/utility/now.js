@@ -31,6 +31,10 @@ export class Now
 
     constructor(date = null)
     {
+        if ( date === 'now' ) {
+            date = new Date;
+        }
+
         if ( Any.isEmpty(date) ) {
             date = new Date;
         }
