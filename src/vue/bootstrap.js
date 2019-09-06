@@ -10,6 +10,8 @@ require('./input/index');
 require('./textarea/index');
 require('./select/index');
 require('./cascader/index');
+require('./datepicker/index');
+require('./timepicker/index');
 require('./transfer/index');
 require('./file/index');
 // require('./matrix/index');

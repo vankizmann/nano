@@ -2254,6 +2254,149 @@
   --color-background-dark:    #dfe6ee;
   --color-background-darker:  #cfd8e5; }
 
+.n-datepicker__wrapper .n-popover {
+  display: inline-flex;
+  flex-direction: row;
+  text-align: left;
+  max-width: 100% !important; }
+
+.n-datepicker__legend {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-bottom: 1px solid #e8e9ea; }
+
+.n-datepicker__display {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px; }
+
+.n-datepicker__month {
+  padding: 0 2px 0 7px; }
+
+.n-datepicker__year {
+  font-weight: bold;
+  padding: 0 7px 0 2px; }
+
+.n-datepicker__header {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 10px 0; }
+
+.n-datepicker__header .n-datepicker__day {
+  flex: 0 0 auto;
+  padding: 2px; }
+
+.n-datepicker__header .n-datepicker__day span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  font-weight: bold; }
+
+.n-datepicker__body {
+  padding: 0 10px 10px; }
+
+.n-datepicker__week {
+  display: flex;
+  flex-direction: row; }
+
+.n-datepicker__week .n-datepicker__day {
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 2px; }
+
+.n-datepicker__week .n-datepicker__day span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 500px;
+  color: #8d9194; }
+
+.n-datepicker__week .n-datepicker__day:hover span {
+  background: #F0F3F7; }
+
+.n-datepicker__week .n-datepicker__day.n-datepicker__day--current span {
+  color: #1b2229; }
+
+.n-datepicker__week .n-datepicker__day.n-datepicker__day--today span {
+  background: rgba(40, 119, 250, 0.15); }
+
+.n-datepicker__week .n-datepicker__day.n-datepicker__day--selected span {
+  color: #ffffff;
+  background: #2877FA; }
+
+:root {
+  --color-black:              #1b2229;
+  --color-white:              #ffffff;
+  --color-gray-05:            #f4f4f4;
+  --color-gray-10:            #e8e9ea;
+  --color-gray-15:            #dddedf;
+  --color-gray-20:            #d1d3d4;
+  --color-gray-25:            #c6c8ca;
+  --color-gray-30:            #bbbdbf;
+  --color-gray-35:            #afb2b4;
+  --color-gray-40:            #a4a7a9;
+  --color-gray-45:            #989c9f;
+  --color-gray-50:            #8d9194;
+  --color-gray-55:            #828589;
+  --color-gray-60:            #767a7f;
+  --color-gray-65:            #6b6f74;
+  --color-gray-70:            #5f6469;
+  --color-gray-75:            #54595f;
+  --color-gray-80:            #494e54;
+  --color-gray-85:            #3d4349;
+  --color-gray-90:            #32383e;
+  --color-gray-95:            #262d34;
+  --color-primary:            #2877FA;
+  --color-secondary:          #2877FA;
+  --color-success:            #3ed786;
+  --color-warning:            #ffac2f;
+  --color-danger:             #fd2f51;
+  --color-info:               #62686d;
+  --color-background:         #F0F3F7;
+  --color-black-light:        #252f38;
+  --color-black-lighter:      #2f3c48;
+  --color-black-dark:         #11151a;
+  --color-black-darker:       #07090a;
+  --color-white-light:        white;
+  --color-white-lighter:      white;
+  --color-white-dark:         #f2f2f2;
+  --color-white-darker:       #e6e6e6;
+  --color-primary-light:      #4187fb;
+  --color-primary-lighter:    #5a97fb;
+  --color-primary-dark:       #0f67f9;
+  --color-primary-darker:     #055bea;
+  --color-secondary-light:    #4187fb;
+  --color-secondary-lighter:  #5a97fb;
+  --color-secondary-dark:     #0f67f9;
+  --color-secondary-darker:   #055bea;
+  --color-success-light:      #53db93;
+  --color-success-lighter:    #68e0a0;
+  --color-success-dark:       #2bd079;
+  --color-success-darker:     #27bb6d;
+  --color-warning-light:      #ffb649;
+  --color-warning-lighter:    #ffc062;
+  --color-warning-dark:       #ffa216;
+  --color-warning-darker:     #fb9700;
+  --color-danger-light:       #fd4866;
+  --color-danger-lighter:     #fd627b;
+  --color-danger-dark:        #fd163c;
+  --color-danger-darker:      #f7022b;
+  --color-info-light:         #6e757a;
+  --color-info-lighter:       #7a8288;
+  --color-info-dark:          #565b60;
+  --color-info-darker:        #4a4e52;
+  --color-background-light:   #f8fafb;
+  --color-background-lighter: white;
+  --color-background-dark:    #dfe6ee;
+  --color-background-darker:  #cfd8e5; }
+
 .n-transfer {
   display: flex;
   flex-direction: row; }
@@ -2503,26 +2646,32 @@
 .n-popover.n-popover--default .n-popover__frame {
   font-size: 14px;
   background: #ffffff;
-  border-radius: 1.5px;
+  border-radius: 3px;
   box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
 
 .n-popover.n-popover--select .n-popover__frame {
   font-size: 14px;
   background: #ffffff;
-  border-radius: 1.5px;
+  border-radius: 3px;
   box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
 
 .n-popover.n-popover--cascader .n-popover__frame {
   font-size: 14px;
   background: #ffffff;
-  border-radius: 1.5px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
+
+.n-popover.n-popover--datepicker .n-popover__frame {
+  font-size: 14px;
+  background: #ffffff;
+  border-radius: 3px;
   box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
 
 .n-popover.n-popover--tooltip .n-popover__frame {
   color: #ffffff;
   font-size: 12px;
   background: rgba(27, 34, 41, 0.85);
-  border-radius: 1.5px;
+  border-radius: 3px;
   box-shadow: 0 1px 3px 1px rgba(27, 34, 41, 0.15); }
 
 .n-popover__header {

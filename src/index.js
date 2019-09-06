@@ -3,11 +3,12 @@ import Arr from "./utility/array";
 import Obj from "./utility/object";
 import Num from "./utility/number";
 import Str from "./utility/string";
+import Now from "./utility/now";
 import Any from "./utility/any";
 import Dom from "./utility/dom";
 
 export {
-    Arr, Obj, Num, Str, Any, Dom
+    Arr, Obj, Num, Str, Any, Dom, Now
 }
 
 import Ajax from "./library/ajax";
@@ -39,6 +40,7 @@ export function NanoInstance() {
     this.Obj =  Obj;
     this.Num =  Num;
     this.Str =  Str;
+    this.Now =  Now;
     this.Any =  Any;
     this.Dom =  Dom;
 

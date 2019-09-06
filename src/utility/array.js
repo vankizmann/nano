@@ -2,6 +2,13 @@ import { Obj, Num, Any } from "../index"
 
 export class Arr
 {
+    static make(count)
+    {
+        return Arr.map(Array(count).fill(null), (val, key) => {
+            return Num.int(key) + 1;
+        });
+    }
+
     static all(arr)
     {
         return Array.isArray(arr) ? arr : [arr];
@@ -35,6 +42,18 @@ export class Arr
     static last(arr)
     {
         return Array.isArray(arr) ? arr[arr.length - 1] : arr;
+    }
+
+    static prepend(arr, val)
+    {
+        arr.splice(0, 0, val);
+        return arr;
+    }
+
+    static append(arr, val)
+    {
+        arr.splice(arr.length, 0, val);
+        return arr;
     }
 
     static sort(obj, key)
