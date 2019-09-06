@@ -331,7 +331,7 @@ export default {
 
             Arr.each(this.columns, (column) => {
                 if ( column.breakpoint <= Dom.find(this.$el).width() && column.visible ) {
-                    visible.push(column._uid);
+                    visible.push(column.prop);
                 }
             });
 
@@ -446,7 +446,7 @@ export default {
                 {
                     Arr.each(this.columns, (column) => {
 
-                        if ( Arr.has(this.visibleColumns, column._uid) === false ) {
+                        if ( Arr.has(this.visibleColumns, column.prop) === false ) {
                             return null;
                         }
 
@@ -522,7 +522,7 @@ export default {
                 {
                     Arr.each(this.columns, (column) => {
 
-                        if ( Arr.has(this.visibleColumns, column._uid) === false ) {
+                        if ( Arr.has(this.visibleColumns, column.prop) === false ) {
                             return null;
                         }
 
@@ -616,7 +616,7 @@ export default {
                             <NCheckboxGroup vModel={this.visibleColumns}>
                                 {
                                     Arr.each(this.columns, (column) => {
-                                        return <NCheckbox size="small" value={column._uid}>{ column.label }</NCheckbox>;
+                                        return <NCheckbox size="small" value={column.prop}>{ column.label }</NCheckbox>;
                                     })
                                 }
                             </NCheckboxGroup>
