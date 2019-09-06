@@ -154,7 +154,7 @@ export default {
         minWidth: {
             default()
             {
-                return 50;
+                return 100;
             }
         },
 
