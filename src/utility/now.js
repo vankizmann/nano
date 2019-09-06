@@ -29,9 +29,9 @@ export class Now
         'Saturday',
     ];
 
-    constructor(date = 'now')
+    constructor(date = null)
     {
-        if ( date === 'now' ) {
+        if ( Any.isEmpty(date) ) {
             date = new Date;
         }
 
@@ -46,7 +46,7 @@ export class Now
         this.timestamp = date;
     }
 
-    static make(date = 'now')
+    static make(date = null)
     {
         return new Now(date);
     }
@@ -102,52 +102,52 @@ export class Now
         return format;
     }
 
-    before(before = 'now')
+    before(before = null)
     {
         return this.code() < Now.make(before).code();
     }
 
-    beforeDate(before = 'now')
+    beforeDate(before = null)
     {
         return this.code('YYYYMMDD') <
             Now.make(before).code('YYYYMMDD');
     }
 
-    beforeTime(before = 'now')
+    beforeTime(before = null)
     {
         return this.code('hhiiss') <
             Now.make(before).code('hhiiss');
     }
 
-    after(after = 'now')
+    after(after = null)
     {
         return this.code() > Now.make(after).code();
     }
 
-    afterDate(after = 'now')
+    afterDate(after = null)
     {
         return this.code('YYYYMMDD') >
             Now.make(after).code('YYYYMMDD');
     }
 
-    afterTime(after = 'now')
+    afterTime(after = null)
     {
         return this.code('hhiiss') >
             Now.make(after).code('hhiiss');
     }
 
-    equal(equal = 'now')
+    equal(equal = null)
     {
         return this.code() === Now.make(equal).code();
     }
 
-    equalDate(equal = 'now')
+    equalDate(equal = null)
     {
         return this.code('YYYYMMDD') ===
             Now.make(equal).code('YYYYMMDD');
     }
 
-    equalTime(equal = 'now')
+    equalTime(equal = null)
     {
         return this.code('hhiiss') ===
             Now.make(equal).code('hhiiss');
@@ -276,7 +276,7 @@ export class Now
         });
     }
 
-    getRangeDates(target = 'now')
+    getRangeDates(target = null)
     {
         let range = [], targetNow = Now.make(target);
 

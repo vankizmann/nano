@@ -92,7 +92,7 @@ export default {
         value()
         {
             if ( this.value !== this.nativeValue.format(this.format) ) {
-                this.nativeValue = Now.make(this.value || 'now')
+                this.nativeValue = Now.make(this.value)
             }
         }
 
@@ -102,8 +102,8 @@ export default {
     {
         return {
             visible: false,
-            tempValue: Now.make(this.value || 'now'),
-            nativeValue: Now.make(this.value || 'now')
+            tempValue: Now.make(this.value),
+            nativeValue: Now.make(this.value)
         }
     },
 
