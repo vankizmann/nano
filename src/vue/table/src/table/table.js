@@ -27,6 +27,13 @@ export default {
             }
         },
 
+        visibleColumns: {
+            default()
+            {
+                return null;
+            }
+        },
+
         uniqueProp: {
             default()
             {
@@ -318,6 +325,19 @@ export default {
             }
         },
 
+        getVisibleColumns()
+        {
+            let visible = [];
+
+            Arr.each(this.columns, (column) => {
+                if ( column.breakpoint <= Dom.find(this.$el).width() && column.visible ) {
+                    visible.push(column._uid);
+                }
+            });
+
+            return visible;
+        },
+
         clearSelectedKeys()
         {
             this.nativeSelectedKeys = [];
@@ -346,6 +366,11 @@ export default {
         nativeSelectedKeys()
         {
             this.$emit('update:selectedKeys', this.nativeSelectedKeys);
+        },
+
+        nativeVisibleColumns()
+        {
+            this.$emit('update:visibleColumns', this.nativeVisibleColumns);
         }
 
     },
@@ -358,7 +383,7 @@ export default {
             scroll: false,
             visible: 0,
             columns: [],
-            visibleColumns: [],
+            nativeVisibleColumns: [],
             currentKey: null,
             nativeSelectedKeys: this.selectedKeys,
             nativeSortProp: this.sortProp,
@@ -379,11 +404,8 @@ export default {
         Dom.find(document).on('keydown',
             this.tableKeydown, { _uid: this._uid });
 
-        Arr.each(this.columns, (column) => {
-            if ( column.breakpoint <= Dom.find(this.$el).width() && column.visible ) {
-                this.visibleColumns.push(column._uid);
-            }
-        });
+        this.nativeVisibleColumns = this.visibleColumns ||
+            this.getVisibleColumns();
 
         this.width = Arr.reduce(this.columns, (count, column) => {
             return count + column.width;
