@@ -140,21 +140,20 @@ export class Now
             Now.make(after).code('hhiiss');
     }
 
-    equal(equal = null)
+    equal(equal = null, format = 'YYYYMMDDhhiiss')
     {
-        return this.code() === Now.make(equal).code();
+        return this.code(format) ===
+            Now.make(equal).code(format);
     }
 
-    equalDate(equal = null)
+    equalDate(equal = null, format = 'YYYYMMDD')
     {
-        return this.code('YYYYMMDD') ===
-            Now.make(equal).code('YYYYMMDD');
+        return this.equal(equal, format);
     }
 
-    equalTime(equal = null)
+    equalTime(equal = null, format = 'hhiiss')
     {
-        return this.code('hhiiss') ===
-            Now.make(equal).code('hhiiss');
+        return this.equal(equal, format);
     }
 
     humanDay()
@@ -165,6 +164,31 @@ export class Now
     humanMonth()
     {
         return Now._months[this.month()];
+    }
+
+    decade()
+    {
+        return Math.floor(this.year() / 10) * 10;
+    }
+
+    prevDecade()
+    {
+        return this.clone().subDecades(1);
+    }
+
+    nextDecade()
+    {
+        return this.clone().addDecades(1);
+    }
+
+    addDecades(count = 1)
+    {
+        return this.setYear(this.year() + (count * 10));
+    }
+
+    subDecades(count = 1)
+    {
+        return this.setYear(this.year() - (count * 10));
     }
 
     year()
@@ -273,6 +297,28 @@ export class Now
         return this.prevMonth().setDate(0).date();
     }
 
+    getMonths()
+    {
+        return Arr.make(12).map((month) => {
+            return this.clone().setMonth(month);
+        });
+    }
+
+    getYears()
+    {
+        return Arr.make(10).map((year) => {
+            return this.clone().setYear(this.decade() + year - 1);
+        });
+    }
+
+    getYearsGrid(size = 12)
+    {
+        return Arr.make(size).map((year) => {
+            return this.clone().setYear((Math.floor(this.year() / size)
+                * size) + year - 1);
+        });
+    }
+
     getDates()
     {
         return Arr.make(this.lastDate()).map((date) => {
@@ -280,7 +326,7 @@ export class Now
         });
     }
 
-    getRangeDates(target = null)
+    getDatesRange(target = null)
     {
         let range = [], targetNow = Now.make(target);
 
@@ -305,7 +351,7 @@ export class Now
         return range;
     }
 
-    getFullDates(start = 1, end = 0)
+    getDatesGrid(start = 1, end = 0)
     {
         let dates = this.getDates(), before = [], after = [];
 
