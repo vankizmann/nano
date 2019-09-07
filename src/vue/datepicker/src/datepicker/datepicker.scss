@@ -114,17 +114,57 @@ $datepicker-day-width: 35px !default;
     background: $--color-background;
 }
 
+.n-datepicker__body .n-datepicker__week .n-datepicker__day.n-datepicker__day--today span {
+    font-weight: bold;
+}
+
 .n-datepicker__body .n-datepicker__week .n-datepicker__day.n-datepicker__day--current span {
     color: $--color-black;
 }
 
-.n-datepicker__body .n-datepicker__week .n-datepicker__day.n-datepicker__day--today span {
-    background: $--color-background-dark;
+.n-datepicker__body .n-datepicker__week .n-datepicker__day.n-datepicker__day--arrive span,
+.n-datepicker__body .n-datepicker__week .n-datepicker__day.n-datepicker__day--depart span,
+.n-datepicker__body .n-datepicker__week .n-datepicker__day.n-datepicker__day--between span {
+    background: $--color-background;
 }
 
 .n-datepicker__body .n-datepicker__week .n-datepicker__day.n-datepicker__day--selected span {
     color: $--color-white;
     background: $--color-primary;
+}
+
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:not(:first-child):not(:last-child).n-datepicker__day--between {
+    padding: 2px 0;
+}
+
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:not(:first-child):not(:last-child).n-datepicker__day--between span {
+    width: $datepicker-day-width + 4;
+    padding: 0 2px;
+    border-radius: 0;
+}
+
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:not(:last-child).n-datepicker__day--arrive,
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:first-child.n-datepicker__day--between {
+    padding: 2px 0 2px 2px;
+}
+
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:not(:last-child).n-datepicker__day--arrive span,
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:first-child.n-datepicker__day--between span {
+    width: $datepicker-day-width + 2;
+    padding: 0 2px 0 0;
+    border-radius: 500px 0 0 500px;
+}
+
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:not(:first-child).n-datepicker__day--depart,
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:last-child.n-datepicker__day--between {
+    padding: 2px 2px 2px 0;
+}
+
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:not(:first-child).n-datepicker__day--depart span,
+.n-datepicker__body .n-datepicker__week .n-datepicker__day:last-child.n-datepicker__day--between span {
+    width: $datepicker-day-width + 2;
+    padding: 0 0 0 2px;
+    border-radius: 0 500px 500px 0;
 }
 
 .n-datepicker__body .n-datepicker__year {

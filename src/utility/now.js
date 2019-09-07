@@ -31,10 +31,6 @@ export class Now
 
     constructor(date = null)
     {
-        if ( date === 'now' ) {
-            date = new Date;
-        }
-
         if ( Any.isEmpty(date) ) {
             date = new Date;
         }
@@ -57,9 +53,33 @@ export class Now
 
     static datetime(val)
     {
-        val = val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/, '$1/$2/$3');
+        let date = new Date(
+            val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/, '$1/$2/$3')
+        );
 
-        return new Date(val);
+        if ( val.match(/^now/) ) {
+            date = new Date;
+        }
+
+        let days = val.match(/(\+|-)([0-9]+)days?/);
+
+        if ( Any.isEmpty(days) === false ) {
+            date.setDate(eval(eval('date.getDate() + days[1] + days[2]')));
+        }
+
+        let months = val.match(/(\+|-)([0-9]+)months?/);
+
+        if ( Any.isEmpty(months) === false ) {
+            date.setMonth(eval(eval('date.getMonth() + months[1] + months[2]')));
+        }
+
+        let years = val.match(/(\+|-)([0-9]+)years?/);
+
+        if ( Any.isEmpty(years) === false ) {
+            date.setFullYear(eval(eval('date.getMonth() + years[1] + years[2]')));
+        }
+
+        return date;
     }
 
     get()
@@ -154,6 +174,15 @@ export class Now
     equalTime(equal = null, format = 'hhiiss')
     {
         return this.equal(equal, format);
+    }
+
+    between(fromDate = null, toDate = null, format = 'YYYYMMDDhhiiss')
+    {
+        if ( Now.make(toDate).code(format) < Now.make(fromDate).code(format) ) {
+            return this.after(toDate) && this.before(fromDate);
+        }
+
+        return this.after(fromDate) && this.before(toDate);
     }
 
     humanDay()

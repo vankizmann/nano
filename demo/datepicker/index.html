@@ -28,6 +28,10 @@
             <n-datepicker v-model="form.date" />
         </n-form-item>
 
+        <n-form-item label="Test">
+            <n-datepicker :arrive.sync="form.arrive" :depart.sync="form.depart" :range="true" />
+        </n-form-item>
+
         <n-form-item label="Object">
             <pre>{{ form }}</pre>
         </n-form-item>
@@ -45,7 +49,7 @@
             data: function() {
 
                 var form = {
-                    date: null
+                    date: null, arrive: 'now', depart: 'now+2days'
                 };
 
                 return {

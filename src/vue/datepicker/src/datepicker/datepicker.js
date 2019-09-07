@@ -15,6 +15,30 @@ export default {
             type: [String]
         },
 
+        arrive: {
+            default()
+            {
+                return 'now';
+            },
+            type: [String]
+        },
+
+        depart: {
+            default()
+            {
+                return 'now+1day';
+            },
+            type: [String]
+        },
+
+        range: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
+        },
+
         disabled: {
             default()
             {
@@ -104,6 +128,37 @@ export default {
             if ( this.value !== this.nativeValue.format(this.format) ) {
                 this.nativeValue = this.tempValue = Now.make(this.value);
             }
+        },
+
+        arrive()
+        {
+            if ( this.arrive !== this.nativeArrive.format(this.format) ) {
+                this.nativeArrive = this.tempArrive = Now.make(this.arrive);
+            }
+        },
+
+        depart()
+        {
+            if ( this.depart !== this.nativeDepart.format(this.format) ) {
+                this.nativeDepart = this.tempDepart = Now.make(this.depart);
+            }
+        },
+
+        nativeRange()
+        {
+            if ( this.nativeRange.length === 3 ) {
+                this.nativeRange = [];
+            }
+
+            if ( this.nativeRange.length === 1 ) {
+                this.$emit('update:arrive', this.tempArrive =
+                    this.nativeRange[0].format(this.format));
+            }
+
+            if ( this.nativeRange.length === 2 ) {
+                this.$emit('update:depart',  this.tempDepart =
+                    this.nativeRange[1].format(this.format));
+            }
         }
 
     },
@@ -113,8 +168,15 @@ export default {
         return {
             nativeView: 'date',
             visible: false,
+            nativeRange: [
+                Now.make(this.arrive), Now.make(this.depart)
+            ],
+            tempArrive: Now.make(this.arrive),
+            nativeArrive: Now.make(this.arrive),
+            tempDepart: Now.make(this.depart),
+            nativeDepart: Now.make(this.depart),
             tempValue: Now.make(this.value),
-            nativeValue: Now.make(this.value)
+            nativeValue: Now.make(this.value),
         }
     },
 
@@ -190,6 +252,78 @@ export default {
         );
     },
 
+    renderDateRangeItem(now)
+    {
+        let classList = [
+            'n-datepicker__day'
+        ];
+
+        if ( now.equalDate('now') ) {
+            classList.push('n-datepicker__day--today');
+        }
+
+        if ( now.month() === this.tempValue.month() ) {
+            classList.push('n-datepicker__day--current');
+        }
+
+        if ( this.nativeRange.length === 2 && now.equalDate(this.nativeArrive) ) {
+
+            if ( ! this.nativeArrive.equalDate(this.nativeDepart) ) {
+                classList.push(this.nativeArrive.before(this.nativeDepart) ?
+                    'n-datepicker__day--arrive' : 'n-datepicker__day--depart');
+            }
+
+            classList.push('n-datepicker__day--selected');
+        }
+
+        if ( this.nativeRange.length === 2 && now.equalDate(this.nativeDepart) ) {
+
+            if ( ! this.nativeDepart.equalDate(this.nativeArrive) ) {
+                classList.push(this.nativeDepart.before(this.nativeArrive) ?
+                    'n-datepicker__day--arrive' : 'n-datepicker__day--depart');
+            }
+
+            classList.push('n-datepicker__day--selected');
+        }
+
+        if ( this.nativeRange.length === 1 && now.equalDate(this.nativeArrive) && ! now.equalDate(this.tempDepart) ) {
+            classList.push(this.nativeArrive.before(this.tempDepart) ?
+                'n-datepicker__day--arrive' : 'n-datepicker__day--depart');
+        }
+
+        if ( this.nativeRange.length === 1 && now.equalDate(this.tempDepart) && ! now.equalDate(this.nativeArrive) ) {
+            classList.push(this.tempDepart.before(this.nativeArrive) ?
+                'n-datepicker__day--arrive' : 'n-datepicker__day--depart');
+        }
+
+        if ( this.nativeRange.length === 1 && now.between(this.nativeArrive, this.tempDepart) ) {
+            classList.push('n-datepicker__day--between');
+        }
+
+        if ( this.nativeRange.length === 2 && now.between(this.nativeArrive, this.nativeDepart) ) {
+            classList.push('n-datepicker__day--between');
+        }
+
+        if ( this.nativeRange.length === 2 && now.between(this.nativeArrive, this.nativeDepart) ) {
+            classList.push('n-datepicker__day--selected');
+        }
+
+        let events = {
+            'click': () => {
+                Arr.push(this.nativeRange, now);
+            },
+            'mouseenter': () => {
+                this.tempDepart = now;
+            }
+        };
+
+        return (
+            <div on={events} class={classList}>
+                <span>{ now.format('DD') }</span>
+            </div>
+        );
+    },
+
     renderDate()
     {
         let prev = {
@@ -225,9 +359,7 @@ export default {
                         Arr.each(Arr.chunk(this.datesGrid, 7), (chunks) => {
                             return (
                                 <div class="n-datepicker__week">
-                                    {
-                                        Arr.each(chunks, this.ctor('renderDateItem'))
-                                    }
+                                    { Arr.each(chunks, this.ctor(this.range ? 'renderDateRangeItem' : 'renderDateItem')) }
                                 </div>
                             );
                         })
