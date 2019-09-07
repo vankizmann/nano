@@ -186,7 +186,7 @@ $datepicker-day-width: 35px !default;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: $datepicker-day-width;
+    height: $datepicker-day-width * 1.125;
     border-radius: $radius-small;
 }
 
@@ -222,7 +222,7 @@ $datepicker-day-width: 35px !default;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: $datepicker-day-width;
+    height: $datepicker-day-width * 1.125;
     border-radius: $radius-small;
 }
 

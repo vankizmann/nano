@@ -146,10 +146,6 @@ export default {
 
         nativeRange()
         {
-            if ( this.nativeRange.length === 3 ) {
-                this.nativeRange = [];
-            }
-
             if ( this.nativeRange.length === 1 ) {
                 this.$emit('update:arrive', this.tempArrive =
                     this.nativeRange[0].format(this.format));
@@ -158,6 +154,10 @@ export default {
             if ( this.nativeRange.length === 2 ) {
                 this.$emit('update:depart',  this.tempDepart =
                     this.nativeRange[1].format(this.format));
+            }
+
+            if ( this.nativeRange.length === 2 ) {
+                this.nativeRange = []; this.visible = false;
             }
         }
 
@@ -168,9 +168,7 @@ export default {
         return {
             nativeView: 'date',
             visible: false,
-            nativeRange: [
-                Now.make(this.arrive), Now.make(this.depart)
-            ],
+            nativeRange: [],
             tempArrive: Now.make(this.arrive),
             nativeArrive: Now.make(this.arrive),
             tempDepart: Now.make(this.depart),
@@ -266,7 +264,7 @@ export default {
             classList.push('n-datepicker__day--current');
         }
 
-        if ( this.nativeRange.length === 2 && now.equalDate(this.nativeArrive) ) {
+        if ( this.nativeRange.length === 0 && now.equalDate(this.nativeArrive) ) {
 
             if ( ! this.nativeArrive.equalDate(this.nativeDepart) ) {
                 classList.push(this.nativeArrive.before(this.nativeDepart) ?
@@ -276,7 +274,7 @@ export default {
             classList.push('n-datepicker__day--selected');
         }
 
-        if ( this.nativeRange.length === 2 && now.equalDate(this.nativeDepart) ) {
+        if ( this.nativeRange.length === 0 && now.equalDate(this.nativeDepart) ) {
 
             if ( ! this.nativeDepart.equalDate(this.nativeArrive) ) {
                 classList.push(this.nativeDepart.before(this.nativeArrive) ?
@@ -300,17 +298,17 @@ export default {
             classList.push('n-datepicker__day--between');
         }
 
-        if ( this.nativeRange.length === 2 && now.between(this.nativeArrive, this.nativeDepart) ) {
+        if ( this.nativeRange.length === 0 && now.between(this.nativeArrive, this.nativeDepart) ) {
             classList.push('n-datepicker__day--between');
         }
 
-        if ( this.nativeRange.length === 2 && now.between(this.nativeArrive, this.nativeDepart) ) {
+        if ( this.nativeRange.length === 0 && now.between(this.nativeArrive, this.nativeDepart) ) {
             classList.push('n-datepicker__day--selected');
         }
 
         let events = {
             'click': () => {
-                Arr.push(this.nativeRange, now);
+                this.nativeRange.push(now);
             },
             'mouseenter': () => {
                 this.tempDepart = now;
