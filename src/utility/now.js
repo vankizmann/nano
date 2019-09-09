@@ -43,6 +43,10 @@ export class Now
             date = date.get();
         }
 
+        if ( date.getTime() !== date.getTime() ) {
+            date = new Date;
+        }
+
         this.timestamp = date;
     }
 
