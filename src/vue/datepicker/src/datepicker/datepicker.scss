@@ -50,16 +50,28 @@ $datepicker-day-width: 35px !default;
     min-height: $datepicker-height;
 }
 
+.n-datepicker.n-datepicker--clearable {
+    padding-right: $datepicker-height;
+}
+
 .n-datepicker.n-datepicker--small {
     font-size: $datepicker-size * 0.875;
     padding: 0 $datepicker-height * 0.3 * 0.875;
     min-height: $datepicker-height * 0.875;
 }
 
+.n-datepicker.n-datepicker--clearable {
+    padding-right: $datepicker-height * 0.875;
+}
+
 .n-datepicker.n-datepicker--large {
     font-size: $datepicker-size * 1.125;
     padding: 0 $datepicker-height * 0.3 * 1.125;
     min-height: $datepicker-height * 1.125;
+}
+
+.n-datepicker.n-datepicker--clearable {
+    padding-right: $datepicker-height * 1.125;
 }
 
 .n-datepicker.n-datepicker--disabled,
@@ -73,6 +85,40 @@ $datepicker-day-width: 35px !default;
 .n-inverse .n-datepicker.n-datepicker--disabled:hover {
     background: $--color-gray-90;
     border-color: $--color-gray-80;
+}
+
+.n-datepicker .n-button__wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.n-datepicker__icon {
+    flex: 0 0 auto;
+    color: $--color-gray-40;
+}
+
+.n-datepicker__seperator {
+    flex: 0 0 auto;
+    color: $--color-gray-50;
+}
+
+.n-datepicker__input {
+    flex: 1 1 auto;
+}
+
+.n-datepicker__input input {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: $--color-black;
+    padding: 0 $datepicker-height * 0.35;
+}
+
+.n-datepicker__input.n-datepicker__input--range input {
+    text-align: center;
 }
 
 .n-datepicker__header {

@@ -943,6 +943,33 @@
   width: 38.25px;
   padding: 0; }
 
+/**
+ * Input
+ */
+.n-button.n-button--input {
+  color: var(--color-gray-40);
+  background: transparent;
+  border-color: transparent; }
+
+.n-button.n-button--input:hover,
+.n-button.n-button--input:focus {
+  color: var(--color-primary-light);
+  background: transparent;
+  border-color: transparent; }
+
+.n-button.n-button--input:active {
+  color: var(--color-primary-dark);
+  background: transparent;
+  border-color: transparent; }
+
+.n-button.n-button--disabled.n-button--input:hover,
+.n-button.n-button--disabled.n-button--input:focus,
+.n-button.n-button--disabled.n-button--input:active {
+  color: var(--color-gray-40); }
+
+/**
+ * Link
+ */
 .n-button.n-button--link {
   font-size: 14px;
   color: var(--color-primary);
@@ -1482,27 +1509,6 @@
   position: absolute;
   top: 0;
   right: 0; }
-
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link) {
-  color: var(--color-gray-40);
-  background: transparent;
-  border-color: transparent; }
-
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):hover,
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):focus {
-  color: var(--color-primary-light);
-  background: transparent;
-  border-color: transparent; }
-
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):active {
-  color: var(--color-primary-dark);
-  background: transparent;
-  border-color: transparent; }
-
-.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):hover,
-.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):focus,
-.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):active {
-  color: var(--color-gray-40); }
 
 :root {
   --color-black:              #1b2229;
@@ -2292,15 +2298,24 @@
   padding: 0 10.2px;
   min-height: 34px; }
 
+.n-datepicker.n-datepicker--clearable {
+  padding-right: 34px; }
+
 .n-datepicker.n-datepicker--small {
   font-size: 12.25px;
   padding: 0 8.925px;
   min-height: 29.75px; }
 
+.n-datepicker.n-datepicker--clearable {
+  padding-right: 29.75px; }
+
 .n-datepicker.n-datepicker--large {
   font-size: 15.75px;
   padding: 0 11.475px;
   min-height: 38.25px; }
+
+.n-datepicker.n-datepicker--clearable {
+  padding-right: 38.25px; }
 
 .n-datepicker.n-datepicker--disabled,
 .n-datepicker.n-datepicker--disabled:hover {
@@ -2312,6 +2327,34 @@
 .n-inverse .n-datepicker.n-datepicker--disabled:hover {
   background: var(--color-gray-90);
   border-color: var(--color-gray-80); }
+
+.n-datepicker .n-button__wrapper {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.n-datepicker__icon {
+  flex: 0 0 auto;
+  color: var(--color-gray-40); }
+
+.n-datepicker__seperator {
+  flex: 0 0 auto;
+  color: var(--color-gray-50); }
+
+.n-datepicker__input {
+  flex: 1 1 auto; }
+
+.n-datepicker__input input {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--color-black);
+  padding: 0 11.9px; }
+
+.n-datepicker__input.n-datepicker__input--range input {
+  text-align: center; }
 
 .n-datepicker__header {
   display: flex;

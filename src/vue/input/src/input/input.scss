@@ -94,27 +94,3 @@ $input-height: 34px !default;
     top: 0;
     right: 0;
 }
-
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link) {
-    color: $--color-gray-40;
-    background: transparent;
-    border-color: transparent;
-}
-
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):hover,
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):focus {
-    color: $--color-primary-light;
-    background: transparent;
-    border-color: transparent;
-}
-
-.n-input__wrapper .n-button__wrapper .n-button:not(.n-button--link):active {
-    color: $--color-primary-dark;
-    background: transparent;
-    border-color: transparent;
-}
-.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):hover,
-.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):focus,
-.n-input__wrapper .n-button__wrapper .n-button.n-button--disabled:not(.n-button--link):active {
-    color: $--color-gray-40;
-}

@@ -85,6 +85,39 @@ $button-height: 34px !default;
     padding: 0;
 }
 
+/**
+ * Input
+ */
+
+.n-button.n-button--input {
+    color: $--color-gray-40;
+    background: transparent;
+    border-color: transparent;
+}
+
+.n-button.n-button--input:hover,
+.n-button.n-button--input:focus {
+    color: $--color-primary-light;
+    background: transparent;
+    border-color: transparent;
+}
+
+.n-button.n-button--input:active {
+    color: $--color-primary-dark;
+    background: transparent;
+    border-color: transparent;
+}
+
+.n-button.n-button--disabled.n-button--input:hover,
+.n-button.n-button--disabled.n-button--input:focus,
+.n-button.n-button--disabled.n-button--input:active {
+    color: $--color-gray-40;
+}
+
+/**
+ * Link
+ */
+
 .n-button.n-button--link {
     font-size: $button-size;
     color: $--color-primary;

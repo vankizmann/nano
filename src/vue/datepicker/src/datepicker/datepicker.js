@@ -1,5 +1,5 @@
 import CtorMixin from "../../../mixins/src/ctor";
-import { Arr, Obj, Str, Now } from '../../../../index';
+import { Arr, Obj, Str, Now, Any } from '../../../../index';
 
 export default {
 
@@ -11,22 +11,50 @@ export default {
             default()
             {
                 return 'now';
-            },
-            type: [String]
+            }
+        },
+
+        clearValue: {
+            default()
+            {
+                return null;
+            }
         },
 
         arrive: {
             default()
             {
                 return 'now';
-            },
-            type: [String]
+            }
         },
 
         depart: {
             default()
             {
                 return 'now+1day';
+            }
+        },
+
+        placeholder: {
+            default()
+            {
+                return this.trans('Select date');
+            },
+            type: [String]
+        },
+
+        placeholderArrive: {
+            default()
+            {
+                return this.trans('Start date');
+            },
+            type: [String]
+        },
+
+        placeholderDepart: {
+            default()
+            {
+                return this.trans('Start end');
             },
             type: [String]
         },
@@ -64,6 +92,14 @@ export default {
         },
 
         disabled: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
+        },
+
+        clearable: {
             default()
             {
                 return false;
@@ -173,18 +209,27 @@ export default {
             }
         },
 
+        visible()
+        {
+            this.nativeRange = [];
+        },
+
         nativeRange()
         {
+            if ( this.nativeRange[0] !== undefined ) {
+                this.tempArrive = this.nativeRange[0];
+            }
+
+            if ( this.nativeRange.length !== 2 ) {
+                return;
+            }
+
             if ( this.nativeRange[0] !== undefined ) {
                 this.nativeArrive = this.nativeRange[0];
             }
 
             if ( this.nativeRange[1] !== undefined ) {
                 this.nativeDepart = this.nativeRange[1];
-            }
-
-            if ( this.nativeRange.length !== 2 ) {
-                return;
             }
 
             this.$emit('update:arrive',
@@ -194,9 +239,6 @@ export default {
                 this.nativeDepart.format(this.format));
 
             this.visible = false;
-
-            // Clear native range
-            this.nativeRange = [];
         }
 
     },
@@ -322,17 +364,17 @@ export default {
             classList.push('n-datepicker__day--selected');
         }
 
-        if ( this.nativeRange.length === 1 && now.equalDate(this.nativeArrive) && ! now.equalDate(this.tempDepart) ) {
-            classList.push(this.nativeArrive.before(this.tempDepart) ?
+        if ( this.nativeRange.length === 1 && now.equalDate(this.tempArrive) && ! now.equalDate(this.tempDepart) ) {
+            classList.push(this.tempArrive.before(this.tempDepart) ?
                 'n-datepicker__day--arrive' : 'n-datepicker__day--depart');
         }
 
-        if ( this.nativeRange.length === 1 && now.equalDate(this.tempDepart) && ! now.equalDate(this.nativeArrive) ) {
-            classList.push(this.tempDepart.before(this.nativeArrive) ?
+        if ( this.nativeRange.length === 1 && now.equalDate(this.tempDepart) && ! now.equalDate(this.tempArrive) ) {
+            classList.push(this.tempDepart.before(this.tempArrive) ?
                 'n-datepicker__day--arrive' : 'n-datepicker__day--depart');
         }
 
-        if ( this.nativeRange.length === 1 && now.between(this.nativeArrive, this.tempDepart) ) {
+        if ( this.nativeRange.length === 1 && now.between(this.tempArrive, this.tempDepart) ) {
             classList.push('n-datepicker__day--between');
         }
 
@@ -532,15 +574,32 @@ export default {
             'n-datepicker', 'n-datepicker--' + this.size
         ];
 
+        if ( this.clearable === true ){
+            classList.push('n-datepicker--clearable');
+        }
+
         let inputEvent = (event) => {
             console.log(event);
         };
 
+        let clearEvent = () => {
+
+            this.$emit('input', this.clearValue);
+
+            this.visible = false;
+        };
+
         return (
             <div class={classList}>
-                <span class="n-datepicker__input-icon fa fa-calendar"></span>
-                <input type="text" value={this.nativeValue.format(this.displayFormat)} vOn:input={inputEvent} />
-                <span class="n-datepicker__input-icon fa fa-times"></span>
+                <div class="n-datepicker__icon">
+                    <span class="fa fa-calendar"></span>
+                </div>
+                <div class="n-datepicker__input">
+                    <input type="text" value={this.nativeValue.format(this.displayFormat)} placeholder={this.placeholder} vOn:input={inputEvent} />
+                </div>
+                { this.clearable &&
+                    <NButton type="input" icon="fa fa-times" disabled={Any.isEmpty(this.value)} vOn:mousedown_stop={clearEvent} />
+                }
             </div>
         );
     },
@@ -552,6 +611,10 @@ export default {
             'n-datepicker', 'n-datepicker--' + this.size
         ];
 
+        if ( this.clearable === true ){
+            classList.push('n-datepicker--clearable');
+        }
+
         let arriveEvent = (event) => {
             console.log(event);
         };
@@ -560,23 +623,31 @@ export default {
             console.log(event);
         };
 
+        let clearEvent = () => {
+
+            this.$emit('update:arrive', this.clearValue);
+            this.$emit('update:depart', this.clearValue);
+
+            this.visible = false;
+        };
+
         return (
             <div class={classList}>
-                <div class="n-datepicker__input-icon">
+                <div class="n-datepicker__icon">
                     <span class=" fa fa-calendar"></span>
                 </div>
-                <div class="n-datepicker__input-input">
-                    <input type="text" value={this.nativeArrive.format(this.displayFormat)} vOn:input={arriveEvent} />
+                <div class="n-datepicker__input n-datepicker__input--range">
+                    <input type="text" value={this.nativeArrive.format(this.displayFormat)} placeholder={this.placeholderArrive} vOn:input={arriveEvent} />
                 </div>
-                <span class="n-datepicker__input-seperator">
+                <span class="n-datepicker__seperator">
                     <span>{ this.rangeSeperator }</span>
                 </span>
-                <div className="n-datepicker__input-input">
-                    <input type="text" value={this.nativeDepart.format(this.displayFormat)} vOn:input={departEvent} />
+                <div class="n-datepicker__input n-datepicker__input--range">
+                    <input type="text" value={this.nativeDepart.format(this.displayFormat)} placeholder={this.placeholderDepart} vOn:input={departEvent} />
                 </div>
-                <div class="n-datepicker__input-icon">
-                    <span class="n-datepicker__input-icon fa fa-times"></span>
-                </div>
+                { this.clearable &&
+                    <NButton type="input" icon="fa fa-times" disabled={Any.isEmpty(this.arrive) && Any.isEmpty(this.depart)} vOn:mousedown_stop={clearEvent} />
+                }
             </div>
         );
     },
@@ -586,7 +657,7 @@ export default {
         return (
             <div class="n-datepicker__wrapper">
                 { this.ctor(this.range ? 'renderRangeInput' : 'renderInput')() }
-                <NPopover ref="modal" vModel={this.visible} trigger="click" type="datepicker" position={this.position} disabled={this.disabled} closeInside={false}>
+                <NPopover ref="modal" vModel={this.visible} trigger="click" type="datepicker" width={300} position={this.position} disabled={this.disabled} closeInside={false}>
                     { this.ctor('render' + Str.ucfirst(this.nativeView))() }
                 </NPopover>
             </div>

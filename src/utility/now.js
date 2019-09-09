@@ -2,6 +2,7 @@ import { Num, Arr, Any } from "../index";
 
 export class Now
 {
+    initial = null;
     timestamp = null;
 
     static _months = [
@@ -31,6 +32,8 @@ export class Now
 
     constructor(date = null)
     {
+        this.initial = date;
+
         if ( Any.isEmpty(date) ) {
             date = new Date;
         }
@@ -43,7 +46,7 @@ export class Now
             date = date.get();
         }
 
-        if ( date.getTime() !== date.getTime() ) {
+        if ( date.getDate() !== date.getDate() ) {
             date = new Date;
         }
 
@@ -92,6 +95,12 @@ export class Now
         return this.timestamp;
     }
 
+    valid()
+    {
+        return Any.isEmpty(this.initial) === false &&
+            this.timestamp.getTime() === this.timestamp.getTime();
+    }
+
     clone()
     {
         return new Now(new Date(this.timestamp));
@@ -110,6 +119,10 @@ export class Now
 
     format(format = 'YYYY-MM-DD hh:ii:ss')
     {
+        if ( this.valid() === false ) {
+            return '';
+        }
+
         format = format.replace(/YYYY/g,
             this.iso().toISOString().substr(0, 4));
 
@@ -291,7 +304,7 @@ export class Now
 
     date()
     {
-        return this.timestamp.getDate();
+          return this.timestamp.getDate();
     }
 
     setDate(date)
