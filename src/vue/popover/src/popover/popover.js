@@ -46,7 +46,7 @@ export default {
         boundry: {
             default()
             {
-                return document.body;
+                return window;
             },
         },
 
@@ -98,9 +98,43 @@ export default {
             }
 
             return Dom.find(this.node).parent().find(this.selector).get(0);
+        }
+
+    },
+
+    watch: {
+
+        visible()
+        {
+            if ( ! Any.isEqual(this.nativeVisible, this.visible) ) {
+                this.nativeVisible = this.visible;
+            }
         },
 
-        style()
+        nativeVisible()
+        {
+            if ( this.nativeVisible === true ) {
+
+                Any.delay(() => {
+                    Dom.find(this.node).addClass('n-popover--open');
+                });
+
+                Dom.find(this.element).addClass('n-popover--open');
+            }
+
+            if ( this.nativeVisible === false ) {
+                Dom.find(this.node).removeClass('n-popover--open');
+                Dom.find(this.element).removeClass('n-popover--open');
+            }
+
+            this.refresh();
+        }
+
+    },
+
+    methods: {
+
+        refresh()
         {
             let style = {};
 
@@ -108,14 +142,14 @@ export default {
                 return { display: 'none' };
             }
 
-            let clientX = Dom.find(this.element).offsetLeft(document.body) -
+            let clientX = Dom.find(this.element).offsetLeft(window) -
                 Dom.find(this.parent).scrollLeft(null, window);
 
             if ( this.trigger === 'context' ) {
                 clientX = this.clientX;
             }
 
-            let clientY = Dom.find(this.element).offsetTop(document.body) -
+            let clientY = Dom.find(this.element).offsetTop(window) -
                 Dom.find(this.parent).scrollTop(null, window);
 
             if ( this.trigger === 'context' ) {
@@ -183,8 +217,7 @@ export default {
 
             Dom.find(this.node).actual((el) => {
 
-                let offsetTop = Dom.find(this.boundry).offsetTop(document.body) -
-                    (window.pageYOffset || window.scrollY || 0);
+                let offsetTop = Dom.find(this.boundry).offsetTop(window);
 
                 if ( offsetTop > style.top ) {
                     pseudo.top = (style.top - (style.top - offsetTop)) + 'px';
@@ -196,8 +229,7 @@ export default {
                     pseudo.top = (boundryHeight + offsetTop - nodeHeight) + 'px';
                 }
 
-                let offsetLeft = Dom.find(this.boundry).offsetLeft(document.body) -
-                    (window.pageXOffset || window.scrollX || 0);
+                let offsetLeft = Dom.find(this.boundry).offsetLeft(window);
 
                 if ( offsetLeft > style.left ) {
                     pseudo.left = (style.left - (style.left - offsetLeft)) + 'px';
@@ -219,40 +251,8 @@ export default {
                 pseudo.display = 'none';
             }
 
-            return pseudo;
-        }
-
-    },
-
-    watch: {
-
-        visible()
-        {
-            if ( ! Any.isEqual(this.nativeVisible, this.visible) ) {
-                this.nativeVisible = this.visible;
-            }
+            return this.style = pseudo;
         },
-
-        nativeVisible()
-        {
-            if ( this.nativeVisible === true ) {
-
-                Any.delay(() => {
-                    Dom.find(this.node).addClass('n-popover--open');
-                });
-
-                Dom.find(this.element).addClass('n-popover--open');
-            }
-
-            if ( this.nativeVisible === false ) {
-                Dom.find(this.node).removeClass('n-popover--open');
-                Dom.find(this.element).removeClass('n-popover--open');
-            }
-        }
-
-    },
-
-    methods: {
 
         clickTrigger(event, target)
         {
@@ -374,7 +374,7 @@ export default {
     data()
     {
         return {
-            node: null, nativeVisible: this.visible, clientX: 0, clientY: 0
+            style: { display: 'none' }, node: null, nativeVisible: this.visible, clientX: 0, clientY: 0
         };
     },
 

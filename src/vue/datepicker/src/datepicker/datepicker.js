@@ -130,6 +130,11 @@ export default {
             }
         },
 
+        tempValue()
+        {
+            this.$nextTick(() => this.$refs.modal.refresh());
+        },
+
         arrive()
         {
             if ( this.arrive !== this.nativeArrive.format(this.format) ) {
@@ -493,7 +498,7 @@ export default {
         return (
             <div class="n-datepicker__wrapper">
                 <NInput value={this.nativeValue.format(this.displayFormat)} />
-                <NPopover vModel={this.visible} width={300} disabled={this.disabled} type="datepicker" trigger="click" position="bottom-center">
+                <NPopover ref="modal" vModel={this.visible} width={300} disabled={this.disabled} type="datepicker" trigger="click" position="bottom-center">
                     { this.ctor('render' + Str.ucfirst(this.nativeView))() }
                 </NPopover>
             </div>
