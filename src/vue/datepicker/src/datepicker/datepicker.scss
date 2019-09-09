@@ -1,13 +1,78 @@
 @import "../../../root/vars";
 
+$datepicker-size: 14px !default;
+$datepicker-height: 34px !default;
+
 $datepicker-display-size: 15px !default;
 $datepicker-day-width: 35px !default;
+
+.n-datepicker__wrapper {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+}
 
 .n-datepicker__wrapper .n-popover {
     display: inline-flex;
     flex-direction: row;
     text-align: left;
     max-width: 100% !important;
+}
+
+.n-datepicker {
+    flex: 1 1 auto;
+    min-width: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: $--color-white;
+    color: $--color-black;
+    border: 1px solid $--color-gray-15;
+    border-radius: $radius-small;
+    transition: 0.15s border;
+}
+
+.n-inverse .n-datepicker {
+    border-color: $--color-gray-80;
+    background: $--color-black;
+    color: $--color-white;
+}
+
+.n-datepicker:hover,
+.n-datepicker.n-popover--open {
+    border: 1px solid $--color-primary;
+}
+
+.n-datepicker.n-datepicker--default {
+    font-size: $datepicker-size;
+    padding: 0 $datepicker-height * 0.3;
+    min-height: $datepicker-height;
+}
+
+.n-datepicker.n-datepicker--small {
+    font-size: $datepicker-size * 0.875;
+    padding: 0 $datepicker-height * 0.3 * 0.875;
+    min-height: $datepicker-height * 0.875;
+}
+
+.n-datepicker.n-datepicker--large {
+    font-size: $datepicker-size * 1.125;
+    padding: 0 $datepicker-height * 0.3 * 1.125;
+    min-height: $datepicker-height * 1.125;
+}
+
+.n-datepicker.n-datepicker--disabled,
+.n-datepicker.n-datepicker--disabled:hover {
+    cursor: not-allowed;
+    background: $--color-gray-05;
+    border-color: $--color-gray-15;
+}
+
+.n-inverse .n-datepicker.n-datepicker--disabled,
+.n-inverse .n-datepicker.n-datepicker--disabled:hover {
+    background: $--color-gray-90;
+    border-color: $--color-gray-80;
 }
 
 .n-datepicker__header {

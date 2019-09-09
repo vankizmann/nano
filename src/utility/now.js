@@ -57,9 +57,10 @@ export class Now
 
     static datetime(val)
     {
-        let date = new Date(
-            val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/, '$1/$2/$3')
-        );
+        val = val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(.*?)/, '$1-$2-$3 $4:$5:$6');
+        val = val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/, '$1/$2/$3');
+
+        let date = new Date(val);
 
         if ( val.match(/^now/) ) {
             date = new Date;

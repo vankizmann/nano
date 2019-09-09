@@ -39,6 +39,30 @@ export default {
             type: [Boolean]
         },
 
+        rangeSeperator: {
+            default()
+            {
+                return '-';
+            },
+            type: [String]
+        },
+
+        size: {
+            default()
+            {
+                return 'default';
+            },
+            type: [String]
+        },
+
+        position: {
+            default()
+            {
+                return 'bottom-center';
+            },
+            type: [String]
+        },
+
         disabled: {
             default()
             {
@@ -151,19 +175,28 @@ export default {
 
         nativeRange()
         {
-            if ( this.nativeRange.length === 1 ) {
-                this.$emit('update:arrive', this.tempArrive =
-                    this.nativeRange[0].format(this.format));
+            if ( this.nativeRange[0] !== undefined ) {
+                this.nativeArrive = this.nativeRange[0];
             }
 
-            if ( this.nativeRange.length === 2 ) {
-                this.$emit('update:depart',  this.tempDepart =
-                    this.nativeRange[1].format(this.format));
+            if ( this.nativeRange[1] !== undefined ) {
+                this.nativeDepart = this.nativeRange[1];
             }
 
-            if ( this.nativeRange.length === 2 ) {
-                this.nativeRange = []; this.visible = false;
+            if ( this.nativeRange.length !== 2 ) {
+                return;
             }
+
+            this.$emit('update:arrive',
+                this.nativeArrive.format(this.format));
+
+            this.$emit('update:depart',
+                this.nativeDepart.format(this.format));
+
+            this.visible = false;
+
+            // Clear native range
+            this.nativeRange = [];
         }
 
     },
@@ -493,12 +526,67 @@ export default {
         );
     },
 
+    renderInput()
+    {
+        let classList = [
+            'n-datepicker', 'n-datepicker--' + this.size
+        ];
+
+        let inputEvent = (event) => {
+            console.log(event);
+        };
+
+        return (
+            <div class={classList}>
+                <span class="n-datepicker__input-icon fa fa-calendar"></span>
+                <input type="text" value={this.nativeValue.format(this.displayFormat)} vOn:input={inputEvent} />
+                <span class="n-datepicker__input-icon fa fa-times"></span>
+            </div>
+        );
+    },
+
+    renderRangeInput()
+    {
+
+        let classList = [
+            'n-datepicker', 'n-datepicker--' + this.size
+        ];
+
+        let arriveEvent = (event) => {
+            console.log(event);
+        };
+
+        let departEvent = (event) => {
+            console.log(event);
+        };
+
+        return (
+            <div class={classList}>
+                <div class="n-datepicker__input-icon">
+                    <span class=" fa fa-calendar"></span>
+                </div>
+                <div class="n-datepicker__input-input">
+                    <input type="text" value={this.nativeArrive.format(this.displayFormat)} vOn:input={arriveEvent} />
+                </div>
+                <span class="n-datepicker__input-seperator">
+                    <span>{ this.rangeSeperator }</span>
+                </span>
+                <div className="n-datepicker__input-input">
+                    <input type="text" value={this.nativeDepart.format(this.displayFormat)} vOn:input={departEvent} />
+                </div>
+                <div class="n-datepicker__input-icon">
+                    <span class="n-datepicker__input-icon fa fa-times"></span>
+                </div>
+            </div>
+        );
+    },
+
     render()
     {
         return (
             <div class="n-datepicker__wrapper">
-                <NInput value={this.nativeValue.format(this.displayFormat)} />
-                <NPopover ref="modal" vModel={this.visible} width={300} disabled={this.disabled} type="datepicker" trigger="click" position="bottom-center">
+                { this.ctor(this.range ? 'renderRangeInput' : 'renderInput')() }
+                <NPopover ref="modal" vModel={this.visible} trigger="click" type="datepicker" position={this.position} disabled={this.disabled} closeInside={false}>
                     { this.ctor('render' + Str.ucfirst(this.nativeView))() }
                 </NPopover>
             </div>

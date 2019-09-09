@@ -394,7 +394,7 @@ export default {
                         <span class="fa fa-angle-down"></span>
                     </div>
                 </div>
-                <NPopover vModel={this.visible} trigger="click" type="select" selector=".n-select" position={this.position} disabled={this.disabled} closeInside={false}>
+                <NPopover vModel={this.visible} trigger="click" type="select" position={this.position} disabled={this.disabled} closeInside={false}>
                     { Any.isEmpty(options) === false ? options : <div class="n-select__empty">{ this.emptyText }</div> }
                 </NPopover>
                 { this.$slots.default }
