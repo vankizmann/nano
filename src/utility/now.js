@@ -377,6 +377,10 @@ export class Now
 
     setHours(hours)
     {
+        if ( hours === 0 ) {
+            this.subDates(1);
+        }
+
         this.timestamp.setHours(hours);
 
         return this;
@@ -409,6 +413,10 @@ export class Now
 
     setMinutes(minutes)
     {
+        if ( minutes === 0 ) {
+            this.subHours(1);
+        }
+
         this.timestamp.setMinutes(minutes);
 
         return this;
@@ -441,6 +449,10 @@ export class Now
 
     setSeconds(seconds)
     {
+        if ( seconds === 0 ) {
+            this.subMinutes(1);
+        }
+
         this.timestamp.setSeconds(seconds);
 
         return this;
