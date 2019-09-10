@@ -579,7 +579,18 @@ export default {
         }
 
         let inputEvent = (event) => {
-            console.log(event);
+
+            if ( event.target.value.length !== this.displayFormat.length ) {
+                return;
+            }
+
+            let value = Now.make(event.target.value);
+
+            if ( value.valid() === false ) {
+                return;
+            }
+
+            this.$emit('input', value.format(this.format));
         };
 
         let clearEvent = () => {
@@ -616,11 +627,33 @@ export default {
         }
 
         let arriveEvent = (event) => {
-            console.log(event);
+
+            if ( event.target.value.length !== this.displayFormat.length ) {
+                return;
+            }
+
+            let arrive = Now.make(event.target.value);
+
+            if ( arrive.valid() === false ) {
+                return;
+            }
+
+            this.$emit('update:arrive', arrive.format(this.format));
         };
 
         let departEvent = (event) => {
-            console.log(event);
+
+            if ( event.target.value.length !== this.displayFormat.length ) {
+                return;
+            }
+
+            let depart = Now.make(event.target.value);
+
+            if ( depart.valid() === false ) {
+                return;
+            }
+
+            this.$emit('update:depart', depart.format(this.format));
         };
 
         let clearEvent = () => {

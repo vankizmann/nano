@@ -60,14 +60,37 @@ export class Now
 
     static datetime(val)
     {
-        val = val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})(.*?)/, '$1-$2-$3 $4:$5:$6');
-        val = val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/, '$1/$2/$3');
+        let offset = 0, offsetMatch = val.match(/\s?(.*?)(\+|\-)([0-9]{2}):([0-9]{2})$/);
+
+        if ( offsetMatch !== null ) {
+            offset = (Num.int(eval(offsetMatch[2] + '1')) * Num.int(offsetMatch[3]) * 60) + Num.int(offsetMatch[4]);
+        }
+
+        val = val.replace(/\s?(\+|\-)([0-9]{2}):([0-9]{2})$/, '');
+
+        if ( val.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/) ) {
+            val = val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})(.*?)$/, '$1/$2/$3$4');
+        }
+
+        if ( val.match(/^([0-9]{2})\.([0-9]{2})\.([0-9]{4})/) ) {
+            val = val.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/, '$3/$2/$1');
+        }
+
+        if ( val.match(/(T|\s)([0-9]{2}):([0-9]{2}):([0-9]{2})$/) ) {
+            val = val.replace(/(T|\s)([0-9]{2}):([0-9]{2}):([0-9]{2})$/, ' $2:$3:$4');
+        }
+
+        if ( val.match(/(T|\s)([0-9]{2}):([0-9]{2})($)/) ) {
+            val = val.replace(/(T|\s)([0-9]{2}):([0-9]{2})($)/, ' $2:$3:00');
+        }
 
         let date = new Date(val);
 
         if ( val.match(/^now/) ) {
             date = new Date;
         }
+
+        date.setTime(date.getTime() + (offset * 60 * 1000));
 
         let days = val.match(/(\+|-)([0-9]+)days?/);
 
@@ -194,13 +217,15 @@ export class Now
         return this.equal(equal, format);
     }
 
-    between(fromDate = null, toDate = null, format = 'YYYYMMDDhhiiss')
+    between(fromDate = null, toDate = null, format = 'YYYYMMDD')
     {
         if ( Now.make(toDate).code(format) < Now.make(fromDate).code(format) ) {
-            return this.after(toDate) && this.before(fromDate);
+            return this.after(toDate, format) && this.before(fromDate, format) &&
+                ! this.equal(toDate, format) && ! this.equal(fromDate, format);
         }
 
-        return this.after(fromDate) && this.before(toDate);
+        return this.after(fromDate, format) && this.before(toDate, format) &&
+            ! this.equal(toDate, format) && ! this.equal(fromDate, format);
     }
 
     humanDay()
