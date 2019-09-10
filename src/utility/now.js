@@ -63,7 +63,8 @@ export class Now
         let offset = 0, offsetMatch = val.match(/\s?(.*?)(\+|\-)([0-9]{2}):([0-9]{2})$/);
 
         if ( offsetMatch !== null ) {
-            offset = (Num.int(eval(offsetMatch[2] + '1')) * Num.int(offsetMatch[3]) * 60) + Num.int(offsetMatch[4]);
+            offset = (Num.int(eval(offsetMatch[2] + '1')) *
+                Num.int(offsetMatch[3]) * 60) + Num.int(offsetMatch[4]);
         }
 
         val = val.replace(/\s?(\+|\-)([0-9]{2}):([0-9]{2})$/, '');
@@ -367,6 +368,102 @@ export class Now
     lastDate()
     {
         return this.prevMonth().setDate(0).date();
+    }
+
+    hours()
+    {
+        return this.timestamp.getHours();
+    }
+
+    setHours(hours)
+    {
+        this.timestamp.setHours(hours);
+
+        return this;
+    }
+
+    addHours(count = 1)
+    {
+        return this.setHours(this.hours() + count);
+    }
+
+    subHours(count = 1)
+    {
+        return this.setHours(this.hours() - count);
+    }
+
+    prevHours(count = 1)
+    {
+        return this.clone().subHours(count);
+    }
+
+    nextHours(count = 1)
+    {
+        return this.clone().addHours(count);
+    }
+
+    minutes()
+    {
+        return this.timestamp.getMinutes();
+    }
+
+    setMinutes(minutes)
+    {
+        this.timestamp.setMinutes(minutes);
+
+        return this;
+    }
+
+    addMinutes(count = 1)
+    {
+        return this.setMinutes(this.minutes() + count);
+    }
+
+    subMinutes(count = 1)
+    {
+        return this.setMinutes(this.minutes() - count);
+    }
+
+    prevMinutes(count = 1)
+    {
+        return this.clone().subMinutes(count);
+    }
+
+    nextMinutes(count = 1)
+    {
+        return this.clone().addMinutes(count);
+    }
+
+    seconds()
+    {
+        return this.timestamp.getSeconds();
+    }
+
+    setSeconds(seconds)
+    {
+        this.timestamp.setSeconds(seconds);
+
+        return this;
+    }
+
+    addSeconds(count = 1)
+    {
+        return this.setSeconds(this.seconds() + count);
+    }
+
+    subSeconds(count = 1)
+    {
+        return this.setSeconds(this.seconds() - count);
+    }
+
+    prevSeconds(count = 1)
+    {
+        return this.clone().subSeconds(count);
+    }
+
+    nextSeconds(count = 1)
+    {
+        return this.clone().addSeconds(count);
     }
 
     getMonths()

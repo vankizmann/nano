@@ -117,6 +117,10 @@ $datepicker-day-width: 35px !default;
     padding: 0 $datepicker-height * 0.3;
 }
 
+.n-inverse .n-datepicker__input input {
+    color: $--color-white;
+}
+
 .n-datepicker__input.n-datepicker__input--range input {
     text-align: center;
 }
@@ -136,12 +140,18 @@ $datepicker-day-width: 35px !default;
     font-size: $datepicker-display-size;
 }
 
-.n-datepicker__prev {
-    margin-right: auto;
+.n-datepicker__prev .n-button {
+    padding: 8px;
+    margin-left: 5px;
 }
 
-.n-datepicker__next {
-    margin-left: auto;
+.n-datepicker__next .n-button {
+    padding: 8px;
+    margin-left: 5px;
+}
+
+.n-datepicker__display {
+    margin-right: auto;
 }
 
 .n-datepicker__display .n-datepicker__month {

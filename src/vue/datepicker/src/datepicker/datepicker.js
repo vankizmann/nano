@@ -264,26 +264,18 @@ export default {
 
     },
 
-    mounted()
-    {
-        this.$on('input', () => this.visible = false);
-    },
-
     renderToolbar({ prev, next })
     {
         prev = Obj.assign({
-            props: { icon: 'fa fa-angle-left', square: true, round: true }
+            props: { type: 'link', icon: 'fa fa-angle-left', square: true, round: true }
         }, prev);
 
         next = Obj.assign({
-            props: { icon: 'fa fa-angle-right', square: true, round: true }
+            props: { type: 'link', icon: 'fa fa-angle-right', square: true, round: true }
         }, next);
 
         return (
             <div class="n-datepicker__toolbar">
-                <div class="n-datepicker__prev">
-                    <NButton {...prev}/>
-                </div>
                 <div class="n-datepicker__display">
                     <span class="n-datepicker__month" vOn:click={() => this.nativeView = 'month'}>
                         {this.months[this.tempValue.month() - 1]}
@@ -291,6 +283,9 @@ export default {
                     <span class="n-datepicker__year" vOn:click={() => this.nativeView = 'year'}>
                         {this.tempValue.year()}
                     </span>
+                </div>
+                <div class="n-datepicker__prev">
+                    <NButton {...prev} />
                 </div>
                 <div class="n-datepicker__next">
                     <NButton {...next} />
@@ -320,6 +315,7 @@ export default {
         let events = {
             'click': () => {
                 this.$emit('input', now.format(this.format));
+                this.visible = false;
             }
         };
 
@@ -639,6 +635,7 @@ export default {
             }
 
             this.$emit('update:arrive', arrive.format(this.format));
+            this.$emit('update:depart', this.nativeDepart.format(this.format));
         };
 
         let departEvent = (event) => {
@@ -654,6 +651,7 @@ export default {
             }
 
             this.$emit('update:depart', depart.format(this.format));
+            this.$emit('update:arrive', this.nativeArrive.format(this.format));
         };
 
         let clearEvent = () => {

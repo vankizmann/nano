@@ -57,6 +57,13 @@ $popover-tooltip-padding: 3px 9px !default;
     box-shadow: 0 1px 3px 1px rgba($color-black, 0.15);
 }
 
+.n-popover.n-popover--timepicker > .n-popover__frame {
+    font-size: $popover-default-size;
+    background: $--color-white;
+    border-radius: $radius-medium;
+    box-shadow: 0 1px 3px 1px rgba($color-black, 0.15);
+}
+
 .n-popover.n-popover--tooltip > .n-popover__frame {
     color: $--color-white;
     font-size: $popover-tooltip-size;
