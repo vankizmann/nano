@@ -107,20 +107,17 @@ export default {
 
         hoursGrid()
         {
-            return Arr.make(24 / this.hoursInterval).map((key) =>
-                this.nativeValue.clone().setHours(key * this.hoursInterval));
+            return this.nativeValue.getHours(this.hoursInterval);
         },
 
         minutesGrid()
         {
-            return Arr.make(60 / this.minutesInterval).map((key) =>
-                this.nativeValue.clone().setMinutes(key * this.minutesInterval));
+            return this.nativeValue.getMinutes(this.minutesInterval);
         },
 
         secondsGrid()
         {
-            return Arr.make(60 / this.secondsInterval).map((key) =>
-                this.nativeValue.clone().setSeconds(key * this.secondsInterval));
+            return this.nativeValue.getSeconds(this.secondsInterval);
         }
 
     },

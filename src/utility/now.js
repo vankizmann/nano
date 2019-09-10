@@ -377,10 +377,6 @@ export class Now
 
     setHours(hours)
     {
-        if ( hours === 24 ) {
-            this.subDates(1);
-        }
-
         this.timestamp.setHours(hours);
 
         return this;
@@ -413,10 +409,6 @@ export class Now
 
     setMinutes(minutes)
     {
-        if ( minutes === 60 ) {
-            this.subHours(1);
-        }
-
         this.timestamp.setMinutes(minutes);
 
         return this;
@@ -449,10 +441,6 @@ export class Now
 
     setSeconds(seconds)
     {
-        if ( seconds === 60 ) {
-            this.subMinutes(1);
-        }
-
         this.timestamp.setSeconds(seconds);
 
         return this;
@@ -549,6 +537,27 @@ export class Now
         }
 
         return Arr.merge(before, dates, after);
+    }
+
+    getHours(interval = 1)
+    {
+        return Arr.make(24 / interval).map((val, hour) => {
+            return this.clone().setHours(hour * interval);
+        });
+    }
+
+    getMinutes(interval = 1)
+    {
+        return Arr.make(60 / interval).map((val, minute) => {
+            return this.clone().setMinutes(minute * interval);
+        });
+    }
+
+    getSeconds(interval = 1)
+    {
+        return Arr.make(60 / interval).map((val, second) => {
+            return this.clone().setSeconds(second * interval);
+        });
     }
 
 }
