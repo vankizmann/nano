@@ -174,8 +174,7 @@ export default {
         }
 
         let events = {
-            'click': () => this.$emit('input', this.nativeValue
-                .setHours(now.hours()).format(this.format))
+            'click': () => this.$emit('input', now.format(this.format))
         };
 
         return (
@@ -196,8 +195,7 @@ export default {
         }
 
         let events = {
-            'click': () => this.$emit('input', this.nativeValue
-                .setMinutes(now.minutes()).format(this.format))
+            'click': () => this.$emit('input', now.format(this.format))
         };
 
         return (
@@ -218,8 +216,7 @@ export default {
         }
 
         let events = {
-            'click': () => this.$emit('input', this.nativeValue
-                .setSeconds(now.seconds()).format(this.format))
+            'click': () => this.$emit('input', now.format(this.format))
         };
 
         return (
