@@ -377,7 +377,7 @@ export class Now
 
     setHours(hours)
     {
-        if ( hours === 0 ) {
+        if ( hours === 24 ) {
             this.subDates(1);
         }
 
@@ -413,7 +413,7 @@ export class Now
 
     setMinutes(minutes)
     {
-        if ( minutes === 0 ) {
+        if ( minutes === 60 ) {
             this.subHours(1);
         }
 
@@ -449,7 +449,7 @@ export class Now
 
     setSeconds(seconds)
     {
-        if ( seconds === 0 ) {
+        if ( seconds === 60 ) {
             this.subMinutes(1);
         }
 
