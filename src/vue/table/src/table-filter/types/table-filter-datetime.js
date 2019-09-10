@@ -32,7 +32,7 @@ export default {
     {
         return <NForm vModel={this.$data} vOn:change={Any.debounce(this.changeFilter)}>
             <NFormItem>
-                <NInput size="small" vModel={this.value}/>
+                <NDatepicker size="small" vModel={this.value} format="YYYY-MM-DD"/>
             </NFormItem>
             <NFormItem>
                 <NSelect size="small" vModel={this.operator}>
