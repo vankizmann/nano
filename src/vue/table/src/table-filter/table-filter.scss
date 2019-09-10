@@ -16,7 +16,7 @@ $table-filter-height: 18px !default;
     max-width: 260px !important;
 }
 
-.n-table-filter  .n-popover.n-popover--default .n-popover__body {
+.n-table-filter  .n-popover.n-popover--default > .n-popover__frame > .n-popover__body {
     max-height: 280px;
     overflow-y: auto;
 }
