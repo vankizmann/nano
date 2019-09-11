@@ -151,7 +151,7 @@ export class Now
             this.iso().toISOString().substr(0, 4));
 
         format = format.replace(/YY/g,
-            this.iso().toISOString().substr(2, 4));
+            this.iso().toISOString().substr(2, 2));
 
         format = format.replace(/MM/g,
             this.iso().toISOString().substr(5, 2));
