@@ -66,7 +66,7 @@
 
 .n-notification__wrapper {
   z-index: 7000;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column; }
 
