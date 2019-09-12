@@ -520,6 +520,10 @@ export class Now
             Arr.push(range, targetNow);
         }
 
+        if ( range.length === 0 ) {
+            range = [this];
+        }
+
         return range;
     }
 
