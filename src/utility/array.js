@@ -74,21 +74,8 @@ export class Arr
 
     static filter(arr, filter)
     {
-        return Any.keys(arr).filter((key) => {
-
-            if ( Any.isFunction(filter) ) {
-                return filter.call({}, arr[key], key);
-            }
-
-            if ( Any.isPlain(filter) ) {
-                return Obj.includes(filter, arr[key]);
-            }
-
-            if ( Any.isArray(filter) ) {
-                return Arr.includes(filter, arr[key]);
-            }
-
-            return filter === arr[key];
+        return Arr.each(Arr.filterIndex(arr, filter), (key) => {
+            return arr[key];
         });
     }
 
