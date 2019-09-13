@@ -116,7 +116,7 @@ export class Dom
         return this.get(0) && this.get(0).is(':visible');
     }
 
-    inview(ratio = 0)
+    inviewX(ratio = 0)
     {
         let viewport = {
             width: Dom.find(window).width(),
@@ -131,17 +131,39 @@ export class Dom
         let scroll = this.scroll(),
             offset = this.offset();
 
-        let top = offset.top + (ratio * element.height) - viewport.height,
-            left = offset.left + (ratio * element.width) - viewport.width;
-
-        let bottom = offset.top + (viewport.height * 3) +
-            (element.height * 2) - (ratio * element.height);
+        let left = offset.left + (ratio * element.width) -
+            viewport.width;
 
         let right = offset.left + (viewport.width * 3) +
             (element.width * 2) - (ratio * element.width);
 
-        return top + viewport.height <= scroll.top && scroll.top + viewport.height <= bottom &&
-            left + viewport.width <= scroll.left && scroll.left + viewport.width <= right;
+        return left + viewport.width <= scroll.left &&
+            scroll.left + viewport.width <= right;
+    }
+
+    inviewY(ratio = 0)
+    {
+        let viewport = {
+            width: Dom.find(window).width(),
+            height: Dom.find(window).height(),
+        };
+
+        let element = {
+            width: this.width(),
+            height: this.height(),
+        };
+
+        let scroll = this.scroll(),
+            offset = this.offset();
+
+        let top = offset.top + (ratio * element.height) -
+            viewport.height;
+
+        let bottom = offset.top + (viewport.height * 3) +
+            (element.height * 2) - (ratio * element.height);
+
+        return top + viewport.height <= scroll.top &&
+            scroll.top + viewport.height <= bottom;
     }
 
     is(selector)
