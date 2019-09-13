@@ -100,32 +100,6 @@ export class Dom
         return this;
     }
 
-    static clearSelection()
-    {
-        if (
-            window.getSelection !== undefined &&
-            window.getSelection.empty !== undefined
-        ) {
-            window.getSelection().empty()
-        }
-
-        if (
-            window.getSelection !== undefined &&
-            window.getSelection.removeAllRanges !== undefined
-        ) {
-            window.getSelection().removeAllRanges()
-        }
-
-        if (
-            window.selection !== undefined &&
-            window.selection.removeAllRanges !== undefined
-        ) {
-            window.selection().empty()
-        }
-
-        return this;
-    }
-
     length()
     {
         return Any.isArray(this.el) ?
@@ -140,6 +114,36 @@ export class Dom
     visible()
     {
         return this.get(0) && this.get(0).is(':visible');
+    }
+
+    inview(ratio = 0)
+    {
+        ratio = ratio * 2;
+
+        let viewport = {
+            width: Dom.find(window).width(),
+            height: Dom.find(window).height(),
+        };
+
+        let element = {
+            width: this.width(),
+            height: this.height(),
+        };
+
+        let scroll = this.scroll(),
+            offset = this.offset();
+
+        let top = offset.top + (ratio * element.height),
+            left = offset.left + (ratio * element.width);
+
+        let bottom = offset.top + (viewport.height * 2) +
+            (element.height * 2) - (ratio * element.height);
+
+        let right = offset.left + (viewport.width * 2) +
+            (element.width * 2) - (ratio * element.width);
+
+        return top <= scroll.top && scroll.top <= bottom &&
+            left <= scroll.left && scroll.left <= right;
     }
 
     is(selector)
