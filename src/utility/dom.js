@@ -118,8 +118,6 @@ export class Dom
 
     inview(ratio = 0)
     {
-        ratio = ratio * 2;
-
         let viewport = {
             width: Dom.find(window).width(),
             height: Dom.find(window).height(),
@@ -133,17 +131,17 @@ export class Dom
         let scroll = this.scroll(),
             offset = this.offset();
 
-        let top = offset.top + (ratio * element.height),
-            left = offset.left + (ratio * element.width);
+        let top = offset.top + (ratio * element.height) - viewport.height,
+            left = offset.left + (ratio * element.width) - viewport.width;
 
-        let bottom = offset.top + (viewport.height * 2) +
+        let bottom = offset.top + (viewport.height * 3) +
             (element.height * 2) - (ratio * element.height);
 
-        let right = offset.left + (viewport.width * 2) +
+        let right = offset.left + (viewport.width * 3) +
             (element.width * 2) - (ratio * element.width);
 
-        return top <= scroll.top && scroll.top <= bottom &&
-            left <= scroll.left && scroll.left <= right;
+        return top + viewport.height <= scroll.top && scroll.top + viewport.height <= bottom &&
+            left + viewport.width <= scroll.left && scroll.left + viewport.width <= right;
     }
 
     is(selector)
