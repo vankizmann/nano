@@ -38,6 +38,20 @@ export default {
             }
         },
 
+        useBefore: {
+            default()
+            {
+                return null;
+            }
+        },
+
+        useAfter: {
+            default()
+            {
+                return null;
+            }
+        },
+
         selected: {
             default()
             {
@@ -615,17 +629,27 @@ export default {
                 input: (input) => value = input, remove: () => this.items.splice(key, 1)
             };
 
+            let beforeSlot = this.$scopedSlots.before &&
+                this.$scopedSlots.before(props);
+
+            if ( this.useBefore !== null ) {
+                beforeSlot = h(this.useBefore, { props, on });
+            }
+
+            let afterSlot = this.$scopedSlots.after &&
+                this.$scopedSlots.after(props);
+
+            if ( this.useAfter !== null ) {
+                afterSlot = h(this.useAfter, { props, on });
+            }
+
             let defaultSlot = (
                 <div class={className} data-drag-id={value._dragid} selectable={selectable} draggable={draggable}>
-                    {this.use === null ? this.$scopedSlots.default(props) : h(this.use, {key: value._dragid, props, on})}
+                    { this.use === null ? this.$scopedSlots.default(props) : h(this.use, { key: value._dragid, props, on }) }
                 </div>
             );
 
-            return ([
-                this.$scopedSlots.before && this.$scopedSlots.before(props),
-                defaultSlot,
-                this.$scopedSlots.after && this.$scopedSlots.after(props)
-            ]);
+            return ([beforeSlot, defaultSlot, afterSlot]);
         }
     },
 
