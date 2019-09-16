@@ -143,14 +143,15 @@ export default {
             }
 
             let clientX = Dom.find(this.element).offsetLeft(window) -
-                Dom.find(this.parent).scrollLeft(null, window);
+                Dom.find(this.parent).scrollLeft(null);
+
 
             if ( this.trigger === 'context' ) {
                 clientX = this.clientX;
             }
 
             let clientY = Dom.find(this.element).offsetTop(window) -
-                Dom.find(this.parent).scrollTop(null, window);
+                Dom.find(this.parent).scrollTop(null);
 
             if ( this.trigger === 'context' ) {
                 clientY = this.clientY;

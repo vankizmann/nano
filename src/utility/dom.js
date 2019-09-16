@@ -134,11 +134,10 @@ export class Dom
         let left = offset.left + (ratio * element.width) -
             viewport.width;
 
-        let right = offset.left + (viewport.width * 3) +
-            (element.width * 2) - (ratio * element.width);
+        let right = offset.left + element.width -
+            (ratio * element.width);
 
-        return left + viewport.width <= scroll.left &&
-            scroll.left + viewport.width <= right;
+        return left <= scroll.left && scroll.left <= right;
     }
 
     inviewY(ratio = 0)
@@ -159,11 +158,10 @@ export class Dom
         let top = offset.top + (ratio * element.height) -
             viewport.height;
 
-        let bottom = offset.top + (viewport.height * 3) +
-            (element.height * 2) - (ratio * element.height);
+        let bottom = offset.top + element.height -
+            (ratio * element.height);
 
-        return top + viewport.height <= scroll.top &&
-            scroll.top + viewport.height <= bottom;
+        return top <= scroll.top && scroll.top <= bottom;
     }
 
     is(selector)
@@ -858,7 +856,7 @@ export class Dom
         return this;
     }
 
-    loopParent(callback, target = document.body)
+    loopParent(callback, target = null)
     {
         for (let el = this.get(0); el !== null && el.parentNode !== undefined; el = el.parentNode) {
 
@@ -970,19 +968,19 @@ export class Dom
 
         this.loopParent((el) => {
 
-            if (el !== window ) {
+            if ( el.scrollTop !== undefined ) {
                 source.top += Num.float(el.scrollTop);
             }
 
-            if ( el === window ) {
+            if ( el.scrollTop === undefined && el.pageYOffset !== undefined  ) {
                 source.top += Num.float(el.pageYOffset);
             }
 
-            if ( el !== window ) {
+            if ( el.scrollTop !== undefined ) {
                 source.left += Num.float(el.scrollLeft);
             }
 
-            if ( el === window ) {
+            if ( el.scrollTop === undefined && el.pageXOffset !== undefined  ) {
                 source.left += Num.float(el.pageXOffset);
             }
 
@@ -994,32 +992,27 @@ export class Dom
 
         Dom.find(boundry).loopParent((el) => {
 
-            if ( el !== window ) {
+            if ( el.scrollTop !== undefined ) {
                 target.top += Num.float(el.scrollTop);
             }
 
-            if ( el === window ) {
+            if ( el.scrollTop === undefined && el.pageYOffset !== undefined  ) {
                 target.top += Num.float(el.pageYOffset);
             }
 
-            if ( el !== window ) {
+            if ( el.scrollTop !== undefined ) {
                 target.left += Num.float(el.scrollLeft);
             }
 
-            if ( el === window ) {
+            if ( el.scrollTop === undefined && el.pageXOffset !== undefined  ) {
                 target.left += Num.float(el.pageXOffset);
             }
 
         });
 
-        let win = {
-            top: (window.pageYOffset || window.scrollTop || 0),
-            left: (window.pageXOffset || window.scrollLeft || 0)
-        };
-
         let scroll = {
-            top: (source.top + win.top) - (target.top - win.top),
-            left: (source.left + win.left) - (target.left - win.left)
+            top: source.top - target.top,
+            left: source.left - target.left
         };
 
         return key !== null ? Obj.get(scroll, key, 0) : scroll;
