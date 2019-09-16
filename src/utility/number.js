@@ -51,6 +51,36 @@ export class Num
     {
         return Arr.reduce(arr, (acc, val) => acc + val, 0);
     }
+
+    static format(num, decimal = '.', thousand = ',', fixed = null)
+    {
+        let value = num.toString();
+
+        if ( fixed !== null && fixed !== -1 ) {
+            value = num.toFixed(fixed);
+        }
+
+        let totals = value.replace(/\.[0-9]+$/, ''),
+            minals = value.replace(/^[0-9]+\./, '');
+
+        let splits = Arr.reduce(totals.split(''), (result, val, key) => {
+
+            let index = Math.floor(key / 3);
+
+            result[index] = index === key / 3 ?
+                val : result[index] += val;
+
+            return result;
+        }, []);
+
+        value = splits.join(thousand);
+
+        if ( fixed !== -1 && fixed !== 0 && minals !== '' ) {
+            value += decimal + minals;
+        }
+
+        return value;
+    }
 }
 
 export default Num;
