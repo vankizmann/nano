@@ -73,13 +73,13 @@ export class Num
             return result;
         }, []);
 
-        value = splits.join(thousand);
+        let result = splits.join(thousand);
 
-        if ( fixed !== -1 && fixed !== 0 && minals !== '' ) {
-            value += decimal + minals;
+        if ( fixed !== -1 && fixed !== 0 && value.match(/\./) ) {
+            result += decimal + minals;
         }
 
-        return value;
+        return result;
     }
 }
 
