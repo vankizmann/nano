@@ -370,7 +370,6 @@ export default {
 
         nativeVisibleColumns()
         {
-            console.log('update');
             this.$emit('update:visibleColumns', this.nativeVisibleColumns);
         }
 
