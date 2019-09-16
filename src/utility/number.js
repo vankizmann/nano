@@ -63,17 +63,17 @@ export class Num
         let totals = value.replace(/\.[0-9]+$/, ''),
             minals = value.replace(/^[0-9]+\./, '');
 
-        let splits = Arr.reduce(totals.split(''), (result, val, key) => {
+        let splits = Arr.reduce(totals.split('').reverse(), (result, val, key) => {
 
             let index = Math.floor(key / 3);
 
             result[index] = index === key / 3 ?
-                val : result[index] += val;
+                val : result[index] = val + result[index];
 
             return result;
         }, []);
 
-        let result = splits.join(thousand);
+        let result = splits.reverse().join(thousand);
 
         if ( fixed !== -1 && fixed !== 0 && value.match(/\./) ) {
             result += decimal + minals;
