@@ -14,6 +14,14 @@ export default {
 
     props: {
 
+        value: {
+            default()
+            {
+                return true;
+            },
+            type: [Boolean]
+        },
+
         legend: {
             default()
             {
@@ -28,6 +36,14 @@ export default {
                 return 'vertical';
             },
             type: [String]
+        },
+
+        checkable: {
+            default()
+            {
+                return false;
+            },
+            type: [Boolean]
         },
 
         tooltip: {
@@ -48,18 +64,68 @@ export default {
 
     },
 
+    data()
+    {
+        return {
+            nativeValue: this.value
+        };
+    },
+
+    watch: {
+
+        value()
+        {
+            if ( this.value !== this.nativeValue ) {
+                this.nativeValue = this.value;
+            }
+        }
+
+    },
+
+    methods: {
+
+        toggleValue()
+        {
+            if ( this.checkable === false ) {
+                return;
+            }
+
+            this.$emit('input', this.nativeValue = ! this.nativeValue);
+        }
+
+    },
+
     render(h)
     {
-        return <fieldset class={['n-form-group', 'n-form--' + this.align]}>
+        let classList = [
+            'n-form-group', 'n-form--' + this.align
+        ];
+
+        if ( this.checkable === true ) {
+            classList.push('n-form-group--checkable');
+        }
+
+        return <fieldset class={classList}>
             { this.legend &&
-                [
-                    <legend class="n-form-group__legend">{ this.legend }</legend>,
-                    this.tooltip && <NPopover type="tooltip" position={this.tooltipPosition}>{ this.tooltip }</NPopover>
-                ]
+                <div className="n-form-group__legend">
+                    <legend class="n-form-group__label" vOn:click={this.toggleValue}>
+                        { this.checkable &&
+                            <NCheckbox checked={this.nativeValue} />
+                        }
+                        <div class="n-form-group__label-text">
+                            <span>{this.legend}</span>
+                            { this.tooltip &&
+                                <NPopover type="tooltip" position={this.tooltipPosition}>{this.tooltip}</NPopover>
+                            }
+                        </div>
+                    </legend>
+                </div>
             }
-            <div class="n-form-group__body">
-                { this.$slots.default }
-            </div>
+            { this.nativeValue &&
+                <div class="n-form-group__body">
+                    {this.$slots.default}
+                </div>
+            }
         </fieldset>;
     }
 }
