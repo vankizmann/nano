@@ -1,6 +1,6 @@
 @import "../../../root/vars";
 
-$form-label-size: 17px !default;
+$form-legend-size: 17px !default;
 $form-group-spacing: 18px !default;
 
 .n-form-group {
@@ -24,7 +24,7 @@ $form-group-spacing: 18px !default;
 
 .n-form-group__label .n-form-group__label-text {
     flex: 1 1 auto;
-    font-size: $form-label-size;
+    font-size: $form-legend-size;
     color: $--color-black;
     transition: color 0.15s;
 }

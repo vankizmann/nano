@@ -816,7 +816,7 @@
 
 .n-form-item__label label {
   color: var(--color-gray-60);
-  font-size: 17px; }
+  font-size: 14px; }
 
 .n-inverse .n-form-item__label label {
   color: var(--color-gray-40); }
@@ -826,7 +826,7 @@
   top: 100%;
   left: 0;
   margin-top: 1px;
-  font-size: 14.875px;
+  font-size: 12.25px;
   color: var(--color-danger); }
 
 :root {
