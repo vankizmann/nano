@@ -2386,6 +2386,9 @@
 .n-inverse .n-datepicker__input input {
   color: var(--color-white); }
 
+.n-datepicker.n-datepicker--disabled .n-datepicker__input input {
+  cursor: not-allowed; }
+
 .n-datepicker__input.n-datepicker__input--range input {
   text-align: center; }
 
@@ -2744,6 +2747,9 @@
 
 .n-inverse .n-timepicker__input input {
   color: var(--color-white); }
+
+.n-timepicker.n-timepicker--disabled .n-timepicker__input input {
+  cursor: not-allowed; }
 
 .n-timepicker__input.n-timepicker__input--range input {
   text-align: center; }

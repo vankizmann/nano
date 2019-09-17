@@ -121,6 +121,10 @@ $timepicker-item-height: 35px !default;
     color: $--color-white;
 }
 
+.n-timepicker.n-timepicker--disabled .n-timepicker__input input {
+    cursor: not-allowed;
+}
+
 .n-timepicker__input.n-timepicker__input--range input {
     text-align: center;
 }

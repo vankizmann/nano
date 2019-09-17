@@ -574,6 +574,10 @@ export default {
             classList.push('n-datepicker--clearable');
         }
 
+        if ( this.disabled === true ){
+            classList.push('n-datepicker--disabled');
+        }
+
         let inputEvent = (event) => {
 
             if ( event.target.value.length !== this.displayFormat.length ) {
@@ -602,10 +606,10 @@ export default {
                     <span class="fa fa-calendar"></span>
                 </div>
                 <div class="n-datepicker__input">
-                    <input type="text" value={this.nativeValue.format(this.displayFormat)} placeholder={this.placeholder} vOn:input={inputEvent} />
+                    <input type="text" disabled={this.disabled} value={this.nativeValue.format(this.displayFormat)} placeholder={this.placeholder} vOn:input={inputEvent} />
                 </div>
                 { this.clearable &&
-                    <NButton type="input" icon="fa fa-times" disabled={Any.isEmpty(this.value)} vOn:mousedown_stop={clearEvent} />
+                    <NButton type="input" icon="fa fa-times" disabled={this.disabled || Any.isEmpty(this.value)} vOn:mousedown_stop={clearEvent} />
                 }
             </div>
         );
@@ -620,6 +624,10 @@ export default {
 
         if ( this.clearable === true ){
             classList.push('n-datepicker--clearable');
+        }
+
+        if ( this.disabled === true ){
+            classList.push('n-datepicker--disabled');
         }
 
         let arriveEvent = (event) => {
@@ -668,16 +676,16 @@ export default {
                     <span class=" fa fa-calendar"></span>
                 </div>
                 <div class="n-datepicker__input n-datepicker__input--range">
-                    <input type="text" value={this.nativeArrive.format(this.displayFormat)} placeholder={this.placeholderArrive} vOn:input={arriveEvent} />
+                    <input type="text" disabled={this.disabled} value={this.nativeArrive.format(this.displayFormat)} placeholder={this.placeholderArrive} vOn:input={arriveEvent} />
                 </div>
                 <span class="n-datepicker__seperator">
                     <span>{ this.rangeSeperator }</span>
                 </span>
                 <div class="n-datepicker__input n-datepicker__input--range">
-                    <input type="text" value={this.nativeDepart.format(this.displayFormat)} placeholder={this.placeholderDepart} vOn:input={departEvent} />
+                    <input type="text" disabled={this.disabled} value={this.nativeDepart.format(this.displayFormat)} placeholder={this.placeholderDepart} vOn:input={departEvent} />
                 </div>
                 { this.clearable &&
-                    <NButton type="input" icon="fa fa-times" disabled={Any.isEmpty(this.arrive) && Any.isEmpty(this.depart)} vOn:mousedown_stop={clearEvent} />
+                    <NButton type="input" icon="fa fa-times" disabled={this.disabled || Any.isEmpty(this.arrive) && Any.isEmpty(this.depart)} vOn:mousedown_stop={clearEvent} />
                 }
             </div>
         );

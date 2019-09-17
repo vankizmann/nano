@@ -121,6 +121,10 @@ $datepicker-day-width: 35px !default;
     color: $--color-white;
 }
 
+.n-datepicker.n-datepicker--disabled .n-datepicker__input input {
+    cursor: not-allowed;
+}
+
 .n-datepicker__input.n-datepicker__input--range input {
     text-align: center;
 }

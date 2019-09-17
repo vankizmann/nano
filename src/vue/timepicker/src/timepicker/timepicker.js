@@ -233,6 +233,10 @@ export default {
             classList.push('n-timepicker--clearable');
         }
 
+        if ( this.disabled === true ){
+            classList.push('n-timepicker--disabled');
+        }
+
         let inputEvent = (event) => {
 
             if ( event.target.value.length !== this.displayFormat.length ) {
@@ -261,10 +265,10 @@ export default {
                     <span class="fa fa-clock"></span>
                 </div>
                 <div class="n-timepicker__input">
-                    <input type="text" value={this.nativeValue.format(this.displayFormat)} placeholder={this.placeholder} vOn:input={inputEvent} />
+                    <input type="text" disabled={this.disabled} value={this.nativeValue.format(this.displayFormat)} placeholder={this.placeholder} vOn:input={inputEvent} />
                 </div>
                 { this.clearable &&
-                    <NButton type="input" icon="fa fa-times" disabled={Any.isEmpty(this.value)} vOn:mousedown_stop={clearEvent} />
+                    <NButton type="input" icon="fa fa-times" disabled={this.disabled || Any.isEmpty(this.value)} vOn:mousedown_stop={clearEvent} />
                 }
             </div>
         );
