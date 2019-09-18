@@ -113,6 +113,10 @@ export class Str
      */
     static options(params, quota = null)
     {
+        if ( Any.isEmpty(params) ) {
+            return '';
+        }
+
         let result = [];
 
         Obj.each(params, (value, key) => {
@@ -136,6 +140,10 @@ export class Str
      */
     static fromOptions(value)
     {
+        if ( Any.isEmpty(value) ) {
+            return {};
+        }
+
         let matches = value.match(/(^|;)(\s*(.*?)\s*:\s*(".*?"|'.*?'|.*?)\s*)(?=;|$)/g);
 
         return Arr.reduce(matches || [], (result, match) => {
@@ -157,6 +165,10 @@ export class Str
      */
     static params(params, quota = null)
     {
+        if ( Any.isEmpty(params) ) {
+            return '';
+        }
+
         let result = [];
 
         Obj.each(params, (value, key) => {
@@ -180,6 +192,10 @@ export class Str
      */
     static fromParams(value)
     {
+        if ( Any.isEmpty(value) ) {
+            return {};
+        }
+
         let matches = value.match(/(^|&)(\s*(.*?)\s*=\s*(".*?"|'.*?'|.*?)\s*)(?=&|$)/g);
 
         return Arr.reduce(matches || [], (result, match) => {
