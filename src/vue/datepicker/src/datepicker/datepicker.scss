@@ -10,6 +10,7 @@ $datepicker-day-width: 35px !default;
     position: relative;
     display: inline-flex;
     width: 100%;
+    color: $--color-black;
 }
 
 .n-datepicker__wrapper .n-popover {

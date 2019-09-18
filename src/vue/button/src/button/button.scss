@@ -20,7 +20,7 @@ $button-height: 34px !default;
     background: $--color-gray-10;
     font-size: $button-size;
     border: 1px solid $--color-gray-10;
-    border-radius: $radius-small;
+    border-radius: $radius-medium;
     transition: 0.15s background, 0.15s border, 0.15s color;
 }
 

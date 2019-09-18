@@ -910,7 +910,7 @@
   background: var(--color-gray-10);
   font-size: 14px;
   border: 1px solid var(--color-gray-10);
-  border-radius: 1px;
+  border-radius: 2px;
   transition: 0.15s background, 0.15s border, 0.15s color; }
 
 .n-button.n-button--round:not(.n-button--link) {
@@ -2293,7 +2293,8 @@
 .n-datepicker__wrapper {
   position: relative;
   display: inline-flex;
-  width: 100%; }
+  width: 100%;
+  color: var(--color-black); }
 
 .n-datepicker__wrapper .n-popover {
   display: inline-flex;
@@ -2655,7 +2656,8 @@
 .n-timepicker__wrapper {
   position: relative;
   display: inline-flex;
-  width: 100%; }
+  width: 100%;
+  color: var(--color-black); }
 
 .n-timepicker__wrapper .n-popover {
   display: inline-flex;
@@ -4010,6 +4012,9 @@
   min-width: 0;
   padding: 0 9px; }
 
+.n-table-filter__label span {
+  color: var(--color-gray-40); }
+
 .n-table__column.n-table__column--filtered .n-table-filter__label {
   color: var(--color-primary); }
 
@@ -4029,9 +4034,6 @@
   width: 18px;
   height: 18px;
   background-color: var(--color-gray-05); }
-
-.n-table-filter__filter span {
-  color: var(--color-gray-40); }
 
 .n-popover-filter {
   width: 240px; }

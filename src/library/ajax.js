@@ -9,18 +9,21 @@ export class Ajax
         return Arr.has(this.apis, Arr.first(input));
     }
 
-    static bind (input, api)
+    static bind(input, api)
     {
         Ajax.apis[Arr.first(input)] = api;
 
         return this;
     }
 
+    static handler()
+    {
+        return window.axios || window.Vue.http;
+    }
+
     static solve(input, vars = {}, options = {})
     {
-        let handler = window.axios || window.Vue.http;
-
-        return Ajax.apis[Arr.first(input)](handler, vars, options);
+        return Ajax.apis[Arr.first(input)](this.handler(), vars, options);
     }
 
     static call (input, store = false, vars = {}, options = {})

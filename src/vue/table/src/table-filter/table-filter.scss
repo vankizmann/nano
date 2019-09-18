@@ -74,6 +74,10 @@ $table-filter-height: 18px !default;
     padding: 0 $table-filter-height * 0.50;
 }
 
+.n-table-filter__label span {
+    color: $--color-gray-40;
+}
+
 .n-table__column.n-table__column--filtered .n-table-filter__label {
     color: $--color-primary;
 }
@@ -95,10 +99,6 @@ $table-filter-height: 18px !default;
     width: $table-filter-height;
     height: $table-filter-height;
     background-color: $--color-gray-05;
-}
-
-.n-table-filter__filter span {
-    color: $--color-gray-40;
 }
 
 .n-popover-filter {

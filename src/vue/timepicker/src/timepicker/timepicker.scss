@@ -10,6 +10,7 @@ $timepicker-item-height: 35px !default;
     position: relative;
     display: inline-flex;
     width: 100%;
+    color: $--color-black;
 }
 
 .n-timepicker__wrapper .n-popover {

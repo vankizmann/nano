@@ -836,7 +836,7 @@ export class Dom
         }
 
         if ( Any.isPlain(val) ) {
-            val = Str.stringify(val);
+            val = Str.options(val);
         }
 
         this.get(0).setAttribute(attr, val);

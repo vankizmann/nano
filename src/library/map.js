@@ -1,12 +1,12 @@
-import { Obj, Any } from "../index";
+import { Obj, Any, Ajax } from "../index";
 
-export default class Route
+export default class Map
 {
-    static routes = Obj.get(window, '_routes', {});
+    static apiKey = window.GMapKey || null;
 
     static set (key, value)
     {
-        this.routes[key] = value;
+        Ajax.handler().get('https://maps.googleapis.com/maps/api/geocode/outputFormat?')
     }
 
     static get (key, values = null, params = null)
@@ -17,7 +17,7 @@ export default class Route
             route = route.replace(new RegExp('{' + key + '\\?*}', 'g'), value);
         });
 
-        return route + (! Any.isEmpty(params) ? ('?' + Str.params(params)) : '');
+        return route + (! Any.isEmpty(params) ? ('?' + $.param(params)) : '');
     }
 
     static goto (key, values = null, params = null)
