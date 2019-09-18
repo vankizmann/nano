@@ -131,7 +131,7 @@ export class Str
     {
         let matches = value.match(/(^|;)(\s*(.*?)\s*:\s*(".*?"|'.*?'|.*?)\s*)(?=;|$)/g);
 
-        return Arr.reduce(matches, (result, match) => {
+        return Arr.reduce(matches || [], (result, match) => {
 
             // Get key and value from match
             let attr = match.match( /^;?\s*(.*?)\s*:\s*(".*?"|'.*?'|.*?)\s*$/);
@@ -175,7 +175,7 @@ export class Str
     {
         let matches = value.match(/(^|&)(\s*(.*?)\s*=\s*(".*?"|'.*?'|.*?)\s*)(?=&|$)/g);
 
-        return Arr.reduce(matches, (result, match) => {
+        return Arr.reduce(matches || [], (result, match) => {
 
             // Get key and value from match
             let attr = match.match( /^&?\s*(.*?)\s*=\s*(".*?"|'.*?'|.*?)\s*$/);
