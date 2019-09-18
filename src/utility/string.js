@@ -74,6 +74,10 @@ export class Str
      */
     static objectify(value, mode = 'options')
     {
+        if ( Any.isObject(value) ) {
+            return value;
+        }
+
         if ( mode === 'params' ) {
             return Str.fromParams(value);
         }
@@ -90,6 +94,9 @@ export class Str
      */
     static stringify(value, mode = 'options')
     {
+        if ( Any.isString(value) ) {
+            return value;
+        }
         if ( mode === 'params' ) {
             return Str.params(value);
         }
