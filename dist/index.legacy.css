@@ -4012,9 +4012,6 @@
   min-width: 0;
   padding: 0 9px; }
 
-.n-table-filter__label span {
-  color: #a4a7a9; }
-
 .n-table__column.n-table__column--filtered .n-table-filter__label {
   color: #2877FA; }
 

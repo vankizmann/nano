@@ -74,10 +74,6 @@ $table-filter-height: 18px !default;
     padding: 0 $table-filter-height * 0.50;
 }
 
-.n-table-filter__label span {
-    color: $--color-gray-40;
-}
-
 .n-table__column.n-table__column--filtered .n-table-filter__label {
     color: $--color-primary;
 }
