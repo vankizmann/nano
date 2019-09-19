@@ -158,14 +158,21 @@ export class Arr
         return arr;
     }
 
-    static slice(arr, val, count = 1)
+    static insert(arr, key, val)
     {
-        return arr.slice(Num.int(val), count);
+        arr.splice(Num.int(key), 0, val);
+        
+        return arr;
     }
 
-    static splice(arr, val, count = 1)
+    static slice(arr, key, count = 1)
     {
-        return arr.splice(Num.int(val), count);
+        return arr.slice(Num.int(key), count);
+    }
+
+    static splice(arr, key, count = 1)
+    {
+        return arr.splice(Num.int(key), count);
     }
 
     static includes(arr, val)

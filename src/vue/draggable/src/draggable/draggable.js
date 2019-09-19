@@ -631,6 +631,10 @@ export default {
                 },
                 remove: () => {
                     this.$emit('input', Arr.removeIndex(this.items, key));
+                },
+                clone: () => {
+                    let clone = Obj.assign({}, value, { _dragid: UUID() });
+                    this.$emit('input', Arr.insert(this.items, key, clone));
                 }
             };
 
