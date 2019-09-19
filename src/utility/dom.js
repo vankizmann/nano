@@ -711,6 +711,19 @@ export class Dom
         return this;
     }
 
+    computed(key = null, fallback = null)
+    {
+        let el = this.get(0);
+
+        if ( el === null || el === window || el === document) {
+            return key !== null ? fallback : {};
+        }
+
+        let computed = getComputedStyle(el);
+
+        return key !== null ? Obj.get(computed, key, fallback) : computed;
+    }
+
     css(vals)
     {
         let styles = this.attr('style');
@@ -859,6 +872,10 @@ export class Dom
     loopParent(callback, target = null)
     {
         for (let el = this.get(0); el !== null && el.parentNode !== undefined; el = el.parentNode) {
+
+            if ( Dom.find(el).computed('position') === 'fixed' ) {
+                return true;
+            }
 
             if ( Dom.find(el).is(target) === true ) {
                 return true;
@@ -1052,7 +1069,7 @@ export class Dom
 
     margin(key = null)
     {
-        let computedStyle = getComputedStyle(this.get(0));
+        let computedStyle = this.computed();
 
         let margin = {
             top: Num.float(computedStyle.marginTop),
@@ -1066,7 +1083,7 @@ export class Dom
 
     padding(key = null)
     {
-        let computedStyle = getComputedStyle(this.get(0));
+        let computedStyle = this.computed();
 
         let padding = {
             top: Num.float(computedStyle.paddingTop),
@@ -1095,14 +1112,7 @@ export class Dom
 
     clientHeight()
     {
-        let el = this.get(0);
-
-        if ( Any.isEmpty(el) ) {
-            return 0;
-        }
-
-        return Any.integer(getComputedStyle(el, null)
-            .height.replace("px", ""));
+        return Any.integer(this.computed('height', '0px').replace("px", ""));
     }
 
     scrollHeight()
@@ -1183,8 +1193,7 @@ export class Dom
             return 0;
         }
 
-        return Any.integer(getComputedStyle(el, null)
-            .width.replace("px", ""));
+        return Any.integer(this.computed('width', '0px').replace("px", ""));
     }
 
     scrollWidth()
