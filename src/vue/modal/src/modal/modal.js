@@ -104,6 +104,10 @@ export default {
 
         element()
         {
+            if ( this.selector === false ) {
+                return null;
+            }
+
             if ( this.selector === null ) {
                 return Dom.find(this.node).previous().get(0);
             }
