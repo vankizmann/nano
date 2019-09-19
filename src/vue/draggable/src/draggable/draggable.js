@@ -626,7 +626,7 @@ export default {
             };
 
             let on = {
-                input: (input) => value = input, remove: () => this.items.splice(key, 1)
+                input: (input) => this.items[key] = input, remove: () => this.items.splice(key, 1)
             };
 
             let beforeSlot = this.$scopedSlots.before &&
