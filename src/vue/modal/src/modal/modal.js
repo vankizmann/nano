@@ -78,6 +78,14 @@ export default {
                 return true;
             },
             type: [Boolean]
+        },
+
+        closeOutside: {
+            default()
+            {
+                return this.closable;
+            },
+            type: [Boolean]
         }
 
     },
@@ -87,6 +95,11 @@ export default {
         parent()
         {
             return Dom.find(this.$el || this.node).parent().get(0);
+        },
+
+        content()
+        {
+            return Dom.find(this.$el || this.node).child().get(0);
         },
 
         element()
@@ -137,46 +150,37 @@ export default {
 
         clickTrigger(event, target)
         {
-            if ( ! Dom.find(target).inside(this.parent) && this.nativeVisible === false ) {
+            if ( ! Dom.find(target).inside(this.parent) ) {
                 return;
             }
 
-            let final = Dom.find(target).closest(this.element),
-                frame = Dom.find(target).closest(this.$el.childNodes[0]),
-                close = Dom.find(target).closest(this.$refs.close);
-
-            if ( Dom.find(final).hasClass('n-disabled') ) {
+            if ( Dom.find(target).closest(this.content) ) {
                 return;
             }
 
-            let visible = frame !== null ||
-                (final !== null && this.nativeVisible === false);
+            let element = Dom.find(target).closest(this.element);
 
-            if ( visible === true && final !== null && event.which !== 1 ) {
-                visible = false;
-            }
-
-            if ( this.closable === false && this.$el === target ) {
-                visible = true;
-            }
-
-            if ( close !== null && this.closable === true ) {
-                visible = false;
-            }
-
-            if ( close === null && this.closable === false ) {
+            if ( Dom.find(element).hasClass('n-disabled') ) {
                 return;
             }
 
-            if ( visible === true && this.nativeVisible === true ) {
+            if ( Any.isEmpty(element) === false ) {
+                return this.$emit('input', this.nativeVisible = true);
+            }
+
+            if ( this.nativeVisible === false ) {
                 return;
             }
 
-            if ( visible === false && this.nativeVisible === false ) {
+            if ( Dom.find(target).closest(this.$refs.close) ) {
+                return this.$emit('close');
+            }
+
+            if ( this.closeOutside === false ) {
                 return;
             }
 
-            this.$emit('input', this.nativeVisible = visible);
+            this.$emit('input', this.nativeVisible = false);
         },
 
     },
@@ -194,6 +198,14 @@ export default {
             Any.throttle(this.clickTrigger, 150), { _uid: this._uid });
 
         this.node = this.$el;
+
+        if ( this.$listeners.close !== undefined ) {
+            return;
+        }
+
+        this.$on('close', () => {
+            this.$emit('input', this.nativeVisible = false);
+        });
     },
 
     destroyed()
