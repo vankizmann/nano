@@ -15,6 +15,13 @@ export default {
             },
         },
 
+        clearValue: {
+            default()
+            {
+                return this.multiple ? [] : null;
+            }
+        },
+
         size: {
             default()
             {
@@ -97,7 +104,7 @@ export default {
         nativeValue()
         {
             return this.multiple ? this.nativeSelected :
-                Arr.first(this.nativeSelected);
+                Arr.first(this.nativeSelected) || this.clearValue;
         }
 
     },
@@ -108,7 +115,7 @@ export default {
         {
             this.nativeSelected = [];
 
-            this.$emit('input', this.nativeValue);
+            this.$emit('input', this.clearValue);
         },
 
         solveNativeSelected()

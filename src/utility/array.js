@@ -161,7 +161,7 @@ export class Arr
     static insert(arr, key, val)
     {
         arr.splice(Num.int(key), 0, val);
-        
+
         return arr;
     }
 
