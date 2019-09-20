@@ -14,8 +14,8 @@ export default {
         let options = typeof this.column.options === 'function' ?
             this.column.options(this.row) : this.column.options;
 
-        options = Arr.map(Any.keys(options), (index) => {
-            return { $value: options[index], $index: index };
+        options = Arr.map(options, (value, index) => {
+            return { $value: value, $index: index };
         });
 
         let className = [
@@ -28,10 +28,10 @@ export default {
                     Arr.each(! Any.isArray(this.value) ? [this.value] : this.value, (value) => {
 
                         let option = Arr.find(options, (option) => {
-                            return Obj.get({ $value: option }, this.column.optionsValue) === value;
+                            return Obj.get(option, this.column.optionsValue) === value;
                         });
 
-                        return Obj.get({ $value: option }, this.column.optionsLabel, value);
+                        return Obj.get(option, this.column.optionsLabel, value);
 
                     }).join(', ') || this.column.emptyText
                 }
