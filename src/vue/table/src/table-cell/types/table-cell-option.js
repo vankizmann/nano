@@ -14,7 +14,7 @@ export default {
         let options = typeof this.column.options === 'function' ?
             this.column.options(this.row) : this.column.options;
 
-        options = Arr.map(options, (value, index) => {
+        options = Arr.map(Arr.clone(options), (value, index) => {
             return { $value: value, $index: index };
         });
 
