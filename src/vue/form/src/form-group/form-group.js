@@ -105,17 +105,19 @@ export default {
 
         return <fieldset class={classList}>
             { this.legend &&
-                <div className="n-form-group__legend">
+                <div class="n-form-group__legend">
                     <legend class="n-form-group__label" vOn:click={this.toggleValue}>
                         { this.checkable &&
                             <NCheckbox checked={this.nativeValue} />
                         }
-                        <div class="n-form-group__label-text">
-                            <span>{this.legend}</span>
-                            { this.tooltip &&
-                                <NPopover type="tooltip" position={this.tooltipPosition}>{this.tooltip}</NPopover>
-                            }
-                        </div>
+                            <div class="n-form-group__label-text">
+                                {
+                                    this.$slots.legend || [
+                                        <span>{this.legend}</span>,
+                                        this.tooltip && <NPopover type="tooltip" position={this.tooltipPosition}>{this.tooltip}</NPopover>
+                                    ]
+                                }
+                            </div>
                     </legend>
                 </div>
             }
