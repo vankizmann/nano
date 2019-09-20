@@ -27,9 +27,6 @@ export default {
                 {
                     Arr.each(! Any.isArray(this.value) ? [this.value] : this.value, (value) => {
 
-                        console.log('options', options);
-                        console.log('value', value);
-
                         let option = Arr.find(options, (item) => {
                             return Obj.get(item, this.column.optionsValue) === value;
                         });
