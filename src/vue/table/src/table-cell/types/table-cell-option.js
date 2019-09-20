@@ -31,7 +31,7 @@ export default {
                             return Obj.get(item, this.column.optionsValue) === value;
                         });
 
-                        return Obj.get(option, this.column.optionsLabel, value);
+                        return Obj.get(option, this.column.optionsLabel, this.column.undefinedText);
 
                     }).join(', ') || this.column.emptyText
                 }

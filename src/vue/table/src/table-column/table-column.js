@@ -173,6 +173,14 @@ export default {
             type: [String]
         },
 
+        undefinedText: {
+            default()
+            {
+                return this.trans('-');
+            },
+            type: [String]
+        },
+
         trueText: {
             default()
             {
@@ -226,7 +234,6 @@ export default {
                 'width': Num.fixed(width) + 'px'
             };
         },
-
 
         fixed()
         {
