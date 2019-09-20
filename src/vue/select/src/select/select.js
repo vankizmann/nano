@@ -346,9 +346,9 @@ export default {
         let labels = this.nativeSelected;
 
         labels = Arr.each(labels, (selected) => {
-            return Arr.find(this.options, { realValue: selected }, this.undefinedText) || {
-                label: selected, realValue: selected
-            };
+            return Arr.find(this.options, { realValue: selected }, {
+                label: this.undefinedText || selected, realValue: selected
+            });
         });
 
         let placeholder = '';
