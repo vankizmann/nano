@@ -71,6 +71,15 @@ export default {
 
     },
 
+    watch: {
+
+        items()
+        {
+            this.$forceUpdate();
+        }
+
+    },
+
     data()
     {
         return {
