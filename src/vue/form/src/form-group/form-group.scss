@@ -37,6 +37,11 @@ $form-group-spacing: 18px !default;
     color: $--color-white;
 }
 
+.n-form-group__actions {
+    flex: 0 0 auto;
+    margin-left: 20px;
+}
+
 .n-form-group__body {
     margin-top: $form-group-spacing * 0.5;
 }

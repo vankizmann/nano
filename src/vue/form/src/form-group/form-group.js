@@ -110,14 +110,15 @@ export default {
                         { this.checkable &&
                             <NCheckbox checked={this.nativeValue} />
                         }
-                            <div class="n-form-group__label-text">
-                                {
-                                    this.$slots.legend || [
-                                        <span>{this.legend}</span>,
-                                        this.tooltip && <NPopover type="tooltip" position={this.tooltipPosition}>{this.tooltip}</NPopover>
-                                    ]
-                                }
+                        <div class="n-form-group__label-text">
+                            <span>{this.legend}</span>
+                            { this.tooltip && <NPopover type="tooltip" position={this.tooltipPosition}>{this.tooltip}</NPopover> }
+                        </div>
+                        { this.$slots.actions &&
+                            <div class="n-form-group__actions">
+                                { this.$slots.actions }
                             </div>
+                        }
                     </legend>
                 </div>
             }

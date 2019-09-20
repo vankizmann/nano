@@ -719,6 +719,10 @@
 .n-inverse .n-form-group__label .n-form-group__label-text {
   color: #ffffff; }
 
+.n-form-group__actions {
+  flex: 0 0 auto;
+  margin-left: 20px; }
+
 .n-form-group__body {
   margin-top: 9px; }
 
