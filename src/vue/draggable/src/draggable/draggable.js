@@ -1,6 +1,6 @@
 import { Nano } from "../../../../index";
 
-let { UUID, Num, Arr, Obj, Dom, Any, Locale, Event } = Nano;
+let { UUID, Num, Arr, Obj, Dom, Any, Event } = Nano;
 
 export default {
 
@@ -428,27 +428,44 @@ export default {
                 Dom.find(el).not(target).removeClass('n-draggable--dragover');
             });
 
-            let offset = Dom.find(this.$el).offsetTop(),
-                scroll = Dom.find(target).scrollTopGlobal(),
-                height = Dom.find(target).height(),
-                inside = Dom.find(target).offsetTop(this.$el);
+            let offset = Dom.find(this.$el).offsetTop() -
+                    Dom.find(this.$el.parentNode).scrollTop(null, window);
+
+            let inside = Dom.find(target).offsetTop(this.$el) -
+                    Dom.find(this.$el.parentNode).scrollTop(null, this.$el);
+
+            let height = Dom.find(target).height();
 
             let safeZone = typeof this.safeZone === 'function' ?
                 this.safeZone(height) : this.safeZone;
 
             this.move = 'inner';
 
-            if ( event.clientY < offset + (inside - scroll) + safeZone ) {
+            if ( event.clientY < offset + inside + safeZone ) {
                 this.move = 'before';
             }
 
-            if ( event.clientY > offset + (inside - scroll) + height - safeZone ) {
+            if ( event.clientY > offset + inside + height - safeZone ) {
                 this.move = 'after';
             }
 
-            let dest = Arr.find(this.items, {
+            let index = Arr.findIndex(this.items, {
                 _dragid: Dom.find(target).attr('data-drag-id')
             });
+
+            if ( this.move === 'before' ) {
+                height = 0;
+            }
+
+            if ( index === 0 ) {
+                height += 1;
+            }
+
+            if ( index === this.items.length - 1 ) {
+                height -= 1;
+            }
+
+            let dest = this.items[index];
 
             let rainbow = Arr.each(this.cache, (src) => {
                 return typeof this.allowDrop === 'function' ?
@@ -472,7 +489,7 @@ export default {
             }
 
             if ( this.move === 'before' ) {
-                Dom.find(this.$refs.indicator).css({ top: inside + 'px' });
+                Dom.find(this.$refs.indicator).css({ top: (inside + height) + 'px' });
             }
 
             if ( this.move === 'after' ) {
