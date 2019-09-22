@@ -1,7 +1,7 @@
-#Draggable
+# Draggable
 Drag and drop list 
 
-###Properties
+### Properties
 **items**  
 default: []  
 types: Array  
@@ -102,7 +102,7 @@ default: ['n-draggable']
 types: Array  
 _CSS classes for draggable list_
 
-###Events
+### Events
 ```javascript
     /* Emits on data change */
     NDraggable.$on('input', (input) => {
