@@ -437,9 +437,7 @@ export default {
             let height = Dom.find(target).height(),
                 displayHeight = Dom.find(target).height();
 
-            console.log(Dom.find(target).next().attr('data-drag-id'))
-
-            if ( this.NDraggableTree && ! Dom.find(target).next().attr('data-drag-id') ) {
+            if ( ! Dom.find(target).next().attr('data-drag-id') ) {
                 displayHeight += Dom.find(target).next().height();
             }
 
