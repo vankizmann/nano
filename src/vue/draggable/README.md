@@ -1,5 +1,11 @@
 # Draggable
-Drag and drop list 
+Drag and drop list or tree.
+
+```vue
+<n-draggable :items="[{ id: 0, title: 'foo' }]">
+    <div slot-scope="{ value }">{{ value.title }}</div>
+</n-draggable>
+```
 
 ### Properties
 **items**  
@@ -114,7 +120,7 @@ _CSS classes for draggable list_
         console.log(source, target, move);
     });
     
-    /* Emits on move change */
+    /* Emits on selected change */
     NDraggable.$on('update:selected', (selected) => {
         console.log(selected);
     });

@@ -8,13 +8,6 @@ export default {
 
     props: {
 
-        value: {
-            default()
-            {
-                return '';
-            }
-        },
-
         icon: {
             default()
             {
