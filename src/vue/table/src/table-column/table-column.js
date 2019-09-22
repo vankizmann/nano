@@ -154,14 +154,14 @@ export default {
         minWidth: {
             default()
             {
-                return 100;
+                return this.fixedWidth || this.defaultWidth;
             }
         },
 
         maxWidth: {
             default()
             {
-                return 700;
+                return this.fixedWidth || 0;
             }
         },
 
@@ -209,35 +209,41 @@ export default {
 
     computed: {
 
-        styleBody()
+        style()
         {
-            let width = this.width;
+            let width = this.width || this.defaultWidth;
 
             if ( this.NTable.visible !== 0 ) {
                 width -= (this.NTable.visible / this.NTable.visibleColumns.length) + 1;
             }
 
-            return {
+            let style = {
                 'width': Num.fixed(width) + 'px'
             };
-        },
 
-        styleHead()
-        {
-            let width = this.width;
-
-            if ( this.NTable.visible !== 0 ) {
-                width -= (this.NTable.visible / this.NTable.visibleColumns.length) + 1;
+            if ( this.minWidth !== 0 ) {
+                style['minWidth'] = Num.fixed(this.minWidth) + 'px'
             }
 
-            return {
-                'width': Num.fixed(width) + 'px'
-            };
+            if ( this.maxWidth !== 0 ) {
+                style['maxWidth'] = Num.fixed(this.maxWidth) + 'px'
+            }
+
+            if ( this.fixedWidth !== 0 ) {
+                style['width'] = Num.fixed(this.fixedWidth) + 'px'
+            }
+
+            return style;
         },
 
         fixed()
         {
             return this.fixedWidth !== 0;
+        },
+
+        autosize()
+        {
+            return this.width === 0;
         }
 
     },
@@ -260,7 +266,7 @@ export default {
         {
             let el = this.NTable.getColumnEl(this);
 
-            let width = Dom.find(el).width() - 5;
+            let width = Dom.find(el).width();
 
             if ( width !== 0 && width === this.width ) {
                 return;
@@ -301,7 +307,7 @@ export default {
 
     created()
     {
-        this.setWidth(this.defaultWidth);
+        // this.setWidth(this.defaultWidth);
     },
 
     beforeMount()
@@ -311,7 +317,7 @@ export default {
 
     mounted()
     {
-        this.NTable.$once('hook:updated', () => this.$nextTick(this.getWidth));
+        // this.NTable.$once('hook:updated', () => this.$nextTick(this.getWidth));
     },
 
     renderLabel({ column })

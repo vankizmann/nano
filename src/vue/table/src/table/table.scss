@@ -125,9 +125,24 @@ $table-row-height: 40px !default;
 
 .n-table__row > .n-table__column {
     position: relative;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
+}
+
+.n-table__row > .n-table__column:last-child:before {
+    content: '\00a0';
+    position: absolute;
+    top: 0;
+    right: -1px;
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: $--color-gray-10;
+}
+
+.n-table__row > .n-table__column.n-table__column--autosize {
+    flex: 1 1 auto;
 }
 
 .n-table__row > .n-table__column.n-table__column--fixed {

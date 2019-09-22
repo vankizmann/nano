@@ -183,9 +183,10 @@ export default {
 
             Dom.find(document).on('mouseup', Any.throttle(() => {
 
-                Arr.each(this.columns, (column) => {
-                    this.$nextTick(column.getWidth);
-                });
+                // Arr.each(this.columns, (tmp) => {
+                //     if ( tmp._uid !== column._uid )
+                //         this.$nextTick(tmp.getWidth);
+                // });
 
                 Dom.find(document).off('mousemove',
                     null, { _uid: this._uid });
@@ -456,6 +457,10 @@ export default {
                             'n-table__column--' + column.type
                         ];
 
+                        if ( column.autosize === true ) {
+                            className.push('n-table__column--autosize');
+                        }
+
                         if ( column.fixed === true ) {
                             className.push('n-table__column--fixed');
                         }
@@ -485,7 +490,7 @@ export default {
                         );
 
                         return (
-                            <div class={className} style={column.styleHead} data-column-id={column._uid}>
+                            <div class={className} style={column.style} data-column-id={column._uid}>
                                 { [column.$scopedSlots.label({ column: column }), resizer] }
                             </div>
                         );
@@ -532,12 +537,16 @@ export default {
                             'n-table__column--' + column.type
                         ];
 
+                        if ( column.autosize === true ) {
+                            className.push('n-table__column--autosize');
+                        }
+
                         if ( column.fixed === true ) {
                             className.push('n-table__column--fixed');
                         }
 
                         return (
-                            <div class={className} style={column.styleBody}>
+                            <div class={className} style={column.style}>
                                 { column.$scopedSlots.default({ column: column, row: props.value, key: props.key }) }
                             </div>
                         );
