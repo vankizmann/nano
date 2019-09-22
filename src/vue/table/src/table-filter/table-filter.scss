@@ -74,6 +74,21 @@ $table-filter-height: 18px !default;
     padding: 0 $table-filter-height * 0.50;
 }
 
+.n-table__column.n-table__column--left .n-table-filter__label {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.n-table__column.n-table__column--center .n-table-filter__label {
+    justify-content: center;
+    text-align: center;
+}
+
+.n-table__column.n-table__column--right .n-table-filter__label {
+    justify-content: flex-end;
+    text-align: right;
+}
+
 .n-table__column.n-table__column--filtered .n-table-filter__label {
     color: $--color-primary;
 }

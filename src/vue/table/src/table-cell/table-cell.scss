@@ -3,7 +3,7 @@
 .n-table__cell {
     position: relative;
     width: 100%;
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
 }
@@ -28,4 +28,19 @@
     display: block;
     height: 0;
     padding-bottom: 100%;
+}
+
+.n-table__column.n-table__column--left .n-table__cell {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.n-table__column.n-table__column--center .n-table__cell {
+    justify-content: center;
+    text-align: center;
+}
+
+.n-table__column.n-table__column--right .n-table__cell {
+    justify-content: flex-end;
+    text-align: right;
 }

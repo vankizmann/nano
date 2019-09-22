@@ -149,15 +149,18 @@ $table-row-height: 40px !default;
     flex: 0 0 auto;
 }
 
-.n-table__row > .n-table__column.n-table__column--left .n-table__cell {
+.n-table__row > .n-table__column.n-table__column--left {
+    justify-content: flex-start;
     text-align: left;
 }
 
-.n-table__row > .n-table__column.n-table__column--center .n-table__cell {
+.n-table__row > .n-table__column.n-table__column--center {
+    justify-content: center;
     text-align: center;
 }
 
-.n-table__row > .n-table__column.n-table__column--right .n-table__cell {
+.n-table__row > .n-table__column.n-table__column--right {
+    justify-content: flex-end;
     text-align: right;
 }
 
