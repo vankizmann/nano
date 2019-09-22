@@ -341,6 +341,9 @@
   --color-background-dark:    #dfe6ee;
   --color-background-darker:  #cfd8e5; }
 
+.n-draggable-tree .n-draggable-tree {
+  margin-left: 24px; }
+
 :root {
   --color-black:              #1b2229;
   --color-white:              #ffffff;

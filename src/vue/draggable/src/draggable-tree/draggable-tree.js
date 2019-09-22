@@ -54,7 +54,7 @@ export default {
         depthOffset: {
             default()
             {
-                return 24;
+                return 0;
             },
             type: [Number]
         },
