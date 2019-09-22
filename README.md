@@ -1,6 +1,5 @@
-# Nano JS
+# Nano JS Docs
 
-### Docs
 - [NButton](./src/vue/button)
 - [NInput](./src/vue/input)
 - [NDraggable](./src/vue/draggable)
