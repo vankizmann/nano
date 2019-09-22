@@ -1,7 +1,7 @@
 import CtorMixin from "../../../mixins/src/ctor";
 import { Nano } from "../../../../index";
 
-let { UUID, Num, Obj, Dom, Any, Str } = Nano;
+let { UUID, Num, Arr, Obj, Dom, Any, Str } = Nano;
 
 export default {
 
@@ -213,10 +213,6 @@ export default {
         {
             let width = this.width || this.defaultWidth;
 
-            if ( this.NTable.visible !== 0 ) {
-                width -= (this.NTable.visible / this.NTable.nativeVisibleColumns.length) + 1;
-            }
-
             let style = {
                 'width': Num.fixed(width) + 'px'
             };
@@ -312,7 +308,7 @@ export default {
 
     mounted()
     {
-        // this.NTable.$once('hook:updated', () => this.$nextTick(this.getWidth));
+        this.NTable.$once('hook:updated', () => Any.delay(this.getWidth));
     },
 
     renderLabel({ column })

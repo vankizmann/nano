@@ -246,13 +246,13 @@ $button-height: 34px !default;
 .n-button.n-button--outline.n-button--secondary {
     color: $--color-black;
     background: transparent;
-    border-color: rgba($--color-gray-50, 0.25);
+    border-color: rgba($color-gray-50, 0.25);
 }
 
 .n-inverse .n-button.n-button--outline.n-button--secondary {
     color: $--color-white;
     background: rgba($color-black, 0.25);
-    border-color: rgba($--color-gray-50, 0.25);
+    border-color: rgba($color-gray-50, 0.25);
 }
 
 .n-button.n-button--outline.n-button--secondary:hover,
@@ -267,8 +267,8 @@ $button-height: 34px !default;
 .n-button.n-button--outline.n-button--disabled.n-button--secondary:hover,
 .n-button.n-button--outline.n-button--disabled.n-button--secondary:focus {
     color: $--color-black;
-    background: rgba($--color-gray-50, 0.25);
-    border-color: rgba($--color-gray-50, 0.25);
+    background: rgba($color-gray-50, 0.25);
+    border-color: rgba($color-gray-50, 0.25);
 }
 
 .n-inverse .n-button.n-button--outline.n-button--disabled.n-button--secondary,
@@ -276,7 +276,7 @@ $button-height: 34px !default;
 .n-inverse .n-button.n-button--outline.n-button--disabled.n-button--secondary:focus {
     color: $--color-white;
     background: rgba($color-black, 0.25);
-    border-color: rgba($--color-gray-50, 0.25);
+    border-color: rgba($color-gray-50, 0.25);
 }
 
 /**
