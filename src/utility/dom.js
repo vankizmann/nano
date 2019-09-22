@@ -427,7 +427,7 @@ export class Dom
     previous()
     {
         if ( this.empty() === true ) {
-            return null;
+            return Dom.find(null);
         }
 
         for (let el = this.get(0).previousSibling; el !== null; el = el.previousSibling) {
@@ -436,13 +436,13 @@ export class Dom
             }
         }
 
-        return null;
+        return Dom.find(null);
     }
 
     next()
     {
         if ( this.empty() === true ) {
-            return null;
+            return Dom.find(null);
         }
 
         for (let el = this.get(0).nextSibling; el !== null; el = el.nextSibling) {
@@ -451,7 +451,7 @@ export class Dom
             }
         }
 
-        return null;
+        return Dom.find(null);
     }
 
     loaded(callback)
@@ -835,8 +835,8 @@ export class Dom
 
     attr(attr, val = undefined)
     {
-        if ( Any.isEmpty(this.el) === true ) {
-            return;
+        if ( this.empty() ) {
+            return null;
         }
 
         let res = this.get(0).getAttribute(attr);

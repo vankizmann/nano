@@ -51,6 +51,14 @@ export default {
             type: [Number]
         },
 
+        depthOffset: {
+            default()
+            {
+                return 24;
+            },
+            type: [Number]
+        },
+
         group: {
             default()
             {

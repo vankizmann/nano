@@ -434,7 +434,14 @@ export default {
             let inside = Dom.find(target).offsetTop(this.$el) -
                     Dom.find(this.$el.parentNode).scrollTop(null, this.$el);
 
-            let height = Dom.find(target).height();
+            let height = Dom.find(target).height(),
+                displayHeight = Dom.find(target).height();
+
+            console.log(Dom.find(target).next().attr('data-drag-id'))
+
+            if ( this.NDraggableTree && ! Dom.find(target).next().attr('data-drag-id') ) {
+                displayHeight += Dom.find(target).next().height();
+            }
 
             let safeZone = typeof this.safeZone === 'function' ?
                 this.safeZone(height) : this.safeZone;
@@ -454,15 +461,15 @@ export default {
             });
 
             if ( this.move === 'before' ) {
-                height = 0;
+                displayHeight = 0;
             }
 
             if ( index === 0 ) {
-                height += 1;
+                displayHeight += 1;
             }
 
             if ( index === this.items.length - 1 ) {
-                height -= 1;
+                displayHeight -= 1;
             }
 
             let dest = this.items[index];
@@ -489,11 +496,11 @@ export default {
             }
 
             if ( this.move === 'before' ) {
-                Dom.find(this.$refs.indicator).css({ top: (inside + height) + 'px' });
+                Dom.find(this.$refs.indicator).css({ top: (inside + displayHeight) + 'px' });
             }
 
             if ( this.move === 'after' ) {
-                Dom.find(this.$refs.indicator).css({ top: (inside + height) + 'px' });
+                Dom.find(this.$refs.indicator).css({ top: (inside + displayHeight) + 'px' });
             }
 
             if ( this.move === 'inner' ) {

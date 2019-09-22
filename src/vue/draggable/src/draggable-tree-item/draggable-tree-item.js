@@ -79,8 +79,13 @@ export default {
             className.push('n-draggable-tree-item--expanded');
         }
 
+        let style = {
+            paddingLeft: (this.NDraggableTree.depth *
+                this.NDraggableTree.depthOffset) + 'px'
+        };
+
         return (
-            <div class={className} vOn:click={this.cascadeItem}>
+            <div class={className} style={style} vOn:click={this.cascadeItem}>
                 <div class="n-draggable-tree-item__expand" vOn:click_stop={this.expandItem}>
                     <span class="fa fa-angle-right"></span>
                 </div>
