@@ -116,6 +116,20 @@ export class Obj
         return result;
     }
 
+    static matches(obj, val)
+    {
+        let result = true;
+
+        for ( let key of Any.keys(obj) ) {
+            if ( typeof val[key] !== 'undefined' ) {
+                result = (Any.isObject(obj[key]) ?
+                    this.matches(obj[key], val[key]) : obj[key] === val[key]) && result;
+            }
+        }
+
+        return result;
+    }
+
     static sort(obj, key)
     {
         let keys = Any.keys(obj).sort((a, b) => {

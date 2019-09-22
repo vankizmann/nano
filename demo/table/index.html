@@ -23,7 +23,11 @@
 
     <div id="app">
 
-        <div class="auto-height" style="padding: 20px;">
+        <div style="padding: 0 20px; margin-bottom: 20px;">
+            <n-button @click="kill = true">Kill all instances</n-button>
+        </div>
+
+        <div v-if="kill === false" class="auto-height" style="padding: 20px;">
             <n-table :items="items" :allow-drop="true">
                 <n-table-column prop="selection" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
                 <n-table-column prop="label" type="string" label="Label" :default-width="200"></n-table-column>
@@ -31,7 +35,7 @@
             </n-table>
         </div>
 
-        <div class="adapt-height" style="height: 350px; overflow: hidden; padding: 20px;">
+        <div v-if="kill === false" class="adapt-height" style="height: 350px; overflow: hidden; padding: 20px;">
             <n-table :items="target" :adapt-height="true" :allow-drop="true">
                 <n-table-column prop="selection" align="center" type="selection" label="Selection" :fixed-width="50"></n-table-column>
                 <n-table-column prop="label" type="string" label="Label"></n-table-column>
@@ -77,7 +81,7 @@
                             return children;
                         };
 
-                        return { items: childGenerator(), target: childGenerator() };
+                        return { items: childGenerator(), target: childGenerator(), kill: false };
                     }
                 };
 

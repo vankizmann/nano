@@ -381,6 +381,8 @@ export default {
 
     mounted()
     {
+        console.log('mount', this._uid);
+
         Dom.find(document).on('mousedown',
             Any.throttle(this.clickTrigger, 150), { _uid: this._uid });
 
@@ -396,8 +398,10 @@ export default {
         this.node = this.$el;
     },
 
-    destroyed()
+    beforeDestroy()
     {
+        console.log('destroy', this._uid);
+
         Dom.find(document).off('mousedown',
             null, { _uid: this._uid });
 

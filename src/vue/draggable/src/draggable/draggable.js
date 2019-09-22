@@ -694,6 +694,8 @@ export default {
 
     mounted()
     {
+        console.log('mount', this._uid);
+
         Event.bind('draggable:start',
             this.draggableStart, { _uid: this._uid });
 
@@ -724,6 +726,8 @@ export default {
 
     beforeDestroy()
     {
+        console.log('destroy', this._uid);
+
         Event.unbind('draggable:start',
             { _uid: this._uid });
 

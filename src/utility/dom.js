@@ -591,19 +591,21 @@ export class Dom
 
         this.each((el) => {
 
-            let val = Arr.find(Dom.events, {
+            let indexes = Arr.filterIndex(Dom.events, {
                 el, event, selector, options
             });
 
-            if ( val === null ) {
+            if ( indexes.length === 0 ) {
                 return;
             }
 
-            Dom.events = Arr.remove(Dom.events, {
-                el, event, selector, options
-            });
+            Arr.each(indexes.reverse(), (index) => {
 
-            el.removeEventListener(event, val.func, val.options);
+                el.removeEventListener(event, Dom.events[index].func,
+                    Dom.events[index].options);
+
+                Arr.removeIndex(Dom.events, index);
+            });
         });
 
         return this;
