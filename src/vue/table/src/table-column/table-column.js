@@ -214,7 +214,7 @@ export default {
             let width = this.width || this.defaultWidth;
 
             if ( this.NTable.visible !== 0 ) {
-                width -= (this.NTable.visible / this.NTable.visibleColumns.length) + 1;
+                width -= (this.NTable.visible / this.NTable.nativeVisibleColumns.length) + 1;
             }
 
             let style = {
@@ -303,11 +303,6 @@ export default {
         return {
             width: 0
         };
-    },
-
-    created()
-    {
-        // this.setWidth(this.defaultWidth);
     },
 
     beforeMount()
