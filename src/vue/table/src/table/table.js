@@ -183,11 +183,6 @@ export default {
 
             Dom.find(document).on('mouseup', Any.throttle(() => {
 
-                // Arr.each(this.columns, (tmp) => {
-                //     if ( tmp._uid !== column._uid )
-                //         this.$nextTick(tmp.getWidth);
-                // });
-
                 Dom.find(document).off('mousemove',
                     null, { _uid: this._uid });
 
@@ -621,7 +616,7 @@ export default {
                         <div ref="head" class="n-table__head">
                             { this.ctor('renderHeadRow')() }
                         </div>
-                        <NPopover trigger="context" boundry={this.$refs.wrapper}>
+                        <NPopover trigger="context">
                             <NCheckboxGroup vModel={this.nativeVisibleColumns}>
                                 {
                                     Arr.each(this.columns, (column) => {
