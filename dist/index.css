@@ -3702,22 +3702,19 @@
   height: 100%;
   background: var(--color-gray-10); }
 
-.n-table__row > .n-table__column.n-table__column--autosize {
+.n-table__row > .n-table__column.n-table__column--auto {
   flex: 1 1 auto; }
 
 .n-table__row > .n-table__column.n-table__column--fixed {
   flex: 0 0 auto; }
 
-.n-table__row > .n-table__column.n-table__column--left {
-  justify-content: flex-start;
+.n-table__row > .n-table__column.n-table__column--left .n-table__cell {
   text-align: left; }
 
-.n-table__row > .n-table__column.n-table__column--center {
-  justify-content: center;
+.n-table__row > .n-table__column.n-table__column--center .n-table__cell {
   text-align: center; }
 
-.n-table__row > .n-table__column.n-table__column--right {
-  justify-content: flex-end;
+.n-table__row > .n-table__column.n-table__column--right .n-table__cell {
   text-align: right; }
 
 .n-table__footer {

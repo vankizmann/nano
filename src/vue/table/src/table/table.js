@@ -458,7 +458,7 @@ export default {
                         ];
 
                         if ( column.autosize === true ) {
-                            className.push('n-table__column--autosize');
+                            className.push('n-table__column--auto');
                         }
 
                         if ( column.fixed === true ) {
@@ -538,7 +538,7 @@ export default {
                         ];
 
                         if ( column.autosize === true ) {
-                            className.push('n-table__column--autosize');
+                            className.push('n-table__column--auto');
                         }
 
                         if ( column.fixed === true ) {
