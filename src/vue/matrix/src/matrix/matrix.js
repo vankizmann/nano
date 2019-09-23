@@ -1,5 +1,7 @@
-import { UUID, Num, Obj, Any, Locale, Arr, Dom } from "../../../../index";
-import CtorMixin from "../../../../vue/mixins/src/ctor";
+import CtorMixin from "../../../mixins/src/ctor";
+import { Nano } from "../../../../index";
+
+let { Num, Obj, Any, Locale, Arr, Dom } = Nano;
 
 export default {
 
@@ -32,7 +34,7 @@ export default {
         label: {
             default()
             {
-                return this.trans('Structure');
+                return Locale.trans('Structure');
             },
             type: [String]
         },
@@ -67,6 +69,14 @@ export default {
                 return 'children';
             },
             type: [String]
+        },
+
+        minWidth: {
+            default()
+            {
+                return 200;
+            },
+            type: [Number]
         },
 
         itemHeight: {
@@ -113,6 +123,7 @@ export default {
         bindObserver()
         {
             let element = this.$el.parentNode;
+
 
             if ( this.adaptHeight !== true ) {
                 element = this.adaptHeight;
@@ -188,6 +199,10 @@ export default {
             }
 
             let matrix = Num.matrix(item[this.matrixProp]);
+
+            if ( value === -1 ) {
+                return true;
+            }
 
             return Arr.has(matrix, value);
         }
@@ -329,7 +344,8 @@ export default {
         };
 
         let style = {
-            height: this.height + 'px'
+            height: this.height + 'px',
+            minWidth: this.minWidth + 'px'
         };
 
         return (

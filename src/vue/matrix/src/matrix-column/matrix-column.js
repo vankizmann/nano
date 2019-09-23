@@ -1,5 +1,7 @@
-import { UUID, Num, Obj, Any, Locale, Arr } from "../../../../index";
-import CtorMixin from "../../../../vue/mixins/src/ctor";
+import CtorMixin from "../../../mixins/src/ctor";
+import { Nano } from "../../../../index";
+
+let { Num, Arr } = Nano;
 
 export default {
 
@@ -22,7 +24,7 @@ export default {
         value: {
             default()
             {
-                return null;
+                return -1;
             }
         },
 
