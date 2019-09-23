@@ -97,11 +97,6 @@ export default {
             return Dom.find(this.$el || this.node).parent().get(0);
         },
 
-        content()
-        {
-            return Dom.find(this.$el || this.node).child().get(0);
-        },
-
         element()
         {
             if ( this.selector === false ) {
@@ -109,7 +104,7 @@ export default {
             }
 
             if ( this.selector === null ) {
-                return Dom.find(this.node).previous().get(0);
+                return Dom.find(this.$el || this.node).previous().get(0);
             }
 
             return Dom.find(this.parent).find(this.selector).get(0);
@@ -130,14 +125,14 @@ export default {
 
                 let interval = setInterval(() => {
 
-                    if ( ! this.$el ) {
+                    if ( ! (this.$el || this.node) ) {
                         return;
                     }
 
                     // Clear interval
                     clearInterval(interval);
 
-                    Dom.find(this.$el).addClass('n-modal--open');
+                    Dom.find(this.$el || this.node).addClass('n-modal--open');
                 }, 100);
 
                 Dom.find(this.element).addClass('n-modal--open');
@@ -158,7 +153,9 @@ export default {
                 return;
             }
 
-            if ( Dom.find(target).closest(this.content) ) {
+            let content = Dom.find(this.$el || this.node).child().get(0);
+
+            if ( Dom.find(target).closest(content) ) {
                 return;
             }
 
@@ -198,10 +195,10 @@ export default {
 
     mounted()
     {
+        this.node = this.$el;
+
         Dom.find(document.body).on('mousedown',
             Any.throttle(this.clickTrigger, 150), { _uid: this._uid });
-
-        this.node = this.$el;
 
         if ( this.$listeners.close !== undefined ) {
             return;
@@ -210,6 +207,11 @@ export default {
         this.$on('close', () => {
             this.$emit('input', this.nativeVisible = false);
         });
+    },
+
+    updated()
+    {
+        this.node = this.$el;
     },
 
     destroyed()
