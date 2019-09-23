@@ -88,7 +88,7 @@ export class Arr
             }
 
             if ( Any.isPlain(filter) ) {
-                return Obj.matches(filter, arr[key]);
+                return Obj.includes(filter, arr[key]);
             }
 
             if ( Any.isArray(filter) ) {
