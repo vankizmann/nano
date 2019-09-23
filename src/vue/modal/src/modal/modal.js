@@ -153,12 +153,6 @@ export default {
                 return;
             }
 
-            let content = Dom.find(this.$el || this.node).child().get(0);
-
-            if ( Dom.find(target).closest(content) ) {
-                return;
-            }
-
             let element = Dom.find(target).closest(this.element);
 
             if ( Dom.find(element).hasClass('n-disabled') ) {
@@ -175,6 +169,12 @@ export default {
 
             if ( Dom.find(target).closest(this.$refs.close) ) {
                 return this.$emit('close');
+            }
+
+            let content = Dom.find(this.$el || this.node).child().get(0);
+
+            if ( Dom.find(target).closest(content) ) {
+                return;
             }
 
             if ( this.closeOutside === false ) {
