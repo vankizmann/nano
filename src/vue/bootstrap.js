@@ -24,3 +24,4 @@ require('./checkbox/index');
 require('./tabs/index');
 require('./info/index');
 require('./file-list/index');
+require('./wysiwyg/index');
