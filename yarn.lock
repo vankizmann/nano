@@ -3820,12 +3820,11 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
-medium.js@^1.0.1:
+"medium.js@https://github.com/jakiestfu/Medium.js.git":
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/medium.js/-/medium.js-1.0.1.tgz#43e7c096757c671ac4c1ed1633f26b8871661269"
-  integrity sha1-Q+fAlnV8ZxrEwe0WM/JriHFmEmk=
+  resolved "https://github.com/jakiestfu/Medium.js.git#a38c058f3b0ddd5387226a33bfbcf8269d1491e0"
   dependencies:
-    rangy ">=1.3.0-alpha.20140827"
+    rangy ">=1.3.0"
     undo.js ">=0.1.0"
 
 mem@^4.0.0:
@@ -5055,7 +5054,7 @@ range-parser@^1.2.1, range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
 
-rangy@>=1.3.0-alpha.20140827:
+rangy@>=1.3.0, rangy@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/rangy/-/rangy-1.3.0.tgz#b7c9a70aea05e5d8cdc74a8d4c8273d697271904"
   integrity sha1-t8mnCuoF5djNx0qNTIJz1pcnGQQ=
@@ -6081,6 +6080,10 @@ undo.js@>=0.1.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/undo.js/-/undo.js-0.2.0.tgz#0dee70facbe827baeac378272ec449ea849cfadc"
   integrity sha1-De5w+svoJ7rqw3gnLsRJ6oSc+tw=
+
+"undo.js@https://github.com/jzaefferer/undo":
+  version "0.2.0"
+  resolved "https://github.com/jzaefferer/undo#cd2446358b469dd4de29198c81403fb7099dffcb"
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
