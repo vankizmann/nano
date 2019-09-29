@@ -227,9 +227,7 @@ export class Dom
         let source = this.get(0), target = null;
 
         Dom.find(selector).each((el) => {
-            if ( el === source) {
-                target = el;
-            }
+            if ( el === source) target = el;
         });
 
         return target !== null;

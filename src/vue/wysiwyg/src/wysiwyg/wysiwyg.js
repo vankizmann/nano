@@ -1,15 +1,16 @@
-import Undo from "undo.js";
-window.Undo = Undo;
-
-import Medium from "medium.js";
-window.Medium = Medium;
-
+import { Editor, EditorContent } from "tiptap";
+import CtorMixin from "../../../mixins/src/ctor";
 import { Nano } from "../../../../index";
-let { Dom } = Nano;
+
+let { Arr } = Nano;
 
 export default {
 
     name: 'NWysiwyg',
+
+    components: {
+        EditorContent
+    },
 
     props: {
 
@@ -19,58 +20,107 @@ export default {
                 return '';
             },
             type: String
+        },
+
+        toolbar: {
+            default()
+            {
+                return [
+                    'NWysiwygPluginBold',
+                    'NWysiwygPluginLink',
+                ];
+            },
+            type: [Array]
         }
 
     },
 
-    mounted()
+    data()
     {
-        let config = {
-            element: this.$refs.editor
+        return {
+            editor: null, extensions: [], plugins: []
         };
+    },
 
-        // config.beforeInvokeElement = () => {
-        //         //     console.log(this.Medium.value());
-        //         // };
-        //         //
-        //         // config.beforeInsertHtml = () => {
-        //         //     console.log(this.Medium.value());
-        //         // };
+    provide()
+    {
+        return { NWysiwyg: this };
+    },
 
-        this.Medium = new Medium(config);
+    beforeMount()
+    {
+        this.initializeEditor()
+    },
+
+    beforeDestroy() {
+        this.destroyEditor()
     },
 
     methods: {
 
-        bold()
+        ...CtorMixin,
+
+        initializeEditor()
         {
-            let selection = window.getSelection(), node = selection.baseNode;
-
-            // if ( Dom.find(node).is('p') ) {
-            //     this.Medium.utils.selectNode(node);
-            // }
-
-            if ( Dom.find(node).closest('strong') ) {
-                this.Medium.utils.selectNode(Dom.find(node).closest('strong'));
-            }
-
-            this.Medium.invokeElement('strong', {
-                // className: ['test']
+            this.editor = new Editor({
+                content: this.value, extensions: this.extensions
             });
+
+            this.editor.on('update', ({ getHTML }) =>
+                this.$emit('input', getHTML()));
+
+        },
+
+        destroyEditor()
+        {
+            this.editor.destroy();
+        },
+
+
+        addExtension(extension)
+        {
+            this.extensions.push(extension);
+
+            this.editor.init({
+                content: this.value, extensions: this.extensions
+            });
+
+            this.editor.createExtensions();
+        },
+
+        addPlugin(plugin)
+        {
+            this.plugins.push(plugin);
+        },
+
+        removePlugin(plugin)
+        {
+            Arr.remove(this.plugins, { _uid: plugin._uid });
         }
 
     },
 
-
-    render()
+    renderToolbar()
     {
+        return (
+            <div>
+                {
+                    Arr.each(this.toolbar, (plugin) => {
+                        return this.h(plugin);
+                    })
+                }
+            </div>
+        )
+    },
+
+    render(h)
+    {
+        this.h = h;
 
         return (
             <div>
-                <NButton vOn:mousedown={this.bold}>Run test</NButton>
-                <div ref="editor" domPropsInnerHTML={this.value} style="min-height: 100px; background: #eee;">
-
-                </div>
+                { this.ctor('renderToolbar')() }
+                <EditorContent editor={this.editor} />
             </div>
         );
     }
