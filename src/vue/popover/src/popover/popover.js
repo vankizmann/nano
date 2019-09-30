@@ -383,20 +383,20 @@ export default {
     {
         if ( this.trigger === 'click' ) {
             Dom.find(document).on('mousedown',
-                Any.throttle(this.clickTrigger, 150), { _uid: this._uid });
+                Any.throttle(this.clickTrigger, 80), { _uid: this._uid });
         }
 
         if ( this.trigger === 'hover' ) {
             Dom.find(document).on('mousemove',
-                Any.debounce(this.hoverTrigger, 150), { _uid: this._uid });
+                Any.debounce(this.hoverTrigger, 80), { _uid: this._uid });
         }
 
         if ( this.trigger === 'context' ) {
             Dom.find(document).on('mousedown',
-                Any.throttle(this.contextTrigger, 150), { _uid: this._uid });
+                Any.throttle(this.contextTrigger, 80), { _uid: this._uid });
 
             Dom.find(document).on('contextmenu',
-                Any.throttle(this.contextPrevent, 150), { _uid: this._uid });
+                Any.throttle(this.contextPrevent, 80), { _uid: this._uid });
         }
 
         this.node = this.$el;
