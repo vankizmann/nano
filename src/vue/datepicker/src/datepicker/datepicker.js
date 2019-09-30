@@ -185,8 +185,6 @@ export default {
 
         value()
         {
-            console.log('new value', this.value);
-
             if ( this.value !== this.nativeValue.format(this.format) ) {
                 this.nativeValue = this.tempValue = Now.make(this.value);
             }
@@ -264,6 +262,11 @@ export default {
 
         ...CtorMixin,
 
+    },
+
+    mounted()
+    {
+        this.$on('input', this.$forceUpdate);
     },
 
     renderToolbar({ prev, next })
