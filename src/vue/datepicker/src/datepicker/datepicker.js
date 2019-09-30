@@ -264,11 +264,6 @@ export default {
 
     },
 
-    mounted()
-    {
-        this.$on('input', this.$forceUpdate);
-    },
-
     renderToolbar({ prev, next })
     {
         prev = Obj.assign({
