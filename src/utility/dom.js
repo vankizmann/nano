@@ -1,5 +1,3 @@
-import ResizeObserver from 'resize-observer-polyfill';
-
 import Arr from './array';
 import Obj from './object';
 import Str from './string';

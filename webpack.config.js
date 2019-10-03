@@ -33,7 +33,6 @@ let jsExtExport = {
             root: 'Vue', commonjs: 'vue', commonjs2: 'vue', amd: 'vue'
         }
     },
-
 };
 
 let jsWinExport = {
@@ -64,7 +63,6 @@ let jsWinExport = {
             root: 'Vue', commonjs: 'vue', commonjs2: 'vue', amd: 'vue'
         }
     },
-
 };
 
 let cssModernExport = {
