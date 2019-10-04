@@ -4,6 +4,10 @@ export class Any
 {
     static isEmpty(val)
     {
+        if ( this.isNumber(val) ) {
+            return false;
+        }
+
         if ( this.isString(val) ) {
             return val === '';
         }
