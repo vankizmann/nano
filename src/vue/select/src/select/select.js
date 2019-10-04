@@ -111,7 +111,7 @@ export default {
         nativeValue()
         {
             return this.multiple ? this.nativeSelected :
-                Arr.first(this.nativeSelected) || this.clearValue;
+                Arr.first(this.nativeSelected);
         }
 
     },
