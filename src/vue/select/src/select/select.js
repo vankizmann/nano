@@ -362,7 +362,7 @@ export default {
         });
 
         if ( option !== null && this.multiple === false && this.focus === true ) {
-            placeholder = option.label;
+            placeholder = option.label.trim();
         }
 
         let hideItems = Any.isEmpty(placeholder) === false ||
