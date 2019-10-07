@@ -12,7 +12,7 @@ export default {
         value: {
             default()
             {
-                return [];
+                return null;
             }
         },
 
@@ -115,10 +115,14 @@ export default {
 
         ...CtorMixin,
 
-        updateValue(value)
+        updateValue()
         {
-            if ( ! Any.isEqual(value, this.nativeValue) ) {
-                this.nativeValue = value;
+            if ( this.multiple === true && ! Any.isEmpty(this.value) ) {
+                this.nativeValue = this.value;
+            }
+
+            if ( this.multiple === false && ! Any.isEmpty(this.value) ) {
+                this.nativeValue = [this.value];
             }
         },
 
@@ -200,8 +204,11 @@ export default {
 
             item[this.matrixProp] = Num.combine(matrix);
 
-            console.log(this.nativeValue);
-            this.$emit('input', this.nativeValue);
+            if ( this.multiple === true ) {
+                return this.$emit('input', this.nativeValue);
+            }
+
+            this.$emit('input', Arr.first(this.nativeValue));
         },
 
         isChecked(row, value)
@@ -236,10 +243,15 @@ export default {
     {
         return {
             height: 0,
-            nativeValue: this.value,
+            nativeValue: [],
             expanded: this.defaultExpanded,
             columns: []
         };
+    },
+
+    beforeMount()
+    {
+        this.updateValue();
     },
 
     mounted()
