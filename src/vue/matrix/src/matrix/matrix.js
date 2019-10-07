@@ -24,6 +24,14 @@ export default {
             type: [Array]
         },
 
+        multiple: {
+            default()
+            {
+                return true;
+            },
+            type: [Boolean]
+        },
+
         use: {
             default()
             {
@@ -117,27 +125,29 @@ export default {
         calculateHeight()
         {
             this.height = Dom.find(this.$refs.head).height() +
-                Dom.find(this.$refs.body).child().height();
+                Dom.find(this.$refs.body).child().height() + 1;
         },
 
         bindObserver()
         {
             let element = this.$el.parentNode;
 
+            if ( this.adaptHeight !== true ) {
+                element = this.adaptHeight;
+            }
+
+            Dom.find(element).observerResize(this.updateObserver)(element);
+        },
+
+        updateObserver()
+        {
+            let element = this.$el.parentNode;
 
             if ( this.adaptHeight !== true ) {
                 element = this.adaptHeight;
             }
 
-            if ( Any.isString(element) === true ) {
-                element = Dom.find(this.$el).closest(element);
-            }
-
-            Dom.find(element).observerResize(() => {
-                Dom.find(element).actual(() => {
-                    this.height = Dom.find(element).innerHeight();
-                });
-            })(element);
+            this.height = Dom.find(element).innerHeight();
         },
 
         addColumn(column)
@@ -163,6 +173,10 @@ export default {
 
         changeRow(row, value)
         {
+            if ( this.multiple === false ) {
+                this.nativeValue = [];
+            }
+
             let fallback = {
                 [this.uniqueProp]: Obj.get(row, this.uniqueProp),
                 [this.matrixProp]: 0
@@ -181,10 +195,12 @@ export default {
             });
 
             let matrix = Arr.toggle(
-                Num.matrix(item[this.matrixProp]), value);
+                Num.matrix(item[this.matrixProp]), value
+            );
 
             item[this.matrixProp] = Num.combine(matrix);
 
+            console.log(this.nativeValue);
             this.$emit('input', this.nativeValue);
         },
 
@@ -232,7 +248,7 @@ export default {
             this.calculateHeight();
         }
 
-        if ( this.adaptHeight !== null ) {
+        if ( this.adaptHeight !== null && this.adaptHeight !== false ) {
             this.$nextTick(this.bindObserver);
         }
 
@@ -261,7 +277,7 @@ export default {
                     Arr.each(this.columns, (column) => {
                         return (
                             <div class="n-matrix__column" data-column-id={column._uid}>
-                                { column.$scopedSlots.label({ column: column }) }
+                                { column.ctor('renderLabel')({ column: column }) }
                             </div>
                         );
                     })
@@ -274,7 +290,7 @@ export default {
     {
         let title = Obj.get(props.value, this.titleProp);
 
-        let expanded = Arr.has(this.expanded ,
+        let expanded = Arr.has(this.expanded,
             Obj.get(props.value, this.uniqueProp));
 
         let renderNode = (h, value, key) => {
@@ -318,7 +334,7 @@ export default {
                         Arr.each(this.columns, (column) => {
                             return (
                                 <div class="n-matrix__column">
-                                    { column.$scopedSlots.default({ column: column, row: props.value, key: props.key }) }
+                                    { column.ctor('renderBody')({ column: column, row: props.value, key: props.key }) }
                                 </div>
                             );
                         })
@@ -344,9 +360,12 @@ export default {
         };
 
         let style = {
-            height: this.height + 'px',
             minWidth: this.minWidth + 'px'
         };
+
+        if ( this.height > 0 ) {
+            style.height = this.height + 'px';
+        }
 
         return (
             <div class="n-matrix">

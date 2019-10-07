@@ -7,10 +7,6 @@ export default {
 
     name: 'NMatrixColumn',
 
-    model: {
-        prop: 'visible'
-    },
-
     inject: {
 
         NMatrix: {
@@ -55,13 +51,23 @@ export default {
         this.NMatrix.addColumn(this);
     },
 
-    renderLabel()
+    renderLabel(props)
     {
-        return this.label;
+        if ( this.$scopedSlots.label ) {
+            return this.$scopedSlots.label;
+        }
+
+        return (
+            <span>{ this.label }</span>
+        );
     },
 
     renderBody(props)
     {
+        if ( this.$scopedSlots.default ) {
+            return this.$scopedSlots.default;
+        }
+
         let key = Arr.findIndex(this.NMatrix.columns, {
             _uid: this._uid
         });
@@ -83,14 +89,6 @@ export default {
     render(h)
     {
         this.h = h;
-
-        if ( ! this.$scopedSlots.label ) {
-            this.$scopedSlots.label = this.ctor('renderLabel');
-        }
-
-        if ( ! this.$scopedSlots.default ) {
-            this.$scopedSlots.default = this.ctor('renderBody');
-        }
 
         return null;
     }
