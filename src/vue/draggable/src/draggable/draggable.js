@@ -622,7 +622,11 @@ export default {
 
         renderNode(h, value, key)
         {
-            // value = this.items[key];
+            let realKey = Arr.findIndex(this.items, {
+                _dragid: value._dragid
+            });
+
+            value = this.items[realKey];
 
             let className = [
                 'n-draggable__item'
@@ -644,13 +648,11 @@ export default {
 
             let updateItem = (input) => {
                 value = input;
-                this.items[key] = input;
             };
 
             let updateProp = (path) => {
                 return (input) => {
                     Obj.set(value, path, input);
-                    Obj.set(this.items[key], path, input);
                 }
             };
 
