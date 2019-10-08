@@ -644,10 +644,14 @@ export default {
 
             let updateItem = (input) => {
                 value = input;
+                this.items[key] = input;
             };
 
             let updateProp = (path) => {
-                return (input) => Obj.set(value, path, input);
+                return (input) => {
+                    Obj.set(value, path, input);
+                    Obj.set(this.items[key], path, input);
+                }
             };
 
             let props = {
