@@ -106,3 +106,20 @@
 .n-inverse .n-transfer__item-title {
     color: $color-white;
 }
+
+.n-transfer__item-count {
+    color: $color-gray-60;
+    margin-left: 8px;
+}
+
+.n-transfer__item-count:before {
+    content: '(';
+}
+
+.n-transfer__item-count:after {
+    content: ')';
+}
+
+.n-inverse .n-transfer__item-count {
+    color: $color-gray-40;
+}

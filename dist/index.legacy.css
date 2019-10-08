@@ -2976,6 +2976,19 @@
 .n-inverse .n-transfer__item-title {
   color: #ffffff; }
 
+.n-transfer__item-count {
+  color: #767a7f;
+  margin-left: 8px; }
+
+.n-transfer__item-count:before {
+  content: '('; }
+
+.n-transfer__item-count:after {
+  content: ')'; }
+
+.n-inverse .n-transfer__item-count {
+  color: #a4a7a9; }
+
 :root {
   --color-black:              #1b2229;
   --color-white:              #ffffff;

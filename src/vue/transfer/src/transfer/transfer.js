@@ -228,7 +228,7 @@ export default {
                     <NCheckboxGroup vModel={this.selectedKeysSource}>
                         <div class="n-transfer__header">
                             <div class="n-transfer__item">
-                                <NCheckbox global={true}/> <span class="n-transfer__item-title">{ this.sourceLabel }</span>
+                                <NCheckbox global={true}/> <span class="n-transfer__item-title">{ this.sourceLabel }</span> <span class="n-transfer__item-count">{ this.valueSource.length }</span>
                             </div>
                         </div>
                         <div class="n-transfer__search">
@@ -247,7 +247,7 @@ export default {
                     <NCheckboxGroup vModel={this.selectedKeysTarget}>
                         <div class="n-transfer__header">
                             <div class="n-transfer__item">
-                                <NCheckbox global={true} /> <span class="n-transfer__item-title">{ this.targetLabel }</span>
+                                <NCheckbox global={true} /> <span class="n-transfer__item-title">{ this.targetLabel }</span> <span class="n-transfer__item-count">{this.value.length}</span>
                             </div>
                         </div>
                         <div class="n-transfer__search">
