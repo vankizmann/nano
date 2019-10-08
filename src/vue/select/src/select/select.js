@@ -73,7 +73,7 @@ export default {
         emptyText: {
             default()
             {
-                return this.trans('No Entries');
+                return this.trans('No items');
             },
             type: [String]
         },
@@ -81,7 +81,7 @@ export default {
         undefinedText: {
             default()
             {
-                return null;
+                return this.trans('Undefined item');
             }
         },
 
@@ -337,15 +337,11 @@ export default {
             className.push('n-select--disabled');
         }
 
-        let options = this.filteredOptions;
-
-        options = Arr.each(options, (option, index) => {
+        let options = Arr.each(this.filteredOptions, (option, index) => {
             return option.render(h, Any.integer(index) === this.current);
         });
 
-        let labels = this.nativeSelected;
-
-        labels = Arr.each(labels, (selected) => {
+        let labels = Arr.each(this.nativeSelected, (selected) => {
             return Arr.find(this.options, { realValue: selected }, {
                 label: this.undefinedText || selected, realValue: selected
             });
@@ -361,11 +357,17 @@ export default {
             realValue: Arr.first(this.nativeSelected)
         });
 
-        if ( option !== null && this.multiple === false && this.focus === true ) {
+        if (
+            option !== null && this.multiple === false &&
+            this.focus === true && this.allowCreate === false
+        ) {
             placeholder = option.label.trim();
         }
 
-        if ( option === null && this.multiple === false && this.focus === true ) {
+        if (
+            option === null && this.multiple === false &&
+            this.focus === true && this.allowCreate === true
+        ) {
             placeholder = Arr.first(this.nativeSelected);
         }
 
@@ -382,6 +384,7 @@ export default {
                         </div>
                     }
                     <div class="n-select__label">
+
                         { ( Any.isEmpty(labels) === false && hideItems === false ) &&
                             Arr.each(labels, (option) => {
 
