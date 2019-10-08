@@ -130,9 +130,13 @@ export default {
 
         let icon = null;
 
+        let iconClick = () => {
+            this.$emit('iconClick'); this.$emit('icon-click');
+        };
+
         if ( Any.isEmpty(this.icon) === false ) {
             icon = (
-                <NButton type="input" disabled={this.iconDisabled} vOn:click={() => this.$emit('icon-click')}>
+                <NButton type="input" disabled={this.iconDisabled} vOn:click={iconClick}>
                     <span class={this.icon}></span>
                 </NButton>
             );

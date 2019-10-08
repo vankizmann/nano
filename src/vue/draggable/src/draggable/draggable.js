@@ -31,6 +31,13 @@ export default {
             }
         },
 
+        displayItems: {
+            default()
+            {
+                return null;
+            }
+        },
+
         use: {
             default()
             {
@@ -615,7 +622,7 @@ export default {
 
         renderNode(h, value, key)
         {
-            value = this.items[key];
+            // value = this.items[key];
 
             let className = [
                 'n-draggable__item'
@@ -782,12 +789,14 @@ export default {
             className.push('n-draggable--root');
         }
 
-        if ( Any.isEmpty(this.items) === true && this.showEmpty === false ) {
+        let items = this.displayItems || this.items;
+
+        if ( Any.isEmpty(items) === true && this.showEmpty === false ) {
             return null;
         }
 
         let props = {
-            items: this.items, itemHeight: this.itemHeight, renderNode: this.renderNode
+            items: items, itemHeight: this.itemHeight, renderNode: this.renderNode
         };
 
         return (

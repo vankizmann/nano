@@ -1,4 +1,4 @@
-import { Arr, Obj } from "../../../../index";
+import { Str, Arr, Obj, Any } from "../../../../index";
 
 export default {
 
@@ -129,7 +129,9 @@ export default {
         return {
             valueSource: [],
             selectedKeysSource: [],
-            selectedKeysTarget: []
+            searchSource: '',
+            selectedKeysTarget: [],
+            searchTarget: ''
         };
     },
 
@@ -144,10 +146,10 @@ export default {
     render()
     {
 
-        let renderLabel = ({ key, value }) => {
+        let renderLabel = ({ value, key }) => {
             return (
                 <div class="n-transfer__item">
-                    <NCheckbox sort={key} key={Obj.get(value, '_dragid')} value={Obj.get(value, this.uniqueProp)} /> <span class="n-transfer__item-title">{Obj.get(value, this.labelProp)}</span>
+                    <NCheckbox key={Obj.get(value, '_dragid')} sort={key} value={Obj.get(value, this.uniqueProp)} /> <span class="n-transfer__item-title">{Obj.get(value, this.labelProp)}</span>
                 </div>
             );
         };
@@ -194,6 +196,32 @@ export default {
             default: this.$scopedSlots.default || renderLabel
         };
 
+        let valueSource = Arr.filter(this.valueSource, (item) => {
+
+            if ( Any.isEmpty(this.searchSource) ) {
+                return true;
+            }
+
+            let regex = new RegExp(
+                Str.regexEscape(this.searchSource)
+            , 'g');
+
+            return Obj.get(item, this.labelProp).match(regex);
+        });
+
+        let valueTarget = Arr.filter(this.value, (item) => {
+
+            if ( Any.isEmpty(this.searchTarget) ) {
+                return true;
+            }
+
+            let regex = new RegExp(
+                Str.regexEscape(this.searchTarget)
+            , 'i');
+
+            return Obj.get(item, this.labelProp).match(regex);
+        });
+
         return (
             <div class="n-transfer">
                 <div class="n-transfer__pane">
@@ -203,8 +231,11 @@ export default {
                                 <NCheckbox global={true}/> <span class="n-transfer__item-title">{ this.sourceLabel }</span>
                             </div>
                         </div>
+                        <div class="n-transfer__search">
+                            <NInput vModel={this.searchSource} placeholder={this.trans('Search item')} icon="fa fa-times" iconDisabled={Any.isEmpty(this.searchSource)} vOn:iconClick={() => this.searchSource = ''} />
+                        </div>
                         <div class="n-transfer__body">
-                            <NDraggable vModel={this.valueSource} props={propsSource} scopedSlots={scopedSlots} on={eventsSource} />
+                            <NDraggable vModel={this.valueSource} displayItems={valueSource} props={propsSource} scopedSlots={scopedSlots} on={eventsSource} />
                         </div>
                     </NCheckboxGroup>
                 </div>
@@ -219,8 +250,11 @@ export default {
                                 <NCheckbox global={true} /> <span class="n-transfer__item-title">{ this.targetLabel }</span>
                             </div>
                         </div>
+                        <div class="n-transfer__search">
+                            <NInput vModel={this.searchTarget} placeholder={this.trans('Search item')} icon="fa fa-times" />
+                        </div>
                         <div class="n-transfer__body">
-                            <NDraggable vModel={this.value} props={propsTarget} scopedSlots={scopedSlots} on={eventsTarget} />
+                            <NDraggable vModel={this.value} displayItems={valueTarget} props={propsTarget} scopedSlots={scopedSlots} on={eventsTarget} />
                         </div>
                     </NCheckboxGroup>
                 </div>
