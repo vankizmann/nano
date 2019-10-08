@@ -28,11 +28,19 @@
             <n-checkbox v-model="inverse">Inverse</n-checkbox>
         </n-form-item>
 
+        <n-form-item label="Test">
+            <n-select v-model="form.name2" size="default" :allow-create="true">
+                <n-select-option value="mike">Mike</n-select-option>
+                <n-select-option value="alex">Alex</n-select-option>
+                <n-select-option value="hans">Hans</n-select-option>
+            </n-select>
+        </n-form-item>
+
         <n-form-item label="Small">
-            <n-select v-model="form.name2" size="small">
-                <n-select-option :value="0">Mike</n-select-option>
-                <n-select-option :value="1">Alex</n-select-option>
-                <n-select-option :value="2">Hans</n-select-option>
+            <n-select v-model="form.name" size="small">
+                <n-select-option value="mike">Mike</n-select-option>
+                <n-select-option value="alex">Alex</n-select-option>
+                <n-select-option value="hans">Hans</n-select-option>
             </n-select>
         </n-form-item>
 
@@ -106,7 +114,7 @@
             data: function() {
 
                 var form = {
-                    name2: null, name: 'mike', names: [], custom: []
+                    name2: null, name3: null, name: 'mike', names: [], custom: []
                 };
 
                 return {

@@ -365,6 +365,10 @@ export default {
             placeholder = option.label.trim();
         }
 
+        if ( option === null && this.multiple === false && this.focus === true ) {
+            placeholder = Arr.first(this.nativeSelected);
+        }
+
         let hideItems = Any.isEmpty(placeholder) === false ||
             (this.focus === true && this.multiple === false) ||
             (this.search !== '' && this.multiple === false);
