@@ -343,7 +343,7 @@ export default {
 
         let labels = Arr.each(this.nativeSelected, (selected) => {
             return Arr.find(this.options, { realValue: selected }, {
-                label: this.undefinedText || selected, realValue: selected
+                label: this.allowCreate ? selected : this.undefinedText, realValue: selected
             });
         });
 
