@@ -798,7 +798,7 @@ export default {
                 { Any.isEmpty(this.items) === true && (this.$slots.empty ||
                     <div class="n-draggable__empty">
                          <span>
-                             { this.trans('No Entries') }
+                             { this.trans('No entries') }
                          </span>
                     </div>)
                 }
