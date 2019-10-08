@@ -204,7 +204,7 @@ export default {
 
             let regex = new RegExp(
                 Str.regexEscape(this.searchSource)
-            , 'g');
+            , 'ig');
 
             return Obj.get(item, this.labelProp).match(regex);
         });
@@ -217,7 +217,7 @@ export default {
 
             let regex = new RegExp(
                 Str.regexEscape(this.searchTarget)
-            , 'i');
+            , 'ig');
 
             return Obj.get(item, this.labelProp).match(regex);
         });
