@@ -148,25 +148,25 @@ export class Now
         }
 
         format = format.replace(/YYYY/g,
-            this.iso().toISOString().substr(0, 4));
+            this.iso().toJSON().substr(0, 4));
 
         format = format.replace(/YY/g,
-            this.iso().toISOString().substr(2, 2));
+            this.iso().toJSON().substr(2, 2));
 
         format = format.replace(/MM/g,
-            this.iso().toISOString().substr(5, 2));
+            this.iso().toJSON().substr(5, 2));
 
         format = format.replace(/DD/g,
-            this.iso().toISOString().substr(8, 2));
+            this.iso().toJSON().substr(8, 2));
 
         format = format.replace(/hh/g,
-            this.iso().toISOString().substr(11, 2));
+            this.iso().toJSON().substr(11, 2));
 
         format = format.replace(/ii/g,
-            this.iso().toISOString().substr(14, 2));
+            this.iso().toJSON().substr(14, 2));
 
         format = format.replace(/ss/g,
-            this.iso().toISOString().substr(17, 2));
+            this.iso().toJSON().substr(17, 2));
 
         return format;
     }
