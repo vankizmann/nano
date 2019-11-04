@@ -1,20 +1,18 @@
-import { Obj, Dom } from "../index";
+import { Dom } from "../index";
+import DefaultElement from "./default";
+import Velocity from "velocity-animate";
 
-export default class Ready
+export default class Ready extends DefaultElement
 {
-    el = null;
-
     options = {
         duration: 500,
         delay: 1000,
-        baseName: 'js__ready',
-        readyModifier: 'ready'
+        baseName: 'ready',
+        doneModifier: 'done'
     };
 
-    constructor(el, options)
-    {
-        this.el = el;
-        this.options = Obj.assign(this.options, options);
+    constructor(el, options) {
+        super(); this.apply(el, options);
     }
 
     bind()
@@ -24,24 +22,34 @@ export default class Ready
 
     bindAnimation()
     {
-        $(this.el).addClass(this.options.baseName);
+        Dom.find(this.el).addClass(this.options.baseName);
 
         let options = {
             duration: this.options.duration
         };
 
         options.complete = () => {
-            $(this.el).css({ display: 'none' });
-            $(this.el).addClass(this.getReadyClass());
+
+            Dom.find(this.el).css({
+                display: 'none'
+            });
+
+            Dom.find(this.el).addClass(
+                this.getReadyClass()
+            );
+
         };
 
-        $(this.el).css({ opacity: 1 });
-        $(this.el).velocity({ opacity: 0 }, options);
+        Dom.find(this.el).css({
+            opacity: 1
+        });
+
+        Velocity(this.el, { opacity: 0 }, options);
     }
 
     getReadyClass()
     {
-        return this.options.baseName + '--' + this.options.readyModifier;
+        return this.options.baseName + '--' + this.options.doneModifier;
     }
 
 }

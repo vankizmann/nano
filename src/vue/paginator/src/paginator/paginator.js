@@ -138,7 +138,7 @@ export default {
                 <span>
                     { this.trans('Goto') }
                 </span>
-                <NSelect vModel={this.nativePage} size={this.size} position="top-center">
+                <NSelect vModel={this.nativePage} size={this.size} position="top-center" undefinedText="1">
                     {
                         Arr.each(Array(this.pages).fill(null), (empty, index) => {
                             return (

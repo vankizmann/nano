@@ -29,8 +29,11 @@ let jsExtExport = {
         ]
     },
     externals: {
-        vue: {
+        'vue': {
             root: 'Vue', commonjs: 'vue', commonjs2: 'vue', amd: 'vue'
+        },
+        'velocity-animate': {
+            root: 'Velocity', commonjs: 'velocity-animate', commonjs2: 'velocity-animate', amd: 'velocity-animate'
         }
     },
 };
@@ -59,8 +62,11 @@ let jsWinExport = {
         ]
     },
     externals: {
-        vue: {
+        'vue': {
             root: 'Vue', commonjs: 'vue', commonjs2: 'vue', amd: 'vue'
+        },
+        'velocity-animate': {
+            root: 'Velocity', commonjs: 'velocity-animate', commonjs2: 'velocity-animate', amd: 'velocity-animate'
         }
     },
 };

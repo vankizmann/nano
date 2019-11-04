@@ -1,97 +1,114 @@
-import { Obj, Dom } from "../index";
+import { Any, Dom } from "../index";
+import DefaultElement from "./default";
 
-export default class Ready
+export default class Resizer extends DefaultElement
 {
-    el = null;
-
     options = {
-        selector: '.js__resizable',
+        selector: '.resizer__handle',
         resizeMode: 'horizontal',
-        baseName: 'js__resizer',
-        readyModifier: 'ready'
+        baseName: 'resizer',
+        onResizeStart: () => {},
+        onResizeEnd: () => {}
     };
 
-    constructor(el, options)
-    {
-        this.el = el;
-        this.options = Obj.assign(this.options, options);
+    constructor(el, options) {
+        super(); this.apply(el, options);
     }
 
     bind()
     {
-        Dom.find(this.el).find(this.options.selector).each((el) => {
-            this.createResizers(el);
-        });
+        this.createResizer.apply(this);
     }
 
-    createResizers(el)
+    unbind()
     {
-        let resizer = Dom.make('div');
+        this.destroyResizer.apply(this);
+    }
 
-        resizer.class([
+    createResizer()
+    {
+        Dom.find(this.el).addClass([
             this.options.baseName, this.getModeClass()
         ]);
 
+        let resizer = Dom.find(this.el).find(this.options.selector);
+
         let unbindCallback = () => {
 
-            Dom.find(document.body)
-                .removeClass(this.getModeClass());
+            Dom.find(document.body).removeClass([
+                this.options.baseName, this.getModeClass()
+            ]);
 
-            Dom.find(document.body).off('mousemove');
-            Dom.find(document.body).off('selectstart');
+            Dom.find(document.body).off('mouseup',
+                null, { _uid: this._uid });
+
+            Dom.find(document.body).off('mousemove',
+                null, { _uid: this._uid });
+
+            Dom.find(document.body).off('selectstart',
+                null, { _uid: this._uid });
+
+            this.options.onResizeEnd.call(this, this.el);
         };
 
-        resizer.on('mousedown', (e) => {
+        resizer.on('mousedown', (event) => {
 
-            if ( e.which !== 1 ) {
+            if ( event.which !== 1 ) {
                 return;
             }
 
-            e.stopPropagation();
-            e.preventDefault();
+            event.stopPropagation();
+            event.preventDefault();
 
-            Dom.find(document.body)
-                .addClass(this.getModeClass());
+            Dom.find(document.body).on('selectstart',
+                (event) => event.preventDefault(), { _uid: this._uid });
 
-            this.resizeElement(e, el);
+            Dom.find(document.body).on('mousemove',
+                Any.throttle(this.resizeElement.bind(this), 10), { _uid: this._uid });
 
-            Dom.find(document.body).on('selectstart', (e) => {
-                e.preventDefault();
-            });
+            Dom.find(document.body).on('mouseup',
+                unbindCallback.bind(this), { _uid: this._uid });
 
-            Dom.find(document.body).on('mousemove', (e) => {
-                this.resizeElement(e, el);
-            });
+            this.options.onResizeStart.apply(this, this.el);
 
-            Dom.find(window).on('mouseup', unbindCallback);
+        }, { _uid: this._uid });
 
-        });
-
-        resizer.appendTo(el);
+        return this;
     }
 
-    resizeElement(event, el)
+    destroyResizer()
     {
+        Dom.find(document.body).removeClass([
+            this.options.baseName, this.getModeClass()
+        ]);
+
+        Dom.find(document.body).off('mousemove',
+            { _uid: this._uid });
+
+        Dom.find(document.body).off('selectstart',
+            { _uid: this._uid });
+
+        return this;
+    }
+
+    resizeElement(event)
+    {
+        let resizer = Dom.find(this.el).find(this.options.selector);
+
         if ( this.options.resizeMode === 'horizontal' ) {
 
-            let pos = Dom.find(el).attr('ui-resizer-pos') || 'right';
+            let width = event.clientX - Dom.find(this.el).offsetLeft() +
+                Dom.find(this.el).scrollLeft() + (resizer.width() / 2);
 
-            let width = pos === 'right' ?
-                (Dom.find(el).offsetLeft() * -1) + event.clientX :
-                (Dom.find(el).offsetRight() * -1) + (window.outerWidth - event.clientX);
-
-            Dom.find(el).css({ width: width + 'px' });
+            Dom.find(this.el).css({ width: width + 'px' });
         }
 
         if ( this.options.resizeMode === 'vertical' ) {
 
-            let pos = Dom.find(el).attr('ui-resizer-pos') || 'bottom';
+            let height = event.clientY - Dom.find(this.el).offsetTop() +
+                Dom.find(this.el).scrollTop() + (resizer.height() / 2);
 
-            let height = pos === 'bottom' ?
-                (Dom.find(el).offsetTop() * -1) + event.clientY :
-                (Dom.find(el).offsetBottom() * -1) + (window.outerHeight - event.clientY);
-
-            Dom.find(el).css({ height: height + 'px' });
+            Dom.find(this.el).css({ height: height + 'px' });
         }
     }
 
