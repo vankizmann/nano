@@ -3,9 +3,7 @@ const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-
-
-let jsExtExport = {
+let jsExtVueExport = {
     mode: "development",
     entry: ["./src/index.js"],
     output: {
@@ -38,7 +36,7 @@ let jsExtExport = {
     },
 };
 
-let jsWinExport = {
+let jsWinVueExport = {
     mode: "development",
     entry: ["@babel/polyfill", "./src/index.js"],
     output: {
@@ -65,6 +63,66 @@ let jsWinExport = {
         'vue': {
             root: 'Vue', commonjs: 'vue', commonjs2: 'vue', amd: 'vue'
         },
+        'velocity-animate': {
+            root: 'Velocity', commonjs: 'velocity-animate', commonjs2: 'velocity-animate', amd: 'velocity-animate'
+        }
+    },
+};
+
+let jsExtEssentialExport = {
+    mode: "development",
+    entry: ["./src/index.essential.js"],
+    output: {
+        filename: "index.essential.esm.js",
+        path: path.resolve(__dirname, "dist"),
+        library: "Nano",
+        libraryTarget: "umd",
+    },
+    module: {
+        rules: [
+            {
+                test: /.js$/,
+                include: [
+                    path.resolve(__dirname, './src')
+                ],
+                loader: 'babel-loader',
+                options: {
+                    configFile: path.resolve('./babel.config.js')
+                },
+            }
+        ]
+    },
+    externals: {
+        'velocity-animate': {
+            root: 'Velocity', commonjs: 'velocity-animate', commonjs2: 'velocity-animate', amd: 'velocity-animate'
+        }
+    },
+};
+
+let jsWinEssentialExport = {
+    mode: "development",
+    entry: ["@babel/polyfill", "./src/index.essential.js"],
+    output: {
+        filename: "index.essential.js",
+        path: path.resolve(__dirname, "dist"),
+        library: "Nano",
+        libraryTarget: "umd",
+    },
+    module: {
+        rules: [
+            {
+                test: /.js$/,
+                include: [
+                    path.resolve(__dirname, './src')
+                ],
+                loader: 'babel-loader',
+                options: {
+                    configFile: path.resolve('./babel.config.js')
+                },
+            }
+        ]
+    },
+    externals: {
         'velocity-animate': {
             root: 'Velocity', commonjs: 'velocity-animate', commonjs2: 'velocity-animate', amd: 'velocity-animate'
         }
@@ -135,4 +193,8 @@ let cssLegacyExport = {
     ]
 };
 
-module.exports = [jsWinExport, jsExtExport, cssModernExport, cssLegacyExport];
+module.exports = [
+    jsWinVueExport, jsExtVueExport,
+    jsWinEssentialExport, jsExtEssentialExport,
+    cssModernExport, cssLegacyExport
+];
